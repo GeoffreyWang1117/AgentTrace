@@ -19,9 +19,7 @@ Features extracted:
 """
 
 import re
-import math
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 import numpy as np
 
@@ -32,88 +30,120 @@ from agenttrace.core.node import Node
 @dataclass
 class OTARFeatures:
     """OTAR-decomposed features for a single node."""
+
     node_id: str
     agent_id: str
 
     # OTAR role
-    is_observation: bool = False   # receives input / reads environment
-    is_thought: bool = False       # reasoning / planning step
-    is_action: bool = False        # executes tool / sends message
-    is_result: bool = False        # produces output / final answer
+    is_observation: bool = False  # receives input / reads environment
+    is_thought: bool = False  # reasoning / planning step
+    is_action: bool = False  # executes tool / sends message
+    is_result: bool = False  # produces output / final answer
 
     # Content features
-    factual_assertion_count: int = 0     # number of factual claims
-    question_count: int = 0              # number of questions asked
-    list_item_count: int = 0             # structured list items
-    code_block_present: bool = False     # contains code
-    url_count: int = 0                   # URLs referenced
-    number_count: int = 0               # numerical values mentioned
+    factual_assertion_count: int = 0  # number of factual claims
+    question_count: int = 0  # number of questions asked
+    list_item_count: int = 0  # structured list items
+    code_block_present: bool = False  # contains code
+    url_count: int = 0  # URLs referenced
+    number_count: int = 0  # numerical values mentioned
 
     # Error-indicative features
-    hedge_word_count: int = 0            # "might", "could", "approximately"
-    negation_count: int = 0              # "not", "no", "don't", "incorrect"
-    correction_language: bool = False    # "actually", "instead", "correction"
-    confidence_language: bool = False    # "definitely", "certainly", "sure"
+    hedge_word_count: int = 0  # "might", "could", "approximately"
+    negation_count: int = 0  # "not", "no", "don't", "incorrect"
+    correction_language: bool = False  # "actually", "instead", "correction"
+    confidence_language: bool = False  # "definitely", "certainly", "sure"
 
     # Flow features
-    verification_gap: float = 0.0        # high = action without verification
-    content_novelty: float = 0.0         # how much new info vs repeating upstream
-    upstream_similarity: float = 0.0     # max similarity to any predecessor
-    downstream_divergence: float = 0.0   # how much downstream differs
+    verification_gap: float = 0.0  # high = action without verification
+    content_novelty: float = 0.0  # how much new info vs repeating upstream
+    upstream_similarity: float = 0.0  # max similarity to any predecessor
+    downstream_divergence: float = 0.0  # how much downstream differs
 
     # Content divergence (input vs output mismatch)
-    content_divergence: float = 0.0      # how much this node's output differs from its input
+    content_divergence: float = 0.0  # how much this node's output differs from its input
 
     # Agent behavior
-    agent_consecutive_steps: int = 1     # how many consecutive steps by same agent
-    is_first_agent_step: bool = False    # first contribution by this agent
-    is_agent_handoff: bool = False       # agent changes after this step
+    agent_consecutive_steps: int = 1  # how many consecutive steps by same agent
+    is_first_agent_step: bool = False  # first contribution by this agent
+    is_agent_handoff: bool = False  # agent changes after this step
 
 
 # Pattern sets for classification
 OBSERVATION_PATTERNS = [
-    r'\b(given|provided|received|input|task|assigned|asked|requested)\b',
-    r'\b(search result|output|response|returned|code output|exitcode)\b',
+    r"\b(given|provided|received|input|task|assigned|asked|requested)\b",
+    r"\b(search result|output|response|returned|code output|exitcode)\b",
 ]
 
 THOUGHT_PATTERNS = [
-    r'\b(I will|I\'ll|let me|I need to|I should|plan|strategy|approach)\b',
-    r'\b(think|consider|analyze|evaluate|check|verify|confirm)\b',
-    r'\b(first|then|next|finally|step \d+)\b',
+    r"\b(I will|I\'ll|let me|I need to|I should|plan|strategy|approach)\b",
+    r"\b(think|consider|analyze|evaluate|check|verify|confirm)\b",
+    r"\b(first|then|next|finally|step \d+)\b",
 ]
 
 ACTION_PATTERNS = [
-    r'\b(execute|run|call|invoke|search|fetch|send|submit|write|create)\b',
-    r'\b(```|exitcode|code output|function_call)\b',
+    r"\b(execute|run|call|invoke|search|fetch|send|submit|write|create)\b",
+    r"\b(```|exitcode|code output|function_call)\b",
 ]
 
 RESULT_PATTERNS = [
-    r'\b(result|answer|conclusion|summary|final|output|done|completed)\b',
-    r'\b(here is|here are|the answer|in conclusion|therefore)\b',
+    r"\b(result|answer|conclusion|summary|final|output|done|completed)\b",
+    r"\b(here is|here are|the answer|in conclusion|therefore)\b",
 ]
 
 HEDGE_WORDS = [
-    'might', 'could', 'possibly', 'approximately', 'roughly', 'about',
-    'maybe', 'perhaps', 'likely', 'probably', 'seem', 'appears',
-    'uncertain', 'unclear', 'not sure', 'I think',
+    "might",
+    "could",
+    "possibly",
+    "approximately",
+    "roughly",
+    "about",
+    "maybe",
+    "perhaps",
+    "likely",
+    "probably",
+    "seem",
+    "appears",
+    "uncertain",
+    "unclear",
+    "not sure",
+    "I think",
 ]
 
 CORRECTION_WORDS = [
-    'actually', 'instead', 'correction', 'corrected', 'sorry',
-    'mistake', 'wrong', 'incorrect', 'fix', 'revised', 'update',
-    'apolog', 'error in my', 'I was wrong',
+    "actually",
+    "instead",
+    "correction",
+    "corrected",
+    "sorry",
+    "mistake",
+    "wrong",
+    "incorrect",
+    "fix",
+    "revised",
+    "update",
+    "apolog",
+    "error in my",
+    "I was wrong",
 ]
 
 CONFIDENCE_WORDS = [
-    'definitely', 'certainly', 'sure', 'confident', 'clearly',
-    'without doubt', 'absolutely', 'exactly', 'precisely',
+    "definitely",
+    "certainly",
+    "sure",
+    "confident",
+    "clearly",
+    "without doubt",
+    "absolutely",
+    "exactly",
+    "precisely",
 ]
 
 FACTUAL_PATTERNS = [
-    r'\b\d{4}\b',                    # years
-    r'\$[\d,]+',                     # prices
-    r'\d+\s*(?:minutes|hours|days|%|percent)', # quantities
-    r'(?:is|are|was|were)\s+(?:available|released|published|created)', # claims
+    r"\b\d{4}\b",  # years
+    r"\$[\d,]+",  # prices
+    r"\d+\s*(?:minutes|hours|days|%|percent)",  # quantities
+    r"(?:is|are|was|were)\s+(?:available|released|published|created)",  # claims
 ]
 
 
@@ -129,10 +159,10 @@ def _count_patterns(text: str, patterns: list[str]) -> int:
 def _classify_otar(text: str) -> dict:
     """Classify text into OTAR roles by pattern matching."""
     scores = {
-        'observation': _count_patterns(text, OBSERVATION_PATTERNS),
-        'thought': _count_patterns(text, THOUGHT_PATTERNS),
-        'action': _count_patterns(text, ACTION_PATTERNS),
-        'result': _count_patterns(text, RESULT_PATTERNS),
+        "observation": _count_patterns(text, OBSERVATION_PATTERNS),
+        "thought": _count_patterns(text, THOUGHT_PATTERNS),
+        "action": _count_patterns(text, ACTION_PATTERNS),
+        "result": _count_patterns(text, RESULT_PATTERNS),
     }
     return scores
 
@@ -152,6 +182,7 @@ class OTARFeatureExtractor:
     def model(self):
         if self._model is None and self.use_embeddings:
             from sentence_transformers import SentenceTransformer
+
             self._model = SentenceTransformer("all-MiniLM-L6-v2")
         return self._model
 
@@ -178,7 +209,7 @@ class OTARFeatureExtractor:
         for idx, node in enumerate(nodes):
             text = texts[idx]
             text_lower = text.lower()
-            data = node.data if isinstance(node.data, dict) else {}
+            node.data if isinstance(node.data, dict) else {}
 
             # OTAR classification
             otar_scores = _classify_otar(text)
@@ -186,23 +217,24 @@ class OTARFeatureExtractor:
 
             # Content analysis
             factual_count = _count_patterns(text, FACTUAL_PATTERNS)
-            question_count = text.count('?')
-            list_items = len(re.findall(r'^\s*[\d\-\*\•]\s*', text, re.MULTILINE))
-            code_present = '```' in text or 'exitcode' in text_lower
-            url_count = len(re.findall(r'https?://', text))
-            number_count = len(re.findall(r'\b\d+\.?\d*\b', text))
+            question_count = text.count("?")
+            list_items = len(re.findall(r"^\s*[\d\-\*\•]\s*", text, re.MULTILINE))
+            code_present = "```" in text or "exitcode" in text_lower
+            url_count = len(re.findall(r"https?://", text))
+            number_count = len(re.findall(r"\b\d+\.?\d*\b", text))
 
             # Error indicators
             hedge_count = sum(1 for w in HEDGE_WORDS if w.lower() in text_lower)
-            negation_count = len(re.findall(
-                r'\b(not|no|don\'t|doesn\'t|isn\'t|aren\'t|wasn\'t|weren\'t|cannot|can\'t|won\'t)\b',
-                text_lower
-            ))
+            negation_count = len(
+                re.findall(
+                    r"\b(not|no|don\'t|doesn\'t|isn\'t|aren\'t|wasn\'t|weren\'t|cannot|can\'t|won\'t)\b", text_lower
+                )
+            )
             has_correction = any(w.lower() in text_lower for w in CORRECTION_WORDS)
             has_confidence = any(w.lower() in text_lower for w in CONFIDENCE_WORDS)
 
             # Agent behavior
-            prev_agent = nodes[idx - 1].agent_id if idx > 0 else None
+            nodes[idx - 1].agent_id if idx > 0 else None
             next_agent = nodes[idx + 1].agent_id if idx < len(nodes) - 1 else None
 
             # Count consecutive steps by same agent
@@ -255,11 +287,11 @@ class OTARFeatureExtractor:
                             break
 
                 # Verification gap: action without close verification step
-                if otar_scores['action'] > otar_scores['thought']:
+                if otar_scores["action"] > otar_scores["thought"]:
                     has_verification = False
                     for k in range(max(0, idx - 3), idx):
                         k_text = texts[k].lower()
-                        if any(v in k_text for v in ['verify', 'check', 'confirm', 'validate']):
+                        if any(v in k_text for v in ["verify", "check", "confirm", "validate"]):
                             has_verification = True
                             break
                     verification_gap = 0.0 if has_verification else 1.0
@@ -267,10 +299,10 @@ class OTARFeatureExtractor:
             feat = OTARFeatures(
                 node_id=node.id,
                 agent_id=node.agent_id,
-                is_observation=(max_role == 'observation'),
-                is_thought=(max_role == 'thought'),
-                is_action=(max_role == 'action'),
-                is_result=(max_role == 'result'),
+                is_observation=(max_role == "observation"),
+                is_thought=(max_role == "thought"),
+                is_action=(max_role == "action"),
+                is_result=(max_role == "result"),
                 factual_assertion_count=factual_count,
                 question_count=question_count,
                 list_item_count=list_items,
@@ -294,9 +326,7 @@ class OTARFeatureExtractor:
 
         return features_list
 
-    def compute_suspiciousness_score(
-        self, feat: OTARFeatures, weights: dict[str, float] | None = None
-    ) -> float:
+    def compute_suspiciousness_score(self, feat: OTARFeatures, weights: dict[str, float] | None = None) -> float:
         """
         Compute a suspiciousness score from OTAR features.
 
@@ -315,52 +345,52 @@ class OTARFeatureExtractor:
 
         # First agent step — RC 56% vs non-RC 39%
         if feat.is_first_agent_step:
-            score += w.get('first_step', 0.12)
+            score += w.get("first_step", 0.12)
 
         # Agent handoff — error boundary
         if feat.is_agent_handoff:
-            score += w.get('handoff', 0.10)
+            score += w.get("handoff", 0.10)
 
         # Downstream divergence — output diverges from successors
-        score += w.get('downstream_div', 0.15) * feat.downstream_divergence
+        score += w.get("downstream_div", 0.15) * feat.downstream_divergence
 
         # Content divergence INVERTED — RC nodes look normal (low divergence)
         # High content_div = looks different from input = LESS suspicious
-        score += w.get('content_div_inv', 0.10) * (1.0 - feat.content_divergence)
+        score += w.get("content_div_inv", 0.10) * (1.0 - feat.content_divergence)
 
         # Content novelty
-        score += w.get('novelty', 0.08) * feat.content_novelty
+        score += w.get("novelty", 0.08) * feat.content_novelty
 
         # Verification gap
-        score += w.get('verif_gap', 0.05) * feat.verification_gap
+        score += w.get("verif_gap", 0.05) * feat.verification_gap
 
         # Correction language
         if feat.correction_language:
-            score += w.get('correction', 0.04)
+            score += w.get("correction", 0.04)
 
         # Factual density (weak)
         if feat.factual_assertion_count > 3:
-            score += w.get('factual', 0.02)
+            score += w.get("factual", 0.02)
 
         return min(1.0, score)
 
     @property
     def default_weights(self) -> dict[str, float]:
         return {
-            'first_step': 0.12,
-            'handoff': 0.10,
-            'downstream_div': 0.15,
-            'content_div_inv': 0.10,
-            'novelty': 0.08,
-            'verif_gap': 0.05,
-            'correction': 0.04,
-            'factual': 0.02,
+            "first_step": 0.12,
+            "handoff": 0.10,
+            "downstream_div": 0.15,
+            "content_div_inv": 0.10,
+            "novelty": 0.08,
+            "verif_gap": 0.05,
+            "correction": 0.04,
+            "factual": 0.02,
         }
 
     def _get_text(self, node: Node) -> str:
         """Extract text from node."""
         data = node.data if isinstance(node.data, dict) else {}
-        content = data.get('content', '')
+        content = data.get("content", "")
         if isinstance(content, (list, dict)):
             content = str(content)
         content = str(content)
@@ -370,8 +400,8 @@ class OTARFeatureExtractor:
         parts = []
         if node.agent_id:
             parts.append(f"[{node.agent_id}]")
-        action = data.get('action', '')
+        action = data.get("action", "")
         if action:
             parts.append(f"({action})")
         parts.append(content)
-        return ' '.join(parts)
+        return " ".join(parts)
