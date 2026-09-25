@@ -49,6 +49,7 @@ class CausalGraph:
     def _generate_run_id() -> str:
         """Generate a unique run ID."""
         import uuid
+
         return f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
 
     @property
@@ -78,11 +79,13 @@ class CausalGraph:
         # Auto-create edges from parent_ids
         for parent_id in node.parent_ids:
             if parent_id in self._nodes:
-                self.add_edge(Edge(
-                    source_id=parent_id,
-                    target_id=node.id,
-                    type=EdgeType.DATA_FLOW,
-                ))
+                self.add_edge(
+                    Edge(
+                        source_id=parent_id,
+                        target_id=node.id,
+                        type=EdgeType.DATA_FLOW,
+                    )
+                )
 
         return node
 
@@ -118,6 +121,10 @@ class CausalGraph:
         """Get an edge by ID."""
         return self._edges.get(edge_id)
 
+    def get_all_edges(self) -> list[Edge]:
+        """Get all edges in the graph."""
+        return list(self._edges.values())
+
     def get_nodes_by_agent(self, agent_id: str) -> list[Node]:
         """Get all nodes created by a specific agent."""
         return [self._nodes[nid] for nid in self._nodes_by_agent.get(agent_id, [])]
@@ -126,11 +133,7 @@ class CausalGraph:
         """Get all nodes of a specific type."""
         return [self._nodes[nid] for nid in self._nodes_by_type.get(node_type, [])]
 
-    def get_nodes_in_time_range(
-        self,
-        start: datetime,
-        end: datetime
-    ) -> list[Node]:
+    def get_nodes_in_time_range(self, start: datetime, end: datetime) -> list[Node]:
         """Get all nodes within a time range."""
         result = []
         for ts, node_id in self._nodes_by_time:
@@ -143,10 +146,7 @@ class CausalGraph:
     # === Query Operations ===
 
     def trace_forward(
-        self,
-        node_id: str,
-        max_depth: int = -1,
-        edge_filter: Callable[[Edge], bool] | None = None
+        self, node_id: str, max_depth: int = -1, edge_filter: Callable[[Edge], bool] | None = None
     ) -> list[Node]:
         """
         Forward tracing: Find all nodes affected by this node.
@@ -188,10 +188,7 @@ class CausalGraph:
         return result
 
     def trace_backward(
-        self,
-        node_id: str,
-        max_depth: int = -1,
-        edge_filter: Callable[[Edge], bool] | None = None
+        self, node_id: str, max_depth: int = -1, edge_filter: Callable[[Edge], bool] | None = None
     ) -> list[Node]:
         """
         Backward tracing: Find all nodes that caused this node.
@@ -252,11 +249,7 @@ class CausalGraph:
 
         return root_causes
 
-    def find_path(
-        self,
-        source_id: str,
-        target_id: str
-    ) -> list[Node] | None:
+    def find_path(self, source_id: str, target_id: str) -> list[Node] | None:
         """
         Find the causal path between two nodes.
 
@@ -301,11 +294,7 @@ class CausalGraph:
 
     # === Counterfactual Analysis ===
 
-    def create_counterfactual(
-        self,
-        node_id: str,
-        alternative_data: Any
-    ) -> "CausalGraph":
+    def create_counterfactual(self, node_id: str, alternative_data: Any) -> "CausalGraph":
         """
         Create a counterfactual graph where a node has different data.
 
@@ -389,11 +378,13 @@ class CausalGraph:
             self_node = self._nodes[node_id]
             other_node = other._nodes[node_id]
             if self_node.data != other_node.data:
-                different_data.append({
-                    "node_id": node_id,
-                    "self_data": self_node.data,
-                    "other_data": other_node.data,
-                })
+                different_data.append(
+                    {
+                        "node_id": node_id,
+                        "self_data": self_node.data,
+                        "other_data": other_node.data,
+                    }
+                )
 
         return {
             "common_nodes": len(common_nodes),

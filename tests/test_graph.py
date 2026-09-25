@@ -1,7 +1,6 @@
 """Tests for the causal graph implementation."""
 
 import pytest
-from datetime import datetime, timedelta
 
 from agenttrace.core.graph import CausalGraph
 from agenttrace.core.node import Node, NodeType

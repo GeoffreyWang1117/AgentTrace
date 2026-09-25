@@ -62,7 +62,10 @@ Thumbs.db
 # Project specific
 *.json.bak
 
-# Paper source (available on arxiv: 2603.14688 and OpenReview)
+# Data resources (benchmark, scenarios, traces, results — do not redistribute)
+data/
+
+# Paper source (available on arxiv: 2603.14688)
 paper/
 
 # User study (not in paper, should not be published)
@@ -81,3 +84,20 @@ data/results/improvement_analysis.md
 experiments/scripts/expand_benchmark_simple.py
 experiments/scripts/regenerate_new_domains.py
 experiments/scripts/test_pipeline.py
+
+# Private meeting prep / business documents (NEVER commit)
+meeting_prep/
+
+# PaperBanana generation script (contains API context)
+run_agenttrace_figure.py
+
+# (data/external/ and data/results/ covered by data/ above)
+
+# DeepSeek/Groq API experiment scripts (contain key references)
+experiments/scripts/run_deepseek_controlled.py
+experiments/scripts/run_llm_enhanced.py
+
+# Local secrets (never commit)
+.env
+.env.*
+!.env.example

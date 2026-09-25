@@ -285,6 +285,149 @@ class MetricsAggregator:
         return breakdown
 
 
+@dataclass
+class TwoStageResult:
+    """Results from two-stage evaluation."""
+    # Stage 1: Edge inference quality
+    edge_metrics: CausalChainMetrics
+    # Stage 2: Ranking quality on inferred graph
+    ranking_metrics: RootCauseMetrics
+
+
+@dataclass
+class MultiRootCauseMetrics:
+    """Metrics for multi-root-cause evaluation."""
+    ndcg_at_3: float
+    ndcg_at_5: float
+    recall_at_3: float
+    recall_at_5: float
+    total_samples: int
+
+
+class TwoStageEvaluator:
+    """
+    Evaluates AgentTrace in two independent stages:
+    1. Edge inference quality (inferred edges vs ground truth edges)
+    2. Ranking quality (root cause ranking on the inferred graph)
+    """
+
+    @staticmethod
+    def evaluate(
+        predicted_edges: set[tuple[str, str]],
+        ground_truth_edges: set[tuple[str, str]],
+        predictions: list[tuple[str, list[str]]],
+        ground_truths: dict[str, str],
+    ) -> TwoStageResult:
+        """
+        Run both stages of evaluation.
+
+        Args:
+            predicted_edges: Inferred edges as (source, target) pairs
+            ground_truth_edges: Ground truth edges
+            predictions: Ranking predictions per scenario
+            ground_truths: Ground truth root cause per scenario
+        """
+        edge_metrics = CausalChainEvaluator.compute_edge_metrics(
+            predicted_edges, ground_truth_edges
+        )
+        ranking_metrics = RootCauseEvaluator.compute_metrics(
+            predictions, ground_truths
+        )
+        return TwoStageResult(
+            edge_metrics=edge_metrics,
+            ranking_metrics=ranking_metrics,
+        )
+
+
+def compute_ndcg_at_k(
+    ranked_ids: list[str],
+    relevant_ids: set[str],
+    k: int,
+) -> float:
+    """
+    Compute Normalized Discounted Cumulative Gain at K.
+
+    Args:
+        ranked_ids: Ranked list of predicted node IDs
+        relevant_ids: Set of ground truth root cause node IDs
+        k: Cutoff
+    """
+    import math
+
+    def dcg(ranks: list[float], k: int) -> float:
+        return sum(
+            rel / math.log2(i + 2)
+            for i, rel in enumerate(ranks[:k])
+        )
+
+    # Actual gains
+    gains = [1.0 if nid in relevant_ids else 0.0 for nid in ranked_ids[:k]]
+    actual_dcg = dcg(gains, k)
+
+    # Ideal gains
+    ideal_gains = sorted(gains, reverse=True)
+    # But we might have fewer relevant items — ideal is all relevant first
+    n_relevant = min(len(relevant_ids), k)
+    ideal = [1.0] * n_relevant + [0.0] * (k - n_relevant)
+    ideal_dcg = dcg(ideal, k)
+
+    if ideal_dcg == 0:
+        return 0.0
+    return actual_dcg / ideal_dcg
+
+
+def compute_recall_at_k(
+    ranked_ids: list[str],
+    relevant_ids: set[str],
+    k: int,
+) -> float:
+    """Compute Recall@K: fraction of relevant items found in top K."""
+    if not relevant_ids:
+        return 0.0
+    found = sum(1 for nid in ranked_ids[:k] if nid in relevant_ids)
+    return found / len(relevant_ids)
+
+
+class MultiRootCauseEvaluator:
+    """Evaluates scenarios with multiple root causes."""
+
+    @staticmethod
+    def compute_metrics(
+        predictions: list[tuple[str, list[str]]],
+        ground_truths: dict[str, set[str]],
+    ) -> MultiRootCauseMetrics:
+        """
+        Compute NDCG@K and Recall@K for multi-root scenarios.
+
+        Args:
+            predictions: (scenario_id, ranked_node_ids) pairs
+            ground_truths: scenario_id -> set of root cause node IDs
+        """
+        ndcg_3_scores = []
+        ndcg_5_scores = []
+        recall_3_scores = []
+        recall_5_scores = []
+
+        for scenario_id, ranked in predictions:
+            if scenario_id not in ground_truths:
+                continue
+            relevant = ground_truths[scenario_id]
+
+            ndcg_3_scores.append(compute_ndcg_at_k(ranked, relevant, 3))
+            ndcg_5_scores.append(compute_ndcg_at_k(ranked, relevant, 5))
+            recall_3_scores.append(compute_recall_at_k(ranked, relevant, 3))
+            recall_5_scores.append(compute_recall_at_k(ranked, relevant, 5))
+
+        n = len(ndcg_3_scores)
+        return MultiRootCauseMetrics(
+            ndcg_at_3=sum(ndcg_3_scores) / n if n else 0.0,
+            ndcg_at_5=sum(ndcg_5_scores) / n if n else 0.0,
+            recall_at_3=sum(recall_3_scores) / n if n else 0.0,
+            recall_at_5=sum(recall_5_scores) / n if n else 0.0,
+            total_samples=n,
+        )
+
+
 def generate_latex_table(results: list[EvaluationResult]) -> str:
     """Generate LaTeX table from evaluation results."""
     lines = [

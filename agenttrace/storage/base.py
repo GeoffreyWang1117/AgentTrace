@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import Any, Iterator
+from typing import Any
 
 from agenttrace.core.graph import CausalGraph
 from agenttrace.core.node import Node

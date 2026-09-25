@@ -216,11 +216,9 @@ class TestTemporalAnalyzer:
 
         nodes = [
             Node(type=NodeType.AGENT_INPUT, agent_id="a", data="1", timestamp=now),
-            Node(type=NodeType.AGENT_OUTPUT, agent_id="a", data="2",
-                 timestamp=now + timedelta(milliseconds=100)),
+            Node(type=NodeType.AGENT_OUTPUT, agent_id="a", data="2", timestamp=now + timedelta(milliseconds=100)),
             # Long gap here
-            Node(type=NodeType.AGENT_INPUT, agent_id="a", data="3",
-                 timestamp=now + timedelta(seconds=5)),
+            Node(type=NodeType.AGENT_INPUT, agent_id="a", data="3", timestamp=now + timedelta(seconds=5)),
         ]
 
         for n in nodes:
@@ -273,10 +271,8 @@ class TestInferenceEngine:
 
         nodes = [
             Node(type=NodeType.AGENT_INPUT, agent_id="a", data="start", timestamp=now),
-            Node(type=NodeType.AGENT_OUTPUT, agent_id="a", data="mid",
-                 timestamp=now + timedelta(milliseconds=50)),
-            Node(type=NodeType.AGENT_OUTPUT, agent_id="a", data="end",
-                 timestamp=now + timedelta(milliseconds=100)),
+            Node(type=NodeType.AGENT_OUTPUT, agent_id="a", data="mid", timestamp=now + timedelta(milliseconds=50)),
+            Node(type=NodeType.AGENT_OUTPUT, agent_id="a", data="end", timestamp=now + timedelta(milliseconds=100)),
         ]
 
         for n in nodes:
@@ -284,16 +280,21 @@ class TestInferenceEngine:
 
         # Add edges
         from agenttrace.core.edge import Edge
-        graph.add_edge(Edge(
-            source_id=nodes[0].id,
-            target_id=nodes[1].id,
-            type=EdgeType.INPUT_OUTPUT,
-        ))
-        graph.add_edge(Edge(
-            source_id=nodes[1].id,
-            target_id=nodes[2].id,
-            type=EdgeType.DATA_FLOW,
-        ))
+
+        graph.add_edge(
+            Edge(
+                source_id=nodes[0].id,
+                target_id=nodes[1].id,
+                type=EdgeType.INPUT_OUTPUT,
+            )
+        )
+        graph.add_edge(
+            Edge(
+                source_id=nodes[1].id,
+                target_id=nodes[2].id,
+                type=EdgeType.DATA_FLOW,
+            )
+        )
 
         analysis = engine.analyze_causality(graph, nodes[2].id)
 
@@ -306,10 +307,8 @@ class TestInferenceEngine:
 
         # Create a chain leading to an error
         n1 = Node(type=NodeType.AGENT_INPUT, agent_id="a", data="input", timestamp=now)
-        n2 = Node(type=NodeType.DECISION, agent_id="a", data="decision",
-                  timestamp=now + timedelta(milliseconds=50))
-        n3 = Node(type=NodeType.TOOL_CALL, agent_id="a", data="call",
-                  timestamp=now + timedelta(milliseconds=100))
+        n2 = Node(type=NodeType.DECISION, agent_id="a", data="decision", timestamp=now + timedelta(milliseconds=50))
+        n3 = Node(type=NodeType.TOOL_CALL, agent_id="a", data="call", timestamp=now + timedelta(milliseconds=100))
         error = Node(
             type=NodeType.ERROR,
             agent_id="a",
@@ -322,6 +321,7 @@ class TestInferenceEngine:
 
         # Add edges
         from agenttrace.core.edge import Edge
+
         graph.add_edge(Edge(source_id=n1.id, target_id=n2.id, type=EdgeType.INPUT_OUTPUT))
         graph.add_edge(Edge(source_id=n2.id, target_id=n3.id, type=EdgeType.DATA_FLOW))
         graph.add_edge(Edge(source_id=n3.id, target_id=error.id, type=EdgeType.ERROR_PROPAGATION))

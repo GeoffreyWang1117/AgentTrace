@@ -111,6 +111,7 @@ def cmd_serve(args):
 
     # Mount UI static files
     from fastapi.staticfiles import StaticFiles
+
     ui_path = Path(__file__).parent.parent / "ui"
     if ui_path.exists():
         app.mount("/ui", StaticFiles(directory=str(ui_path)), name="ui")
@@ -125,6 +126,7 @@ def cmd_demo(args):
     """Run the interactive demo."""
     # Import demo module
     import importlib.util
+
     demo_path = Path(__file__).parent.parent / "examples" / "debug_demo.py"
 
     if demo_path.exists():
@@ -137,6 +139,7 @@ def cmd_demo(args):
         print("Running simple demo instead...")
 
         from agenttrace.examples.simple_agents import run_demo
+
         run_demo()
 
 
@@ -197,15 +200,17 @@ def cmd_analyze(args):
             for i, error in enumerate(errors, 1):
                 explanation = query.explain_error(error.id)
 
-                console.print(Panel(
-                    f"[bold]Error {i}[/bold]\n"
-                    f"Type: {explanation['error_info']['type']}\n"
-                    f"Message: {explanation['error_info']['message']}\n"
-                    f"Agent: {explanation['error_info']['agent']}\n"
-                    f"Root causes: {len(explanation['root_causes'])}",
-                    title=f"Error {i}",
-                    border_style="red",
-                ))
+                console.print(
+                    Panel(
+                        f"[bold]Error {i}[/bold]\n"
+                        f"Type: {explanation['error_info']['type']}\n"
+                        f"Message: {explanation['error_info']['message']}\n"
+                        f"Agent: {explanation['error_info']['agent']}\n"
+                        f"Root causes: {len(explanation['root_causes'])}",
+                        title=f"Error {i}",
+                        border_style="red",
+                    )
+                )
 
                 if explanation["likely_causes"]:
                     console.print("[bold]Likely causes:[/bold]")
@@ -218,6 +223,7 @@ def cmd_analyze(args):
 def cmd_version():
     """Show version information."""
     from agenttrace import __version__
+
     print(f"AgentTrace version {__version__}")
 
 

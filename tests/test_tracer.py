@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from agenttrace.tracer import Tracer, get_tracer, set_tracer
+from agenttrace.tracer import Tracer, get_tracer
 from agenttrace.core.node import NodeType
 from agenttrace.core.edge import EdgeType
 from agenttrace.hooks.decorators import trace_agent, trace_tool

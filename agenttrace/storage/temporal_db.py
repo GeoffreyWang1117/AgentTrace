@@ -7,7 +7,6 @@ Provides time-point queries and efficient storage for large traces.
 from __future__ import annotations
 
 import json
-import os
 import shutil
 from datetime import datetime
 from pathlib import Path
@@ -51,13 +50,13 @@ class TemporalStorage(StorageBackend):
         """Load the run index from disk."""
         index_path = self.base_path / "index.json"
         if index_path.exists():
-            with open(index_path, 'r') as f:
+            with open(index_path, "r") as f:
                 self._index = json.load(f)
 
     def _save_index(self) -> None:
         """Save the run index to disk."""
         index_path = self.base_path / "index.json"
-        with open(index_path, 'w') as f:
+        with open(index_path, "w") as f:
             json.dump(self._index, f, indent=2)
 
     def _get_run_path(self, run_id: str) -> Path:
@@ -73,7 +72,7 @@ class TemporalStorage(StorageBackend):
 
             # Save full graph
             graph_path = run_path / "graph.json"
-            with open(graph_path, 'w') as f:
+            with open(graph_path, "w") as f:
                 f.write(graph.to_json())
 
             # Create time index
@@ -96,15 +95,17 @@ class TemporalStorage(StorageBackend):
         time_index: list[dict[str, Any]] = []
 
         for node in sorted(graph, key=lambda n: n.timestamp):
-            time_index.append({
-                "node_id": node.id,
-                "timestamp": node.timestamp.isoformat(),
-                "type": node.type.value,
-                "agent_id": node.agent_id,
-            })
+            time_index.append(
+                {
+                    "node_id": node.id,
+                    "timestamp": node.timestamp.isoformat(),
+                    "type": node.type.value,
+                    "agent_id": node.agent_id,
+                }
+            )
 
         index_path = run_path / "time_index.json"
-        with open(index_path, 'w') as f:
+        with open(index_path, "w") as f:
             json.dump(time_index, f, indent=2)
 
     def load_graph(self, run_id: str) -> CausalGraph | None:
@@ -115,7 +116,7 @@ class TemporalStorage(StorageBackend):
         if not graph_path.exists():
             return None
 
-        with open(graph_path, 'r') as f:
+        with open(graph_path, "r") as f:
             return CausalGraph.from_json(f.read())
 
     def list_runs(
@@ -181,8 +182,8 @@ class TemporalStorage(StorageBackend):
 
             # Append to nodes log
             nodes_log = run_path / "nodes.jsonl"
-            with open(nodes_log, 'a') as f:
-                f.write(json.dumps(node.to_dict(), default=str) + '\n')
+            with open(nodes_log, "a") as f:
+                f.write(json.dumps(node.to_dict(), default=str) + "\n")
 
             # Update count
             self._index[run_id]["node_count"] += 1
@@ -204,8 +205,8 @@ class TemporalStorage(StorageBackend):
 
             # Append to edges log
             edges_log = run_path / "edges.jsonl"
-            with open(edges_log, 'a') as f:
-                f.write(json.dumps(edge.to_dict(), default=str) + '\n')
+            with open(edges_log, "a") as f:
+                f.write(json.dumps(edge.to_dict(), default=str) + "\n")
 
             self._index[run_id]["edge_count"] += 1
             self._save_index()
@@ -220,7 +221,7 @@ class TemporalStorage(StorageBackend):
         graph = self._load_from_logs(run_path, run_id)
         if graph:
             snapshot_path = run_path / f"snapshot_{snapshot_count:04d}.json"
-            with open(snapshot_path, 'w') as f:
+            with open(snapshot_path, "w") as f:
                 f.write(graph.to_json())
 
     def _load_from_logs(self, run_path: Path, run_id: str) -> CausalGraph | None:
@@ -230,7 +231,7 @@ class TemporalStorage(StorageBackend):
         # Load nodes
         nodes_log = run_path / "nodes.jsonl"
         if nodes_log.exists():
-            with open(nodes_log, 'r') as f:
+            with open(nodes_log, "r") as f:
                 for line in f:
                     if line.strip():
                         node_dict = json.loads(line)
@@ -243,7 +244,7 @@ class TemporalStorage(StorageBackend):
         # Load edges
         edges_log = run_path / "edges.jsonl"
         if edges_log.exists():
-            with open(edges_log, 'r') as f:
+            with open(edges_log, "r") as f:
                 for line in f:
                     if line.strip():
                         edge_dict = json.loads(line)
@@ -272,7 +273,7 @@ class TemporalStorage(StorageBackend):
 
         # If we have a time index, use it for efficiency
         if time_index_path.exists():
-            with open(time_index_path, 'r') as f:
+            with open(time_index_path, "r") as f:
                 time_index = json.load(f)
 
             # Find nodes up to timestamp
@@ -300,7 +301,7 @@ class TemporalStorage(StorageBackend):
         if not time_index_path.exists():
             return None
 
-        with open(time_index_path, 'r') as f:
+        with open(time_index_path, "r") as f:
             time_index = json.load(f)
 
         if not time_index:

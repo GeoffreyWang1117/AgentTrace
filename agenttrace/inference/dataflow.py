@@ -60,7 +60,7 @@ class DataFlowAnalyzer:
             if source.type not in (NodeType.AGENT_OUTPUT, NodeType.TOOL_RESULT):
                 continue
 
-            for target in nodes[i + 1:]:
+            for target in nodes[i + 1 :]:
                 if target.type not in (NodeType.AGENT_INPUT, NodeType.TOOL_CALL):
                     continue
 
@@ -160,9 +160,7 @@ class DataFlowAnalyzer:
         # Value similarity for common keys
         value_scores = []
         for key in common_keys:
-            value_scores.append(
-                self._compute_data_flow_confidence(d1[key], d2[key])
-            )
+            value_scores.append(self._compute_data_flow_confidence(d1[key], d2[key]))
 
         if value_scores:
             value_score = sum(value_scores) / len(value_scores)
@@ -238,6 +236,174 @@ class DataFlowAnalyzer:
         # Sort by confidence
         results.sort(key=lambda x: x[1], reverse=True)
         return results
+
+    def analyze_comprehensive(self, graph: CausalGraph) -> list[Edge]:
+        """
+        Comprehensive analysis combining variable tracking, agent communication
+        detection, and shared-state detection.
+
+        Returns:
+            Combined list of inferred edges from all strategies.
+        """
+        edges: list[Edge] = []
+        edges.extend(self.analyze(graph))
+        edges.extend(self._infer_variable_flow(graph))
+        edges.extend(self._infer_agent_communication(graph))
+        edges.extend(self._infer_shared_state(graph))
+
+        # Deduplicate by (source, target)
+        seen = set()
+        unique_edges = []
+        for edge in edges:
+            key = (edge.source_id, edge.target_id)
+            if key not in seen:
+                seen.add(key)
+                unique_edges.append(edge)
+
+        return unique_edges
+
+    def _infer_variable_flow(self, graph: CausalGraph) -> list[Edge]:
+        """
+        Variable-level tracking: Parse node content dicts and detect when
+        the same named key appears in a downstream node's content, inferring
+        DATA_FLOW edges with confidence based on value similarity.
+        """
+        inferred: list[Edge] = []
+        nodes = sorted(graph, key=lambda n: n.timestamp)
+
+        for i, source in enumerate(nodes):
+            source_keys = self._extract_content_keys(source)
+            if not source_keys:
+                continue
+
+            for target in nodes[i + 1 :]:
+                if self._are_connected(graph, source.id, target.id):
+                    continue
+
+                target_keys = self._extract_content_keys(target)
+                if not target_keys:
+                    continue
+
+                # Find common keys
+                common = source_keys.keys() & target_keys.keys()
+                if not common:
+                    continue
+
+                # Compute confidence from value similarity on common keys
+                similarities = []
+                for key in common:
+                    sim = self._compute_data_flow_confidence(source_keys[key], target_keys[key])
+                    similarities.append(sim)
+
+                avg_sim = sum(similarities) / len(similarities)
+                # Require at least moderate similarity
+                if avg_sim >= 0.4:
+                    confidence = min(1.0, 0.5 + avg_sim * 0.5)
+                    inferred.append(
+                        Edge(
+                            source_id=source.id,
+                            target_id=target.id,
+                            type=EdgeType.DATA_FLOW,
+                            confidence=confidence,
+                            metadata={
+                                "inference_method": "variable_tracking",
+                                "common_keys": list(common),
+                                "avg_similarity": avg_sim,
+                            },
+                        )
+                    )
+
+        return inferred
+
+    def _infer_agent_communication(self, graph: CausalGraph) -> list[Edge]:
+        """
+        Agent communication detection: When a node's to_agent matches a
+        subsequent node's agent_id, infer TRIGGER_RESPONSE edge.
+        """
+        inferred: list[Edge] = []
+        nodes = sorted(graph, key=lambda n: n.timestamp)
+
+        for i, source in enumerate(nodes):
+            to_agent = None
+            if isinstance(source.data, dict):
+                to_agent = source.data.get("to_agent")
+
+            if not to_agent:
+                continue
+
+            for target in nodes[i + 1 :]:
+                if target.agent_id == to_agent:
+                    if self._are_connected(graph, source.id, target.id):
+                        continue
+
+                    inferred.append(
+                        Edge(
+                            source_id=source.id,
+                            target_id=target.id,
+                            type=EdgeType.TRIGGER_RESPONSE,
+                            confidence=0.9,
+                            metadata={
+                                "inference_method": "agent_communication",
+                                "from_agent": source.agent_id,
+                                "to_agent": to_agent,
+                            },
+                        )
+                    )
+                    break  # Only the first matching target
+
+        return inferred
+
+    def _infer_shared_state(self, graph: CausalGraph) -> list[Edge]:
+        """
+        Shared-state detection: When nodes from different agents reference
+        the same state keys in their content, infer STATE_DEPENDENCY edge.
+        """
+        inferred: list[Edge] = []
+        nodes = sorted(graph, key=lambda n: n.timestamp)
+
+        for i, source in enumerate(nodes):
+            source_keys = self._extract_content_keys(source)
+            if not source_keys:
+                continue
+
+            for target in nodes[i + 1 :]:
+                if target.agent_id == source.agent_id:
+                    continue  # Only inter-agent
+
+                if self._are_connected(graph, source.id, target.id):
+                    continue
+
+                target_keys = self._extract_content_keys(target)
+                if not target_keys:
+                    continue
+
+                common = source_keys.keys() & target_keys.keys()
+                if len(common) >= 1:
+                    confidence = min(1.0, 0.6 + len(common) * 0.1)
+                    inferred.append(
+                        Edge(
+                            source_id=source.id,
+                            target_id=target.id,
+                            type=EdgeType.STATE_DEPENDENCY,
+                            confidence=confidence,
+                            metadata={
+                                "inference_method": "shared_state",
+                                "shared_keys": list(common),
+                                "source_agent": source.agent_id,
+                                "target_agent": target.agent_id,
+                            },
+                        )
+                    )
+
+        return inferred
+
+    def _extract_content_keys(self, node: Node) -> dict:
+        """Extract named keys from node content if it's a dict."""
+        if isinstance(node.data, dict):
+            content = node.data.get("content")
+            if isinstance(content, dict):
+                return content
+        return {}
 
 
 def compute_data_fingerprint(data: Any) -> str:

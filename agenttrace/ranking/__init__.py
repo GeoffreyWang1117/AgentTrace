@@ -3,4 +3,4 @@
 from .ranker import NodeRanker, RankingFeatures
 from .scorer import CausalScorer
 
-__all__ = ['NodeRanker', 'RankingFeatures', 'CausalScorer']
+__all__ = ["NodeRanker", "RankingFeatures", "CausalScorer"]

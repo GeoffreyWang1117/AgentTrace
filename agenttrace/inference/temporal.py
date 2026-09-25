@@ -7,7 +7,7 @@ based on temporal proximity and ordering.
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 from typing import Any
 
 from agenttrace.core.graph import CausalGraph
@@ -120,9 +120,7 @@ class TemporalAnalyzer:
         edges: list[Edge] = []
 
         # Find output nodes that might trigger responses
-        outputs = [n for n in nodes if n.type in (
-            NodeType.AGENT_OUTPUT, NodeType.TOOL_RESULT
-        )]
+        outputs = [n for n in nodes if n.type in (NodeType.AGENT_OUTPUT, NodeType.TOOL_RESULT)]
 
         for output in outputs:
             # Find inputs from other agents that occurred shortly after
@@ -226,13 +224,15 @@ class TemporalAnalyzer:
 
             # Flag gaps longer than max_time_delta
             if delta > self.max_time_delta:
-                anomalies.append({
-                    "type": "long_gap",
-                    "from_node": node.id,
-                    "to_node": next_node.id,
-                    "duration_ms": delta.total_seconds() * 1000,
-                    "description": f"Unusual gap of {delta.total_seconds():.2f}s between operations",
-                })
+                anomalies.append(
+                    {
+                        "type": "long_gap",
+                        "from_node": node.id,
+                        "to_node": next_node.id,
+                        "duration_ms": delta.total_seconds() * 1000,
+                        "description": f"Unusual gap of {delta.total_seconds():.2f}s between operations",
+                    }
+                )
 
         # Detect operations that took longer than expected
         if expected_duration:
@@ -247,23 +247,26 @@ class TemporalAnalyzer:
 
                 # Find the corresponding output
                 for other in nodes:
-                    if (other.type == NodeType.AGENT_OUTPUT and
-                        other.agent_id == node.agent_id and
-                        other.timestamp > node.timestamp):
-
+                    if (
+                        other.type == NodeType.AGENT_OUTPUT
+                        and other.agent_id == node.agent_id
+                        and other.timestamp > node.timestamp
+                    ):
                         delta = other.timestamp - node.timestamp
                         expected = expected_duration[operation]
 
                         if delta > expected * 2:  # More than 2x expected
-                            anomalies.append({
-                                "type": "slow_operation",
-                                "operation": operation,
-                                "input_node": node.id,
-                                "output_node": other.id,
-                                "duration_ms": delta.total_seconds() * 1000,
-                                "expected_ms": expected.total_seconds() * 1000,
-                                "description": f"Operation {operation} took {delta.total_seconds():.2f}s (expected {expected.total_seconds():.2f}s)",
-                            })
+                            anomalies.append(
+                                {
+                                    "type": "slow_operation",
+                                    "operation": operation,
+                                    "input_node": node.id,
+                                    "output_node": other.id,
+                                    "duration_ms": delta.total_seconds() * 1000,
+                                    "expected_ms": expected.total_seconds() * 1000,
+                                    "description": f"Operation {operation} took {delta.total_seconds():.2f}s (expected {expected.total_seconds():.2f}s)",
+                                }
+                            )
                         break
 
         return anomalies
@@ -290,11 +293,12 @@ class TemporalAnalyzer:
 
             # Find corresponding output
             for other in nodes:
-                if (other.type == NodeType.AGENT_OUTPUT and
-                    other.agent_id == node.agent_id and
-                    other.timestamp > node.timestamp and
-                    other.metadata.get("operation") == operation):
-
+                if (
+                    other.type == NodeType.AGENT_OUTPUT
+                    and other.agent_id == node.agent_id
+                    and other.timestamp > node.timestamp
+                    and other.metadata.get("operation") == operation
+                ):
                     delta = (other.timestamp - node.timestamp).total_seconds() * 1000
 
                     if operation not in stats:

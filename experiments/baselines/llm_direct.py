@@ -40,21 +40,38 @@ LLM_DIRECT_PROMPT = '''You are an expert debugger analyzing a multi-agent system
 ## Task Context
 {task_description}
 
+## Graph Structure (Adjacency List)
+{adjacency_list}
+
+## Node Summaries
+{node_summaries}
+
 ## Raw Execution Trace
 {trace_data}
 
 ## Your Task
-Analyze this trace and identify:
-1. The root cause of any errors or failures
-2. The causal chain from root cause to the observed error
-3. Which agent(s) were responsible
+Analyze this trace step by step using chain-of-thought reasoning:
+
+1. First, identify the error manifestation — which node shows the final failure?
+2. Trace backward through the adjacency list to find predecessor nodes.
+3. For each predecessor, examine whether its content could have caused the downstream error.
+4. Identify the root cause — the earliest node whose incorrect behavior propagated to the error.
+5. Describe the full causal chain from root cause to error.
+
+Think carefully before answering. Consider:
+- Which agents interacted and what data was passed?
+- Where did the data first become incorrect?
+- Is the bug a data corruption, missing context, wrong routing, or logic error?
 
 ## Output Format
 Return a JSON object:
 {{
+    "reasoning": "Your step-by-step chain-of-thought reasoning",
     "root_cause": "Description of the root cause",
+    "root_cause_node_id": "The node ID of the root cause",
     "root_cause_explanation": "Detailed explanation of why this is the root cause",
-    "causal_chain": ["step1", "step2", "step3"],
+    "causal_chain": ["step1 description", "step2 description", ...],
+    "causal_chain_node_ids": ["node_id_1", "node_id_2", ...],
     "responsible_agents": ["agent1", "agent2"]
 }}
 
@@ -79,14 +96,55 @@ class LLMDirectAnalyzer:
         scenario: dict,
         scenario_id: str
     ) -> LLMDirectResult:
-        """Analyze a trace using direct LLM prompting."""
+        """Analyze a trace using direct LLM prompting with structured context."""
+
+        # Parse trace to build adjacency list and node summaries
+        try:
+            trace_obj = json.loads(trace_json) if isinstance(trace_json, str) else trace_json
+            nodes = trace_obj.get("nodes", [])
+            edges = trace_obj.get("edges", [])
+
+            # Build adjacency list
+            adj_lines = []
+            for edge in edges:
+                adj_lines.append(
+                    f"  {edge['source_id'][:12]}... -> {edge['target_id'][:12]}... "
+                    f"[{edge.get('type', 'unknown')}]"
+                )
+            adjacency_list = "\n".join(adj_lines[:50]) or "(no edges)"
+
+            # Build node summaries with predecessors/successors
+            successors = {}
+            predecessors = {}
+            for edge in edges:
+                successors.setdefault(edge['source_id'], []).append(edge['target_id'])
+                predecessors.setdefault(edge['target_id'], []).append(edge['source_id'])
+
+            summary_lines = []
+            for node in nodes:
+                nid = node['id']
+                data = node.get('data', {})
+                preds = [p[:12] + "..." for p in predecessors.get(nid, [])]
+                succs = [s[:12] + "..." for s in successors.get(nid, [])]
+                summary_lines.append(
+                    f"  Node {nid[:12]}... | Agent: {node.get('agent_id', '?')} | "
+                    f"Type: {node.get('type', '?')} | "
+                    f"Action: {data.get('action', '?')} | "
+                    f"Predecessors: {preds} | Successors: {succs}"
+                )
+            node_summaries = "\n".join(summary_lines[:40]) or "(no nodes)"
+        except (json.JSONDecodeError, TypeError):
+            adjacency_list = "(parse error)"
+            node_summaries = "(parse error)"
 
         # Format trace data (truncate if too long)
-        trace_data = trace_json[:8000] if len(trace_json) > 8000 else trace_json
+        trace_data = trace_json[:6000] if len(trace_json) > 6000 else trace_json
 
         prompt = LLM_DIRECT_PROMPT.format(
             task_description=scenario.get("task_description", "Unknown task"),
-            trace_data=trace_data
+            adjacency_list=adjacency_list,
+            node_summaries=node_summaries,
+            trace_data=trace_data,
         )
 
         response = await self.client.chat.completions.create(

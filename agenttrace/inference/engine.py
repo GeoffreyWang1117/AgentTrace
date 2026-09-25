@@ -121,15 +121,10 @@ class InferenceEngine:
             # If both analyses agree, boost confidence
             if df_conf > 0 and t_conf > 0:
                 combined_conf = (
-                    df_conf * self.dataflow_weight +
-                    t_conf * self.temporal_weight +
-                    0.1  # Agreement bonus
+                    df_conf * self.dataflow_weight + t_conf * self.temporal_weight + 0.1  # Agreement bonus
                 )
             else:
-                combined_conf = (
-                    df_conf * self.dataflow_weight +
-                    t_conf * self.temporal_weight
-                )
+                combined_conf = df_conf * self.dataflow_weight + t_conf * self.temporal_weight
 
             combined_conf = min(combined_conf, 1.0)
 
@@ -154,13 +149,15 @@ class InferenceEngine:
             if data["temporal_edge"]:
                 metadata.update(data["temporal_edge"].metadata)
 
-            combined.append(Edge(
-                source_id=source_id,
-                target_id=target_id,
-                type=edge_type,
-                confidence=combined_conf,
-                metadata=metadata,
-            ))
+            combined.append(
+                Edge(
+                    source_id=source_id,
+                    target_id=target_id,
+                    type=edge_type,
+                    confidence=combined_conf,
+                    metadata=metadata,
+                )
+            )
 
         return combined
 
@@ -184,9 +181,7 @@ class InferenceEngine:
             return {"error": "Node not found"}
 
         # Find data sources
-        data_sources = self.dataflow_analyzer.find_data_sources(
-            graph, target_node_id
-        )
+        data_sources = self.dataflow_analyzer.find_data_sources(graph, target_node_id)
 
         # Get backward trace
         causes = graph.trace_backward(target_node_id)
@@ -207,8 +202,7 @@ class InferenceEngine:
             "cause_count": len(causes),
             "latency_stats": latency_stats,
             "anomalies": [
-                a for a in anomalies
-                if a.get("to_node") == target_node_id or a.get("from_node") == target_node_id
+                a for a in anomalies if a.get("to_node") == target_node_id or a.get("from_node") == target_node_id
             ],
         }
 
@@ -265,9 +259,7 @@ class InferenceEngine:
                     reasons.append(f"Indirect cause ({len(chain)} steps away)")
 
             # Score based on data similarity to error
-            data_sources = self.dataflow_analyzer.find_data_sources(
-                graph, error_node_id
-            )
+            data_sources = self.dataflow_analyzer.find_data_sources(graph, error_node_id)
             for source_node, conf in data_sources:
                 if source_node.id == cause.id:
                     score += conf * 0.3
@@ -275,11 +267,13 @@ class InferenceEngine:
                     break
 
             if score > 0:
-                suggestions.append({
-                    "node": cause.to_dict(),
-                    "score": min(score, 1.0),
-                    "reasons": reasons,
-                })
+                suggestions.append(
+                    {
+                        "node": cause.to_dict(),
+                        "score": min(score, 1.0),
+                        "reasons": reasons,
+                    }
+                )
 
         # Sort by score and return top k
         suggestions.sort(key=lambda x: x["score"], reverse=True)

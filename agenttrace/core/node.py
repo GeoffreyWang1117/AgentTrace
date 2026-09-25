@@ -19,15 +19,15 @@ from dataclasses import dataclass, field
 class NodeType(Enum):
     """Types of nodes in the causal graph."""
 
-    AGENT_INPUT = "agent_input"       # Input received by an agent
-    AGENT_OUTPUT = "agent_output"     # Output produced by an agent
-    TOOL_CALL = "tool_call"           # Tool invocation
-    TOOL_RESULT = "tool_result"       # Tool return value
-    STATE_READ = "state_read"         # State variable read
-    STATE_WRITE = "state_write"       # State variable write
-    DECISION = "decision"             # Explicit decision point
-    ERROR = "error"                   # Error occurrence
-    CHECKPOINT = "checkpoint"         # Manual checkpoint
+    AGENT_INPUT = "agent_input"  # Input received by an agent
+    AGENT_OUTPUT = "agent_output"  # Output produced by an agent
+    TOOL_CALL = "tool_call"  # Tool invocation
+    TOOL_RESULT = "tool_result"  # Tool return value
+    STATE_READ = "state_read"  # State variable read
+    STATE_WRITE = "state_write"  # State variable write
+    DECISION = "decision"  # Explicit decision point
+    ERROR = "error"  # Error occurrence
+    CHECKPOINT = "checkpoint"  # Manual checkpoint
 
 
 @dataclass

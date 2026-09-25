@@ -4,7 +4,7 @@ Node Ranker for root cause identification.
 Ranks nodes in the backward trace by likelihood of being the root cause.
 """
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple
 import json
 
@@ -16,26 +16,29 @@ from agenttrace.ranking.scorer import CausalScorer, NodeFeatures
 @dataclass
 class RankingFeatures:
     """Complete features for a ranked result."""
+
     node: Node
     rank: int
     score: float
     features: NodeFeatures
     explanation: str
+    confidence: float = 0.0  # Softmax-normalized probability
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            'node_id': self.node.id,
-            'agent_id': self.node.agent_id,
-            'rank': self.rank,
-            'score': self.score,
-            'features': self.features.to_dict(),
-            'explanation': self.explanation
+            "node_id": self.node.id,
+            "agent_id": self.node.agent_id,
+            "rank": self.rank,
+            "score": self.score,
+            "features": self.features.to_dict(),
+            "explanation": self.explanation,
         }
 
 
 @dataclass
 class RankingResult:
     """Result of ranking analysis."""
+
     error_node_id: str
     ranked_candidates: List[RankingFeatures]
     total_candidates: int
@@ -50,10 +53,10 @@ class RankingResult:
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            'error_node_id': self.error_node_id,
-            'total_candidates': self.total_candidates,
-            'top_prediction': self.top_prediction,
-            'ranked_candidates': [rc.to_dict() for rc in self.ranked_candidates]
+            "error_node_id": self.error_node_id,
+            "total_candidates": self.total_candidates,
+            "top_prediction": self.top_prediction,
+            "ranked_candidates": [rc.to_dict() for rc in self.ranked_candidates],
         }
 
     def to_json(self) -> str:
@@ -67,11 +70,7 @@ class NodeRanker:
     Combines multiple scoring signals to prioritize nodes.
     """
 
-    def __init__(
-        self,
-        scorer: Optional[CausalScorer] = None,
-        min_score_threshold: float = 0.1
-    ):
+    def __init__(self, scorer: Optional[CausalScorer] = None, min_score_threshold: float = 0.1):
         """
         Initialize the ranker.
 
@@ -82,12 +81,7 @@ class NodeRanker:
         self.scorer = scorer or CausalScorer()
         self.min_score_threshold = min_score_threshold
 
-    def rank_candidates(
-        self,
-        graph: CausalGraph,
-        error_node_id: str,
-        max_candidates: int = -1
-    ) -> RankingResult:
+    def rank_candidates(self, graph: CausalGraph, error_node_id: str, max_candidates: int = -1) -> RankingResult:
         """
         Rank all candidate root causes for an error.
 
@@ -103,11 +97,7 @@ class NodeRanker:
         backward_nodes = graph.trace_backward(error_node_id)
 
         if not backward_nodes:
-            return RankingResult(
-                error_node_id=error_node_id,
-                ranked_candidates=[],
-                total_candidates=0
-            )
+            return RankingResult(error_node_id=error_node_id, ranked_candidates=[], total_candidates=0)
 
         # Compute depths for all nodes
         all_depths = self._compute_all_depths(graph, error_node_id, backward_nodes)
@@ -116,9 +106,7 @@ class NodeRanker:
         scored_candidates: List[Tuple[Node, float, NodeFeatures]] = []
 
         for node in backward_nodes:
-            features = self.scorer.extract_features(
-                graph, node, error_node_id, all_depths
-            )
+            features = self.scorer.extract_features(graph, node, error_node_id, all_depths)
             score = self.scorer.score_node(features)
             features.raw_score = score
 
@@ -132,17 +120,21 @@ class NodeRanker:
         ranked = []
         for rank, (node, score, features) in enumerate(scored_candidates, 1):
             explanation = self._generate_explanation(features, score)
-            rf = RankingFeatures(
-                node=node,
-                rank=rank,
-                score=score,
-                features=features,
-                explanation=explanation
-            )
+            rf = RankingFeatures(node=node, rank=rank, score=score, features=features, explanation=explanation)
             ranked.append(rf)
 
             if max_candidates > 0 and rank >= max_candidates:
                 break
+
+        # Compute softmax confidence for each candidate
+        if ranked:
+            import math
+
+            max_score = ranked[0].score
+            exp_scores = [math.exp(rf.score - max_score) for rf in ranked]
+            exp_sum = sum(exp_scores)
+            for rf, exp_s in zip(ranked, exp_scores):
+                rf.confidence = exp_s / exp_sum
 
         top_prediction = ranked[0].node.id if ranked else None
 
@@ -150,15 +142,24 @@ class NodeRanker:
             error_node_id=error_node_id,
             ranked_candidates=ranked,
             total_candidates=len(backward_nodes),
-            top_prediction=top_prediction
+            top_prediction=top_prediction,
         )
 
-    def _compute_all_depths(
+    def predict_root_causes(
         self,
         graph: CausalGraph,
         error_node_id: str,
-        backward_nodes: List[Node]
-    ) -> Dict[str, int]:
+        threshold: float = 0.3,
+    ) -> list[RankingFeatures]:
+        """
+        Predict multiple root causes by thresholding on confidence.
+
+        Returns all candidates whose softmax confidence exceeds threshold.
+        """
+        result = self.rank_candidates(graph, error_node_id)
+        return [rf for rf in result.ranked_candidates if rf.confidence >= threshold]
+
+    def _compute_all_depths(self, graph: CausalGraph, error_node_id: str, backward_nodes: List[Node]) -> Dict[str, int]:
         """
         Compute depth from error node for all candidates.
 
@@ -218,12 +219,7 @@ class ImprovedAgentTrace:
         """Initialize with optional custom ranker."""
         self.ranker = ranker or NodeRanker()
 
-    def find_root_cause(
-        self,
-        graph: CausalGraph,
-        error_node_id: str,
-        top_k: int = 5
-    ) -> RankingResult:
+    def find_root_cause(self, graph: CausalGraph, error_node_id: str, top_k: int = 5) -> RankingResult:
         """
         Find the most likely root cause(s) for an error.
 
@@ -237,11 +233,7 @@ class ImprovedAgentTrace:
         """
         return self.ranker.rank_candidates(graph, error_node_id, max_candidates=top_k)
 
-    def evaluate_ranking(
-        self,
-        ranking_result: RankingResult,
-        ground_truth_node_id: str
-    ) -> Dict[str, Any]:
+    def evaluate_ranking(self, ranking_result: RankingResult, ground_truth_node_id: str) -> Dict[str, Any]:
         """
         Evaluate ranking against ground truth.
 
@@ -255,12 +247,12 @@ class ImprovedAgentTrace:
         rank = ranking_result.get_rank_of(ground_truth_node_id)
 
         return {
-            'ground_truth_id': ground_truth_node_id,
-            'predicted_id': ranking_result.top_prediction,
-            'ground_truth_rank': rank,
-            'hit_at_1': rank == 1,
-            'hit_at_3': 1 <= rank <= 3,
-            'hit_at_5': 1 <= rank <= 5,
-            'found': rank > 0,
-            'mrr': 1 / rank if rank > 0 else 0
+            "ground_truth_id": ground_truth_node_id,
+            "predicted_id": ranking_result.top_prediction,
+            "ground_truth_rank": rank,
+            "hit_at_1": rank == 1,
+            "hit_at_3": 1 <= rank <= 3,
+            "hit_at_5": 1 <= rank <= 5,
+            "found": rank > 0,
+            "mrr": 1 / rank if rank > 0 else 0,
         }

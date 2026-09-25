@@ -11,7 +11,6 @@ from typing import Any, Callable
 
 from agenttrace.core.graph import CausalGraph
 from agenttrace.core.node import Node, NodeType
-from agenttrace.core.edge import Edge, EdgeType
 from agenttrace.inference.engine import InferenceEngine
 
 
@@ -152,9 +151,7 @@ class QueryInterface:
         Returns:
             List of (node, confidence) tuples
         """
-        return self._inference_engine.dataflow_analyzer.find_data_sources(
-            self.graph, node_id
-        )
+        return self._inference_engine.dataflow_analyzer.find_data_sources(self.graph, node_id)
 
     # === Error Analysis ===
 
@@ -180,9 +177,7 @@ class QueryInterface:
 
         root_causes = self.what_was_the_root_cause(error_node_id)
         chains = self.how_did_we_get_here(error_node_id)
-        suggestions = self._inference_engine.suggest_likely_causes(
-            self.graph, error_node_id
-        )
+        suggestions = self._inference_engine.suggest_likely_causes(self.graph, error_node_id)
 
         return {
             "error_info": {

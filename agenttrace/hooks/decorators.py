@@ -10,20 +10,20 @@ from __future__ import annotations
 import asyncio
 import functools
 import inspect
-from datetime import datetime
-from typing import Any, Callable, TypeVar, ParamSpec, overload
+from typing import Any, Callable, TypeVar, ParamSpec
 
-from agenttrace.core.node import Node, NodeType
+from agenttrace.core.node import NodeType
 from agenttrace.core.edge import Edge, EdgeType
 from agenttrace.hooks.agent_hook import HookContext
 
-P = ParamSpec('P')
-T = TypeVar('T')
+P = ParamSpec("P")
+T = TypeVar("T")
 
 
 def _get_tracer():
     """Get the global tracer instance."""
     from agenttrace.tracer import get_tracer
+
     return get_tracer()
 
 
@@ -69,11 +69,11 @@ def trace_agent(
             if resolved_agent_id is None and args:
                 # Try to get from self
                 self = args[0]
-                resolved_agent_id = getattr(self, 'agent_id', None)
+                resolved_agent_id = getattr(self, "agent_id", None)
             if resolved_agent_id is None:
                 resolved_agent_id = func.__qualname__
 
-            ctx = HookContext(
+            _ctx = HookContext(
                 agent_id=resolved_agent_id,
                 operation=func.__name__,
                 parent_node_id=tracer.current_node_id,
@@ -107,11 +107,13 @@ def trace_agent(
                         parent_ids=[input_node_id] if input_node_id else [],
                     )
                     if input_node_id:
-                        tracer.graph.add_edge(Edge(
-                            source_id=input_node_id,
-                            target_id=output_node.id,
-                            type=EdgeType.INPUT_OUTPUT,
-                        ))
+                        tracer.graph.add_edge(
+                            Edge(
+                                source_id=input_node_id,
+                                target_id=output_node.id,
+                                type=EdgeType.INPUT_OUTPUT,
+                            )
+                        )
                     tracer.current_node_id = output_node.id
 
                 return result
@@ -128,11 +130,13 @@ def trace_agent(
                     parent_ids=[input_node_id] if input_node_id else [],
                 )
                 if input_node_id:
-                    tracer.graph.add_edge(Edge(
-                        source_id=input_node_id,
-                        target_id=error_node.id,
-                        type=EdgeType.ERROR_PROPAGATION,
-                    ))
+                    tracer.graph.add_edge(
+                        Edge(
+                            source_id=input_node_id,
+                            target_id=error_node.id,
+                            type=EdgeType.ERROR_PROPAGATION,
+                        )
+                    )
                 raise
 
             finally:
@@ -147,7 +151,7 @@ def trace_agent(
             resolved_agent_id = agent_id
             if resolved_agent_id is None and args:
                 self = args[0]
-                resolved_agent_id = getattr(self, 'agent_id', None)
+                resolved_agent_id = getattr(self, "agent_id", None)
             if resolved_agent_id is None:
                 resolved_agent_id = func.__qualname__
 
@@ -178,11 +182,13 @@ def trace_agent(
                         parent_ids=[input_node_id] if input_node_id else [],
                     )
                     if input_node_id:
-                        tracer.graph.add_edge(Edge(
-                            source_id=input_node_id,
-                            target_id=output_node.id,
-                            type=EdgeType.INPUT_OUTPUT,
-                        ))
+                        tracer.graph.add_edge(
+                            Edge(
+                                source_id=input_node_id,
+                                target_id=output_node.id,
+                                type=EdgeType.INPUT_OUTPUT,
+                            )
+                        )
                     tracer.current_node_id = output_node.id
 
                 return result
@@ -199,11 +205,13 @@ def trace_agent(
                     parent_ids=[input_node_id] if input_node_id else [],
                 )
                 if input_node_id:
-                    tracer.graph.add_edge(Edge(
-                        source_id=input_node_id,
-                        target_id=error_node.id,
-                        type=EdgeType.ERROR_PROPAGATION,
-                    ))
+                    tracer.graph.add_edge(
+                        Edge(
+                            source_id=input_node_id,
+                            target_id=error_node.id,
+                            type=EdgeType.ERROR_PROPAGATION,
+                        )
+                    )
                 raise
 
             finally:
@@ -269,11 +277,13 @@ def trace_tool(
                     parent_ids=[call_node.id],
                 )
 
-                tracer.graph.add_edge(Edge(
-                    source_id=call_node.id,
-                    target_id=result_node.id,
-                    type=EdgeType.TOOL_INVOCATION,
-                ))
+                tracer.graph.add_edge(
+                    Edge(
+                        source_id=call_node.id,
+                        target_id=result_node.id,
+                        type=EdgeType.TOOL_INVOCATION,
+                    )
+                )
 
                 return result
 
@@ -290,11 +300,13 @@ def trace_tool(
                     parent_ids=[call_node.id],
                 )
 
-                tracer.graph.add_edge(Edge(
-                    source_id=call_node.id,
-                    target_id=error_node.id,
-                    type=EdgeType.ERROR_PROPAGATION,
-                ))
+                tracer.graph.add_edge(
+                    Edge(
+                        source_id=call_node.id,
+                        target_id=error_node.id,
+                        type=EdgeType.ERROR_PROPAGATION,
+                    )
+                )
                 raise
 
         @functools.wraps(func)
@@ -329,11 +341,13 @@ def trace_tool(
                     parent_ids=[call_node.id],
                 )
 
-                tracer.graph.add_edge(Edge(
-                    source_id=call_node.id,
-                    target_id=result_node.id,
-                    type=EdgeType.TOOL_INVOCATION,
-                ))
+                tracer.graph.add_edge(
+                    Edge(
+                        source_id=call_node.id,
+                        target_id=result_node.id,
+                        type=EdgeType.TOOL_INVOCATION,
+                    )
+                )
 
                 return result
 
@@ -350,11 +364,13 @@ def trace_tool(
                     parent_ids=[call_node.id],
                 )
 
-                tracer.graph.add_edge(Edge(
-                    source_id=call_node.id,
-                    target_id=error_node.id,
-                    type=EdgeType.ERROR_PROPAGATION,
-                ))
+                tracer.graph.add_edge(
+                    Edge(
+                        source_id=call_node.id,
+                        target_id=error_node.id,
+                        type=EdgeType.ERROR_PROPAGATION,
+                    )
+                )
                 raise
 
         return async_wrapper if is_async else sync_wrapper
@@ -386,7 +402,7 @@ def trace_state(
 
     def decorator(func: Callable[P, T]) -> Callable[P, T]:
         # Heuristic: if function name starts with get/read, it's a read
-        is_read = func.__name__.startswith(('get', 'read', 'load', 'fetch'))
+        is_read = func.__name__.startswith(("get", "read", "load", "fetch"))
 
         @functools.wraps(func)
         def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
@@ -398,7 +414,7 @@ def trace_state(
 
             # For writes, capture the value being written
             if not is_read:
-                pre_node = tracer.record(
+                _pre_node = tracer.record(
                     node_type=node_type,
                     agent_id=agent_id,
                     data={
@@ -440,7 +456,7 @@ def _capture_inputs(args: tuple, kwargs: dict, func: Callable) -> dict:
     params = list(sig.parameters.keys())
 
     # Skip 'self' for methods
-    if params and params[0] == 'self':
+    if params and params[0] == "self":
         args = args[1:]
         params = params[1:]
 

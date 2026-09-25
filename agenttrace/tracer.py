@@ -9,8 +9,7 @@ from __future__ import annotations
 
 import threading
 from contextlib import contextmanager
-from datetime import datetime
-from typing import Any, Callable, Iterator
+from typing import Any, Iterator
 
 from agenttrace.core.graph import CausalGraph
 from agenttrace.core.node import Node, NodeType
@@ -97,7 +96,7 @@ class Tracer:
     @property
     def current_node_id(self) -> str | None:
         """Get the current context node ID for this thread."""
-        return getattr(self._local, 'current_node_id', None)
+        return getattr(self._local, "current_node_id", None)
 
     @current_node_id.setter
     def current_node_id(self, value: str | None) -> None:
@@ -261,11 +260,11 @@ class Tracer:
         prev_node_id = self.current_node_id
         self.current_node_id = input_node.id
 
-        error = None
+        _error = None
         try:
             yield input_node
         except Exception as e:
-            error = e
+            _error = e
             # Record error
             error_node = self.record(
                 node_type=NodeType.ERROR,
@@ -373,10 +372,7 @@ class Tracer:
         return {
             "error_node": node.to_dict(),
             "root_causes": [n.to_dict() for n in root_causes],
-            "causal_chains": [
-                [n.to_dict() for n in chain]
-                for chain in chains
-            ],
+            "causal_chains": [[n.to_dict() for n in chain] for chain in chains],
             "chain_count": len(chains),
             "depth": max(len(chain) for chain in chains) if chains else 0,
         }
@@ -423,13 +419,13 @@ class Tracer:
 
     def save(self, path: str) -> None:
         """Save the trace to a file."""
-        with open(path, 'w') as f:
+        with open(path, "w") as f:
             f.write(self.to_json())
 
     @classmethod
     def load(cls, path: str) -> "Tracer":
         """Load a trace from a file."""
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             graph = CausalGraph.from_json(f.read())
 
         tracer = cls(run_id=graph.run_id)

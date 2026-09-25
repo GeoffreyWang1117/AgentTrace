@@ -19,11 +19,11 @@ from dataclasses import dataclass, field
 class EdgeType(Enum):
     """Types of causal relationships."""
 
-    INPUT_OUTPUT = "input_output"       # Input directly produced output
+    INPUT_OUTPUT = "input_output"  # Input directly produced output
     TRIGGER_RESPONSE = "trigger_response"  # Event triggered a response
-    DATA_FLOW = "data_flow"             # Data flowed between points
+    DATA_FLOW = "data_flow"  # Data flowed between points
     STATE_DEPENDENCY = "state_dependency"  # Output depended on state
-    TEMPORAL = "temporal"               # Temporal ordering (weak causality)
+    TEMPORAL = "temporal"  # Temporal ordering (weak causality)
     TOOL_INVOCATION = "tool_invocation"  # Agent invoked a tool
     ERROR_PROPAGATION = "error_propagation"  # Error propagated
 

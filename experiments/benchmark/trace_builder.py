@@ -7,7 +7,7 @@ providing accurate traces for evaluation without requiring LLM simulation.
 
 import json
 from pathlib import Path
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta
 from typing import Optional
 
@@ -16,6 +16,15 @@ from agenttrace.core.node import Node, NodeType
 from agenttrace.core.edge import Edge, EdgeType
 
 from .scenario_generator import Scenario, Message, ScenarioDomain
+
+
+@dataclass
+class GroundTruth:
+    """Ground truth for evaluation, kept separate from the graph."""
+    root_cause_node_id: str
+    error_node_id: str
+    causal_edges: list[tuple[str, str, str]]  # (src, tgt, type)
+    causal_path: list[str]
 
 
 @dataclass
@@ -223,6 +232,150 @@ class TraceBuilder:
             error_node_id=data["error_node_id"],
             causal_path=data["causal_path"]
         )
+
+
+class BlindTraceBuilder:
+    """
+    Builds CausalGraph traces WITHOUT ground truth causal edges.
+
+    Only sequential/temporal edges are included. Ground truth is returned
+    separately so that evaluation can measure inference quality independently
+    from ranking quality (two-stage evaluation).
+    """
+
+    def __init__(self, output_dir: Path = Path("data/traces_blind")):
+        self.output_dir = output_dir
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def build_blind_trace(self, scenario: Scenario) -> tuple[CausalGraph, GroundTruth]:
+        """
+        Build a CausalGraph with ONLY temporal/sequential edges.
+
+        Returns:
+            (graph, ground_truth) - graph has no causal leakage,
+            ground truth is kept separate for evaluation.
+        """
+        graph = CausalGraph(run_id=f"blind_{scenario.scenario_id}")
+        base_time = datetime.now()
+
+        step_to_node: dict[int, Node] = {}
+
+        for i, msg in enumerate(scenario.buggy_flow):
+            # Determine node type — do NOT use is_bug_point to set ERROR type
+            if "tool" in msg.action.lower() or "call" in msg.action.lower():
+                node_type = NodeType.TOOL_CALL
+            elif msg.from_agent == "user":
+                node_type = NodeType.AGENT_INPUT
+            elif msg.to_agent == "user" or msg.to_agent in ["output", "final_output"]:
+                node_type = NodeType.AGENT_OUTPUT
+            else:
+                node_type = NodeType.DECISION
+
+            # Strip ground truth fields from node data
+            node = Node(
+                type=node_type,
+                agent_id=msg.from_agent or "unknown",
+                data={
+                    "step": msg.step,
+                    "action": msg.action,
+                    "content": msg.content,
+                    "to_agent": msg.to_agent,
+                },
+                metadata={
+                    "scenario_id": scenario.scenario_id,
+                    "domain": scenario.domain.value,
+                    "bug_type": scenario.bug_type.value
+                }
+            )
+
+            node.timestamp = base_time + timedelta(milliseconds=i * 100)
+
+            if i > 0:
+                prev_node = step_to_node.get(scenario.buggy_flow[i-1].step)
+                if prev_node:
+                    node.parent_ids = [prev_node.id]
+
+            graph.add_node(node)
+            step_to_node[msg.step] = node
+
+        # Add ONLY sequential/temporal edges (no causal chain edges)
+        prev_node = None
+        existing_edges = set()
+        for step in sorted(step_to_node.keys()):
+            node = step_to_node[step]
+            if prev_node:
+                if (prev_node.id, node.id) not in existing_edges:
+                    edge = Edge(
+                        source_id=prev_node.id,
+                        target_id=node.id,
+                        type=EdgeType.TEMPORAL,
+                        confidence=0.9,
+                        metadata={"inferred": True, "type": "sequential"}
+                    )
+                    graph.add_edge(edge)
+                    existing_edges.add((prev_node.id, node.id))
+            prev_node = node
+
+        # Build ground truth separately
+        root_cause_node = step_to_node.get(scenario.root_cause_step)
+        error_node = step_to_node.get(scenario.error_manifestation_step)
+
+        causal_edges = []
+        causal_path = []
+        if root_cause_node:
+            causal_path.append(root_cause_node.id)
+
+        for causal_edge in scenario.causal_chain:
+            source_node = step_to_node.get(causal_edge.source_step)
+            target_node = step_to_node.get(causal_edge.target_step)
+            if source_node and target_node:
+                causal_edges.append((
+                    source_node.id,
+                    target_node.id,
+                    causal_edge.relationship_type
+                ))
+                if target_node.id not in causal_path:
+                    causal_path.append(target_node.id)
+
+        ground_truth = GroundTruth(
+            root_cause_node_id=root_cause_node.id if root_cause_node else "",
+            error_node_id=error_node.id if error_node else "",
+            causal_edges=causal_edges,
+            causal_path=causal_path
+        )
+
+        return graph, ground_truth
+
+    def save_blind_trace(
+        self,
+        scenario_id: str,
+        graph: CausalGraph,
+        ground_truth: GroundTruth
+    ) -> Path:
+        """Save blind trace and ground truth to disk."""
+        filepath = self.output_dir / f"{scenario_id}_blind_trace.json"
+
+        data = {
+            "scenario_id": scenario_id,
+            "trace_json": graph.to_json(),
+            "node_count": graph.node_count,
+            "edge_count": graph.edge_count,
+            "ground_truth": {
+                "root_cause_node_id": ground_truth.root_cause_node_id,
+                "error_node_id": ground_truth.error_node_id,
+                "causal_edges": [
+                    {"source": s, "target": t, "type": tp}
+                    for s, t, tp in ground_truth.causal_edges
+                ],
+                "causal_path": ground_truth.causal_path,
+            },
+            "built_at": datetime.now().isoformat()
+        }
+
+        with open(filepath, 'w') as f:
+            json.dump(data, f, indent=2)
+
+        return filepath
 
 
 def build_all_traces(

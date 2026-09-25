@@ -7,21 +7,19 @@ without modifying the agent code itself.
 
 from __future__ import annotations
 
-import functools
-import inspect
 import threading
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Callable, TypeVar, ParamSpec
+from typing import Any, TypeVar, ParamSpec
 from weakref import WeakValueDictionary
 
-from agenttrace.core.node import Node, NodeType
+from agenttrace.core.node import NodeType
 from agenttrace.core.edge import Edge, EdgeType
 
-P = ParamSpec('P')
-T = TypeVar('T')
+P = ParamSpec("P")
+T = TypeVar("T")
 
 
 @dataclass
@@ -44,14 +42,7 @@ class Hook(ABC):
         pass
 
     @abstractmethod
-    def on_exit(
-        self,
-        ctx: HookContext,
-        result: Any,
-        error: Exception | None,
-        *args: Any,
-        **kwargs: Any
-    ) -> None:
+    def on_exit(self, ctx: HookContext, result: Any, error: Exception | None, *args: Any, **kwargs: Any) -> None:
         """Called after the hooked operation."""
         pass
 
@@ -111,14 +102,7 @@ class AgentHook(Hook):
         stack.append(node.id)
         return node.id
 
-    def on_exit(
-        self,
-        ctx: HookContext,
-        result: Any,
-        error: Exception | None,
-        *args: Any,
-        **kwargs: Any
-    ) -> str | None:
+    def on_exit(self, ctx: HookContext, result: Any, error: Exception | None, *args: Any, **kwargs: Any) -> str | None:
         """Record the output from an agent operation."""
         stack = self._get_stack()
         input_node_id = stack.pop() if stack else None
@@ -157,11 +141,13 @@ class AgentHook(Hook):
 
         # Create input->output edge
         if input_node_id:
-            self.tracer.graph.add_edge(Edge(
-                source_id=input_node_id,
-                target_id=node.id,
-                type=EdgeType.INPUT_OUTPUT,
-            ))
+            self.tracer.graph.add_edge(
+                Edge(
+                    source_id=input_node_id,
+                    target_id=node.id,
+                    type=EdgeType.INPUT_OUTPUT,
+                )
+            )
 
         return node.id
 
@@ -227,14 +213,7 @@ class ToolHook(AgentHook):
         stack.append(node.id)
         return node.id
 
-    def on_exit(
-        self,
-        ctx: HookContext,
-        result: Any,
-        error: Exception | None,
-        *args: Any,
-        **kwargs: Any
-    ) -> str | None:
+    def on_exit(self, ctx: HookContext, result: Any, error: Exception | None, *args: Any, **kwargs: Any) -> str | None:
         """Record tool result."""
         stack = self._get_stack()
         call_node_id = stack.pop() if stack else None
@@ -274,11 +253,13 @@ class ToolHook(AgentHook):
         )
 
         if call_node_id:
-            self.tracer.graph.add_edge(Edge(
-                source_id=call_node_id,
-                target_id=node.id,
-                type=EdgeType.TOOL_INVOCATION,
-            ))
+            self.tracer.graph.add_edge(
+                Edge(
+                    source_id=call_node_id,
+                    target_id=node.id,
+                    type=EdgeType.TOOL_INVOCATION,
+                )
+            )
 
         return node.id
 

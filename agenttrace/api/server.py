@@ -6,7 +6,6 @@ Provides REST API and WebSocket endpoints for interactive debugging.
 
 from __future__ import annotations
 
-import asyncio
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -17,9 +16,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, FileResponse
 from pydantic import BaseModel
 
-from agenttrace.core.graph import CausalGraph
 from agenttrace.core.node import Node, NodeType
-from agenttrace.core.edge import Edge, EdgeType
+from agenttrace.core.edge import Edge
 from agenttrace.storage.memory import MemoryStorage
 from agenttrace.storage.temporal_db import TemporalStorage
 from agenttrace.inference.engine import InferenceEngine
@@ -148,7 +146,7 @@ def create_app(
         storage = get_storage()
         runs = storage.list_runs(limit=limit + offset)
         return {
-            "runs": runs[offset:offset + limit],
+            "runs": runs[offset : offset + limit],
             "total": len(runs),
         }
 
@@ -262,10 +260,7 @@ def create_app(
         chains = graph.get_causal_chain(node_id)
         return {
             "target_node_id": node_id,
-            "chains": [
-                [_node_to_response(n) for n in chain]
-                for chain in chains
-            ],
+            "chains": [[_node_to_response(n) for n in chain] for chain in chains],
             "chain_count": len(chains),
         }
 
@@ -427,10 +422,12 @@ def create_app(
 
                 if data.get("type") == "subscribe":
                     # Client wants updates for this run
-                    await websocket.send_json({
-                        "type": "subscribed",
-                        "run_id": run_id,
-                    })
+                    await websocket.send_json(
+                        {
+                            "type": "subscribed",
+                            "run_id": run_id,
+                        }
+                    )
 
                 elif data.get("type") == "ping":
                     await websocket.send_json({"type": "pong"})
@@ -488,11 +485,13 @@ async def broadcast_update(run_id: str, update: dict):
     """Broadcast an update to all connected WebSocket clients."""
     for client in _connected_clients.copy():
         try:
-            await client.send_json({
-                "type": "update",
-                "run_id": run_id,
-                **update,
-            })
+            await client.send_json(
+                {
+                    "type": "update",
+                    "run_id": run_id,
+                    **update,
+                }
+            )
         except Exception:
             _connected_clients.discard(client)
 
