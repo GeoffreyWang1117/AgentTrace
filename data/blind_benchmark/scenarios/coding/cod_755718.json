@@ -1,0 +1,84 @@
+{
+  "scenario_id": "cod_755718",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Three agents need to collaborate to develop a simple feature, review it, test it, and integrate it into an existing codebase. The feature should fulfill the given requirements, be bug-free, and be well-integrated with no conflicts in the codebase.",
+  "expected_outcome": "The feature is developed, reviewed, tested, and integrated successfully with no bugs or conflicts, resulting in a stable and functional system update.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "understand_requirements"
+      ],
+      "description": "This agent writes the initial code based on the provided requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_bugs"
+      ],
+      "description": "This agent reviews the code written by the developer to identify and suggest fixes for any issues."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "This agent tests the code after the review and reports any bugs found."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "write_and_send_code",
+      "content": {
+        "code": "initial_version"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_code_and_feedback",
+      "content": {
+        "feedback": "minor_suggestions"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_corrected_code",
+      "content": {
+        "code": "corrected_version_but_timeout"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "result": "some_tests_fail_due_to_partial_code"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "all",
+      "action": "integrate_changes",
+      "content": {
+        "integration": "failed_due_to_errors"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:08:17.372367"
+}

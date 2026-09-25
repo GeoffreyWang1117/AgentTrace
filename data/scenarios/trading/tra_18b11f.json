@@ -1,0 +1,180 @@
+{
+  "scenario_id": "tra_18b11f",
+  "domain": "trading",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "Three agents collaborate to analyze market data, make trading decisions, and execute transactions efficiently. Each agent performs specific tasks: data analysis, decision-making, and execution, ensuring all steps are accurately executed and verified.",
+  "expected_outcome": "Agents should seamlessly analyze fresh market data, make informed trading decisions, and execute transactions with precise timing and accurate position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Analyst",
+      "capabilities": [
+        "data_analysis",
+        "trend_detection"
+      ],
+      "description": "Agent 1 retrieves and analyzes the latest market data to identify trends and opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "decision_making",
+        "risk_assessment"
+      ],
+      "description": "Agent 2 makes trading decisions based on the analyzed data and predefined strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "order_execution",
+        "transaction_verification"
+      ],
+      "description": "Agent 3 executes trades and verifies that transactions are correctly processed and positions are updated."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis_report",
+      "content": {
+        "market_data": "latest_data",
+        "analysis_summary": "upward_trend"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "decision": "buy",
+        "quantity": 100,
+        "risk_level": "low"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "order_status": "executed",
+        "trade_id": 12345
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "current_position": 150,
+        "new_risk_assessment": "medium"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_position",
+      "content": {
+        "position_verified": true,
+        "final_report": "all_clear"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis_report",
+      "content": {
+        "market_data": "stale_data",
+        "analysis_summary": "upward_trend"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "decision": "buy",
+        "quantity": 100,
+        "risk_level": "low"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "order_status": "executed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Missing trade_id context, preventing accurate order tracking"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "current_position": 150,
+        "new_risk_assessment": "medium"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_position",
+      "content": {
+        "position_verified": false,
+        "final_report": "discrepancy_detected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to the missing trade_id in the execution confirmation."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "verification_error",
+      "description": "The missing trade_id leads to incorrect position verification, manifesting as a discrepancy."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:34.330863"
+}

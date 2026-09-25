@@ -1,0 +1,175 @@
+{
+  "scenario_id": "tra_c4e009",
+  "domain": "trading",
+  "complexity": "simple",
+  "bug_type": "race_condition",
+  "task_description": "Agents need to collaborate to analyze real-time market data, make trading decisions based on this analysis, execute trades, and verify the correctness of transactions and their impact on positions.",
+  "expected_outcome": "Each agent performs its role correctly, using the latest market data to make decisions, executing trades at the right time, and maintaining accurate position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_data"
+      ],
+      "description": "Fetches real-time market data and performs analysis to generate trading signals."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "receive_signals",
+        "make_decision"
+      ],
+      "description": "Receives trading signals from the analyzer and makes buy/sell decisions."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_order",
+        "verify_transaction"
+      ],
+      "description": "Executes trades based on decisions and verifies transaction accuracy, updating position tracking."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_signal",
+      "content": {
+        "signal": "buy",
+        "timestamp": "2023-10-11T10:00:00Z"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_order",
+      "content": {
+        "order_type": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "status": "executed",
+        "timestamp": "2023-10-11T10:00:05Z"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "position": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_data_update",
+      "content": {
+        "request": "refresh"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_signal",
+      "content": {
+        "signal": "buy",
+        "timestamp": "2023-10-11T10:00:00Z"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_order",
+      "content": {
+        "order_type": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "status": "executed",
+        "timestamp": "2023-10-11T10:00:05Z"
+      },
+      "is_bug_point": true,
+      "bug_description": "A race condition occurs when the confirmation message is processed by agent_1 before agent_2 updates its state, leading to inconsistent position tracking."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "position": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_data_update",
+      "content": {
+        "request": "refresh"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to race condition."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "decision_dependency",
+      "description": "The inconsistent position data affects the decision-making in step 5."
+    }
+  ],
+  "created_at": "2026-01-03T22:46:04.528273"
+}

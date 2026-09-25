@@ -1,0 +1,264 @@
+{
+  "scenario_id": "tra_768fa3",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "state_inconsistency",
+  "task_description": "Agents need to collaboratively analyze the current market data, make informed trading decisions, execute trades, and verify transactions to ensure data consistency and profitability.",
+  "expected_outcome": "Agents should accurately analyze the market data, make informed trading decisions in real-time, execute trades promptly, and maintain consistent position tracking to reflect executed trades correctly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Analyst",
+      "capabilities": [
+        "analyze_market_data",
+        "generate_trade_signals"
+      ],
+      "description": "Analyzes incoming market data and generates trade signals based on predefined strategies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trade",
+        "calculate_trade_costs"
+      ],
+      "description": "Handles the execution of trades based on signals received from the Market Analyst."
+    },
+    {
+      "id": "agent_3",
+      "role": "Risk Manager",
+      "capabilities": [
+        "monitor_risk",
+        "adjust_positions"
+      ],
+      "description": "Evaluates the risk of current and potential positions and suggests adjustments to maintain risk levels within acceptable bounds."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_transaction",
+        "update_trade_records"
+      ],
+      "description": "Verifies executed transactions and updates the shared position records to ensure consistency across the system."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_trade_signal",
+      "content": {
+        "signal": "buy",
+        "amount": 100,
+        "asset": "AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_trade_signal",
+      "content": {
+        "confirmation": "received",
+        "signal_id": 12345
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "execute_trade",
+      "content": {
+        "trade_id": 54321,
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_position",
+      "content": {
+        "position_change": 100,
+        "asset": "AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_update",
+      "content": {
+        "confirmation": "updated",
+        "position_id": 67890
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "send_risk_report",
+      "content": {
+        "risk_level": "medium",
+        "suggestions": "hold"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "adjusted_signal",
+      "content": {
+        "signal": "hold",
+        "amount": 0,
+        "asset": "AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "acknowledge_signal",
+      "content": {
+        "acknowledgement": "received",
+        "signal_id": 12346
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_trade_signal",
+      "content": {
+        "signal": "buy",
+        "amount": 100,
+        "asset": "AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_trade_signal",
+      "content": {
+        "confirmation": "received",
+        "signal_id": 12345
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "execute_trade",
+      "content": {
+        "trade_id": 54321,
+        "status": "executed"
+      },
+      "is_bug_point": true,
+      "bug_description": "State inconsistency: Execution status not correctly updated across systems, leading to a mismatch in shared records."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_position",
+      "content": {
+        "position_change": 100,
+        "asset": "AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_update",
+      "content": {
+        "confirmation": "updated",
+        "position_id": 67890
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "send_risk_report",
+      "content": {
+        "risk_level": "medium",
+        "suggestions": "reduce"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "adjusted_signal",
+      "content": {
+        "signal": "sell",
+        "amount": 50,
+        "asset": "AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "acknowledge_signal",
+      "content": {
+        "acknowledgement": "received",
+        "signal_id": 12347
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing inconsistent position updates."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "confirmation_mismatch",
+      "description": "Inconsistent position update fails to trigger accurate confirmation."
+    }
+  ],
+  "created_at": "2026-01-04T09:12:53.366223"
+}

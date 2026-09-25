@@ -1,0 +1,84 @@
+{
+  "scenario_id": "res_878937",
+  "domain": "research",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to gather information from various academic sources on the topic of renewable energy, synthesize their findings, reconcile any conflicting information, and produce a comprehensive research report.",
+  "expected_outcome": "The agents should successfully compile and synthesize accurate data from multiple sources into a coherent report, with proper source attribution and resolution of any conflicting information.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Information Gatherer",
+      "capabilities": [
+        "search_sources",
+        "filter_relevant_data"
+      ],
+      "description": "This agent is responsible for searching and collecting relevant data from various academic and public sources on renewable energy."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "aggregate_data",
+        "identify_conflicts"
+      ],
+      "description": "This agent aggregates the data received from Agent 1 and identifies any conflicting information that needs to be reconciled."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Composer",
+      "capabilities": [
+        "synthesize_findings",
+        "compose_report"
+      ],
+      "description": "This agent composes the final research report by synthesizing the aggregated data, resolving conflicts, and ensuring proper source attribution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "clean data from sources"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_aggregated_data",
+      "content": {
+        "aggregated_data": "synthesized data without conflicts"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_clarification",
+      "content": {
+        "conflict": "specific data conflict to resolve"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_conflict",
+      "content": {
+        "resolved_data": "clarified and consistent data"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": null,
+      "action": "compose_report",
+      "content": {
+        "report": "final report with incorrect data due to corruption"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:06:33.346520"
+}

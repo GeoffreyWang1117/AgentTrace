@@ -1,0 +1,347 @@
+{
+  "scenario_id": "cod_2de509",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "missing_context",
+  "task_description": "The agents are tasked to collaboratively develop a new feature for a software application. This involves writing code based on specified requirements, reviewing the written code, testing it, fixing any bugs found, and finally integrating the changes into the main codebase.",
+  "expected_outcome": "If all tasks are completed correctly, the new feature will be integrated successfully into the application with no errors, and all agents will have correctly contributed to the development process.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "document_requirements"
+      ],
+      "description": "This agent gathers and documents the requirements for the new feature."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_changes"
+      ],
+      "description": "This agent writes the code for the new feature based on the requirements provided."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "This agent reviews the code written by the Developer to catch any potential issues."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "This agent tests the code to ensure it meets all requirements and is free of defects."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "integrate_code",
+        "resolve_conflicts"
+      ],
+      "description": "This agent is responsible for integrating the tested code into the main codebase and resolving any merge conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_requirements",
+      "content": {
+        "requirements": "Detailed feature requirements"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "Initial code submission"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "Code is clean, but add error handling"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "deliver_code",
+      "content": {
+        "code": "Code with error handling"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "bug_report",
+      "content": {
+        "bugs": "No bugs found"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "submit_for_integration",
+      "content": {
+        "code": "Final code submission"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "conflict_resolution_request",
+      "content": {
+        "conflicts": "No conflicts"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "resolve_conflicts",
+      "content": {
+        "resolution": "Conflicts resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "integration_testing_request",
+      "content": {
+        "integration_status": "Ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "integration_test_results",
+      "content": {
+        "test_results": "All tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "final_confirmation",
+      "content": {
+        "confirmation": "Feature integrated successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_task",
+      "content": {
+        "status": "Task closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_requirements",
+      "content": {
+        "requirements": "Detailed feature requirements"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "Initial code submission"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "Positive feedback without context on error handling"
+      },
+      "is_bug_point": true,
+      "bug_description": "Feedback was given without mentioning the need for error handling"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "deliver_code",
+      "content": {
+        "code": "Code lacking error handling"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "bug_report",
+      "content": {
+        "bugs": "No bugs found as error handling was not tested"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "submit_for_integration",
+      "content": {
+        "code": "Code lacking error handling"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "conflict_resolution_request",
+      "content": {
+        "conflicts": "No conflicts"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "resolve_conflicts",
+      "content": {
+        "resolution": "Conflicts resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "integration_testing_request",
+      "content": {
+        "integration_status": "Ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "integration_test_results",
+      "content": {
+        "test_results": "Critical error due to missing error handling"
+      },
+      "is_bug_point": true,
+      "bug_description": "Error handling was not included in tests, leading to integration failure"
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "final_confirmation",
+      "content": {
+        "confirmation": "Feature integration failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_task",
+      "content": {
+        "status": "Task requires attention"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 10,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Lack of context about error handling affects code delivery"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "process_dependency",
+      "description": "Testing misses error handling due to lack of context"
+    },
+    {
+      "source_step": 5,
+      "target_step": 10,
+      "relationship_type": "data_integrity",
+      "description": "Integration testing fails due to missing error handling"
+    }
+  ],
+  "created_at": "2026-01-04T09:08:31.226881"
+}

@@ -1,0 +1,94 @@
+{
+  "scenario_id": "cod_7efa06",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Agents collaborate to develop a software component. They need to write code based on specified requirements, review and test the code, and fix any bugs before integrating the changes into the main branch.",
+  "expected_outcome": "The agents should successfully develop the software component, identify and fix any bugs during the code review and testing phases, and finally integrate the changes without any conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "understand_requirements"
+      ],
+      "description": "This agent is responsible for interpreting the requirements and writing the initial code."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "This agent reviews the code written by the Developer to identify any issues or bugs."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "This agent tests the code to ensure it meets the requirements and is free of bugs."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "1.0",
+        "features": [
+          "featureA",
+          "featureB"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_feedback",
+      "content": {
+        "comments": "Code looks good, minor refactoring suggested."
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_for_testing",
+      "content": {
+        "code_version": "1.1",
+        "features": [
+          "featureA",
+          "featureC",
+          "refactor"
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "testing_results",
+      "content": {
+        "results": "Test failed for featureC",
+        "issues": "Logic error in featureC implementation"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "all",
+      "action": "integrate_changes",
+      "content": {
+        "integration_status": "failed"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:24.492818"
+}

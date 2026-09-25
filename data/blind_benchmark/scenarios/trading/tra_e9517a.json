@@ -1,0 +1,127 @@
+{
+  "scenario_id": "tra_e9517a",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "In this scenario, four agents collaborate to analyze market data, make informed trading decisions, execute trades, and ensure accurate position tracking. The agents need to process incoming market data efficiently and execute orders quickly to capitalize on trading opportunities.",
+  "expected_outcome": "All agents work together seamlessly, ensuring that market analysis is accurate, trades are executed on time, and position tracking remains consistent without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "analyze_market_data",
+        "detect_trends"
+      ],
+      "description": "This agent collects and analyzes market data to detect trading trends and generate insights for decision-making."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "make_trading_decisions",
+        "generate_trade_signals"
+      ],
+      "description": "This agent uses analyzed data to make trading decisions and generate trade signals to execute orders."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_orders",
+        "verify_transactions"
+      ],
+      "description": "This agent receives trade signals and executes buy/sell orders while verifying the successful completion of transactions."
+    },
+    {
+      "id": "agent_4",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "update_portfolio_status"
+      ],
+      "description": "This agent tracks the portfolio positions and updates the portfolio status post-trade execution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis",
+      "content": {
+        "market_trend": "bullish"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "trade_signal": "buy",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": 12345,
+        "status": "pending"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_execution_delay",
+      "content": {
+        "order_id": 12345,
+        "status": "delayed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "trade_signal": "sell",
+        "quantity": 50
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": 12346,
+        "status": "executed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "acknowledge_execution",
+      "content": {
+        "order_id": 12346,
+        "ack": false
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_final_execution_status",
+      "content": {
+        "order_id": 12345,
+        "status": "failed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:12:32.787714"
+}

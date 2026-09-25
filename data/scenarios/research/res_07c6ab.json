@@ -1,0 +1,244 @@
+{
+  "scenario_id": "res_07c6ab",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "wrong_routing",
+  "task_description": "Four agents collaborate to gather information from various online databases, synthesize their findings, and compile a comprehensive research report on climate change impacts.",
+  "expected_outcome": "The agents should successfully gather accurate information, resolve any conflicting data, and produce a detailed research report with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Retriever",
+      "capabilities": [
+        "access_database",
+        "fetch_data"
+      ],
+      "description": "Responsible for retrieving raw data from online climate databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "identify_trends"
+      ],
+      "description": "Analyzes raw data and identifies significant trends and patterns."
+    },
+    {
+      "id": "agent_3",
+      "role": "Synthesizer",
+      "capabilities": [
+        "reconcile_conflicts",
+        "synthesize_information"
+      ],
+      "description": "Synthesizes data from different sources and resolves any conflicts in information."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "compile_report",
+        "ensure_source_attribution"
+      ],
+      "description": "Compiles the final research report, ensuring proper source attribution and coherence."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "fetch_and_send_data",
+      "content": {
+        "data": "raw_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "analyze_and_forward",
+      "content": {
+        "analysis": "trend_analysis_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_and_send",
+      "content": {
+        "synthesized_data": "reconciled_information"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "additional_data_needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "fetch_and_send_additional_data",
+      "content": {
+        "additional_data": "supplementary_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_final_confirmation",
+      "content": {
+        "request": "confirmation_on_synthesis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_and_send",
+      "content": {
+        "confirmation": "synthesis_confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "external_system",
+      "action": "submit_report",
+      "content": {
+        "report": "final_research_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "fetch_and_send_data",
+      "content": {
+        "data": "raw_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "analyze_and_forward",
+      "content": {
+        "analysis": "trend_analysis_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "synthesize_and_send",
+      "content": {
+        "synthesized_data": "reconciled_information"
+      },
+      "is_bug_point": true,
+      "bug_description": "Synthesized data is mistakenly sent back to agent_1 instead of agent_4"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "additional_data_needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "fetch_and_send_additional_data",
+      "content": {
+        "additional_data": "supplementary_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_final_confirmation",
+      "content": {
+        "request": "confirmation_on_synthesis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_and_send",
+      "content": {
+        "confirmation": "synthesis_confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "external_system",
+      "action": "submit_report",
+      "content": {
+        "report": "final_research_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Synthesized data is sent to the wrong agent, causing a loop back to agent_1"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Agent_1 fetches additional data but the synthesis is incomplete, leading to discrepancies"
+    }
+  ],
+  "created_at": "2026-01-03T22:43:38.178674"
+}

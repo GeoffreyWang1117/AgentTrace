@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cus_8db7db",
+  "trace_id": "cus_8db7db",
+  "causal_edges": [
+    {
+      "source_node_id": "step_2",
+      "target_node_id": "step_3",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Missing customer context means the manager provides a generic workaround instead of a specific resolution."
+    },
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Resolution without specific context is passed back to the technical specialist."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "communication",
+      "confidence": 1.0,
+      "explanation": "Customer is notified with incomplete resolution information, leading to potential dissatisfaction."
+    }
+  ],
+  "root_cause_node_id": "step_2",
+  "root_cause_explanation": "The customer context ('Issue with product installation, requires manager's approval') is not passed to the manager.",
+  "error_propagation_path": [
+    "step_2",
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,256 @@
+{
+  "scenario_id": "pla_0aaa53",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "race_condition",
+  "task_description": "Four agents need to collaboratively plan and execute a delivery system for a series of packages. The task involves breaking down the delivery process into subtasks, allocating resources like vehicles and drivers, and ensuring all agents are synchronized on the current state of each delivery.",
+  "expected_outcome": "All packages are delivered to their respective destinations without delay, all resources are utilized optimally, and all agents are updated with the current status of deliveries.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "decompose_tasks",
+        "assign_resources"
+      ],
+      "description": "Responsible for breaking down the delivery task into manageable subtasks and assigning the necessary resources to each subtask."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "manage_vehicles",
+        "allocate_drivers"
+      ],
+      "description": "In charge of managing vehicles and drivers, ensuring they are allocated appropriately to each delivery task."
+    },
+    {
+      "id": "agent_3",
+      "role": "Coordinator",
+      "capabilities": [
+        "synchronize_agents",
+        "track_progress"
+      ],
+      "description": "Ensures that all agents have the latest information on the progress of each delivery task."
+    },
+    {
+      "id": "agent_4",
+      "role": "Executioner",
+      "capabilities": [
+        "execute_delivery",
+        "report_status"
+      ],
+      "description": "Executes the delivery tasks and reports the status back to the coordinator."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "tasks": [
+          "task1",
+          "task2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "vehicles": 2,
+          "drivers": 2
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_execution_plan",
+      "content": {
+        "execution_plan": "Plan A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "execute_and_report",
+      "content": {
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_status",
+      "content": {
+        "progress": "50% complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "check_resources",
+      "content": {
+        "verification": "resources sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_resource_availability",
+      "content": {
+        "status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_delivery",
+      "content": {
+        "directive": "complete execution"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "tasks": [
+          "task1",
+          "task2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "vehicles": 2,
+          "drivers": 2
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_execution_plan",
+      "content": {
+        "execution_plan": "Plan A"
+      },
+      "is_bug_point": true,
+      "bug_description": "Race condition occurs when execution plan is modified concurrently by agent_3 and agent_1, causing inconsistency."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "execute_and_report",
+      "content": {
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_status",
+      "content": {
+        "progress": "inconsistent state"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "check_resources",
+      "content": {
+        "verification": "resources mismatch"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_resource_availability",
+      "content": {
+        "status": "unconfirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_delivery",
+      "content": {
+        "directive": "execution halted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing an inconsistent state in the execution report."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Execution report at step 4 affects progress status at step 5, revealing the inconsistency."
+    }
+  ],
+  "created_at": "2026-01-04T09:10:02.201984"
+}

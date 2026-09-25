@@ -1,0 +1,244 @@
+{
+  "scenario_id": "cod_f6e103",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "wrong_routing",
+  "task_description": "Agents need to collaboratively develop a software feature. The program requires writing code, conducting code reviews, testing, and integrating code changes to ensure a bug-free deployment.",
+  "expected_outcome": "The software feature is implemented correctly, code is reviewed thoroughly, passes all tests, and integrates seamlessly without any conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "implement_requirements"
+      ],
+      "description": "Responsible for writing initial code based on the given requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews the code written by the developer to identify and highlight any issues."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "Tests the reviewed code to ensure it meets the required functionality and reports any bugs found."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "integrate_code",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates the tested code into the main branch and resolves any conflicts that arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_code",
+      "content": {
+        "code": "initial version of the feature implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_feedback",
+      "content": {
+        "feedback": "code review notes with issues highlighted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_code",
+      "content": {
+        "code": "revised version after feedback"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_code",
+      "content": {
+        "code": "reviewed and revised version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_bugs",
+      "content": {
+        "bugs": "list of bugs found during testing"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_fix",
+      "content": {
+        "code": "bug fixes applied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_code",
+      "content": {
+        "code": "tested and fixed version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "confirm_integration",
+      "content": {
+        "status": "integration successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_code",
+      "content": {
+        "code": "initial version of the feature implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_feedback",
+      "content": {
+        "feedback": "code review notes with issues highlighted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "send_code",
+      "content": {
+        "code": "revised version after feedback with wrong routing"
+      },
+      "is_bug_point": true,
+      "bug_description": "Revised code is wrongly sent to the integrator instead of the reviewer."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "forward_code",
+      "content": {
+        "code": "misrouted revised version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_code",
+      "content": {
+        "code": "reviewed and revised version possibly outdated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_bugs",
+      "content": {
+        "bugs": "list of bugs found during testing"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_fix",
+      "content": {
+        "code": "bug fixes applied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_code",
+      "content": {
+        "code": "tested and fixed version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data from wrong routing in step 3 causes an incorrect sequence in step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The misrouted code leads to potential outdated version being tested in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:08:12.820210"
+}

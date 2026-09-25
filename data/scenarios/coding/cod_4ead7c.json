@@ -1,0 +1,173 @@
+{
+  "scenario_id": "cod_4ead7c",
+  "domain": "coding",
+  "complexity": "simple",
+  "bug_type": "state_inconsistency",
+  "task_description": "The agents need to collaboratively develop a simple login feature for a web application. The process involves writing code based on user requirements, reviewing the written code, and testing it. Finally, they need to fix any bugs found and ensure smooth integration of changes.",
+  "expected_outcome": "If everything works correctly, the agents will produce a functioning login feature that meets the requirements without any integration issues or code errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "fix_bugs"
+      ],
+      "description": "This agent is responsible for writing the initial code based on user requirements and fixing any bugs found during testing."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "suggest_improvements"
+      ],
+      "description": "This agent reviews the code written by the Developer, checks for errors or improvements, and approves it for testing."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "This agent tests the code to ensure it works as expected and reports any bugs or issues back to the Developer."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code_for_review",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_forward_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "test_and_report",
+      "content": {
+        "test_result": "pass",
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_final_code",
+      "content": {
+        "code_version": "v1.0",
+        "changes": "none"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "final_approval",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code_for_review",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_forward_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "test_and_report",
+      "content": {
+        "test_result": "fail",
+        "code_version": "v1.0"
+      },
+      "is_bug_point": true,
+      "bug_description": "Tester receives wrong code version due to state inconsistency, leading to a failed test."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_final_code",
+      "content": {
+        "code_version": "v1.1",
+        "changes": "bug_fix"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "final_approval",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "version_mismatch",
+      "description": "Mismatch in code version causes integration conflicts at the approval stage"
+    }
+  ],
+  "created_at": "2026-01-04T09:08:30.158495"
+}

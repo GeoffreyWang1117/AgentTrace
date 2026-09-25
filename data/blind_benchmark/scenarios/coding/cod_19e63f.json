@@ -1,0 +1,89 @@
+{
+  "scenario_id": "cod_19e63f",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to develop a new feature for a software application. Agent 1 writes the code based on user requirements. Agent 2 reviews the code for any issues and suggests improvements. Agent 3 tests the code and integrates it into the main project. The agents should maintain a consistent shared state of project files to ensure smooth collaboration.",
+  "expected_outcome": "All agents successfully collaborate, resulting in the completion of a feature with clean, tested, and integrated code, without any state inconsistencies or integration conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "code_writing",
+        "requirement_analysis"
+      ],
+      "description": "Agent 1 is responsible for writing the initial code based on the given requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "code_review",
+        "issue_identification"
+      ],
+      "description": "Agent 2 reviews the code written by Agent 1, identifies any issues, and suggests improvements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "code_testing",
+        "integration"
+      ],
+      "description": "Agent 3 tests the reviewed code and integrates it into the main project, ensuring everything works as expected."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "feature": "new_feature"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_feedback",
+      "content": {
+        "issues": "none",
+        "suggestions": "optimize loop"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "resubmit_code",
+      "content": {
+        "code_version": "v1.1",
+        "feature": "new_feature_optimized"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_forward",
+      "content": {
+        "code_version": "v1.0",
+        "feature": "new_feature"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "integration_error",
+      "content": {
+        "status": "failure",
+        "error": "version_mismatch"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:04.546357"
+}

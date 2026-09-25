@@ -1,0 +1,179 @@
+{
+  "scenario_id": "tra_9b4fc0",
+  "domain": "trading",
+  "complexity": "simple",
+  "bug_type": "logic_error",
+  "task_description": "The agents need to collaborate to analyze market data, make optimal trading decisions, execute trades, and verify the transactions to ensure consistency in position tracking.",
+  "expected_outcome": "All agents should process accurate and timely market data, make correct trading decisions based on this data, execute orders at the right times, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "This agent is responsible for fetching the latest market data and analyzing trends to provide insights for trading decisions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "evaluate_insights",
+        "make_trade_decisions"
+      ],
+      "description": "This agent evaluates the insights from the Market Analyzer and makes trading decisions based on predefined strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_orders",
+        "verify_transactions"
+      ],
+      "description": "This agent executes trade orders and verifies transactions to ensure they align with the intended trading strategy."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_insights",
+      "content": {
+        "market_trend": "bullish"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_order",
+      "content": {
+        "order_type": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_status": "executed",
+        "order_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "new_position": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_position",
+      "content": {
+        "verified_position": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_insights",
+      "content": {
+        "market_trend": "bullish"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_order",
+      "content": {
+        "order_type": "sell",
+        "quantity": 100
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 2 made an incorrect trading decision based on the bullish trend by sending a sell order instead of a buy order."
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_status": "executed",
+        "order_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "new_position": -100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_position",
+      "content": {
+        "verified_position": -100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 2,
+  "root_cause_step": 2,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 2,
+      "target_step": 3,
+      "relationship_type": "data_flow",
+      "description": "The incorrect sell order decision affects the execution of the trade."
+    },
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The execution of the sell order leads to an incorrect position update."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "verification",
+      "description": "The incorrect position is verified, confirming the logic error propagation."
+    }
+  ],
+  "created_at": "2026-01-03T22:46:02.658514"
+}

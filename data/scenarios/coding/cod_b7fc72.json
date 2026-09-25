@@ -1,0 +1,169 @@
+{
+  "scenario_id": "cod_b7fc72",
+  "domain": "coding",
+  "complexity": "simple",
+  "bug_type": "invalid_output",
+  "task_description": "Three agents collaborate to develop a simple calculator application. Agent 1 writes the code according to given specifications, Agent 2 reviews and tests the code, and Agent 3 handles integration and ensures that all components work harmoniously together.",
+  "expected_outcome": "Agent 1 writes correct code that passes Agent 2's review and tests. Agent 3 integrates the code seamlessly without conflicts or errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Code Writer",
+      "capabilities": [
+        "write_code",
+        "adhere_to_specifications"
+      ],
+      "description": "Writes code for the calculator application based on the requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer and Tester",
+      "capabilities": [
+        "review_code",
+        "test_code"
+      ],
+      "description": "Reviews the code for issues and runs tests to ensure functionality."
+    },
+    {
+      "id": "agent_3",
+      "role": "Integrator",
+      "capabilities": [
+        "resolve_conflicts",
+        "integrate_code"
+      ],
+      "description": "Integrates different parts of the codebase and resolves any conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "correct_format"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_revision",
+      "content": {
+        "issues": "minor_styling"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "revised_correct_format"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_pass_code",
+      "content": {
+        "code": "reviewed_correct_format"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "system",
+      "action": "integrate_code",
+      "content": {
+        "status": "successful_integration"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "partial_output"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 1 produces output in an unexpected format: partial_output instead of correct format."
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_revision",
+      "content": {
+        "issues": "format_error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "revised_partial_output"
+      },
+      "is_bug_point": true,
+      "bug_description": "The format error was not fully corrected, leading to continued invalid output."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_pass_code",
+      "content": {
+        "code": "reviewed_partial_output"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "system",
+      "action": "integrate_code",
+      "content": {
+        "status": "failed_integration"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from Agent 1 to Agent 2 due to uncorrected format errors."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "integration_flow",
+      "description": "Agent 3 receives code with format errors from Agent 2 and fails during integration."
+    }
+  ],
+  "created_at": "2026-01-04T09:08:35.102374"
+}

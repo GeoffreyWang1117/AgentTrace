@@ -1,0 +1,29 @@
+{
+  "scenario_id": "res_0ba7fa",
+  "trace_id": "res_0ba7fa",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Due to the timeout in step 3, Agent_2 receives incomplete data and passes it to Agent_3, leading to incomplete synthesis."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "dependency",
+      "confidence": 1.0,
+      "explanation": "Incomplete data causes Agent_3 to generate a report with missing source attributions, prompting a clarification request."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent_1 experiences a timeout while trying to access new sources, causing delays.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

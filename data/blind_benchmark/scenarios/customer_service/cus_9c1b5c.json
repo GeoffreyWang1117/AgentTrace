@@ -1,0 +1,128 @@
+{
+  "scenario_id": "cus_9c1b5c",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "In this scenario, agents are responsible for handling customer service inquiries, escalating complex issues, and resolving tickets efficiently. The agents must collaborate to ensure customer context is maintained during handoffs, ticket statuses are synchronized, and responses do not conflict or duplicate. The focus is on debugging data corruption that occurs during data transfer between agents.",
+  "expected_outcome": "All customer inquiries are handled smoothly with proper handoffs. Ticket statuses are accurately synchronized, with no data corruption or loss during agent interactions. Complex issues are escalated to the correct agents and resolved efficiently.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "handle_inquiries",
+        "create_tickets"
+      ],
+      "description": "Initial point of contact for customer inquiries and responsible for creating tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_tickets"
+      ],
+      "description": "Handles technical issues and updates tickets with resolutions."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Manager",
+      "capabilities": [
+        "analyze_complex_issues",
+        "escalate_tickets"
+      ],
+      "description": "Analyzes complex issues that require escalation and coordinates with other teams."
+    },
+    {
+      "id": "agent_4",
+      "role": "Customer Satisfaction Specialist",
+      "capabilities": [
+        "follow_up",
+        "ensure_satisfaction"
+      ],
+      "description": "Ensures customer satisfaction after ticket resolution by following up with the customer."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_ticket",
+      "content": {
+        "ticket_id": "T123",
+        "issue": "Login problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T123",
+        "complexity": "high"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_solution",
+      "content": {
+        "ticket_id": "T123",
+        "solution": "Reset password"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "T123",
+        "status": "not resolved"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_satisfaction",
+      "content": {
+        "ticket_id": "T123",
+        "satisfaction": "dissatisfied"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "T123",
+        "final_status": "open"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "log_resolution",
+      "content": {
+        "ticket_id": "T123",
+        "log_entry": "Issue unresolved"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "archive_ticket",
+      "content": {
+        "ticket_id": "T123",
+        "archive_status": "pending"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:42.478232"
+}

@@ -1,0 +1,10 @@
+{
+  "scenario_id": "tra_90a78d",
+  "node_count": 5,
+  "edge_count": 9,
+  "gt_root_cause": "3620c505-c255-41ed-990b-c40166fe9eae",
+  "gt_error_node": "9fb8af16-b86f-4176-8b7f-e9c6d5132bbd",
+  "root_cause_in_trace": true,
+  "root_cause_rank": 4,
+  "backward_trace_length": 4
+}

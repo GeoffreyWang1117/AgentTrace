@@ -1,0 +1,252 @@
+{
+  "scenario_id": "res_fff139",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "missing_context",
+  "task_description": "The agents need to collaboratively gather, process, and synthesize information from multiple research papers, databases, and online sources to produce a comprehensive research report on the impact of climate change on marine biodiversity.",
+  "expected_outcome": "All agents successfully gather relevant data, synthesize it without any loss of critical context, reconcile any conflicting information, and correctly attribute sources, resulting in an accurate and well-organized research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_databases",
+        "fetch_online_articles"
+      ],
+      "description": "This agent is responsible for searching and collecting relevant information from predefined databases and online journals."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "detect_conflicts"
+      ],
+      "description": "This agent synthesizes information from multiple sources, detects any conflicting data, and attempts to reconcile it."
+    },
+    {
+      "id": "agent_3",
+      "role": "Contextual Integrator",
+      "capabilities": [
+        "integrate_context",
+        "ensure_cohesion"
+      ],
+      "description": "This agent ensures that all pieces of information are provided with necessary context for proper understanding and integration."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "format_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the synthesized information into a formal research report, ensuring correct formatting and source attribution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_research_data",
+      "content": {
+        "data": "climate impact studies",
+        "context": "marine biodiversity"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_contextual_analysis",
+      "content": {
+        "data": "synthesized studies",
+        "context": "preliminary findings"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_context",
+      "content": {
+        "data": "enhanced findings",
+        "context": "regional variations included"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "finalized synthesis",
+        "context": "all context applied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "confirm_attributions",
+      "content": {
+        "confirmation": "attributions verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_source_recheck",
+      "content": {
+        "request": "verify source details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "provide_source_verification",
+      "content": {
+        "verification": "source details confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "none",
+      "action": "finalize_report",
+      "content": {
+        "status": "report completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_research_data",
+      "content": {
+        "data": "climate impact studies",
+        "context": "marine biodiversity"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_contextual_analysis",
+      "content": {
+        "data": "synthesized studies",
+        "context": "preliminary findings"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_context",
+      "content": {
+        "data": "enhanced findings",
+        "context": "regional variations omitted"
+      },
+      "is_bug_point": true,
+      "bug_description": "The context regarding regional variations was not included, leading to a lack of critical regional context."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "finalized synthesis",
+        "context": "partial context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "confirm_attributions",
+      "content": {
+        "confirmation": "incomplete attributions"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_source_recheck",
+      "content": {
+        "request": "verify source details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "provide_source_verification",
+      "content": {
+        "verification": "source details confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "none",
+      "action": "finalize_report",
+      "content": {
+        "status": "report with missing regional context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, missing critical regional context."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "information_gap",
+      "description": "The incomplete context causes a discrepancy in source attributions in step 5."
+    }
+  ],
+  "created_at": "2026-01-03T22:43:52.467255"
+}

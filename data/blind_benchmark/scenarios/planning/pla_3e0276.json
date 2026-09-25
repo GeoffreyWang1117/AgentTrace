@@ -1,0 +1,88 @@
+{
+  "scenario_id": "pla_3e0276",
+  "domain": "planning",
+  "complexity": "simple",
+  "task_description": "In a factory setting, three agents collaborate to package and ship products. Each product consists of multiple components that need to be assembled, packed, and labeled. The agents must break down the goal into subtasks, allocate resources and responsibilities, and coordinate execution, handling any dependencies. They must ensure that all components are correctly assembled before packaging and that labels are accurate before shipping.",
+  "expected_outcome": "The components are correctly assembled, packed, and labeled, and the products are shipped without delay or error. All agents coordinate efficiently and share updated state information to prevent inconsistencies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Assembler",
+      "capabilities": [
+        "assemble_components",
+        "report_status"
+      ],
+      "description": "Assembles the components required for each product."
+    },
+    {
+      "id": "agent_2",
+      "role": "Packer",
+      "capabilities": [
+        "pack_products",
+        "request_label"
+      ],
+      "description": "Packs the assembled products and requests labels."
+    },
+    {
+      "id": "agent_3",
+      "role": "Shipper",
+      "capabilities": [
+        "print_label",
+        "ship_package"
+      ],
+      "description": "Prints labels and ships the packaged products."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "inform_assembly_complete",
+      "content": {
+        "assembly_id": "123",
+        "status": "complete"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_label",
+      "content": {
+        "assembly_id": "123"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_label",
+      "content": {
+        "assembly_id": "123",
+        "label": "Product B"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "inform_packaging_complete",
+      "content": {
+        "assembly_id": "123",
+        "status": "packed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_shipment",
+      "content": {
+        "assembly_id": "123",
+        "status": "shipped"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:10.658252"
+}

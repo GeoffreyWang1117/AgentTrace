@@ -1,0 +1,341 @@
+{
+  "scenario_id": "pla_75b6b2",
+  "domain": "planning",
+  "complexity": "complex",
+  "bug_type": "data_corruption",
+  "task_description": "The agents need to collaboratively plan and execute a construction project, breaking down the goal into subtasks, allocating resources, and ensuring timely coordination among themselves to build a complex integrated AI research facility.",
+  "expected_outcome": "The facility is constructed on time with all parts integrated correctly, and resources are optimally utilized with no conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Project Manager",
+      "capabilities": [
+        "plan_decomposition",
+        "resource_allocation"
+      ],
+      "description": "Responsible for breaking down the main goal into subtasks and allocating resources to each subtask."
+    },
+    {
+      "id": "agent_2",
+      "role": "Architect",
+      "capabilities": [
+        "design_blueprints",
+        "material_specification"
+      ],
+      "description": "Creates blueprints for the facility and specifies materials required for construction."
+    },
+    {
+      "id": "agent_3",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "resource_tracking",
+        "supply_chain_management"
+      ],
+      "description": "Ensures that materials and equipment are delivered on time for construction."
+    },
+    {
+      "id": "agent_4",
+      "role": "Construction Supervisor",
+      "capabilities": [
+        "task_execution",
+        "progress_monitoring"
+      ],
+      "description": "Oversees the construction processes and ensures adherence to timelines and quality standards."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "inspection",
+        "compliance_check"
+      ],
+      "description": "Inspects completed work to ensure it meets standards and compliance regulations."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design_request",
+      "content": {
+        "subtask": "design_blueprint"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "return_blueprint",
+      "content": {
+        "blueprint": "details_of_blueprint"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": "list_of_resources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "deliver_resources",
+      "content": {
+        "schedule": "delivery_schedule"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_progress",
+      "content": {
+        "progress": "30%"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "initiate_inspection",
+      "content": {
+        "section": "foundation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "inspection_report",
+      "content": {
+        "report": "passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "authorize_continuation",
+      "content": {
+        "task": "build_walls"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_more_materials",
+      "content": {
+        "materials": "additional_bricks"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_materials_delivery",
+      "content": {
+        "confirmation": "delivered"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "final_report",
+      "content": {
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "final_inspection",
+      "content": {
+        "facility": "complete_facility"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design_request",
+      "content": {
+        "subtask": "design_blueprint"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "return_blueprint",
+      "content": {
+        "blueprint": "details_of_blueprint"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": "list_of_resources"
+      },
+      "is_bug_point": true,
+      "bug_description": "During transfer, the list_of_resources gets incorrectly modified, leading to missing resources."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "deliver_resources",
+      "content": {
+        "schedule": "delivery_schedule"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_progress",
+      "content": {
+        "progress": "30%"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "initiate_inspection",
+      "content": {
+        "section": "foundation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "inspection_report",
+      "content": {
+        "report": "passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "authorize_continuation",
+      "content": {
+        "task": "build_walls"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_more_materials",
+      "content": {
+        "materials": "additional_bricks"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_materials_delivery",
+      "content": {
+        "confirmation": "delivered"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "final_report",
+      "content": {
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "final_inspection",
+      "content": {
+        "facility": "complete_facility"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Step 5 depends on proper data from step 4, leading to an incorrect report at step 5"
+    }
+  ],
+  "created_at": "2026-01-04T09:10:06.207666"
+}

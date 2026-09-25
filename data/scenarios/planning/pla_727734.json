@@ -1,0 +1,280 @@
+{
+  "scenario_id": "pla_727734",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "logic_error",
+  "task_description": "The agents collaborate to plan and execute a logistics operation to deliver aid supplies to multiple locations with varying needs and constraints. The goal is to ensure all locations receive supplies efficiently while managing limited resources and adhering to dependencies, such as vehicle availability and travel routes.",
+  "expected_outcome": "All aid supplies are delivered to their respective locations efficiently with optimal use of resources and proper coordination of agent actions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "decompose_goals",
+        "allocate_resources"
+      ],
+      "description": "Breaks down the main logistics goal into subtasks and allocates resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Coordinator",
+      "capabilities": [
+        "manage_dependencies",
+        "update_plans"
+      ],
+      "description": "Ensures task dependencies are managed and updates to the plan are communicated."
+    },
+    {
+      "id": "agent_3",
+      "role": "Resource Manager",
+      "capabilities": [
+        "resource_allocation",
+        "conflict_resolution"
+      ],
+      "description": "Allocates and monitors the use of resources, resolves conflicts."
+    },
+    {
+      "id": "agent_4",
+      "role": "Executor",
+      "capabilities": [
+        "execute_tasks",
+        "report_status"
+      ],
+      "description": "Executes the logistics tasks and reports progress back to the team."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "decompose_goal",
+      "content": {
+        "goal": "deliver_aid",
+        "subtasks": [
+          "task_1",
+          "task_2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "manage_dependencies",
+      "content": {
+        "subtasks": [
+          "task_1",
+          "task_2"
+        ],
+        "dependencies": [
+          "vehicle_availability"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "allocate_resources",
+      "content": {
+        "task": "task_1",
+        "resources": [
+          "truck_1"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_status",
+      "content": {
+        "task": "task_1",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_plan",
+      "content": {
+        "task": "task_1",
+        "adjustment": "none"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "task": "task_2",
+        "resources": [
+          "truck_2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resolve_conflicts",
+      "content": {
+        "resource_conflict": "none"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_status",
+      "content": {
+        "task": "task_2",
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "decompose_goal",
+      "content": {
+        "goal": "deliver_aid",
+        "subtasks": [
+          "task_1",
+          "task_2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "manage_dependencies",
+      "content": {
+        "subtasks": [
+          "task_1",
+          "task_2"
+        ],
+        "dependencies": [
+          "vehicle_availability"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "allocate_resources",
+      "content": {
+        "task": "task_1",
+        "resources": []
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly decides no resources are needed for task_1 due to a logic error."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_status",
+      "content": {
+        "task": "task_1",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_plan",
+      "content": {
+        "task": "task_1",
+        "adjustment": "none"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "task": "task_2",
+        "resources": [
+          "truck_2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resolve_conflicts",
+      "content": {
+        "resource_conflict": "truck_conflict_task_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_status",
+      "content": {
+        "task": "task_2",
+        "status": "pending_due_to_conflict"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Agent 4 receives incorrect resource allocation data from step 3."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Agent 2 updates the plan based on incorrect status information, failing to adjust plan."
+    }
+  ],
+  "created_at": "2026-01-04T09:10:16.242198"
+}

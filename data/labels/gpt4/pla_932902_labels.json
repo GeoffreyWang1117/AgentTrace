@@ -1,0 +1,29 @@
+{
+  "scenario_id": "pla_932902",
+  "trace_id": "pla_932902",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The missing venue information in step 3 causes agent 3 to have incomplete data, affecting their task execution."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "task_dependency",
+      "confidence": 1.0,
+      "explanation": "Agent 3's incomplete marketing plan affects the finalization of the overall event plan in step 5."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The venue information is missing, which is critical for the marketing campaign.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

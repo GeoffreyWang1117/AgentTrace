@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_a9c635",
+  "trace_id": "cod_a9c635",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The integration request was sent to the wrong agent, causing confusion and delaying the integration process."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "process_flow",
+      "confidence": 1.0,
+      "explanation": "Due to the incorrect routing, the integration could not proceed as expected, resulting in a failure."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The integration request message intended for agent 1 was mistakenly sent back to agent 2.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,365 @@
+{
+  "scenario_id": "cus_69d43e",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "logic_error",
+  "task_description": "The multi-agent system must collaboratively handle customer inquiries, process ticket escalations for complex issues, and ensure accurate tracking and resolution of customer service tickets. Agents need to maintain customer context across interactions, synchronize ticket status, and avoid duplicate or conflicting responses.",
+  "expected_outcome": "The system should efficiently manage customer inquiries, escalate issues when necessary, provide consistent and synchronized responses across all agents, and ensure the customer context is preserved throughout the interaction.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "handle_inquiries",
+        "create_tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Issue Escalation Agent",
+      "capabilities": [
+        "evaluate_complexity",
+        "escalate_tickets"
+      ],
+      "description": "Evaluates ticket complexity and escalates to specialists if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_ticket_status"
+      ],
+      "description": "Resolves technical issues and updates the ticket status accordingly."
+    },
+    {
+      "id": "agent_4",
+      "role": "Customer Context Manager",
+      "capabilities": [
+        "maintain_context",
+        "handoff_context"
+      ],
+      "description": "Ensures customer context is preserved across interactions and during handoffs."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance Agent",
+      "capabilities": [
+        "detect_conflicts",
+        "verify_resolutions"
+      ],
+      "description": "Monitors interactions for duplicate or conflicting responses and verifies resolutions."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "12345",
+        "issue": "Login problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "handoff_ticket",
+      "content": {
+        "ticket_id": "TKT-001",
+        "context": "Customer unable to login"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_ticket",
+      "content": {
+        "ticket_id": "TKT-001",
+        "complexity": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "TKT-001",
+        "resolution": "Reset password"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "TKT-001",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "verify_resolution",
+      "content": {
+        "ticket_id": "TKT-001",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "TKT-001",
+        "closure_confirmed": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "update_context",
+      "content": {
+        "customer_id": "12345",
+        "last_issue": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "retrieve_context",
+      "content": {
+        "customer_id": "12345",
+        "context_retrieved": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "handle_new_inquiry",
+      "content": {
+        "customer_id": "12345",
+        "issue": "Billing query"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_ticket",
+      "content": {
+        "ticket_id": "TKT-002",
+        "complexity": "medium"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "TKT-002",
+        "resolution": "Explained billing"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "12345",
+        "issue": "Login problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "handoff_ticket",
+      "content": {
+        "ticket_id": "TKT-001",
+        "context": "Customer unable to login"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_ticket",
+      "content": {
+        "ticket_id": "TKT-001",
+        "complexity": "low"
+      },
+      "is_bug_point": true,
+      "bug_description": "Incorrect decision on ticket complexity, should be 'high'."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "TKT-001",
+        "resolution": "Simple troubleshooting"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "TKT-001",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "verify_resolution",
+      "content": {
+        "ticket_id": "TKT-001",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "TKT-001",
+        "closure_confirmed": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "update_context",
+      "content": {
+        "customer_id": "12345",
+        "last_issue": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "retrieve_context",
+      "content": {
+        "customer_id": "12345",
+        "context_retrieved": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "handle_new_inquiry",
+      "content": {
+        "customer_id": "12345",
+        "issue": "Billing query"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_ticket",
+      "content": {
+        "ticket_id": "TKT-002",
+        "complexity": "medium"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "TKT-002",
+        "resolution": "Explained billing"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Incorrect complexity assessment leads to inadequate resolution attempt in step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "process_flow",
+      "description": "Premature resolution status update due to incorrect complexity assessment."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:38.754723"
+}

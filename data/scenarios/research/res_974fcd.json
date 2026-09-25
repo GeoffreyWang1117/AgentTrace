@@ -1,0 +1,244 @@
+{
+  "scenario_id": "res_974fcd",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "logic_error",
+  "task_description": "Four agents collaborate to research the effects of climate change on Arctic biodiversity by gathering data from multiple online sources, synthesizing the findings, and producing a comprehensive research report. They must ensure accuracy and proper source attribution.",
+  "expected_outcome": "The agents successfully gather, synthesize, and report accurate and well-attributed information about the effects of climate change on Arctic biodiversity.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Gatherer",
+      "capabilities": [
+        "web_scraping",
+        "data_filtering"
+      ],
+      "description": "Collects raw data from multiple designated online sources related to Arctic biodiversity."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_analysis",
+        "pattern_recognition"
+      ],
+      "description": "Analyzes collected data, identifies trends and patterns, and summarizes findings."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Validator",
+      "capabilities": [
+        "fact_checking",
+        "source_verification"
+      ],
+      "description": "Validates the accuracy of the synthesized data and ensures correct source attribution."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "report_writing",
+        "content_formatting"
+      ],
+      "description": "Compiles the final research report using validated data and formats it for presentation."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "Collected raw data from sources A, B, C"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "Synthesized findings based on data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_validation",
+      "content": {
+        "validated_data": "Verified data with correct source attribution"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "Need more recent data from source B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "send_additional_data",
+      "content": {
+        "data": "Additional recent data from source B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "send_report_draft",
+      "content": {
+        "report_draft": "Draft report with sections 1-3 completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_revisions",
+      "content": {
+        "revisions": "Revised sections based on additional analysis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "send_final_report",
+      "content": {
+        "final_report": "Completed research report with all sections"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "Collected raw data from sources A, B, C"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "Synthesized findings based on data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_validation",
+      "content": {
+        "validated_data": "Verified data but missing source attribution"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly flags data as validated without proper source attribution"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "Need more recent data from source B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "send_additional_data",
+      "content": {
+        "data": "Additional recent data from source B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "send_report_draft",
+      "content": {
+        "report_draft": "Draft report with sections 1-3 completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_revisions",
+      "content": {
+        "revisions": "Revised sections based on additional analysis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "send_final_report",
+      "content": {
+        "final_report": "Completed research report with all sections"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to incomplete source attribution."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Request for additional data is based on incomplete information, leading to inaccuracies."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:37.632701"
+}

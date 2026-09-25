@@ -1,0 +1,256 @@
+{
+  "scenario_id": "cod_5e5fab",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "missing_context",
+  "task_description": "The agents need to collaboratively develop a feature for a software module. The process includes writing code based on requirements, reviewing and testing the code, and finally fixing any identified bugs and integrating the changes into the main codebase.",
+  "expected_outcome": "The feature should be successfully developed, reviewed, tested, and integrated without any defects. All agents should have the required context to perform their tasks effectively.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "code writing",
+        "understanding requirements"
+      ],
+      "description": "Writes code based on the provided requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "code review",
+        "identify critical issues"
+      ],
+      "description": "Reviews the code for any potential issues or improvements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test execution",
+        "report issues"
+      ],
+      "description": "Runs tests on the code to identify any bugs."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "resolve conflicts",
+        "integrate changes"
+      ],
+      "description": "Integrates the code changes into the main codebase and resolves any conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation",
+        "context": "requirements document"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "feedback",
+      "content": {
+        "issues": "none"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.0",
+        "context": "reviewed and approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "all tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_code_for_integration",
+      "content": {
+        "code_version": "v1.0",
+        "context": "fully tested"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_context",
+      "content": {
+        "missing_context": "integration guide"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "provide_context",
+      "content": {
+        "integration_guide": "detailed guide"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "integrate_code",
+      "content": {
+        "status": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation",
+        "context": "requirements document"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "feedback",
+      "content": {
+        "issues": "none"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": true,
+      "bug_description": "Missing context: 'reviewed and approved' context was not passed to the Tester."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "all tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_code_for_integration",
+      "content": {
+        "code_version": "v1.0",
+        "context": "fully tested"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_context",
+      "content": {
+        "missing_context": "review approval"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_not_possible",
+      "content": {
+        "reason": "context not available"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "integrate_code",
+      "content": {
+        "status": "failed",
+        "reason": "missing review approval context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 8,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Missing context flows from step 3 to step 4, causing lack of critical information for proper testing."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Code is passed without full context, leading to incomplete integration steps at step 8."
+    },
+    {
+      "source_step": 5,
+      "target_step": 8,
+      "relationship_type": "integration_issue",
+      "description": "The missing context causes the Integrator to fail integration at step 8."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:34.226491"
+}

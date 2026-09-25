@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_c4897f",
+  "trace_id": "tra_c4897f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4, causing the verification to fail as agent_3 expects a string but receives a numeric status."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_dependency",
+      "confidence": 1.0,
+      "explanation": "Position update in step 5 is based on incorrect verification status from step 4, leading to an inaccurate balance update."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 2 sends the order execution status using a numeric code instead of the expected string format.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

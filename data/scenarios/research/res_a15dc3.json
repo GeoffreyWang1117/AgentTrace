@@ -1,0 +1,250 @@
+{
+  "scenario_id": "res_a15dc3",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "state_inconsistency",
+  "task_description": "Four agents collaborate to gather research data from various sources, synthesize the information, and produce a comprehensive research report. The agents must ensure data integrity throughout the process and attribute sources correctly.",
+  "expected_outcome": "The agents successfully collect, synthesize, and report the research findings without any data loss, corruption, or misattribution, resulting in an accurate and complete research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_databases",
+        "gather_information"
+      ],
+      "description": "Collects data from online databases and repositories."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "validate_data",
+        "check_consistency"
+      ],
+      "description": "Validates the collected data for accuracy and consistency."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "resolve_conflicts"
+      ],
+      "description": "Synthesizes validated data and resolves any conflicting information."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "attribute_sources"
+      ],
+      "description": "Produces the final research report with proper source attribution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "data": "Raw data from databases"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_and_forward",
+      "content": {
+        "data": "Validated data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize",
+      "content": {
+        "data": "Synthesized data with conflicts resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "data_request": "Specific missing data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "provide_additional_data",
+      "content": {
+        "data": "Specific data as requested"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "finalize_data",
+      "content": {
+        "data": "Final synthesized data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_synthesis",
+      "content": {
+        "confirmation": "Synthesis verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "none",
+      "action": "generate_report",
+      "content": {
+        "report": "Complete research report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "data": "Raw data from databases"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_and_forward",
+      "content": {
+        "data": "Validated data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize",
+      "content": {
+        "data": "Synthesized data with conflicts resolved"
+      },
+      "is_bug_point": true,
+      "bug_description": "State inconsistency occurs; synthesized data contains outdated information"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "data_request": "Specific missing data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "provide_additional_data",
+      "content": {
+        "data": "Specific data as requested"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "finalize_data",
+      "content": {
+        "data": "Final synthesized data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_synthesis",
+      "content": {
+        "confirmation": "Synthesis verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "none",
+      "action": "generate_report",
+      "content": {
+        "report": "Incomplete research report with inconsistencies"
+      },
+      "is_bug_point": true,
+      "bug_description": "Report generated with outdated information due to prior state inconsistency"
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 8,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 6,
+      "relationship_type": "state_dependency",
+      "description": "State inconsistency affects subsequent data synthesis"
+    },
+    {
+      "source_step": 6,
+      "target_step": 8,
+      "relationship_type": "output_dependency",
+      "description": "Final report generation impacted by previous inconsistencies"
+    }
+  ],
+  "created_at": "2026-01-04T09:14:30.490082"
+}

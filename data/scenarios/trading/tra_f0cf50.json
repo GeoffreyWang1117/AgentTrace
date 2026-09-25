@@ -1,0 +1,187 @@
+{
+  "scenario_id": "tra_f0cf50",
+  "domain": "trading",
+  "complexity": "complex",
+  "bug_type": "logic_error",
+  "task_description": "The agents need to collaborate to analyze market data, make informed trading decisions, execute trades, and verify transactions while ensuring data consistency and timely execution.",
+  "expected_outcome": "The agents successfully analyze market data, make optimal trading decisions, execute trades in a timely manner, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "fetch_market_data",
+        "update_data_stream"
+      ],
+      "description": "This agent collects and updates live market data from various sources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "generate_trading_signal"
+      ],
+      "description": "This agent analyzes the market data and generates trading signals based on predefined strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Decision Maker",
+      "capabilities": [
+        "evaluate_signals",
+        "make_trading_decision"
+      ],
+      "description": "This agent evaluates trading signals and makes final trading decisions."
+    },
+    {
+      "id": "agent_4",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_order",
+        "confirm_execution"
+      ],
+      "description": "This agent executes the trades and confirms their execution in the market."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "update_portfolio"
+      ],
+      "description": "This agent tracks the current positions and updates the portfolio based on executed trades."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "data": "live_market_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_signal",
+      "content": {
+        "signal": "buy_signal"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_order",
+      "content": {
+        "order": "buy_order"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_trade",
+      "content": {
+        "confirmation": "order_executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "updated_portfolio"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "data": "live_market_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_signal",
+      "content": {
+        "signal": "buy_signal"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_order",
+      "content": {
+        "order": "incorrect_order"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly interprets the signal and sends an incorrect trading order."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_trade",
+      "content": {
+        "confirmation": "order_executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "inconsistent_portfolio"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted order data flows from agent_3 to agent_4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_inconsistency",
+      "description": "The incorrect order execution results in an inconsistent position update."
+    }
+  ],
+  "created_at": "2026-01-04T09:12:52.902761"
+}

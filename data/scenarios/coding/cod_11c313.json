@@ -1,0 +1,206 @@
+{
+  "scenario_id": "cod_11c313",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "timeout_cascade",
+  "task_description": "The agents need to collaboratively develop a feature for a software application. This involves writing code according to specified requirements, reviewing the code for quality and adherence to standards, testing the code for functionality, and finally integrating the code into the main codebase.",
+  "expected_outcome": "If all steps are executed correctly, the new feature should be successfully implemented, reviewed, tested, and integrated without any issues, resulting in a working addition to the software application.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "document_specifications"
+      ],
+      "description": "This agent gathers and documents the requirements for the new feature."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_code"
+      ],
+      "description": "This agent writes code based on the requirements provided."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "suggest_improvements"
+      ],
+      "description": "This agent reviews the code for quality and adherence to standards."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "This agent tests the code for functionality and reports any bugs found."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Specialist",
+      "capabilities": [
+        "integrate_code",
+        "resolve_conflicts"
+      ],
+      "description": "This agent is responsible for integrating the code into the main codebase and resolving any conflicts that arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_requirements",
+      "content": {
+        "requirements": "Implement a new authentication feature"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "code": "new_auth_feature_code"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_code",
+      "content": {
+        "code_version": "v1.0",
+        "approval_status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "test_code",
+      "content": {
+        "code_version": "v1.0",
+        "test_results": "all_passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "integrate_code",
+      "content": {
+        "code_version": "v1.0",
+        "integration_status": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_integration",
+      "content": {
+        "integration_status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_requirements",
+      "content": {
+        "requirements": "Implement a new authentication feature"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "code": "new_auth_feature_code"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_code",
+      "content": {
+        "code_version": "v1.0",
+        "approval_status": "approved"
+      },
+      "is_bug_point": true,
+      "bug_description": "Code review step encounters a timeout, causing delayed confirmation to the Tester."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "test_code",
+      "content": {
+        "code_version": "v1.0",
+        "test_results": "timeout"
+      },
+      "is_bug_point": true,
+      "bug_description": "Tester receives delayed confirmation and tests an incorrect or outdated code version."
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "integrate_code",
+      "content": {
+        "code_version": "v1.0",
+        "integration_status": "conflict"
+      },
+      "is_bug_point": true,
+      "bug_description": "Integration fails due to testing an incorrect version resulting from the timeout cascade."
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Delayed approval causes Tester to proceed with an incorrect version."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Incorrect test results cause incorrect integration attempt."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:10.486253"
+}

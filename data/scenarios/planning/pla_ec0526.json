@@ -1,0 +1,275 @@
+{
+  "scenario_id": "pla_ec0526",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "timeout_cascade",
+  "task_description": "The agents need to collaboratively plan and execute the construction of a small housing community. This involves breaking down tasks such as site preparation, resource gathering, construction, and inspection into manageable subtasks, allocating the necessary resources, handling dependencies, and coordinating execution to ensure successful completion.",
+  "expected_outcome": "The agents should work together seamlessly to complete the construction project on schedule, with all dependencies managed correctly, no resource conflicts, and all communication about plan updates properly propagated.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Site Preparation Leader",
+      "capabilities": [
+        "Terrain Analysis",
+        "Clearing Planning",
+        "Resource Allocation"
+      ],
+      "description": "Responsible for analyzing the site, planning the clearing tasks, and ensuring that the necessary resources are allocated."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "Materials Procurement",
+        "Resource Scheduling"
+      ],
+      "description": "Handles procurement of materials and scheduling resources to ensure they are available when needed for construction tasks."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Supervisor",
+      "capabilities": [
+        "Task Coordination",
+        "Execution Monitoring"
+      ],
+      "description": "Coordinates construction tasks, monitors progress, and ensures that the construction is executed according to plan."
+    },
+    {
+      "id": "agent_4",
+      "role": "Inspector",
+      "capabilities": [
+        "Quality Assurance",
+        "Safety Checks"
+      ],
+      "description": "Performs quality assurance and safety checks once the construction tasks are completed."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_resources",
+      "content": {
+        "materials": "concrete",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_resources",
+      "content": {
+        "materials": "concrete",
+        "quantity": 100,
+        "availability": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "site_ready",
+      "content": {
+        "site_section": "A",
+        "status": "clear"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_resources",
+      "content": {
+        "materials": "steel beams",
+        "quantity": 50
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_additional_resources",
+      "content": {
+        "materials": "steel beams",
+        "quantity": 50,
+        "availability": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "construction_progress",
+      "content": {
+        "section": "A",
+        "progress": "50%"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "request_inspection",
+      "content": {
+        "section": "A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "inspection_complete",
+      "content": {
+        "section": "A",
+        "status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_resources",
+      "content": {
+        "materials": "concrete",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_resources",
+      "content": {
+        "materials": "concrete",
+        "quantity": 100,
+        "availability": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "site_ready",
+      "content": {
+        "site_section": "A",
+        "status": "clear"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 1 experiences a timeout while attempting to notify Agent 3, causing the message to be delayed."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_resources",
+      "content": {
+        "materials": "steel beams",
+        "quantity": 50
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_additional_resources",
+      "content": {
+        "materials": "steel beams",
+        "quantity": 50,
+        "availability": "delayed"
+      },
+      "is_bug_point": true,
+      "bug_description": "The timeout cascade affects this step as Agent 2 does not receive the request in time to confirm availability, causing a delay."
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "construction_progress",
+      "content": {
+        "section": "A",
+        "progress": "stalled"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 reports stalled progress due to lack of resources stemming from previous delays."
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "request_inspection",
+      "content": {
+        "section": "A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "inspection_complete",
+      "content": {
+        "section": "A",
+        "status": "pending"
+      },
+      "is_bug_point": true,
+      "bug_description": "Inspection is delayed as the construction is not completed on schedule."
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The timeout in step 3 delays the site readiness information, causing a cascading effect on resource requests."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "resource_dependency",
+      "description": "Agent 3's delayed request in step 4 affects resource confirmation in step 5."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "resource_flow",
+      "description": "The delayed confirmation in step 5 leads to a stalled progress report in step 6."
+    },
+    {
+      "source_step": 6,
+      "target_step": 8,
+      "relationship_type": "task_dependency",
+      "description": "The stalled progress in step 6 results in delayed inspection completion in step 8."
+    }
+  ],
+  "created_at": "2026-01-04T09:09:58.985604"
+}

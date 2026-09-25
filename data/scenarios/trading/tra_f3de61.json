@@ -1,0 +1,250 @@
+{
+  "scenario_id": "tra_f3de61",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "wrong_routing",
+  "task_description": "In this scenario, agents collaborate to process market data, make trading decisions, and execute transactions. The goal is to assess market conditions, decide on trades, and ensure accurate transaction processing while handling any errors or inconsistencies in the data flow.",
+  "expected_outcome": "Agents successfully analyze market data, make informed trading decisions, and execute transactions without any data routing errors or inconsistencies in position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "fetch_market_data",
+        "filter_data_noise"
+      ],
+      "description": "Collects and cleans market data from various sources to ensure up-to-date and accurate information."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Strategy Analyst",
+      "capabilities": [
+        "analyze_data",
+        "generate_trade_signals"
+      ],
+      "description": "Analyzes the cleaned market data to generate trading signals based on predefined strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_orders",
+        "verify_execution"
+      ],
+      "description": "Executes trade orders based on signals and verifies successful execution with the market."
+    },
+    {
+      "id": "agent_4",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "generate_reports"
+      ],
+      "description": "Keeps track of all executed trades and current positions, generating reports for the team."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_cleaned_data",
+      "content": {
+        "data": "cleaned_market_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "signal": "buy_AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "report_execution",
+      "content": {
+        "order_id": "123",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "acknowledge_position",
+      "content": {
+        "order_id": "123",
+        "position": "long_AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "data_type": "market_trends"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_data",
+      "content": {
+        "data": "latest_market_trends"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "adjust_trade_signal",
+      "content": {
+        "signal": "sell_AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order",
+      "content": {
+        "order_id": "124",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_cleaned_data",
+      "content": {
+        "data": "cleaned_market_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "signal": "buy_AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_execution",
+      "content": {
+        "order_id": "123",
+        "status": "executed"
+      },
+      "is_bug_point": true,
+      "bug_description": "The execution report is incorrectly routed back to agent_1 instead of agent_4."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "forward_report",
+      "content": {
+        "order_id": "123",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "acknowledge_position",
+      "content": {
+        "order_id": "123",
+        "position": "long_AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "data_type": "market_trends"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_data",
+      "content": {
+        "data": "latest_market_trends"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "adjust_trade_signal",
+      "content": {
+        "signal": "sell_AAPL"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The execution report is sent to the wrong agent, causing a delay in processing by agent_4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_processing",
+      "description": "Agent_1 forwards the report to agent_4, but the delay causes a temporary inconsistency in position tracking."
+    }
+  ],
+  "created_at": "2026-01-03T22:46:14.601406"
+}

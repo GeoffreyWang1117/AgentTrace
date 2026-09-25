@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_2a8886",
+  "trace_id": "cod_2a8886",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The logic error in test results affects the integration process."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The erroneous integration leads to a failed verification."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The Tester makes an incorrect decision based on the input test data.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

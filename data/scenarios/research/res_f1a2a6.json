@@ -1,0 +1,244 @@
+{
+  "scenario_id": "res_f1a2a6",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "state_inconsistency",
+  "task_description": "Four agents collaborate to gather information from various digital libraries and databases, synthesize the data into a coherent synthesis, and produce a comprehensive research report on the impact of AI in healthcare. They need to ensure the information is accurate, well-attributed, and consistent across all sections.",
+  "expected_outcome": "Agents successfully compile a detailed research report with consistent data, correctly attributed sources, and a reconciled viewpoint on the topic, ready for publication.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_database",
+        "retrieve_data"
+      ],
+      "description": "This agent is responsible for searching and collecting data from different digital libraries."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "detect_conflicts"
+      ],
+      "description": "This agent analyzes the data collected by agent_1 and identifies any conflicting information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Synthesis Agent",
+      "capabilities": [
+        "synthesize_information",
+        "draft_report"
+      ],
+      "description": "This agent synthesizes the analyzed data and begins drafting the initial version of the research report."
+    },
+    {
+      "id": "agent_4",
+      "role": "Editor",
+      "capabilities": [
+        "review_draft",
+        "correct_errors"
+      ],
+      "description": "This agent reviews the draft report, corrects errors, and ensures the report is ready for publication."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_collected_data",
+      "content": {
+        "data": "raw_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analyzed_data",
+      "content": {
+        "data": "analyzed_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_draft_report",
+      "content": {
+        "report": "draft_report_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_corrections",
+      "content": {
+        "feedback": "corrections_needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_corrected_report",
+      "content": {
+        "report": "corrected_report_v2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "verify_data",
+      "content": {
+        "data": "verified_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_attribution",
+      "content": {
+        "sources": "confirmed_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "final_report_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_collected_data",
+      "content": {
+        "data": "raw_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analyzed_data",
+      "content": {
+        "data": "analyzed_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_draft_report",
+      "content": {
+        "report": "draft_report_v1"
+      },
+      "is_bug_point": true,
+      "bug_description": "State inconsistency: draft_report_v1 contains outdated data due to missed synchronization with agent_2."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_corrections",
+      "content": {
+        "feedback": "corrections_needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_corrected_report",
+      "content": {
+        "report": "corrected_report_v2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "verify_data",
+      "content": {
+        "data": "verified_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_attribution",
+      "content": {
+        "sources": "confirmed_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "final_report_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing inconsistencies in the corrections."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "feedback_loop",
+      "description": "Agent 4's corrections are based on outdated information, leading to an incorrect corrected report."
+    }
+  ],
+  "created_at": "2026-01-03T22:43:23.697235"
+}

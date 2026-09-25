@@ -1,0 +1,72 @@
+{
+  "original_distribution": {
+    "hit_at_1": 94.9090909090909,
+    "hit_at_3": 98.36363636363636,
+    "hit_at_5": 99.81818181818181,
+    "mrr": 0.9677878787878788,
+    "total": 550,
+    "first_node_accuracy": 2.181818181818182
+  },
+  "cross_domain": {
+    "coding": {
+      "hit_at_1": 94.23076923076923,
+      "total": 52,
+      "hits": 49
+    },
+    "customer_service": {
+      "hit_at_1": 92.15686274509804,
+      "total": 51,
+      "hits": 47
+    },
+    "devops": {
+      "hit_at_1": 98.33333333333333,
+      "total": 60,
+      "hits": 59
+    },
+    "education": {
+      "hit_at_1": 93.33333333333333,
+      "total": 60,
+      "hits": 56
+    },
+    "finance": {
+      "hit_at_1": 96.66666666666667,
+      "total": 60,
+      "hits": 58
+    },
+    "healthcare": {
+      "hit_at_1": 95.0,
+      "total": 60,
+      "hits": 57
+    },
+    "legal": {
+      "hit_at_1": 100.0,
+      "total": 60,
+      "hits": 60
+    },
+    "planning": {
+      "hit_at_1": 91.30434782608695,
+      "total": 46,
+      "hits": 42
+    },
+    "research": {
+      "hit_at_1": 96.07843137254902,
+      "total": 51,
+      "hits": 49
+    },
+    "trading": {
+      "hit_at_1": 90.0,
+      "total": 50,
+      "hits": 45
+    }
+  },
+  "uniform_distribution": {
+    "uniform_accuracy": 50.0,
+    "by_position": {
+      "early": 100.0,
+      "middle": 50.0,
+      "late": 0.0
+    },
+    "first_node_accuracy": 0.0,
+    "sample_size": 6
+  }
+}

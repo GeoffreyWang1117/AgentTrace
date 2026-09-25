@@ -1,0 +1,127 @@
+{
+  "scenario_id": "pla_c0fdc8",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents work together to construct a robotic assembly line. The task involves planning the placement of machinery, allocating power and network resources, programming workflows, and ensuring all dependencies are managed.",
+  "expected_outcome": "Agents successfully construct the assembly line with all machinery operational, resources optimally allocated, and workflows synchronized.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "dependency_management"
+      ],
+      "description": "Agent 1 breaks down the complex task into manageable subtasks and manages dependencies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Allocator",
+      "capabilities": [
+        "resource_management",
+        "conflict_resolution"
+      ],
+      "description": "Agent 2 allocates resources such as power and network bandwidth to each subtask."
+    },
+    {
+      "id": "agent_3",
+      "role": "Coordinator",
+      "capabilities": [
+        "execution_scheduling",
+        "plan_update_propagation"
+      ],
+      "description": "Agent 3 coordinates the execution of tasks and ensures all updates are propagated to every relevant agent."
+    },
+    {
+      "id": "agent_4",
+      "role": "Execution Monitor",
+      "capabilities": [
+        "task_execution",
+        "error_detection"
+      ],
+      "description": "Agent 4 executes the tasks and monitors for errors or deviations from the plan."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "allocate_subtasks",
+      "content": {
+        "subtasks": [
+          "machinery_placement",
+          "power_distribution"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resource_allocation": {
+          "machinery_placement": "network_bandwidth"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "schedule_execution",
+      "content": {
+        "schedule": "machinery_placement_t1"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "report_execution_status",
+      "content": {
+        "status": "partial_success"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_resources",
+      "content": {
+        "additional_requirements": "power_increase"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_resource_allocation",
+      "content": {
+        "new_allocation": {
+          "machinery_placement": "power"
+        }
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies_satisfied",
+      "content": {
+        "dependencies": "partially_satisfied"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "finalize_plan",
+      "content": {
+        "final_plan": "execute_with_issues"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:10:16.791122"
+}

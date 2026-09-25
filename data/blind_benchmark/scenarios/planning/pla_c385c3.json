@@ -1,0 +1,123 @@
+{
+  "scenario_id": "pla_c385c3",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to orchestrate the setup of a community garden. This involves breaking down the task into subtasks such as soil preparation, seed planting, watering setup, and scheduling maintenance. Agents must allocate resources like tools, seeds, and water, and assign responsibilities for each subtask. They need to coordinate to ensure dependencies, such as soil preparation being completed before seed planting, are respected, and update the plan as needed.",
+  "expected_outcome": "If everything works correctly, the garden is set up efficiently with all tasks completed in the correct order, resources are optimally used without conflict, and all agents are aware of changes to the plan in real-time.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Coordinator",
+      "capabilities": [
+        "task_decomposition",
+        "resource_allocation"
+      ],
+      "description": "This agent breaks down the main goal into subtasks and allocates resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Soil Specialist",
+      "capabilities": [
+        "soil_analysis",
+        "soil_preparation"
+      ],
+      "description": "This agent handles tasks related to soil preparation and analysis."
+    },
+    {
+      "id": "agent_3",
+      "role": "Planting Specialist",
+      "capabilities": [
+        "seed_selection",
+        "planting"
+      ],
+      "description": "Responsible for selecting the right seeds and planting them."
+    },
+    {
+      "id": "agent_4",
+      "role": "Maintenance Manager",
+      "capabilities": [
+        "watering_system_setup",
+        "schedule_maintenance"
+      ],
+      "description": "Sets up the watering system and schedules ongoing maintenance."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "assign_task",
+      "content": {
+        "task": "soil_preparation"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_completion",
+      "content": {
+        "task": "soil_preparation",
+        "status": "completed"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "assign_task",
+      "content": {
+        "task": "seed_planting"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_resource",
+      "content": {
+        "resource": "seeds"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "assign_task",
+      "content": {
+        "task": "watering_setup"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_completion",
+      "content": {
+        "task": "watering_setup",
+        "status": "completed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "assign_task",
+      "content": {
+        "task": "schedule_maintenance"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_completion",
+      "content": {
+        "task": "schedule_maintenance",
+        "status": "completed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:50.212407"
+}

@@ -1,0 +1,186 @@
+{
+  "scenario_id": "cus_8db7db",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "Agents collaborate to handle customer inquiries, escalate complex issues if needed, and ensure tickets are tracked and resolved efficiently.",
+  "expected_outcome": "Customer inquiries are handled efficiently, complex issues are escalated correctly, and ticket statuses are kept synchronized without losing context.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Representative",
+      "capabilities": [
+        "respond to inquiries",
+        "create tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Specialist",
+      "capabilities": [
+        "analyze issues",
+        "escalate tickets"
+      ],
+      "description": "Handles technical inquiries and escalates complex issues to management."
+    },
+    {
+      "id": "agent_3",
+      "role": "Support Manager",
+      "capabilities": [
+        "resolve escalated issues",
+        "update ticket status"
+      ],
+      "description": "Oversees escalated issues, resolves them, and ensures ticket status is updated."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "customer_context": "Issue with product installation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "customer_context": "Issue with product installation, requires manager's approval"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "Approved installation workaround"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "Resolved",
+        "resolution": "Approved installation workaround"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": null,
+      "action": "notify_customer",
+      "content": {
+        "ticket_id": "123",
+        "message": "Your issue has been resolved with the approved workaround."
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "customer_context": "Issue with product installation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123"
+      },
+      "is_bug_point": true,
+      "bug_description": "The customer context ('Issue with product installation, requires manager's approval') is not passed to the manager."
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "Approved generic workaround"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "Resolved",
+        "resolution": "Approved generic workaround"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": null,
+      "action": "notify_customer",
+      "content": {
+        "ticket_id": "123",
+        "message": "Your issue has been resolved with the approved generic workaround, though it may not fully address your installation concern."
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 2,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 2,
+      "target_step": 3,
+      "relationship_type": "data_flow",
+      "description": "Missing customer context means the manager provides a generic workaround instead of a specific resolution."
+    },
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Resolution without specific context is passed back to the technical specialist."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "communication",
+      "description": "Customer is notified with incomplete resolution information, leading to potential dissatisfaction."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:26.617893"
+}

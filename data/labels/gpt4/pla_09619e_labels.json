@@ -1,0 +1,29 @@
+{
+  "scenario_id": "pla_09619e",
+  "trace_id": "pla_09619e",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted budget data causes design adjustments by agent_1 to be based on incorrect budget assumptions."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Agent_4 verifies compliance based on outdated design, leading to undetected discrepancies."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Budget approval status becomes inconsistent between agent_2 and agent_1, leading to discrepancies in planning.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_25274a",
+  "trace_id": "cod_25274a",
+  "causal_edges": [
+    {
+      "source_node_id": "step_2",
+      "target_node_id": "step_3",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The missing context in step 2 led to incorrect testing procedures in step 3."
+    },
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The lack of context affected the bug resolution process in step 4."
+    }
+  ],
+  "root_cause_node_id": "step_2",
+  "root_cause_explanation": "The reviewer did not provide important context about certain edge cases to the tester.",
+  "error_propagation_path": [
+    "step_2",
+    "step_3",
+    "step_3"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

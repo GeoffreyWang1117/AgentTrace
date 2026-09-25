@@ -1,0 +1,120 @@
+{
+  "scenario_id": "res_444aff",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "Four agents collaboratively work to gather information from multiple online sources about the impact of climate change on arctic wildlife. They must synthesize the findings and generate a comprehensive research report attributing each piece of information to its source.",
+  "expected_outcome": "If everything works correctly, the agents will produce a well-structured research report with accurate and consistent information, properly reconciled conflicting data, and correct source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_online_sources",
+        "filter_relevant_data"
+      ],
+      "description": "This agent searches online databases and websites to gather raw data related to climate change effects on arctic wildlife."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "identify_conflicts"
+      ],
+      "description": "This agent analyzes the collected data, identifies conflicts, and marks them for further review."
+    },
+    {
+      "id": "agent_3",
+      "role": "Reconciler",
+      "capabilities": [
+        "reconcile_conflicts",
+        "validate_information"
+      ],
+      "description": "This agent attempts to reconcile conflicting information and validates the sources of the data."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "ensure_source_attribution"
+      ],
+      "description": "This agent synthesizes the validated information and generates the final research report with accurate source attribution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "data_transfer",
+      "content": {
+        "raw_data": "climate_change_arctic"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analyzed_data": "analyzed_climate_data"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_reconciliation",
+      "content": {
+        "conflict_data": "conflicting_sources"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_reconciled_data",
+      "content": {
+        "reconciled_data": "incomplete_validated_data"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_validation",
+      "content": {
+        "draft_report": "incomplete_draft"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "validate_report",
+      "content": {
+        "validated_report": "validated_report_missing_sources"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "finalize_report",
+      "content": {
+        "final_report": "incomplete_research_report"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_summary",
+      "content": {
+        "summary": "partial_summary_of_findings"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:14:14.272668"
+}

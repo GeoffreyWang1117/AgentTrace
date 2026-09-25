@@ -1,0 +1,21 @@
+{
+  "scenario_id": "res_6fe324",
+  "trace_id": "res_6fe324",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from Agent 3 to Agent 4, leading to errors in the final report."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Data corruption occurs during the transfer, altering climate insights.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

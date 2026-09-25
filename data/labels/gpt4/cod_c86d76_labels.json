@@ -1,0 +1,21 @@
+{
+  "scenario_id": "cod_c86d76",
+  "trace_id": "cod_c86d76",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 resulting in the test agent detecting unexpected output format."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The code produces output in an unexpected format, which isn't caught initially.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_ac5447",
+  "trace_id": "cus_ac5447",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4, missing the recent router reset information."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Step 4 fails to pass complete context to step 5, affecting resolution accuracy."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Important context about the recent router reset is not passed to the downstream agent.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,132 @@
+{
+  "scenario_id": "cus_d305db",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively handle a customer service inquiry, manage the escalation and resolution process for a complex issue, and ensure the ticket is tracked and closed correctly. The process involves receiving an inquiry, analyzing its complexity, escalating it if necessary, and synchronizing ticket status changes across agents.",
+  "expected_outcome": "The customer inquiry should be handled efficiently with accurate ticket status updates. If escalated, the complex issue should be resolved and the ticket should be closed without any state inconsistency.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "receive_inquiries",
+        "provide_basic_support",
+        "create_tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates tickets for unresolved issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "analyze_issues",
+        "escalate_tickets",
+        "resolve_technical_problems"
+      ],
+      "description": "Analyzes technical aspects of customer issues and escalates or resolves them."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Manager",
+      "capabilities": [
+        "prioritize_tickets",
+        "manage_escalations",
+        "coordinate_with_teams"
+      ],
+      "description": "Manages the escalation process and coordinates with relevant teams for issue resolution."
+    },
+    {
+      "id": "agent_4",
+      "role": "System Auditor",
+      "capabilities": [
+        "track_ticket_status",
+        "synchronize_data",
+        "audit_ticket_closures"
+      ],
+      "description": "Ensures ticket status is synchronized across systems and audits the closure process."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "issue_description": "Login problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "severity": "high"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synchronize_ticket_status",
+      "content": {
+        "ticket_id": "1234",
+        "status": "escalated"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "resolution": "Reset password instructions sent"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "notify_customer",
+      "content": {
+        "ticket_id": "1234",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "final_status": "resolved"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "audit_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "audit_status": "incomplete"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "finalize_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "final_status": "closed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:48.238740"
+}

@@ -1,0 +1,362 @@
+{
+  "scenario_id": "pla_c69a42",
+  "domain": "planning",
+  "complexity": "complex",
+  "bug_type": "invalid_output",
+  "task_description": "In a logistics company, five software agents collaborate to optimize the delivery of goods from a central warehouse to various distribution centers. The agents must break down the complex goal of delivery into subtasks such as inventory management, route planning, vehicle assignment, and scheduling. They must allocate resources efficiently, ensure that tasks are completed in a timely manner, and handle dependencies such as vehicle availability and route optimization.",
+  "expected_outcome": "All goods are delivered to their respective distribution centers on time, with optimal resource usage and coordination among agents.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Inventory Manager",
+      "capabilities": [
+        "track_inventory",
+        "request_items",
+        "reserve_items"
+      ],
+      "description": "Manages the warehouse inventory and ensures the availability of items for dispatch."
+    },
+    {
+      "id": "agent_2",
+      "role": "Route Planner",
+      "capabilities": [
+        "calculate_routes",
+        "optimize_paths",
+        "update_traffic_data"
+      ],
+      "description": "Plans and optimizes delivery routes based on current traffic conditions and distance."
+    },
+    {
+      "id": "agent_3",
+      "role": "Vehicle Coordinator",
+      "capabilities": [
+        "assign_vehicles",
+        "check_availability",
+        "maintain_schedules"
+      ],
+      "description": "Assigns available vehicles to delivery routes and ensures they are ready for dispatch."
+    },
+    {
+      "id": "agent_4",
+      "role": "Dispatcher",
+      "capabilities": [
+        "schedule_deliveries",
+        "coordinate_agents",
+        "dispatch_vehicles"
+      ],
+      "description": "Coordinates delivery schedules and ensures that all activities are synchronized across agents."
+    },
+    {
+      "id": "agent_5",
+      "role": "Feedback Collector",
+      "capabilities": [
+        "collect_feedback",
+        "analyze_delivery_performance",
+        "report_issues"
+      ],
+      "description": "Collects feedback from distribution centers and analyzes delivery performance for future improvements."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_route_plan",
+      "content": {
+        "items": [
+          "item1",
+          "item2"
+        ],
+        "destination": "center_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_route_details",
+      "content": {
+        "route": "optimized_route_1",
+        "eta": "2 hours"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_vehicle_assignment",
+      "content": {
+        "vehicle_id": "V123",
+        "route": "optimized_route_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "dispatch_notification",
+      "content": {
+        "dispatch_time": "10:00 AM",
+        "vehicle_id": "V123"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "request_performance_data",
+      "content": {
+        "delivery_result": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "relay_feedback",
+      "content": {
+        "feedback": "positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "route_performance_report",
+      "content": {
+        "performance": "optimal"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_route_strategies",
+      "content": {
+        "new_strategy": "strategy_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "performance_summary",
+      "content": {
+        "summary": "all_tasks_completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "finalize_feedback",
+      "content": {
+        "final_feedback": "all_good"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "verify_inventory_status",
+      "content": {
+        "status": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_vehicle_return",
+      "content": {
+        "vehicle_id": "V123",
+        "return_status": "on_time"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_route_plan",
+      "content": {
+        "items": [
+          "item1",
+          "item2"
+        ],
+        "destination": "center_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_route_details",
+      "content": {
+        "route": "optimized_route_1",
+        "eta": "2 hours"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_vehicle_assignment",
+      "content": {
+        "vehicle_id": 123,
+        "route": "optimized_route_1"
+      },
+      "is_bug_point": true,
+      "bug_description": "The vehicle ID was provided as a number instead of the expected string format."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "dispatch_notification",
+      "content": {
+        "dispatch_time": "10:00 AM",
+        "vehicle_id": "123"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "request_performance_data",
+      "content": {
+        "delivery_result": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "relay_feedback",
+      "content": {
+        "feedback": "positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "route_performance_report",
+      "content": {
+        "performance": "optimal"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_route_strategies",
+      "content": {
+        "new_strategy": "strategy_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "performance_summary",
+      "content": {
+        "summary": "all_tasks_completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "finalize_feedback",
+      "content": {
+        "final_feedback": "vehicle_id_error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "verify_inventory_status",
+      "content": {
+        "status": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_vehicle_return",
+      "content": {
+        "vehicle_id": "123",
+        "return_status": "error_reported"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Invalid vehicle ID format is propagated causing confusion in performance data request"
+    }
+  ],
+  "created_at": "2026-01-04T09:10:18.308110"
+}

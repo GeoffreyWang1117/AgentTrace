@@ -1,0 +1,37 @@
+{
+  "scenario_id": "tra_9b4fc0",
+  "trace_id": "tra_9b4fc0",
+  "causal_edges": [
+    {
+      "source_node_id": "step_2",
+      "target_node_id": "step_3",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The incorrect sell order decision affects the execution of the trade."
+    },
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The execution of the sell order leads to an incorrect position update."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "verification",
+      "confidence": 1.0,
+      "explanation": "The incorrect position is verified, confirming the logic error propagation."
+    }
+  ],
+  "root_cause_node_id": "step_2",
+  "root_cause_explanation": "Agent 2 made an incorrect trading decision based on the bullish trend by sending a sell order instead of a buy order.",
+  "error_propagation_path": [
+    "step_2",
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

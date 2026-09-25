@@ -1,0 +1,45 @@
+{
+  "scenario_id": "cod_1bc70f",
+  "trace_id": "cod_1bc70f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Code with a race condition is passed to the tester, but the issue is not detected due to limited test scenarios."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "lack_of_detection",
+      "confidence": 1.0,
+      "explanation": "Race condition is not reported, allowing the issue to propagate undetected."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "integration_flow",
+      "confidence": 1.0,
+      "explanation": "Faulty code is integrated, where the race condition remains latent."
+    },
+    {
+      "source_node_id": "step_9",
+      "target_node_id": "step_10",
+      "relationship_type": "trigger_event",
+      "confidence": 1.0,
+      "explanation": "During testing of the new version, concurrent operations trigger the race condition, leading to a crash."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Submission contains a race condition due to unsynchronized access to shared resources.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_9",
+    "step_10"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

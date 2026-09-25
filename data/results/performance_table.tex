@@ -1,0 +1,35 @@
+
+\begin{table}[t]
+\centering
+\caption{AgentTrace Runtime Performance}
+\label{tab:performance}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Graph Size} & \textbf{Load Time (ms)} & \textbf{Trace Time (ms)} & \textbf{Count} \\
+\midrule
+1-5 nodes & 0.06 & 0.00 & 83 \\
+6-10 nodes & 0.09 & 0.00 & 119 \\
+11+ nodes & 0.14 & 0.00 & 48 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Scalability Analysis (Synthetic Graphs)}
+\label{tab:scalability}
+\begin{tabular}{rcccc}
+\toprule
+\textbf{Nodes} & \textbf{Serialize (ms)} & \textbf{Deserialize (ms)} & \textbf{Trace (ms)} \\
+\midrule
+10 & 0.18 & 0.14 & 0.01 \\
+50 & 0.35 & 0.44 & 0.03 \\
+100 & 0.70 & 1.03 & 0.06 \\
+200 & 1.47 & 2.50 & 0.12 \\
+500 & 4.03 & 6.73 & 0.88 \\
+1000 & 11.49 & 10.81 & 1.46 \\
+
+\bottomrule
+\end{tabular}
+\end{table}

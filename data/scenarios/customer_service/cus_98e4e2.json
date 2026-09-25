@@ -1,0 +1,183 @@
+{
+  "scenario_id": "cus_98e4e2",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "bug_type": "data_corruption",
+  "task_description": "Agents collaborate to handle customer inquiries, escalate complex issues, and track and resolve tickets ensuring seamless handoffs and synchronized ticket statuses.",
+  "expected_outcome": "Customer inquiries are handled efficiently, complex issues are escalated appropriately, and all ticket statuses are accurately synchronized without loss of data or duplicate/conflicting responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "Gather customer inquiries",
+        "Provide basic responses"
+      ],
+      "description": "Handles initial customer inquiries and provides basic information or solutions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "Analyze technical issues",
+        "Escalate to advanced support"
+      ],
+      "description": "Deals with technical issues that require deeper analysis and escalates them when necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Manager",
+      "capabilities": [
+        "Track ticket statuses",
+        "Ensure data synchronization"
+      ],
+      "description": "Maintains ticket status updates and ensures that all agents have the latest information."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_ticket",
+      "content": {
+        "ticket_id": "123",
+        "customer_query": "Cannot access account",
+        "priority": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_severity": "requires advanced support"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "under_review"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "under_review"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "finalize_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "Issue resolved",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_ticket",
+      "content": {
+        "ticket_id": "123",
+        "customer_query": "Cannot access account",
+        "priority": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_severity": "requires advanced support"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "under_rview"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurred, modifying 'under_review' to 'under_rview' during status update."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "under_rview"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "finalize_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "Issue resolved",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing the incorrect status to be confirmed."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The incorrect status from step 4 leads to a potentially unresolved ticket in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:39.539792"
+}

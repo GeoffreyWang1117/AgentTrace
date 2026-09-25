@@ -1,0 +1,37 @@
+{
+  "scenario_id": "pla_8f0d0d",
+  "trace_id": "pla_8f0d0d",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The incorrect date flows from Step 3 to Step 4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_6",
+      "relationship_type": "task_dependency",
+      "confidence": 1.0,
+      "explanation": "Catering confirmations are based on the incorrect date provided in Step 4."
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_8",
+      "relationship_type": "state_dependency",
+      "confidence": 1.0,
+      "explanation": "The incorrect catering date causes a mismatch in the final summary in Step 8."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 1 incorrectly communicates the event date to Agent 2 due to a state inconsistency.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_6",
+    "step_8"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

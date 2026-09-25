@@ -1,0 +1,61 @@
+{
+  "scenario_id": "cus_2f3646",
+  "trace_id": "cus_2f3646",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted ticket ID 'TIK123' used in step 5"
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted ticket ID 'TIK123' used in step 6"
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_7",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted ticket ID 'TIK123' used in step 7"
+    },
+    {
+      "source_node_id": "step_7",
+      "target_node_id": "step_8",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted ticket ID 'TIK123' used in step 8"
+    },
+    {
+      "source_node_id": "step_8",
+      "target_node_id": "step_9",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted ticket ID 'TIK123' used in step 9, causing closure of the wrong ticket"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Ticket ID gets corrupted from 'TICK123' to 'TIK123'",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_6",
+    "step_7",
+    "step_8",
+    "step_9"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

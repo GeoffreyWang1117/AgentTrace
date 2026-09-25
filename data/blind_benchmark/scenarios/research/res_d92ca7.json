@@ -1,0 +1,120 @@
+{
+  "scenario_id": "res_d92ca7",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "Agents collaborate to gather information from various sources, synthesize the data, and produce a cohesive research report on the impact of renewable energy adoption. The agents must ensure data integrity and proper attribution across the process.",
+  "expected_outcome": "Agents successfully gather accurate and comprehensive information, reconcile any conflicting data, and produce a detailed and correctly attributed research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Information Gatherer",
+      "capabilities": [
+        "search_database",
+        "extract_data"
+      ],
+      "description": "Responsible for searching and collecting data from academic databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "validate_data",
+        "check_conflicts"
+      ],
+      "description": "Ensures that the data collected is accurate and checks for any conflicting information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "reconcile_conflicts"
+      ],
+      "description": "Combines validated data into a coherent structure and resolves any remaining discrepancies."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "attribute_sources"
+      ],
+      "description": "Produces the final research report and ensures source attribution is correct."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data_chunk": "renewable_energy_studies"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "forward_validated_data",
+      "content": {
+        "validated_data_chunk": "verified_studies"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_conflict_resolution",
+      "content": {
+        "conflicting_data_chunk": "conflict_studies"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "send_unresolved_conflict_data",
+      "content": {
+        "unresolved_data_chunk": "unresolved_conflict_studies"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_conflict_resolved_data",
+      "content": {
+        "resolved_data_chunk": "resolved_conflict_studies"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_and_transfer",
+      "content": {
+        "synthesized_data": "incomplete_synthesis"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "verify_source_attribution",
+      "content": {
+        "attribution_data": "source_list_incomplete"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "confirm_attribution",
+      "content": {
+        "confirmation_status": "unconfirmed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:14:12.588385"
+}

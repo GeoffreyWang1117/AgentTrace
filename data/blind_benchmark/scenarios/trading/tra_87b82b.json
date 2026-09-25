@@ -1,0 +1,103 @@
+{
+  "scenario_id": "tra_87b82b",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "Agents must collaborate to analyze dynamic market data, make informed trading decisions, execute trades, and verify transaction integrity while handling possible race conditions.",
+  "expected_outcome": "Agents should analyze market data in real-time, make precise trading decisions, execute trades without delays, and maintain consistent portfolio positions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "This agent collects and analyzes market data, identifying trends and providing insights to other agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "evaluate_strategy",
+        "generate_trade_signals"
+      ],
+      "description": "This agent evaluates trading strategies based on market analysis and generates trade signals."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "send_orders",
+        "monitor_execution"
+      ],
+      "description": "This agent sends trade orders to the market and monitors their execution status."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_transactions",
+        "log_activity"
+      ],
+      "description": "This agent verifies that transactions are completed and logs them for auditing."
+    },
+    {
+      "id": "agent_5",
+      "role": "Portfolio Manager",
+      "capabilities": [
+        "track_positions",
+        "report_portfolio_status"
+      ],
+      "description": "This agent tracks portfolio positions and reports on their status, ensuring consistency with executed trades."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "market_trend": "upward"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "buy": "50_shares"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": "12345"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_transaction",
+      "content": {
+        "order_id": "12345",
+        "status": "pending"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "provide_portfolio_status",
+      "content": {
+        "new_position": "inconsistent"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:13:27.163958"
+}

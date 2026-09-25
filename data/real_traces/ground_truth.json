@@ -1,0 +1,262 @@
+{
+  "coding_dfb56353": {
+    "scenario_id": "coding_dfb56353",
+    "workflow": "coding",
+    "bug_injected": true,
+    "bug_type": "logic_error",
+    "root_cause_action_id": "action_2_46c858",
+    "root_cause_node_id": "9da1fcf9-33d8-4589-8e5c-0ec15d02c6d2",
+    "bug_description": "Logic error: incorrect multiplication factor",
+    "error_action_id": "action_4_3cd907",
+    "error_node_id": "19d50a66-4eb0-43ab-9a6f-b13ccb5fd22f"
+  },
+  "coding_97e5f79b": {
+    "scenario_id": "coding_97e5f79b",
+    "workflow": "coding",
+    "bug_injected": true,
+    "bug_type": "missing_check",
+    "root_cause_action_id": "action_2_bce178",
+    "root_cause_node_id": "9b8957e6-e31b-4a35-8b90-6d225c7625fb",
+    "bug_description": "Missing null check before iteration",
+    "error_action_id": "action_4_212875",
+    "error_node_id": "f41ff456-26cc-4f59-a4f7-8d1e97d30051"
+  },
+  "coding_c393ff7d": {
+    "scenario_id": "coding_c393ff7d",
+    "workflow": "coding",
+    "bug_injected": true,
+    "bug_type": "off_by_one",
+    "root_cause_action_id": "action_2_5c92b4",
+    "root_cause_node_id": "90b8e72a-df65-4e32-895b-5384001a45cf",
+    "bug_description": "Off-by-one error: truncating last character",
+    "error_action_id": "action_4_93688e",
+    "error_node_id": "ea06ee94-4594-40bc-a624-a7374c05531f"
+  },
+  "coding_0c52cc5c": {
+    "scenario_id": "coding_0c52cc5c",
+    "workflow": "coding",
+    "bug_injected": true,
+    "bug_type": "type_error",
+    "root_cause_action_id": "action_2_477fd7",
+    "root_cause_node_id": "a167494f-e16f-4447-bed3-e9e51a0a8045",
+    "bug_description": "Type error: returning string instead of list",
+    "error_action_id": "action_4_c81655",
+    "error_node_id": "cd41ed3e-0b76-4d81-bdcf-9e204ea45124"
+  },
+  "research_8b214e19": {
+    "scenario_id": "research_8b214e19",
+    "workflow": "research",
+    "bug_injected": true,
+    "bug_type": "missing_context",
+    "root_cause_action_id": "action_2_eda59e",
+    "root_cause_node_id": "76ba208b-87c2-44c0-b0e3-0948945eec59",
+    "bug_description": "Summarizer processed incomplete data",
+    "error_action_id": "action_3_b2c741",
+    "error_node_id": "09441cae-bfd8-4f0e-95b3-1371325df0fc"
+  },
+  "research_f0d7f2b6": {
+    "scenario_id": "research_f0d7f2b6",
+    "workflow": "research",
+    "bug_injected": true,
+    "bug_type": "missing_context",
+    "root_cause_action_id": "action_2_40b3ec",
+    "root_cause_node_id": "29946e0a-60df-4b73-acda-fbb4600d2d60",
+    "bug_description": "Summarizer processed incomplete data",
+    "error_action_id": "action_3_35c63c",
+    "error_node_id": "6e30a572-b7d5-4d66-99bf-d59c6419e7fc"
+  },
+  "research_cfb7d8d2": {
+    "scenario_id": "research_cfb7d8d2",
+    "workflow": "research",
+    "bug_injected": true,
+    "bug_type": "missing_context",
+    "root_cause_action_id": "action_2_1dd431",
+    "root_cause_node_id": "7215ac2d-b1d7-417b-a5a9-cd3013e3d17f",
+    "bug_description": "Summarizer processed incomplete data",
+    "error_action_id": "action_3_eabc1d",
+    "error_node_id": "c84429c1-3dfb-445d-ac2b-68e2172ac9ba"
+  },
+  "customer_39885f33": {
+    "scenario_id": "customer_39885f33",
+    "workflow": "customer_service",
+    "bug_injected": true,
+    "bug_type": "wrong_routing",
+    "root_cause_action_id": "action_2_c97fc3",
+    "root_cause_node_id": "f0a93781-538e-4386-a652-82333f10d6e3",
+    "bug_description": "Routed to wrong specialist: billing instead of technical",
+    "error_action_id": "action_3_c36d0a",
+    "error_node_id": "7a2cc559-c11f-4c07-bf77-4f657e19fa62"
+  },
+  "customer_e8cdcb01": {
+    "scenario_id": "customer_e8cdcb01",
+    "workflow": "customer_service",
+    "bug_injected": true,
+    "bug_type": "wrong_routing",
+    "root_cause_action_id": "action_2_3f7183",
+    "root_cause_node_id": "14395865-936b-4a0b-99c2-5dc6794f6eb2",
+    "bug_description": "Routed to wrong specialist: technical instead of billing"
+  },
+  "customer_f1dc7239": {
+    "scenario_id": "customer_f1dc7239",
+    "workflow": "customer_service",
+    "bug_injected": true,
+    "bug_type": "wrong_routing",
+    "root_cause_action_id": "action_2_2b9854",
+    "root_cause_node_id": "3d6c12cf-f8b3-4b84-851e-8f98f8849e0d",
+    "bug_description": "Routed to wrong specialist: billing instead of account"
+  },
+  "pipeline_583339de": {
+    "scenario_id": "pipeline_583339de",
+    "workflow": "data_pipeline",
+    "bug_injected": true,
+    "bug_step": 2,
+    "root_cause_action_id": "action_2_b9d0df",
+    "root_cause_node_id": "339aa3c3-9445-43f5-93ef-35c6c67be2f9",
+    "bug_description": "Validation passed null values",
+    "error_action_id": "action_5_b63040",
+    "error_node_id": "ac16bd12-1613-4699-8b59-35a0b23190e6"
+  },
+  "pipeline_7ced65fc": {
+    "scenario_id": "pipeline_7ced65fc",
+    "workflow": "data_pipeline",
+    "bug_injected": true,
+    "bug_step": 2,
+    "root_cause_action_id": "action_2_50c92b",
+    "root_cause_node_id": "8a4e7765-0b0b-47ec-8cf6-c03171aa20f0",
+    "bug_description": "Validation passed null values",
+    "error_action_id": "action_5_fd7615",
+    "error_node_id": "47d16d72-1320-4882-8e95-aa21b9e8fc8f"
+  },
+  "pipeline_de4c293d": {
+    "scenario_id": "pipeline_de4c293d",
+    "workflow": "data_pipeline",
+    "bug_injected": true,
+    "bug_step": 2,
+    "root_cause_action_id": "action_2_3b95ac",
+    "root_cause_node_id": "45b03763-2ed1-4bf0-bd27-9609e85f82c0",
+    "bug_description": "Validation passed null values",
+    "error_action_id": "action_5_0a9894",
+    "error_node_id": "df01d1bf-ed40-40ee-b8c2-1cc486f5888b"
+  },
+  "pipeline_9ceaef7a": {
+    "scenario_id": "pipeline_9ceaef7a",
+    "workflow": "data_pipeline",
+    "bug_injected": true,
+    "bug_step": 3,
+    "root_cause_action_id": "action_3_7c090d",
+    "root_cause_node_id": "798e4281-94ee-45d2-a657-dac038e343d9",
+    "bug_description": "Transform failed on corrupted input",
+    "error_action_id": "action_5_043ba9",
+    "error_node_id": "549f824b-b5cc-4348-a5e0-20588572a6b1"
+  },
+  "pipeline_91aff660": {
+    "scenario_id": "pipeline_91aff660",
+    "workflow": "data_pipeline",
+    "bug_injected": true,
+    "bug_step": 3,
+    "root_cause_action_id": "action_3_14332a",
+    "root_cause_node_id": "8be08d8b-2459-4a60-a5ef-cd33ff1767c9",
+    "bug_description": "Transform failed on corrupted input",
+    "error_action_id": "action_5_a701b5",
+    "error_node_id": "ee53ffc3-5ec8-4387-8157-e75393639f21"
+  },
+  "pipeline_e0bc2579": {
+    "scenario_id": "pipeline_e0bc2579",
+    "workflow": "data_pipeline",
+    "bug_injected": true,
+    "bug_step": 3,
+    "root_cause_action_id": "action_3_c118ea",
+    "root_cause_node_id": "0e6ad578-bed8-48be-a3e5-404240964d1e",
+    "bug_description": "Transform failed on corrupted input",
+    "error_action_id": "action_5_68c89d",
+    "error_node_id": "30596d55-01c9-4649-bec6-3e14f8062858"
+  },
+  "debate_ecf241bb": {
+    "scenario_id": "debate_ecf241bb",
+    "workflow": "debate",
+    "bug_injected": true,
+    "bug_type": "misunderstanding",
+    "root_cause_action_id": "action_2_87ea67",
+    "root_cause_node_id": "e231e418-83f1-4bbe-bca2-3bf477b46a50",
+    "bug_description": "Critic misunderstood the original proposal",
+    "error_action_id": "action_5_541ada",
+    "error_node_id": "44aad1d9-9aa0-4a3a-b386-0f738d1fe93c"
+  },
+  "debate_17fab524": {
+    "scenario_id": "debate_17fab524",
+    "workflow": "debate",
+    "bug_injected": true,
+    "bug_type": "misunderstanding",
+    "root_cause_action_id": "action_2_8b567e",
+    "root_cause_node_id": "f4e60082-61d6-4d33-b927-e56e5eea0b28",
+    "bug_description": "Critic misunderstood the original proposal",
+    "error_action_id": "action_5_d75512",
+    "error_node_id": "048fb8e2-89dc-49e3-8698-6440ef9f63ee"
+  },
+  "debate_7843eb32": {
+    "scenario_id": "debate_7843eb32",
+    "workflow": "debate",
+    "bug_injected": true,
+    "bug_type": "misunderstanding",
+    "root_cause_action_id": "action_2_f62eb9",
+    "root_cause_node_id": "01e4bb06-dbf6-4da9-816c-79bd8fa08be5",
+    "bug_description": "Critic misunderstood the original proposal",
+    "error_action_id": "action_5_7c35c7",
+    "error_node_id": "890afe36-683c-49b2-bfab-a44391a011d4"
+  },
+  "distributed_ee57e788": {
+    "scenario_id": "distributed_ee57e788",
+    "workflow": "distributed",
+    "bug_injected": true,
+    "failing_worker": 1,
+    "root_cause_action_id": "action_2_2b52b3",
+    "root_cause_node_id": "40e15bd4-9acc-4849-b81a-f0a3cbb95b66",
+    "bug_description": "Worker 1 failed to process subtask",
+    "error_action_id": "action_5_96a661",
+    "error_node_id": "4afe628a-42a1-48c5-b118-7c946991b33a"
+  },
+  "distributed_e3de1d01": {
+    "scenario_id": "distributed_e3de1d01",
+    "workflow": "distributed",
+    "bug_injected": true,
+    "failing_worker": 2,
+    "root_cause_action_id": "action_3_79fd8c",
+    "root_cause_node_id": "d465082c-4837-4971-8d8c-a8acf75e294d",
+    "bug_description": "Worker 2 failed to process subtask",
+    "error_action_id": "action_5_6e196c",
+    "error_node_id": "05a2fe74-30b9-401a-b11a-9e0558645d02"
+  },
+  "distributed_cfe923ea": {
+    "scenario_id": "distributed_cfe923ea",
+    "workflow": "distributed",
+    "bug_injected": true,
+    "failing_worker": 3,
+    "root_cause_action_id": "action_4_0f6de8",
+    "root_cause_node_id": "67fc94f5-e8b7-4fb8-a564-5a8e8258a2eb",
+    "bug_description": "Worker 3 failed to process subtask",
+    "error_action_id": "action_5_373d51",
+    "error_node_id": "c64b1cfe-7b7d-47e3-abb5-c05f137eb407"
+  },
+  "api_0b94480f": {
+    "scenario_id": "api_0b94480f",
+    "workflow": "api_orchestration",
+    "bug_injected": true,
+    "bug_type": "auth_failure",
+    "root_cause_action_id": "action_2_b7206b",
+    "root_cause_node_id": "ce8109af-724e-43ed-aef4-681fd60637f8",
+    "bug_description": "Auth returned null user_id",
+    "error_action_id": "action_5_d4fbbe",
+    "error_node_id": "177c92b1-6a0e-42c0-b051-edca491e0b9d"
+  },
+  "api_472df2e0": {
+    "scenario_id": "api_472df2e0",
+    "workflow": "api_orchestration",
+    "bug_injected": true,
+    "bug_type": "data_error",
+    "root_cause_action_id": "action_4_6726d5",
+    "root_cause_node_id": "4667f062-832f-483e-884f-dcf813bbb7b0",
+    "bug_description": "Database timeout",
+    "error_action_id": "action_5_580ece",
+    "error_node_id": "6f4d5d44-c659-4244-b265-b350c1fd1dec"
+  }
+}

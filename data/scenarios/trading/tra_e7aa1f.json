@@ -1,0 +1,346 @@
+{
+  "scenario_id": "tra_e7aa1f",
+  "domain": "trading",
+  "complexity": "complex",
+  "bug_type": "wrong_routing",
+  "task_description": "Five agents collaborate to analyze market data, make informed trading decisions, execute trades, and verify transactions. The agents must ensure that the correct data is analyzed, decisions are made in real time, trades are executed efficiently, and positions are accurately tracked.",
+  "expected_outcome": "Agents successfully analyze accurate market data, make optimal trading decisions, execute trades timely, and maintain consistent position tracking without errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "collect_data",
+        "filter_data",
+        "update_data"
+      ],
+      "description": "Gathers market data from multiple sources and filters it for the latest information to share with other agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Market Analyst",
+      "capabilities": [
+        "analyze_data",
+        "generate_signals",
+        "risk_assessment"
+      ],
+      "description": "Analyzes market data to generate buy/sell signals and conducts risk assessments."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trade",
+        "cancel_trade",
+        "confirm_trade"
+      ],
+      "description": "Executes trades based on signals received and confirms execution or adjusts as necessary."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_execution",
+        "audit_trades",
+        "record_positions"
+      ],
+      "description": "Verifies executed trades against intended orders and records positions."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "report_status",
+        "alert_discrepancies"
+      ],
+      "description": "Tracks current positions and alerts the team to any discrepancies."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "market_data": "latest_filtered_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "buy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "trade_details": "buy_order"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_and_record",
+      "content": {
+        "execution_status": "verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "position_status": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_data",
+      "content": {
+        "new_market_data": "latest_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "sell"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "trade_details": "sell_order"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_and_record",
+      "content": {
+        "execution_status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "position_status": "current"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_data",
+      "content": {
+        "new_market_data": "freshest_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "hold"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "market_data": "latest_filtered_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "buy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "execute_trade",
+      "content": {
+        "trade_details": "buy_order"
+      },
+      "is_bug_point": true,
+      "bug_description": "Trade execution message is routed to Position Tracker instead of Transaction Verifier."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "wrong_verification",
+      "content": {
+        "incorrect_execution_status": "not_verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_error",
+      "content": {
+        "error": "trade_not_verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_data",
+      "content": {
+        "new_market_data": "latest_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "sell"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "trade_details": "sell_order"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_and_record",
+      "content": {
+        "execution_status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "position_status": "current"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_data",
+      "content": {
+        "new_market_data": "freshest_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "hold"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Trade execution message is wrongly routed to Position Tracker, causing incorrect verification."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "error_propagation",
+      "description": "Incorrect execution status is reported, leading to an error report to the Market Data Collector."
+    }
+  ],
+  "created_at": "2026-01-04T09:12:33.958019"
+}

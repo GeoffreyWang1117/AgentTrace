@@ -1,0 +1,169 @@
+{
+  "scenario_id": "res_d3d3db",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "race_condition",
+  "task_description": "Three agents collaborate to gather information from various online sources, synthesize the data, and compile a comprehensive research report on climate change impacts on biodiversity. The agents must ensure data integrity, resolve conflicts, and properly attribute sources.",
+  "expected_outcome": "The agents successfully gather accurate and consistent information, reconcile any conflicting data, and produce a well-researched report with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Information Gatherer",
+      "capabilities": [
+        "fetch_data",
+        "verify_sources"
+      ],
+      "description": "Agent 1 is responsible for gathering raw data from multiple online sources and ensuring that the sources are credible."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "resolve_conflicts"
+      ],
+      "description": "Agent 2 synthesizes the data collected by Agent 1, identifies and resolves any conflicts, and prepares a summarized version for further analysis."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Compiler",
+      "capabilities": [
+        "compile_report",
+        "attribute_sources"
+      ],
+      "description": "Agent 3 compiles the finalized data into a structured report and ensures all sources are accurately attributed."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "climate change impact data set A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "climate change impact data set B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "synthesized data from sets A and B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "compile_report",
+      "content": {
+        "report_section": "Preliminary Report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "finalize_report",
+      "content": {
+        "complete_report": "Final Research Report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "climate change impact data set A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "climate change impact data set B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "inconsistent synthesized data due to race condition"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 2 processed data sets A and B concurrently, leading to an inconsistent synthesized state."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "compile_report",
+      "content": {
+        "report_section": "Report with inconsistent data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "finalize_report",
+      "content": {
+        "complete_report": "Final Research Report with errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to errors in report compilation."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "compilation",
+      "description": "The report compiled with inconsistent data results in an erroneous final report."
+    }
+  ],
+  "created_at": "2026-01-04T09:06:47.374394"
+}

@@ -1,0 +1,177 @@
+{
+  "scenario_id": "cus_91ea53",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "bug_type": "data_corruption",
+  "task_description": "Three agents collaborate to handle customer inquiries, escalate complex issues, and ensure ticket resolution. They must maintain customer context, synchronize ticket statuses, and avoid duplicate responses.",
+  "expected_outcome": "Customer inquiries are handled efficiently with proper escalation, maintaining a coherent context across agents. Tickets are resolved with synchronized statuses, and no duplicate or conflicting responses are issued.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "handle_inquiries",
+        "create_tickets"
+      ],
+      "description": "This agent is responsible for initial customer interaction, handling basic inquiries, and creating support tickets for further processing."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "escalate_issues",
+        "provide_technical_solutions"
+      ],
+      "description": "This agent handles tickets that require deeper technical knowledge, providing solutions or escalating to specialized teams if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Manager",
+      "capabilities": [
+        "track_tickets",
+        "ensure_ticket_resolution"
+      ],
+      "description": "This agent manages the lifecycle of support tickets, tracking their status and ensuring they are resolved in a timely manner."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "customer_query": "Login issue",
+        "customer_id": "C001"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "1234",
+        "escalation_reason": "Requires advanced technical support"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "1234",
+        "status": "In Progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "resolution": "Password reset"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "status": "Resolved",
+        "notification": "Customer notified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "customer_query": "Login issue",
+        "customer_id": "C001"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "1234",
+        "escalation_reason": "Requires advanced technical support"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "1234",
+        "status": "In Progress"
+      },
+      "is_bug_point": true,
+      "bug_description": "Ticket status 'In Progress' gets incorrectly updated to 'Closed' during data transfer."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "resolution": "Password reset"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "status": "Closed",
+        "notification": "Customer notified of closure"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing incorrect ticket status to be propagated."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:03.236884"
+}

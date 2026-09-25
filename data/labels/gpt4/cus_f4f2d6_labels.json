@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_f4f2d6",
+  "trace_id": "cus_f4f2d6",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 due to concurrent updates, leading to inconsistent ticket status"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "notification",
+      "confidence": 1.0,
+      "explanation": "The incorrect status notification sent to the customer"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Race condition between agent_2 and agent_3 leading to unsynchronized ticket status",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

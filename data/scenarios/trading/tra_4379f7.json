@@ -1,0 +1,356 @@
+{
+  "scenario_id": "tra_4379f7",
+  "domain": "trading",
+  "complexity": "complex",
+  "bug_type": "race_condition",
+  "task_description": "In this scenario, a group of five agents collaborates to perform a series of operations in a financial trading system. Their tasks include analyzing real-time market data, making informed trading decisions, executing trades on the market, and ensuring that all transactions are verified and positions are accurately tracked.",
+  "expected_outcome": "If everything works correctly, the agents will process market data accurately, make optimal trading decisions, execute trades without delay, and maintain consistent and accurate position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "analyze_market_data",
+        "identify_trends",
+        "generate_reports"
+      ],
+      "description": "Collects and analyzes market data, identifying trends and generating reports for decision-making."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "interpret_reports",
+        "make_decisions",
+        "prioritize_trades"
+      ],
+      "description": "Interprets reports from the Market Data Analyzer and makes trading decisions based on that information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_orders",
+        "monitor_execution",
+        "ensure_timeliness"
+      ],
+      "description": "Executes trade orders and monitors their execution to ensure they are carried out in a timely manner."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_transactions",
+        "reconcile_records",
+        "report_discrepancies"
+      ],
+      "description": "Verifies executed transactions and reconciles records to ensure accurate tracking."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "update_positions",
+        "generate_position_reports",
+        "identify_inconsistencies"
+      ],
+      "description": "Updates and tracks positions, generating reports to ensure all positions are accurately reflected."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_report",
+      "content": {
+        "market_trends": "upward"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_order",
+      "content": {
+        "order": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_execution",
+      "content": {
+        "order_id": "12345",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "increased by 100"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_report",
+      "content": {
+        "market_trends": "stable"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_order",
+      "content": {
+        "order": "sell",
+        "quantity": 50
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": "12346"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_execution",
+      "content": {
+        "order_id": "12346",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "decreased by 50"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_report",
+      "content": {
+        "market_trends": "volatile"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_order",
+      "content": {
+        "order": "buy",
+        "quantity": 200
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_report",
+      "content": {
+        "market_trends": "upward"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_order",
+      "content": {
+        "order": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": "12345"
+      },
+      "is_bug_point": true,
+      "bug_description": "Order execution and confirmation occurred concurrently, leading to a race condition that caused an inconsistent order status being recorded."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_execution",
+      "content": {
+        "order_id": "12345",
+        "status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "unchanged"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_report",
+      "content": {
+        "market_trends": "stable"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_order",
+      "content": {
+        "order": "sell",
+        "quantity": 50
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": "12346"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_execution",
+      "content": {
+        "order_id": "12346",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "decreased by 50"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_report",
+      "content": {
+        "market_trends": "volatile"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_order",
+      "content": {
+        "order": "buy",
+        "quantity": 200
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing the Transaction Verifier to receive an incorrect order status."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "state_update",
+      "description": "Incorrect order status leads to incorrect position update in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:13:17.230699"
+}

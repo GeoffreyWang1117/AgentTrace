@@ -1,0 +1,37 @@
+{
+  "scenario_id": "tra_046314",
+  "trace_id": "tra_046314",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Order execution confirmation was wrongly routed causing the Position Tracker to receive unexpected data."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "decision_error",
+      "confidence": 1.0,
+      "explanation": "Due to incorrect data, the Market Data Analyst did not receive the necessary position update."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "data_integrity",
+      "confidence": 1.0,
+      "explanation": "Subsequent market analysis was conducted on incomplete position information."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Order execution confirmation was wrongly routed to Position Tracker instead of Transaction Verifier.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

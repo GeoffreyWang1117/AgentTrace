@@ -1,0 +1,378 @@
+{
+  "scenario_id": "cus_e4060e",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "invalid_output",
+  "task_description": "Agents are tasked with handling customer inquiries, escalating complex issues when necessary, and ensuring seamless ticket tracking and resolution. They must collaborate effectively to prevent loss of customer context during handoffs, synchronize ticket statuses, and avoid duplicate or conflicting responses.",
+  "expected_outcome": "Agents handle inquiries promptly, escalate complex issues correctly, tickets are tracked accurately, and all agents maintain a synchronized understanding of ticket statuses. Customer context is preserved in all interactions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Inquiry Handler",
+      "capabilities": [
+        "receive_inquiry",
+        "respond_to_inquiry",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and creates tickets for unresolved issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "analyze_issue",
+        "provide_solution",
+        "escalate_issue"
+      ],
+      "description": "Analyzes technical issues and provides solutions or escalates if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Manager",
+      "capabilities": [
+        "review_ticket",
+        "escalate_ticket",
+        "communicate_with_teams"
+      ],
+      "description": "Manages escalated tickets and coordinates with various teams for resolution."
+    },
+    {
+      "id": "agent_4",
+      "role": "Resolution Tracker",
+      "capabilities": [
+        "update_ticket_status",
+        "verify_resolution",
+        "notify_customer"
+      ],
+      "description": "Tracks ticket statuses, verifies resolution completion, and notifies customers."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance Analyst",
+      "capabilities": [
+        "audit_resolutions",
+        "identify_gaps",
+        "recommend_improvements"
+      ],
+      "description": "Audits resolved tickets to identify improvement areas and ensure quality."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "customer_details": {
+          "name": "John Doe",
+          "issue": "Software installation error"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "1234",
+        "issue_details": "Complex installation error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "coordinate_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "team": "Development",
+        "priority": "High"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_information",
+      "content": {
+        "ticket_id": "1234",
+        "query": "Clarify error message details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "provide_information",
+      "content": {
+        "ticket_id": "1234",
+        "error_message": "Installation script failed at line 42"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "resolution_summary": "Issue resolved by update"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "audit_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "audit_result": "Passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "final_status": "Closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "feedback_collection",
+      "content": {
+        "ticket_id": "1234",
+        "customer_feedback": "Satisfied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "review_feedback",
+      "content": {
+        "ticket_id": "1234",
+        "feedback_summary": "Positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "finalize_audit",
+      "content": {
+        "ticket_id": "1234",
+        "audit_status": "Complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "customer_details": {
+          "name": "John Doe",
+          "issue": "Software installation error"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "1234",
+        "issue_details": "Complex installation error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "coordinate_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "team": "Development",
+        "priority": "High"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 outputs 'priority' as an integer instead of string, causing confusion downstream."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_information",
+      "content": {
+        "ticket_id": "1234",
+        "query": "Clarify error message details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "provide_information",
+      "content": {
+        "ticket_id": "1234",
+        "error_message": "Installation script failed at line 42"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "resolution_summary": "Issue resolved by update"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "audit_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "audit_result": "Passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "final_status": "Closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "feedback_collection",
+      "content": {
+        "ticket_id": "1234",
+        "customer_feedback": "Satisfied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "review_feedback",
+      "content": {
+        "ticket_id": "1234",
+        "feedback_summary": "Positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "finalize_audit",
+      "content": {
+        "ticket_id": "1234",
+        "audit_status": "Complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Agent 4 misinterprets priority due to format inconsistency from step 3"
+    }
+  ],
+  "created_at": "2026-01-04T09:11:06.568310"
+}

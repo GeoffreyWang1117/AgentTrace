@@ -1,0 +1,36 @@
+
+\begin{table}[t]
+\centering
+\caption{Error Analysis: Failure Patterns}
+\label{tab:error_analysis}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Factor} & \textbf{Failure Rate} & \textbf{Correlation} \\
+\midrule
+Distance = 1 & 0.0% & Weak \\
+Distance = 2 & 4.7% & Weak \\
+Distance = 3 & 26.4% & Strong \\
+Distance = 4 & 42.9% & Strong \\
+Distance = 5 & 0.0% & Weak \\
+Distance = 6 & 66.7% & Strong \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Improvement Suggestions}
+\label{tab:improvements}
+\begin{tabular}{lp{8cm}c}
+\toprule
+\textbf{Issue} & \textbf{Suggestion} & \textbf{Priority} \\
+\midrule
+Poor performance on long causa... & Implement learning-to-rank model that weighs nodes by likeli... & HIGH \\
+High failure rate for race_con... & Add specialized detection heuristics for race_condition patt... & MEDIUM \\
+High failure rate for wrong_ro... & Add specialized detection heuristics for wrong_routing patte... & MEDIUM \\
+Low Hit@1 rate... & Train a ranking model using labeled examples to prioritize r... & HIGH \\
+
+\bottomrule
+\end{tabular}
+\end{table}

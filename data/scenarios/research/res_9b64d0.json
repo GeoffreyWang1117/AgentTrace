@@ -1,0 +1,341 @@
+{
+  "scenario_id": "res_9b64d0",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "state_inconsistency",
+  "task_description": "Five agents collaborate to gather information from various sources, synthesize the data, and produce a coherent research report on the impact of climate change on global agriculture. The agents need to handle diverse data types, cross-verify information, and ensure accurate source attribution.",
+  "expected_outcome": "If everything works correctly, the agents will produce a comprehensive report that accurately reflects the synthesis of the gathered information, with all data points correctly attributed to their sources and reconciled for any conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "API_integration"
+      ],
+      "description": "This agent gathers raw data from online databases and APIs related to climate statistics."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "data_cleaning",
+        "statistical_analysis"
+      ],
+      "description": "This agent processes and analyzes raw data to extract meaningful patterns and trends."
+    },
+    {
+      "id": "agent_3",
+      "role": "Synthesizer",
+      "capabilities": [
+        "data_synthesis",
+        "conflict_resolution"
+      ],
+      "description": "This agent consolidates processed data from multiple sources, resolving any conflicts."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "natural_language_generation",
+        "source_attribution"
+      ],
+      "description": "This agent compiles and writes the final research report, ensuring all information is properly attributed."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "consistency_check",
+        "error_detection"
+      ],
+      "description": "This agent reviews the final report for consistency and accuracy before submission."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "analyzed_climate_patterns"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesis": "synthesized_climate_impact"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "draft_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "verify_report",
+      "content": {
+        "verification": "report_verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_synthesis",
+      "content": {
+        "confirmation": "synthesis_confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "validate_analysis",
+      "content": {
+        "validation": "analysis_valid"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_data_validity",
+      "content": {
+        "confirmation": "data_valid"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "send_final_data",
+      "content": {
+        "data": "final_valid_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "final_verification",
+      "content": {
+        "verification": "final_report_verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "null",
+      "action": "submit_report",
+      "content": {
+        "submission": "final_report_submitted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "null",
+      "action": "archive_report",
+      "content": {
+        "archive": "report_archived"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "analyzed_climate_patterns"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesis": "synthesized_climate_impact"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly updates the shared state, omitting data necessary for reconciliation with Agent 2's analysis."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "draft_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "verify_report",
+      "content": {
+        "verification": "report_inconsistent"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_synthesis",
+      "content": {
+        "confirmation": "synthesis_incorrect"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "validate_analysis",
+      "content": {
+        "validation": "analysis_conflict"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_data_validity",
+      "content": {
+        "confirmation": "data_valid"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "send_final_data",
+      "content": {
+        "data": "final_valid_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "final_verification",
+      "content": {
+        "verification": "final_report_inconsistent"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "null",
+      "action": "submit_report",
+      "content": {
+        "submission": "incomplete_report_submitted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "null",
+      "action": "archive_report",
+      "content": {
+        "archive": "inconsistent_report_archived"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to an inconsistent draft report."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "verification",
+      "description": "Agent 5 detects the inconsistency in step 5 during report verification."
+    }
+  ],
+  "created_at": "2026-01-04T09:06:26.535695"
+}

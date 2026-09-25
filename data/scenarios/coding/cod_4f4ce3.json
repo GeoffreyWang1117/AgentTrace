@@ -1,0 +1,255 @@
+{
+  "scenario_id": "cod_4f4ce3",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "missing_context",
+  "task_description": "Agents collaborate to develop a feature based on requirements, including code writing, reviewing, testing, and integration. Each agent must effectively communicate and pass necessary context information to downstream agents to ensure seamless development and integration.",
+  "expected_outcome": "The feature is developed as per specifications, code is reviewed without missing critical issues, tested with the correct code version, and successfully integrated without conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirement Analyst",
+      "capabilities": [
+        "documentRequirements",
+        "clarifyQueries"
+      ],
+      "description": "This agent gathers and documents the feature requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "writeCode",
+        "documentChanges"
+      ],
+      "description": "This agent writes code according to the documented requirements and documents any changes made."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "reviewCode",
+        "identifyIssues"
+      ],
+      "description": "This agent reviews the code for adherence to requirements and identifies issues or potential improvements."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "executeTests",
+        "reportBugs"
+      ],
+      "description": "This agent executes the test cases on the provided code version and reports any bugs or issues."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integrator",
+      "capabilities": [
+        "resolveConflicts",
+        "integrateCode"
+      ],
+      "description": "This agent integrates the final code into the main branch, resolving any conflicts that arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "passRequirements",
+      "content": {
+        "requirements": "full set of requirements"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submitCode",
+      "content": {
+        "code": "initial code version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "reviewFeedback",
+      "content": {
+        "feedback": "minor changes needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "submitCodeForTesting",
+      "content": {
+        "code": "final code version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "reportTestResults",
+      "content": {
+        "results": "no issues found"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "submitCodeForIntegration",
+      "content": {
+        "code": "final code version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "integrationFeedback",
+      "content": {
+        "status": "successfully integrated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "passRequirements",
+      "content": {
+        "requirements": "partial set of requirements"
+      },
+      "is_bug_point": true,
+      "bug_description": "Important context information about user authentication is missing."
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submitCode",
+      "content": {
+        "code": "code version missing authentication"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "reviewFeedback",
+      "content": {
+        "feedback": "looks good"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "submitCodeForTesting",
+      "content": {
+        "code": "test version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "reportTestResults",
+      "content": {
+        "results": "authentication issue not detected due to missing context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "submitCodeForIntegration",
+      "content": {
+        "code": "final code version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "integrationFeedback",
+      "content": {
+        "status": "integration conflict"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 1,
+  "root_cause_step": 1,
+  "error_manifestation_step": 7,
+  "causal_chain": [
+    {
+      "source_step": 1,
+      "target_step": 2,
+      "relationship_type": "data_flow",
+      "description": "Partial requirements were handed over, leading to incomplete code."
+    },
+    {
+      "source_step": 2,
+      "target_step": 3,
+      "relationship_type": "review_process",
+      "description": "Reviewer missed the lack of authentication due to missing context."
+    },
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Code without authentication passed to testing."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Test results showed no issues due to the missing context in testing."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Code with missing context forwarded for integration."
+    },
+    {
+      "source_step": 6,
+      "target_step": 7,
+      "relationship_type": "integration_process",
+      "description": "Integration conflict arises due to missing authentication implementation."
+    }
+  ],
+  "created_at": "2026-01-04T09:08:46.548349"
+}

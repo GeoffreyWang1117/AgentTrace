@@ -1,0 +1,91 @@
+{
+  "scenario_id": "cus_df482a",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "task_description": "The agents need to handle customer inquiries, escalate complex issues, and track and resolve tickets while maintaining a synchronized state across all operations and ensuring customer context is preserved.",
+  "expected_outcome": "Customer inquiries are resolved efficiently with a seamless handoff between agents for escalations, and ticket statuses are synchronized across the system. No duplicate or conflicting responses occur.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "answer_queries",
+        "open_ticket",
+        "update_ticket_status"
+      ],
+      "description": "Handles initial customer inquiries and creates or updates support tickets in the system."
+    },
+    {
+      "id": "agent_2",
+      "role": "Support Specialist",
+      "capabilities": [
+        "analyze_issue",
+        "escalate_issue",
+        "provide_solution"
+      ],
+      "description": "Handles escalated tickets that are more complex and provides solutions or further escalates them if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Manager",
+      "capabilities": [
+        "synchronize_ticket_status",
+        "resolve_ticket",
+        "close_ticket"
+      ],
+      "description": "Ensures that ticket statuses are synchronized across the system and manages the resolution and closure of tickets."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "customer_context": "Issue with product delivery"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_status_synchronization",
+      "content": {
+        "ticket_id": "123"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_synchronization",
+      "content": {
+        "ticket_id": "123",
+        "status": "In Progress"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_solution",
+      "content": {
+        "ticket_id": "123",
+        "solution_details": "Expedited shipping arranged"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "123",
+        "status": "Open"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:22.678420"
+}

@@ -1,0 +1,127 @@
+{
+  "scenario_id": "cus_fe915b",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "In a multi-agent customer service system, agents need to collaborate to handle customer inquiries efficiently, escalate complex issues to specialized agents, and ensure that tickets are tracked and resolved properly. Agents must maintain context during handoffs and ensure ticket status is synchronized throughout the process.",
+  "expected_outcome": "Customer inquiries are handled smoothly, with complex issues being escalated promptly and context maintained throughout the handoff process. Ticket statuses are kept in sync, ensuring no duplicate or conflicting responses are given, leading to a satisfactory resolution of all tickets.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "handle_inquiries",
+        "basic_issue_resolution"
+      ],
+      "description": "The initial point of contact for customer inquiries, responsible for addressing simple questions and forwarding complex issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "troubleshoot_issues",
+        "provide_technical_guidance"
+      ],
+      "description": "Specialized in handling technical issues and providing in-depth support to resolve customer problems."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Manager",
+      "capabilities": [
+        "assess_issue_complexity",
+        "escalate_issues"
+      ],
+      "description": "Evaluates ticket complexity and manages escalation to ensure issues are handled by the appropriate agent."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticketing System",
+      "capabilities": [
+        "track_tickets",
+        "update_ticket_status"
+      ],
+      "description": "Maintains records of ongoing tickets, tracking their status and ensuring they are updated accurately."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "customer_question": "How to reset password?"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "escalate_to_technical",
+      "content": {
+        "ticket_id": "123",
+        "context": "Password reset inquiry"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "In Progress"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_solution",
+      "content": {
+        "ticket_id": "123",
+        "solution": "Guide to reset password sent"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "Resolved"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirmation",
+      "content": {
+        "ticket_id": "123",
+        "confirmation": "Ticket closed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "customer",
+      "action": "notify_closure",
+      "content": {
+        "ticket_id": "123",
+        "message": "Your issue has been resolved."
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "reporting",
+      "content": {
+        "report": "Ticket 123 resolved successfully"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:27.717178"
+}

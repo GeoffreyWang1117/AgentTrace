@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_7fa754",
+  "trace_id": "tra_7fa754",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted execution data flows from step 3 to step 4 leading to a verification error."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "state_dependency",
+      "confidence": 1.0,
+      "explanation": "Verification error in step 4 prevents position update in step 5."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 incorrectly reads its internal state and believes the order was executed successfully even though the market condition changed.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

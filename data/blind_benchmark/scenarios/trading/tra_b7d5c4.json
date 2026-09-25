@@ -1,0 +1,165 @@
+{
+  "scenario_id": "tra_b7d5c4",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "Agents in a multi-agent trading system need to collaboratively analyze live market data, make informed trading decisions, execute trades, and verify transaction accuracy to ensure a profitable trading strategy.",
+  "expected_outcome": "All agents should work together to accurately analyze market data, make timely and informed trading decisions, execute trades without delay, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "fetch_live_data",
+        "aggregate_data"
+      ],
+      "description": "Collects live market data and aggregates it for analysis."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "analyze_market_trends",
+        "predict_movements"
+      ],
+      "description": "Analyzes aggregated market data to predict trends and movements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Strategist",
+      "capabilities": [
+        "formulate_strategy",
+        "risk_assessment"
+      ],
+      "description": "Formulates trading strategies based on analysis and assesses risk."
+    },
+    {
+      "id": "agent_4",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_trades",
+        "manage_orders"
+      ],
+      "description": "Executes trades and manages order books."
+    },
+    {
+      "id": "agent_5",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_transactions",
+        "track_positions"
+      ],
+      "description": "Verifies transactions and ensures accurate position tracking."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_aggregated_data",
+      "content": {
+        "market_data": "aggregated data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "predicted trends"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_strategy",
+      "content": {
+        "strategy": "buy low, sell high"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "execute_trade",
+      "content": {
+        "order_details": "buy 1000 shares"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_trade",
+      "content": {
+        "confirmation": "trade executed with incorrect volume"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_market_data",
+      "content": {
+        "updated_data": "latest market data"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "evaluate_new_trends",
+      "content": {
+        "evaluation": "incorrect trend analysis due to trade error"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_strategy",
+      "content": {
+        "new_strategy": "sell to cover loss"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "execute_new_order",
+      "content": {
+        "order_details": "sell 1000 shares"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_new_order",
+      "content": {
+        "confirmation": "sell order executed"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_update",
+      "content": {
+        "market_data": "refreshed market data"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "final_analysis",
+      "content": {
+        "final_trends": "market fluctuated due to excessive selling"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:39.400096"
+}

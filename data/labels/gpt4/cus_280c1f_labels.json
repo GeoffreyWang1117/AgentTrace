@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_280c1f",
+  "trace_id": "cus_280c1f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Timeout during escalation prevents Agent 3 from receiving timely updates, leading to incorrect ticket tracking."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "notification_flow",
+      "confidence": 1.0,
+      "explanation": "Agent 3\u2019s delayed tracking results in incorrect status notification to the customer."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 2 experiences a timeout during escalation, causing delays and cascading timeouts in dependent agents.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

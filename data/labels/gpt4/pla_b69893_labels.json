@@ -1,0 +1,45 @@
+{
+  "scenario_id": "pla_b69893",
+  "trace_id": "pla_b69893",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Incorrect vehicle allocation data flows to agent 1, causing dispatch issues."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "dependency",
+      "confidence": 1.0,
+      "explanation": "Agent 4 relies on correct dispatch confirmation to manage ground operations."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Delayed status affects route updates communicated by agent 3."
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_7",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Route delay information prevents schedule confirmation between agents 2 and 1."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 fails to allocate the correct number of vehicles due to a timeout in vehicle status update.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_6",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,10 @@
+{
+  "scenario_id": "pla_3d2050",
+  "node_count": 12,
+  "edge_count": 23,
+  "gt_root_cause": "35bfa031-b02b-4072-ad78-55522396776f",
+  "gt_error_node": "957199d3-a864-4788-b6ad-879c3ff56f60",
+  "root_cause_in_trace": true,
+  "root_cause_rank": 5,
+  "backward_trace_length": 10
+}

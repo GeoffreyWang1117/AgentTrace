@@ -1,0 +1,10 @@
+{
+  "scenario_id": "pla_6cb53a",
+  "node_count": 5,
+  "edge_count": 8,
+  "gt_root_cause": "9218abb1-fe26-42f9-9146-471ded4a1f29",
+  "gt_error_node": "90fa6ff0-8f4d-4156-9ae6-5ff36f71fe6b",
+  "root_cause_in_trace": true,
+  "root_cause_rank": 2,
+  "backward_trace_length": 4
+}

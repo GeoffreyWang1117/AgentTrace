@@ -1,0 +1,124 @@
+{
+  "scenario_id": "pla_b69893",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively plan and execute a supply chain operation to deliver medical supplies to a remote area. This involves breaking down the goal into subtasks like procurement, logistics, and final delivery, allocating resources like vehicles and personnel, and coordinating their actions while managing dependencies.",
+  "expected_outcome": "Agents successfully collaborate to deliver the required medical supplies on time, with all dependencies managed and resources efficiently allocated.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Procurement Specialist",
+      "capabilities": [
+        "resource_allocation",
+        "negotiation"
+      ],
+      "description": "Responsible for acquiring necessary medical supplies and ensuring they are ready for dispatch."
+    },
+    {
+      "id": "agent_2",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "route_planning",
+        "schedule_optimization"
+      ],
+      "description": "Plans the transportation routes and schedules to ensure timely delivery of supplies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Transport Manager",
+      "capabilities": [
+        "vehicle_management",
+        "driver_assignment"
+      ],
+      "description": "Manages the fleet of vehicles and assigns drivers for the delivery operation."
+    },
+    {
+      "id": "agent_4",
+      "role": "Field Operation Manager",
+      "capabilities": [
+        "on-ground_coordination",
+        "supply_chain_monitoring"
+      ],
+      "description": "Coordinates the final handover of supplies and ensures everything is executed according to plan on the ground."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "share_supply_list",
+      "content": {
+        "supplies": [
+          "bandages",
+          "medicines"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_vehicles",
+      "content": {
+        "route": "Route A",
+        "vehicles_needed": 2
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_vehicle_allocation",
+      "content": {
+        "allocated_vehicles": 1
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "dispatch_confirmation",
+      "content": {
+        "dispatch_time": "0800"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "provide_delivery_status",
+      "content": {
+        "status": "delayed"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_route_status",
+      "content": {
+        "route": "delayed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "finalize_schedule",
+      "content": {
+        "schedule": "Unconfirmed"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "confirm_delivery_completion",
+      "content": {
+        "completion_status": "Failed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:22.545157"
+}

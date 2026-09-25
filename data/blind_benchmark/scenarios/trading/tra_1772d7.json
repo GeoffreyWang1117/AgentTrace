@@ -1,0 +1,165 @@
+{
+  "scenario_id": "tra_1772d7",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "Agents in a multi-agent trading system must collaborate to analyze incoming market data, make informed trading decisions, execute trades, and verify the integrity of these transactions. The goal is to maximize profit while ensuring accurate record-keeping and compliance with market regulations.",
+  "expected_outcome": "Agents should analyze market data correctly, make profitable trades, and maintain consistent records of positions and transactions without any data corruption or execution delays.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "collect_market_data",
+        "filter_invalid_data"
+      ],
+      "description": "Collects real-time market data from multiple sources and filters out invalid or outdated information."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyst",
+      "capabilities": [
+        "analyze_data",
+        "predict_market_trends"
+      ],
+      "description": "Analyzes incoming market data and predicts market trends based on historical patterns and real-time analysis."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Decision Maker",
+      "capabilities": [
+        "evaluate_risk",
+        "make_trade_decisions"
+      ],
+      "description": "Evaluates trading opportunities and risks, making decisions on which trades to execute."
+    },
+    {
+      "id": "agent_4",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trades",
+        "confirm_execution"
+      ],
+      "description": "Executes the trades as decided by the Trade Decision Maker and confirms the execution with financial exchanges."
+    },
+    {
+      "id": "agent_5",
+      "role": "Compliance Officer",
+      "capabilities": [
+        "verify_transactions",
+        "track_positions"
+      ],
+      "description": "Verifies the accuracy of executed trades and maintains consistent records of trading positions."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "market_data": "clean_data_set_1"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "positive_trend"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_decision": "buy_100_shares"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_execution",
+      "content": {
+        "execution_report": "trade_successful_for_1000_shares"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "position": "1000_shares_bought"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_market_data",
+      "content": {
+        "market_data": "clean_data_set_2"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_analysis",
+      "content": {
+        "analysis": "neutral_trend"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_decision": "hold_position"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_execution",
+      "content": {
+        "execution_report": "no_action"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "position": "1000_shares_held"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "market_data": "clean_data_set_3"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "negative_trend"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:46:07.577421"
+}

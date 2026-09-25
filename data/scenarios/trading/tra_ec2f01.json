@@ -1,0 +1,172 @@
+{
+  "scenario_id": "tra_ec2f01",
+  "domain": "trading",
+  "complexity": "simple",
+  "bug_type": "invalid_output",
+  "task_description": "In this scenario, three agents collaborate to analyze financial market data, make trading decisions, execute trades, and verify transactions. The agents must ensure that the data they use is current and accurate, execute orders in a timely manner, and keep consistent track of positions.",
+  "expected_outcome": "All agents should collaborate seamlessly, leading to accurate analysis, timely trading decisions, correct order executions, and consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "analyze_market_data",
+        "provide_data_insights"
+      ],
+      "description": "This agent gathers and analyzes financial market data to extract meaningful insights that assist in trading decisions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "make_trading_decision",
+        "evaluate_risk"
+      ],
+      "description": "This agent utilizes market insights to make informed trading decisions and evaluate associated risks."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_trade",
+        "verify_transaction"
+      ],
+      "description": "This agent is responsible for executing trades based on decisions and verifying that transactions are completed accurately."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "data": "market insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "decision": "buy 100 shares"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "confirmation": "trade executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "verify_positions",
+      "content": {
+        "positions": "updated position details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_positions",
+      "content": {
+        "confirmation": "positions verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "data": "market insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "decision": "buy 100 shares"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "confirmation": {
+          "executed": "trade executed",
+          "format": "unexpected"
+        }
+      },
+      "is_bug_point": true,
+      "bug_description": "The confirmation output has an unexpected format, causing confusion in subsequent steps."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "verify_positions",
+      "content": {
+        "positions": "inconsistent position details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_positions",
+      "content": {
+        "confirmation": "positions mismatch"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Inconsistent position details lead to verification failure in step 5"
+    }
+  ],
+  "created_at": "2026-01-04T09:12:55.508590"
+}

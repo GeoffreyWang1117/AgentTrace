@@ -1,0 +1,244 @@
+{
+  "scenario_id": "cod_034b23",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "data_corruption",
+  "task_description": "In this multi-agent system, agents collaborate to develop a feature for a software application. The task involves writing code based on provided requirements, conducting code reviews, testing the implementation, and integrating the final changes into the main branch. Each agent plays a specific role in ensuring the code meets quality standards and is free from defects.",
+  "expected_outcome": "If everything works correctly, the feature should be implemented according to the requirements, thoroughly reviewed for issues, tested against a suite of cases, and successfully integrated into the main codebase without conflicts or errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "understand_requirements"
+      ],
+      "description": "Responsible for writing the initial code based on the feature requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews the code for adherence to coding standards and identifies potential issues."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "validate_requirements"
+      ],
+      "description": "Tests the code to ensure it meets the specified requirements and checks for bugs."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates the code into the main branch and resolves any conflicts that arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_review_feedback",
+      "content": {
+        "feedback": "No critical issues found"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_code_for_testing",
+      "content": {
+        "code": "feature implementation v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "send_test_results",
+      "content": {
+        "test_result": "All tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "submit_code_for_integration",
+      "content": {
+        "code": "feature implementation v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_integration_success",
+      "content": {
+        "status": "No conflicts during integration"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "notify_review_complete",
+      "content": {
+        "status": "Integration successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "final_approval",
+      "content": {
+        "approval": "Feature ready for production"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_review_feedback",
+      "content": {
+        "feedback": "No critical issues found"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_code_for_testing",
+      "content": {
+        "code": "feature implementation v1 with corruption"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurred during transfer, altering the code version."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "send_test_results",
+      "content": {
+        "test_result": "Tests failed due to unexpected behavior"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "submit_code_for_integration",
+      "content": {
+        "code": "feature implementation v1 with corruption"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_integration_success",
+      "content": {
+        "status": "Conflicts detected during integration"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "notify_review_complete",
+      "content": {
+        "status": "Integration failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "final_approval",
+      "content": {
+        "approval": "Feature not ready due to errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing testing failures."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The corrupted data continues to flow into the integration step, leading to conflicts."
+    }
+  ],
+  "created_at": "2026-01-04T09:08:27.657720"
+}

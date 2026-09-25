@@ -1,0 +1,123 @@
+{
+  "scenario_id": "cod_5e5fab",
+  "domain": "coding",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively develop a feature for a software module. The process includes writing code based on requirements, reviewing and testing the code, and finally fixing any identified bugs and integrating the changes into the main codebase.",
+  "expected_outcome": "The feature should be successfully developed, reviewed, tested, and integrated without any defects. All agents should have the required context to perform their tasks effectively.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "code writing",
+        "understanding requirements"
+      ],
+      "description": "Writes code based on the provided requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "code review",
+        "identify critical issues"
+      ],
+      "description": "Reviews the code for any potential issues or improvements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test execution",
+        "report issues"
+      ],
+      "description": "Runs tests on the code to identify any bugs."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "resolve conflicts",
+        "integrate changes"
+      ],
+      "description": "Integrates the code changes into the main codebase and resolves any conflicts."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation",
+        "context": "requirements document"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "feedback",
+      "content": {
+        "issues": "none"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "all tests passed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_code_for_integration",
+      "content": {
+        "code_version": "v1.0",
+        "context": "fully tested"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_context",
+      "content": {
+        "missing_context": "review approval"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_not_possible",
+      "content": {
+        "reason": "context not available"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "integrate_code",
+      "content": {
+        "status": "failed",
+        "reason": "missing review approval context"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:34.226491"
+}

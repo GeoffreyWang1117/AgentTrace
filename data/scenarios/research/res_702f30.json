@@ -1,0 +1,253 @@
+{
+  "scenario_id": "res_702f30",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "state_inconsistency",
+  "task_description": "The agents are tasked with gathering information on recent advancements in renewable energy technologies from various online sources, synthesizing the information, reconciling any conflicting data, and producing a comprehensive research report that includes proper source attribution.",
+  "expected_outcome": "All agents successfully collect, consolidate, and synthesize information without any loss or corruption. Conflicts are resolved, and the final report accurately reflects the gathered data with proper attribution to sources.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "data_extraction"
+      ],
+      "description": "This agent is responsible for gathering raw data from online sources related to renewable energy technologies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "data_validation",
+        "conflict_detection"
+      ],
+      "description": "This agent checks the consistency of data collected by agent_1 and identifies any conflicts or inconsistencies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_synthesis",
+        "conflict_resolution"
+      ],
+      "description": "This agent synthesizes the validated data and resolves any conflicts identified by agent_2."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "report_writing",
+        "source_attribution"
+      ],
+      "description": "This agent compiles the synthesized data into a structured research report, ensuring correct source attribution."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "error_detection",
+        "consistency_check"
+      ],
+      "description": "This agent reviews the final report for any errors or inconsistencies before submission."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_renewable_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_data",
+      "content": {
+        "validated_data": "cleaned_renewable_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "synthesized_renewable_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "draft_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "feedback",
+      "content": {
+        "feedback": "no_issues"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "final_report",
+      "content": {
+        "final_report": "finalized_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_renewable_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_data",
+      "content": {
+        "validated_data": "cleaned_renewable_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "partial_synthesized_data"
+      },
+      "is_bug_point": true,
+      "bug_description": "Synthesis was incomplete due to state inconsistency. Only partial data was synthesized."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "draft_report_with_errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "feedback",
+      "content": {
+        "feedback": "found_errors"
+      },
+      "is_bug_point": true,
+      "bug_description": "Quality Assurance detected inconsistencies in the draft report."
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_reprocessing",
+      "content": {
+        "action": "reprocess"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resynthesize_data",
+      "content": {
+        "synthesized_data": "corrected_synthesized_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "draft_report_corrected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "feedback",
+      "content": {
+        "feedback": "no_issues"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "final_report",
+      "content": {
+        "final_report": "finalized_report_corrected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "feedback_loop",
+      "description": "Inconsistencies in the report are detected at step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:05:47.933861"
+}

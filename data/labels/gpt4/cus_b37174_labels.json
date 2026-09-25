@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cus_b37174",
+  "trace_id": "cus_b37174",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_8",
+      "relationship_type": "feedback_loop",
+      "confidence": 1.0,
+      "explanation": "Feedback review identifies the inconsistency from the incorrect assignment"
+    },
+    {
+      "source_node_id": "step_8",
+      "target_node_id": "step_9",
+      "relationship_type": "resolution_outcome",
+      "confidence": 1.0,
+      "explanation": "The incorrect assignment results in unresolved customer issue"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Incorrect decision made; assigned to network specialist instead of server specialist.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_8",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

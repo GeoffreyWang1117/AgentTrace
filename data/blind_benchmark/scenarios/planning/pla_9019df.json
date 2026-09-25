@@ -1,0 +1,105 @@
+{
+  "scenario_id": "pla_9019df",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively plan and execute the setup of a small community event. This involves securing a venue, arranging catering, setting up audio-visual equipment, and handling guest logistics. Each agent has specific tasks and dependencies that must be communicated and coordinated efficiently.",
+  "expected_outcome": "If everything works correctly, the community event is set up on time with all logistics in place, resources are efficiently allocated, and there are no conflicts between agent tasks.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Venue Coordinator",
+      "capabilities": [
+        "book_venue",
+        "negotiate_contracts"
+      ],
+      "description": "Responsible for finding and securing the venue for the event."
+    },
+    {
+      "id": "agent_2",
+      "role": "Catering Manager",
+      "capabilities": [
+        "arrange_catering",
+        "manage_supplies"
+      ],
+      "description": "Handles all food and beverage requirements for the event."
+    },
+    {
+      "id": "agent_3",
+      "role": "AV Specialist",
+      "capabilities": [
+        "setup_audio",
+        "setup_visual"
+      ],
+      "description": "Sets up and manages audio-visual equipment for the event."
+    },
+    {
+      "id": "agent_4",
+      "role": "Guest Coordinator",
+      "capabilities": [
+        "manage_invites",
+        "coordinate_transport"
+      ],
+      "description": "Manages guest invitations and coordinates transportation."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_venue_booking",
+      "content": {
+        "venue": "Community Hall",
+        "date": "2023-12-20"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "coordinate_catering_setup",
+      "content": {
+        "venue": "Community Hall",
+        "catering_needs": [
+          "tables",
+          "buffet"
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_av_setup",
+      "content": {
+        "audio": "speakers",
+        "visual": "projector"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "finalize_guest_list",
+      "content": {
+        "guests": [
+          "50"
+        ],
+        "transport": [
+          "bus",
+          "shuttle"
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "resource_confirmation",
+      "content": {
+        "availability": "confirmed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:20.316823"
+}

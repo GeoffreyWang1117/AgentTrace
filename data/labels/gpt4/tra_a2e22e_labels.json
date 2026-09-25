@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_a2e22e",
+  "trace_id": "tra_a2e22e",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The execution message was incorrectly routed to the Analyzer, causing a delay in verification."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "verification_delay",
+      "confidence": 1.0,
+      "explanation": "The delay in receiving the correct execution message led to delayed confirmation and potential market impact."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Trade execution message was routed back to the Analyzer instead of the Verifier.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

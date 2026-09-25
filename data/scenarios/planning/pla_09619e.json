@@ -1,0 +1,244 @@
+{
+  "scenario_id": "pla_09619e",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "state_inconsistency",
+  "task_description": "Four agents are tasked with constructing a new community park. The project involves breaking down the main goal into subtasks such as designing, acquiring materials, construction, and quality assurance. Agents need to allocate resources and responsibilities efficiently, coordinate execution of tasks, and handle dependencies to ensure seamless completion of the project.",
+  "expected_outcome": "The agents successfully collaborate to complete the construction of the community park, with all tasks executed in a coordinated manner, resources allocated efficiently, and any dependencies handled correctly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Designer",
+      "capabilities": [
+        "design_layout",
+        "assess_requirements"
+      ],
+      "description": "Responsible for the design and layout of the park, ensuring it meets community needs."
+    },
+    {
+      "id": "agent_2",
+      "role": "Procurement Officer",
+      "capabilities": [
+        "acquire_materials",
+        "manage_budget"
+      ],
+      "description": "Handles acquiring the necessary materials and managing the project budget."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Manager",
+      "capabilities": [
+        "oversee_construction",
+        "coordinate_workers"
+      ],
+      "description": "Oversees the construction process, ensuring that the work is done according to the design."
+    },
+    {
+      "id": "agent_4",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "inspect_work",
+        "ensure_compliance"
+      ],
+      "description": "Inspects the finished work to ensure it meets safety and quality standards."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design_plan",
+      "content": {
+        "design": "initial layout"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "procure_resources",
+      "content": {
+        "materials": "ordered"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_budget",
+      "content": {
+        "budget": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "construction_update",
+      "content": {
+        "status": "foundation complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "verify_design_compliance",
+      "content": {
+        "compliance": "checked"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "design_adjustment",
+      "content": {
+        "adjustment": "minor changes"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "materials_check",
+      "content": {
+        "materials": "sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "final_inspection",
+      "content": {
+        "status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design_plan",
+      "content": {
+        "design": "initial layout"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "procure_resources",
+      "content": {
+        "materials": "ordered"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_budget",
+      "content": {
+        "budget": "approved"
+      },
+      "is_bug_point": true,
+      "bug_description": "Budget approval status becomes inconsistent between agent_2 and agent_1, leading to discrepancies in planning."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "construction_update",
+      "content": {
+        "status": "foundation complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "verify_design_compliance",
+      "content": {
+        "compliance": "checked"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "design_adjustment",
+      "content": {
+        "adjustment": "minor changes"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "materials_check",
+      "content": {
+        "materials": "sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "final_inspection",
+      "content": {
+        "status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted budget data causes design adjustments by agent_1 to be based on incorrect budget assumptions."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Agent_4 verifies compliance based on outdated design, leading to undetected discrepancies."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:42.511206"
+}

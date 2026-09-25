@@ -1,0 +1,21 @@
+{
+  "scenario_id": "cod_f37626",
+  "trace_id": "cod_f37626",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 due to state inconsistency in the version used for testing."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Tester uses an outdated version of the code due to state inconsistency, leading to incorrect test results.",
+  "error_propagation_path": [
+    "step_3",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

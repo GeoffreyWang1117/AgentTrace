@@ -1,0 +1,169 @@
+{
+  "scenario_id": "cod_215535",
+  "domain": "coding",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "Three agents collaborate to develop a software feature. They must write code according to requirements, review and test the code for errors, and fix any identified issues before integrating the final version. Agents need to ensure proper communication and version control to avoid common pitfalls such as incorrect code review, testing the wrong version, and integration conflicts.",
+  "expected_outcome": "If everything works correctly, the code is successfully written, reviewed, tested, and integrated without errors or conflicts. Each agent communicates effectively, and no messages are routed wrongly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_code"
+      ],
+      "description": "Responsible for writing and committing code based on received requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "provide_feedback"
+      ],
+      "description": "Reviews submitted code to ensure it meets quality standards and provides feedback."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "Tests the reviewed code for functionality and reports any bugs found."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "Looks good, minor adjustments needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "resubmit_code",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "forward_code_for_testing",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "test_result": "All tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "Looks good, minor adjustments needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": true,
+      "bug_description": "Code with wrong version is mistakenly sent directly to the Tester, bypassing the Reviewer."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "test_result": "Tests failed due to missing features"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "clarify_test_failures",
+      "content": {
+        "clarification_request": "Tests failed unexpectedly"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Tester receives an outdated code version, leading to test failures."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "communication",
+      "description": "Test failures lead the Developer to incorrectly assume the Reviewer missed issues."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:04.445336"
+}

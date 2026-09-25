@@ -1,0 +1,87 @@
+{
+  "scenario_id": "pla_278d16",
+  "domain": "planning",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to organize a community event, involving venue booking, catering services, and invitations. They need to break down the main goal, allocate tasks, and coordinate execution while handling dependencies between these activities.",
+  "expected_outcome": "Agents successfully organize the event with a booked venue, arranged catering, and sent invitations with no resource conflicts or miscommunications.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Venue Manager",
+      "capabilities": [
+        "book_venue",
+        "check_availability"
+      ],
+      "description": "Responsible for finding and reserving an appropriate venue for the event."
+    },
+    {
+      "id": "agent_2",
+      "role": "Catering Coordinator",
+      "capabilities": [
+        "arrange_catering",
+        "negotiate_contracts"
+      ],
+      "description": "Handles all tasks related to food and drink arrangements for the event."
+    },
+    {
+      "id": "agent_3",
+      "role": "Invitation Specialist",
+      "capabilities": [
+        "design_invitation",
+        "send_invitations"
+      ],
+      "description": "Focuses on creating and distributing invitations to the event attendees."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_availability_info",
+      "content": {
+        "venue": "available",
+        "date": "2023-12-15"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_catering",
+      "content": {
+        "catering": "confirmed",
+        "date": "2023-12-15"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_invitations",
+      "content": {
+        "invitations": "prepared",
+        "date": "2023-12-15"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "finalize_venue",
+      "content": {
+        "status": "finalized"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_final_catering_details",
+      "content": {
+        "menu": "approved"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:10:06.207354"
+}

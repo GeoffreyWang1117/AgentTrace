@@ -1,0 +1,37 @@
+{
+  "scenario_id": "res_bc35ab",
+  "trace_id": "res_bc35ab",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Incomplete data synthesis due to timeout affects data sent to agent 4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Agent 4 receives incomplete data, leading to partial source verification."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Incomplete verification results in agent 5 generating an incomplete report."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 encounters a delay that leads to a timeout, preventing it from completing the synthesis process promptly.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_6"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

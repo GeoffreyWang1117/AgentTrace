@@ -1,0 +1,45 @@
+{
+  "scenario_id": "pla_9a692e",
+  "trace_id": "pla_9a692e",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The timeout in the quality check results in incorrect scheduling data being sent to Agent 4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_6",
+      "relationship_type": "flow_dependency",
+      "confidence": 1.0,
+      "explanation": "The incorrect delivery route causes a cascade effect impacting production start times."
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_7",
+      "relationship_type": "resource_dependency",
+      "confidence": 1.0,
+      "explanation": "Delayed production start leads to pending approval status in quality checks."
+    },
+    {
+      "source_node_id": "step_7",
+      "target_node_id": "step_8",
+      "relationship_type": "execution_dependency",
+      "confidence": 1.0,
+      "explanation": "Pending approval results in a failed delivery status."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 encounters a delay in the quality check process, causing a timeout that is not communicated properly to dependent agents.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_6",
+    "step_7",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

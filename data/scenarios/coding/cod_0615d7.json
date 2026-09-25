@@ -1,0 +1,347 @@
+{
+  "scenario_id": "cod_0615d7",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "state_inconsistency",
+  "task_description": "Develop a new software feature where agents collaborate to write, review, test, and integrate code. Each agent has specific roles in this process, and they must ensure shared state consistency throughout.",
+  "expected_outcome": "The agents should successfully develop, review, and integrate the new software feature without any state inconsistencies, ensuring all tests pass and no integration conflicts occur.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "translate_to_tasks"
+      ],
+      "description": "This agent collects user requirements and translates them into actionable tasks for developers."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_code"
+      ],
+      "description": "This agent writes code based on requirements and commits it to the shared repository."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "This agent reviews code changes for quality and potential issues."
+    },
+    {
+      "id": "agent_4",
+      "role": "Test Engineer",
+      "capabilities": [
+        "run_tests",
+        "report_results"
+      ],
+      "description": "This agent runs tests on the code to ensure it meets quality standards and reports any failures."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "This agent merges code changes into the main branch and resolves any conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_requirements",
+      "content": {
+        "requirements": "new_feature_spec"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "initial_feature_code_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "code_review_feedback",
+      "content": {
+        "feedback": "minor_changes_requested"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resubmit_code",
+      "content": {
+        "code": "initial_feature_code_v2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_and_forward",
+      "content": {
+        "code": "initial_feature_code_v2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "run_tests",
+      "content": {
+        "code": "initial_feature_code_v2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "report_test_results",
+      "content": {
+        "results": "all_tests_passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "prepare_for_integration",
+      "content": {
+        "code": "initial_feature_code_v2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "merge_code",
+      "content": {
+        "code": "merged_feature_code"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "notify_merge",
+      "content": {
+        "status": "merge_successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_delivery",
+      "content": {
+        "status": "feature_completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "all",
+      "action": "announce_completion",
+      "content": {
+        "status": "project_successfully_deployed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_requirements",
+      "content": {
+        "requirements": "new_feature_spec"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "initial_feature_code_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "code_review_feedback",
+      "content": {
+        "feedback": "minor_changes_requested"
+      },
+      "is_bug_point": true,
+      "bug_description": "The review feedback was not properly synchronized with the shared state, causing misalignment in understanding the required changes."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resubmit_code",
+      "content": {
+        "code": "initial_feature_code_v3"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_and_forward",
+      "content": {
+        "code": "initial_feature_code_v3"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "run_tests",
+      "content": {
+        "code": "initial_feature_code_v2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "report_test_results",
+      "content": {
+        "results": "test_failures_detected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "prepare_for_integration",
+      "content": {
+        "code": "initial_feature_code_v3"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "merge_code",
+      "content": {
+        "code": "partial_merge_with_conflicts"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "notify_merge",
+      "content": {
+        "status": "conflicts_detected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_delivery",
+      "content": {
+        "status": "feature_incomplete_due_to_conflicts"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "all",
+      "action": "announce_completion",
+      "content": {
+        "status": "deployment_failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted review feedback causes the developer to make incorrect assumptions about the required changes."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "control_flow",
+      "description": "The incorrect code is approved without detecting the state mismatch."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Test Engineer runs tests on an incorrect version of code due to state inconsistency."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:53.121774"
+}

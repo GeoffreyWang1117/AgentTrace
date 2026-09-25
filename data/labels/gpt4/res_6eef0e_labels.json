@@ -1,0 +1,37 @@
+{
+  "scenario_id": "res_6eef0e",
+  "trace_id": "res_6eef0e",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Due to the timeout in step 3, incomplete data is sent in step 4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_dependency",
+      "confidence": 1.0,
+      "explanation": "Agent 3 receives incomplete data, causing a reconciliation error in step 5."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "processing_error",
+      "confidence": 1.0,
+      "explanation": "The reconciliation error leads to a partial report generation in step 6."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "A timeout occurs due to delayed response from Source B, causing Agent 1 to fail in sending data on time.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

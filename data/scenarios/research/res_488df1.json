@@ -1,0 +1,169 @@
+{
+  "scenario_id": "res_488df1",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "data_corruption",
+  "task_description": "Three agents collaborate to conduct research on renewable energy solutions. They need to gather information from various online databases, reconcile any conflicting data, and synthesize their findings into a comprehensive research report.",
+  "expected_outcome": "Agent 1 gathers accurate data from primary sources, Agent 2 enhances and reconciles the data, and Agent 3 compiles it into a coherent and accurate research report without any loss or corruption of information.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "access_online_databases",
+        "fetch_data"
+      ],
+      "description": "Collects raw data from multiple online databases regarding renewable energy technologies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyst",
+      "capabilities": [
+        "analyze_data",
+        "reconcile_conflicts"
+      ],
+      "description": "Analyzes the data collected by Agent 1 and resolves any inconsistencies or conflicts in the information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Compiler",
+      "capabilities": [
+        "synthesize_information",
+        "write_report"
+      ],
+      "description": "Compiles the analyzed data into a structured and well-written research report."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "raw_data": "Renewable energy data set A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "transfer_analyzed_data",
+      "content": {
+        "analyzed_data": "Reconciled data set A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "raw_data": "Renewable energy data set B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "transfer_analyzed_data",
+      "content": {
+        "analyzed_data": "Reconciled data set B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "None",
+      "action": "compile_report",
+      "content": {
+        "report": "Complete research report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "raw_data": "Renewable energy data set A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "transfer_analyzed_data",
+      "content": {
+        "analyzed_data": "Reconciled data set A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "raw_data": "Renewable energy data set B (corrupted)"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurs during the transfer, altering the original data set."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "transfer_analyzed_data",
+      "content": {
+        "analyzed_data": "Reconciled data set B (corrupted)"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "None",
+      "action": "compile_report",
+      "content": {
+        "report": "Incomplete research report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, resulting in inaccurate analysis."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Agent 3 receives the corrupted data, leading to an inaccurate research report."
+    }
+  ],
+  "created_at": "2026-01-04T09:05:56.617375"
+}

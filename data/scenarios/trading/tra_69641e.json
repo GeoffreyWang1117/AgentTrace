@@ -1,0 +1,250 @@
+{
+  "scenario_id": "tra_69641e",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "data_corruption",
+  "task_description": "Agents collaborate to analyze real-time market data, make informed trading decisions, and execute transactions while ensuring data integrity and timely operations.",
+  "expected_outcome": "Agents should successfully analyze market data, make accurate trading decisions, execute trades promptly, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "collect_market_data",
+        "filter_relevant_info"
+      ],
+      "description": "Collects live market data and filters it for relevant information"
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyst",
+      "capabilities": [
+        "analyze_data",
+        "identify_trends"
+      ],
+      "description": "Analyzes the filtered market data to identify trading trends and opportunities"
+    },
+    {
+      "id": "agent_3",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "make_decisions",
+        "prioritize_trades"
+      ],
+      "description": "Makes trading decisions based on analyzed data and prioritizes trade executions"
+    },
+    {
+      "id": "agent_4",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trades",
+        "verify_transaction"
+      ],
+      "description": "Executes the trades and verifies that transactions are processed correctly"
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_filtered_data",
+      "content": {
+        "market_data": "latest_filtered_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "data_analysis_results"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "decision": "buy_order_at_price"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_execution",
+      "content": {
+        "execution_status": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_execution_report",
+      "content": {
+        "report": "execution_details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "positions": "updated_positions"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_market_data",
+      "content": {
+        "request": "latest_data_request"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "acknowledge_request",
+      "content": {
+        "acknowledgment": "request_received"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_filtered_data",
+      "content": {
+        "market_data": "latest_filtered_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "data_analysis_results"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "decision": "buy_order_at_price_corrupted"
+      },
+      "is_bug_point": true,
+      "bug_description": "The trade decision data was corrupted during transfer, altering the intended order price."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_execution",
+      "content": {
+        "execution_status": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_execution_report",
+      "content": {
+        "report": "execution_details_with_error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "positions": "incorrect_updated_positions"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_market_data",
+      "content": {
+        "request": "latest_data_request"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "acknowledge_request",
+      "content": {
+        "acknowledgment": "request_received"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Execution confirmation based on corrupted decision leads to inaccurate reporting"
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Erroneous execution report results in incorrect position updates"
+    }
+  ],
+  "created_at": "2026-01-03T22:46:21.107134"
+}

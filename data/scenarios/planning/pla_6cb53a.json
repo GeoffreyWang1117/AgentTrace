@@ -1,0 +1,187 @@
+{
+  "scenario_id": "pla_6cb53a",
+  "domain": "planning",
+  "complexity": "simple",
+  "bug_type": "timeout_cascade",
+  "task_description": "The agents need to plan a multi-stage delivery operation where goods must be transported from a warehouse to multiple destinations in a coordinated sequence. The goals include breaking down the delivery plan into manageable subtasks, allocating delivery vehicles and scheduling drivers, ensuring that delivery times are optimized, and dependencies between deliveries are respected.",
+  "expected_outcome": "The agents successfully coordinate the delivery operations, ensuring that all goods are delivered on time without resource conflicts or dependency issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "create_delivery_plan",
+        "allocate_resources"
+      ],
+      "description": "Agent 1 is responsible for creating the overall delivery plan and allocating the necessary resources such as vehicles and drivers."
+    },
+    {
+      "id": "agent_2",
+      "role": "Coordinator",
+      "capabilities": [
+        "manage_dependencies",
+        "schedule_deliveries"
+      ],
+      "description": "Agent 2 manages the dependencies between different delivery tasks and schedules the deliveries to ensure timely execution."
+    },
+    {
+      "id": "agent_3",
+      "role": "Executor",
+      "capabilities": [
+        "execute_deliveries",
+        "report_status"
+      ],
+      "description": "Agent 3 executes the delivery tasks and reports back the status of each delivery operation."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_plan",
+      "content": {
+        "plan_id": "P123",
+        "tasks": [
+          "T1",
+          "T2",
+          "T3"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "assign_task",
+      "content": {
+        "task_id": "T1",
+        "vehicle": "V1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_status",
+      "content": {
+        "task_id": "T1",
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_plan",
+      "content": {
+        "plan_id": "P123",
+        "completed_tasks": [
+          "T1"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_next_task",
+      "content": {
+        "task_id": "T2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_plan",
+      "content": {
+        "plan_id": "P123",
+        "tasks": [
+          "T1",
+          "T2",
+          "T3"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "assign_task",
+      "content": {
+        "task_id": "T1",
+        "vehicle": "V1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_status",
+      "content": {
+        "task_id": "T1",
+        "status": "timeout"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 experiences a timeout while executing Task T1, causing a delay in reporting the status back to Agent 2."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_plan",
+      "content": {
+        "plan_id": "P123",
+        "completed_tasks": []
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_next_task",
+      "content": {
+        "task_id": "T2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The timeout in step 3 causes Agent 3 to not report the task completion properly, leading to incomplete data being passed to Agent 2 in step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "control_flow",
+      "description": "Agent 1 is unable to confirm the next task (T2) due to missing completion status of T1, leading to an execution halt."
+    }
+  ],
+  "created_at": "2026-01-04T09:10:10.045230"
+}

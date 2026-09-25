@@ -1,0 +1,206 @@
+{
+  "scenario_id": "res_70ff08",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "wrong_routing",
+  "task_description": "Agents must collaboratively gather information from multiple online databases, synthesize this information into a cohesive summary, and generate a comprehensive research report on a given topic.",
+  "expected_outcome": "All agents correctly gather, process, and combine information from their respective sources, resulting in an accurate and well-attributed research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_data",
+        "query_database"
+      ],
+      "description": "This agent is responsible for retrieving raw data from assigned online databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "synthesize_information"
+      ],
+      "description": "This agent processes the collected data, identifying key insights and synthesizing information for the report."
+    },
+    {
+      "id": "agent_3",
+      "role": "Fact Checker",
+      "capabilities": [
+        "verify_information",
+        "validate_sources"
+      ],
+      "description": "This agent ensures that the synthesized information is accurate and the sources are credible."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "compile_report",
+        "format_output"
+      ],
+      "description": "This agent compiles the synthesized and validated information into a formatted research report."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_from_database_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_from_database_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesis",
+      "content": {
+        "synthesis": "combined_data_insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_verification",
+      "content": {
+        "verification": "data_verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_final_synthesis",
+      "content": {
+        "final_synthesis": "verified_data_insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "external",
+      "action": "generate_report",
+      "content": {
+        "report": "comprehensive_research_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_from_database_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_from_database_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesis",
+      "content": {
+        "synthesis": "combined_data_insights"
+      },
+      "is_bug_point": true,
+      "bug_description": "The message is incorrectly sent to agent_3 before agent_2 has processed all data."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_verification",
+      "content": {
+        "verification": "incorrectly_verified_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_final_synthesis",
+      "content": {
+        "final_synthesis": "unverified_data_insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "external",
+      "action": "generate_report",
+      "content": {
+        "report": "incomplete_research_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 6,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Unverified data is mistakenly assumed to be correct"
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Incomplete and unverified insights lead to a flawed research report"
+    }
+  ],
+  "created_at": "2026-01-04T09:06:52.420072"
+}

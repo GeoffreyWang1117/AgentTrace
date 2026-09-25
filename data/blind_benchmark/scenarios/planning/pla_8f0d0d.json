@@ -1,0 +1,132 @@
+{
+  "scenario_id": "pla_8f0d0d",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "A team of robots is tasked with organizing a conference. This involves breaking down the goal into subtasks such as venue booking, catering, scheduling talks, and managing registrations. The agents must collaborate to allocate resources, coordinate execution, and handle dependencies among tasks.",
+  "expected_outcome": "The conference is successfully organized with all tasks completed in a coordinated manner, utilizing resources efficiently without conflicts, and all agents maintaining a consistent shared state.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Venue Manager",
+      "capabilities": [
+        "book_venue",
+        "coordinate_layout"
+      ],
+      "description": "Responsible for booking the conference venue and arranging the layout."
+    },
+    {
+      "id": "agent_2",
+      "role": "Catering Manager",
+      "capabilities": [
+        "arrange_catering",
+        "coordinate_meals"
+      ],
+      "description": "Handles all catering arrangements including meals and refreshments."
+    },
+    {
+      "id": "agent_3",
+      "role": "Scheduler",
+      "capabilities": [
+        "schedule_talks",
+        "manage_time_slots"
+      ],
+      "description": "Organizes the schedule for talks and ensures there are no overlaps."
+    },
+    {
+      "id": "agent_4",
+      "role": "Registration Manager",
+      "capabilities": [
+        "manage_registrations",
+        "update_attendee_list"
+      ],
+      "description": "Manages attendee registrations and keeps the list of attendees updated."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "share_venue_availability",
+      "content": {
+        "venue": "Grand Hall",
+        "availability": [
+          "2023-11-20",
+          "2023-11-21"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_schedule",
+      "content": {
+        "schedule": "confirmed",
+        "dates": [
+          "2023-11-20"
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_event_date",
+      "content": {
+        "date": "2023-11-21"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "request_attendee_numbers",
+      "content": {
+        "date": "2023-11-21"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "send_attendee_numbers",
+      "content": {
+        "attendees": 150
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_catering",
+      "content": {
+        "catering_status": "confirmed",
+        "date": "2023-11-21"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_schedule",
+      "content": {
+        "schedule": "finalized",
+        "sessions": [
+          "Session A",
+          "Session B"
+        ]
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "final_summary",
+      "content": {
+        "status": "catering_date_mismatch"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:43.463959"
+}

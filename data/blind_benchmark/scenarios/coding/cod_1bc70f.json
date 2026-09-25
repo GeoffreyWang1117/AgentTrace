@@ -1,0 +1,172 @@
+{
+  "scenario_id": "cod_1bc70f",
+  "domain": "coding",
+  "complexity": "complex",
+  "task_description": "The agents need to collaboratively develop a new feature for a software application. The agents are required to: write the code according to the given requirements, conduct code reviews, perform testing, fix any identified bugs, and integrate the changes seamlessly into the main codebase. A critical aspect is to avoid any race conditions that may arise due to concurrent operations.",
+  "expected_outcome": "All agents collaborate effectively to develop, review, test, and integrate the new feature without introducing any race conditions or other significant bugs. The final integration should be smooth with all tests passing successfully.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "coding",
+        "requirement_analysis"
+      ],
+      "description": "Writes code based on the specified requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "code_review",
+        "identify_issues"
+      ],
+      "description": "Reviews code for potential issues and ensures coding standards are met."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_execution",
+        "report_bugs"
+      ],
+      "description": "Executes tests and reports any bugs found in the code."
+    },
+    {
+      "id": "agent_4",
+      "role": "Bug Fixer",
+      "capabilities": [
+        "debugging",
+        "bug_fixing"
+      ],
+      "description": "Fixes bugs reported by the Tester and ensures code stability."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integrator",
+      "capabilities": [
+        "code_integration",
+        "conflict_resolution"
+      ],
+      "description": "Integrates changes into the main codebase and resolves any merge conflicts."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "feature": "new_feature"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "feedback",
+      "content": {
+        "issues": "none",
+        "approved": true
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "report_bugs",
+      "content": {
+        "bugs": "none found (race condition not detected)"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_fix",
+      "content": {
+        "fixes_applied": true,
+        "unfixed_issue": "race_condition"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "integrate_changes",
+      "content": {
+        "integration_status": "successful",
+        "hidden_issue": "race_condition"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v2.0",
+        "feature": "optimized_feature"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "feedback",
+      "content": {
+        "issues": "none",
+        "approved": true
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_for_testing",
+      "content": {
+        "code_version": "v2.0"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "report_bugs",
+      "content": {
+        "bugs": "application crash under concurrent use detected"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_fix",
+      "content": {
+        "fixes_applied": true,
+        "resolved_issue": "race_condition"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "integrate_changes",
+      "content": {
+        "integration_status": "successful after fix"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:08:44.769308"
+}

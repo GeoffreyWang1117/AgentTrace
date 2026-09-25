@@ -1,0 +1,21 @@
+
+\begin{table*}[t]
+\centering
+\caption{Comprehensive Baseline Comparison for Root Cause Localization}
+\label{tab:all_baselines}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Category} & \textbf{Method} & \textbf{Hit@1} & \textbf{Hit@3} & \textbf{Hit@5} & \textbf{MRR} \\
+\midrule
+\multirow{2}{*}{Structured} & \textbf{AgentTrace (Ours)} & 1.6% & 89.2% & 98.0% & 0.473 \\
+& Log-Only & 98.4% & 98.8% & 98.8% & - \\
+\midrule
+\multirow{3}{*}{LLM-based} & LLM-Direct (GPT-4o) & 36.4% & 36.4% & 36.4% & - \\
+& Chain-of-Thought & 100.0% & 100.0% & 100.0% & - \\
+& ReAct & 52.4% & 52.4% & 52.4% & - \\
+\midrule
+Chance & Random & 14.4% & 43.3% & 72.1% & - \\
+
+\bottomrule
+\end{tabular}
+\end{table*}

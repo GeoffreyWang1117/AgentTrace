@@ -1,0 +1,254 @@
+{
+  "scenario_id": "tra_f6a947",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "invalid_output",
+  "task_description": "Agents need to collaborate to analyze real-time market data, make informed trading decisions, execute trades, and verify the successful execution and tracking of positions.",
+  "expected_outcome": "Market data is analyzed accurately, trades are executed at the right time, and all positions are tracked consistently without any errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_data",
+        "analyze_data"
+      ],
+      "description": "Fetches and analyzes real-time market data to provide insights on trends and potential trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "evaluate_opportunities",
+        "make_decisions"
+      ],
+      "description": "Evaluates market analysis and decides on trades to execute based on predefined strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_trades",
+        "confirm_execution"
+      ],
+      "description": "Places orders on the market and confirms their execution."
+    },
+    {
+      "id": "agent_4",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "update_ledger"
+      ],
+      "description": "Tracks all open positions and updates the ledger with trade executions."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis_report",
+      "content": {
+        "trend": "upward",
+        "confidence_level": 0.9
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_trade_execution",
+      "content": {
+        "trade_type": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_trade_execution",
+      "content": {
+        "trade_id": "TX123",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "trade_id": "TX123",
+        "position": "long"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_fresh_analysis",
+      "content": {
+        "request_id": "REQ456"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_analysis",
+      "content": {
+        "trend": "neutral",
+        "confidence_level": 0.7
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "hold_trade",
+      "content": {
+        "reason": "market_uncertainty"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_position",
+      "content": {
+        "close_positions": false
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis_report",
+      "content": {
+        "trend": "upward",
+        "confidence_level": 0.9
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_trade_execution",
+      "content": {
+        "trade_type": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_trade_execution",
+      "content": {
+        "trade_id": "TX123",
+        "status": 200
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 sends status as numeric code instead of expected string format."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "trade_id": "TX123",
+        "position": "long"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_fresh_analysis",
+      "content": {
+        "request_id": "REQ456"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_analysis",
+      "content": {
+        "trend": "neutral",
+        "confidence_level": 0.7
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "hold_trade",
+      "content": {
+        "reason": "market_uncertainty"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_position",
+      "content": {
+        "close_positions": false
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from agent_3 to agent_4 due to invalid output format."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Agent 4 updates position based on incorrect format data, affecting subsequent decision requests."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:55.585143"
+}

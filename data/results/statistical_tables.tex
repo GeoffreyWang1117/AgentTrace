@@ -1,0 +1,31 @@
+
+\begin{table}[t]
+\centering
+\caption{Statistical Significance Analysis}
+\label{tab:statistical}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Comparison} & \textbf{McNemar's p} & \textbf{Effect Size (h)} & \textbf{Significant?} \\
+\midrule
+AgentTrace vs LLM-Direct & 0.0000 & 0.901 & Yes \\
+AgentTrace vs Log-Only & 0.0046 & -0.288 & Yes \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Bootstrap 95\% Confidence Intervals}
+\label{tab:confidence_intervals}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Method} & \textbf{Hit@3} & \textbf{95\% CI Lower} & \textbf{95\% CI Upper} \\
+\midrule
+AgentTrace & 89.2% & 85.2% & 92.8% \\
+LLM-Direct & 50.0% & 44.0% & 56.0% \\
+Log-Only & 96.4% & 94.0% & 98.4% \\
+
+\bottomrule
+\end{tabular}
+\end{table}

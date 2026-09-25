@@ -1,0 +1,120 @@
+{
+  "scenario_id": "cod_c86d76",
+  "domain": "coding",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to develop a software feature where they need to write code according to given requirements, review each other's code, conduct testing, and resolve any bugs before integrating the changes into a main codebase.",
+  "expected_outcome": "The agents successfully write, review, test, and integrate the code without any critical issues or integration conflicts, resulting in a bug-free software feature.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "code_writing",
+        "requirement_analysis"
+      ],
+      "description": "Writes code based on the given technical requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "code_review",
+        "identify_issues"
+      ],
+      "description": "Reviews code written by developers to identify and suggest corrections for potential issues."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_execution",
+        "bug_identification"
+      ],
+      "description": "Executes tests to ensure the code meets the requirements and identifies any bugs or unexpected behaviors."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates changes into the main codebase, resolving any conflicts that arise."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "initial feature implementation"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "suggestions for improvement"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_testing",
+      "content": {
+        "code": "revised feature implementation with invalid_output"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "results": "test shows unexpected output format"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_corrected_code",
+      "content": {
+        "code": "corrected feature implementation"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_again",
+      "content": {
+        "feedback": "correct format"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "retest_corrected_code",
+      "content": {
+        "code": "corrected feature implementation"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "final_test_results",
+      "content": {
+        "results": "all tests passed"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:23.705303"
+}

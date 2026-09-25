@@ -1,0 +1,37 @@
+{
+  "scenario_id": "tra_d9500b",
+  "trace_id": "tra_d9500b",
+  "causal_edges": [
+    {
+      "source_node_id": "step_2",
+      "target_node_id": "step_3",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Agent_3 executes trade without essential context, impacting subsequent verification."
+    },
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "feedback",
+      "confidence": 1.0,
+      "explanation": "Agent_1 reports execution issues due to missing context."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "verification_feedback",
+      "confidence": 1.0,
+      "explanation": "Incomplete verification results from context discrepancy."
+    }
+  ],
+  "root_cause_node_id": "step_2",
+  "root_cause_explanation": "Missing context - 'based on trend Y' was not included, causing agent_3 to lack important context.",
+  "error_propagation_path": [
+    "step_2",
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

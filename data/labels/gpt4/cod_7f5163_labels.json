@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_7f5163",
+  "trace_id": "cod_7f5163",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Outdated data version ('v0.9') is sent for testing, leading to failed test results."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "logical_error",
+      "confidence": 1.0,
+      "explanation": "Incorrect test results cause the integrator to attempt to integrate erroneous code, leading to integration failure."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Developer accidentally sends an outdated code version for testing.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,169 @@
+{
+  "scenario_id": "tra_046314",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "In this scenario, five agents collaborate to analyze market data, make informed trading decisions, and execute and verify transactions in a simulated trading environment. Each agent has a specific role that contributes to the overall task, from data analysis to transaction verification.",
+  "expected_outcome": "The agents successfully process market data, make timely trading decisions, execute transactions accurately, and maintain consistent position tracking without any errors in message routing.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyst",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_market_trends"
+      ],
+      "description": "Responsible for gathering and analyzing real-time market data to identify trends."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "evaluate_trends",
+        "make_trading_decisions"
+      ],
+      "description": "Analyzes trend data and makes buy/sell decisions."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_order",
+        "monitor_order_status"
+      ],
+      "description": "Executes trading orders based on decisions made by the Decision Maker."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_transaction",
+        "log_transaction"
+      ],
+      "description": "Verifies completed transactions and logs them for record-keeping."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "update_position",
+        "report_position"
+      ],
+      "description": "Tracks and reports the current position and profit/loss status."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend": "upward"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "decision": "buy"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": "12345",
+        "status": "executed"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "unexpected_update_position_report",
+      "content": {
+        "position_status": "not_updated"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend": "downward"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "decision": "sell"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": "12346",
+        "status": "executed"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_transaction_verification",
+      "content": {
+        "order_id": "12346",
+        "verified": true
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position_report",
+      "content": {
+        "position_status": "updated"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend": "stable"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "decision": "hold"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": "12347",
+        "status": "pending"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:46:24.737640"
+}

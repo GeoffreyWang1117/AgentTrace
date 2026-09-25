@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_b92bff",
+  "trace_id": "cod_b92bff",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "integration_issue",
+      "confidence": 1.0,
+      "explanation": "The unexpected output format from step 3 causes integration failure in step 5"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The test agent received output in an unexpected format, causing a failure.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

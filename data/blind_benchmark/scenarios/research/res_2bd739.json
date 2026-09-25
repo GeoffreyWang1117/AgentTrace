@@ -1,0 +1,102 @@
+{
+  "scenario_id": "res_2bd739",
+  "domain": "research",
+  "complexity": "complex",
+  "task_description": "The agents are tasked with collaboratively compiling a comprehensive research report on 'The Impact of Renewable Energy Sources on Climate Change.' Each agent has access to different specialized databases and must exchange findings to synthesize a unified report.",
+  "expected_outcome": "Agents successfully gather, synthesize, and attribute information correctly, resulting in a coherent and accurate research report on renewable energy impacts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "access_energy_databases",
+        "retrieve_information"
+      ],
+      "description": "This agent gathers data from renewable energy sources and databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "cross-check_information",
+        "verify_source_integrity"
+      ],
+      "description": "This agent validates the accuracy and integrity of collected data."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "merge_information",
+        "synthesize_findings"
+      ],
+      "description": "This agent synthesizes validated data from different sources to create a cohesive narrative."
+    },
+    {
+      "id": "agent_4",
+      "role": "Conflict Resolver",
+      "capabilities": [
+        "identify_conflicts",
+        "reconcile_differences"
+      ],
+      "description": "This agent identifies and resolves any conflicting information between the synthesized data."
+    },
+    {
+      "id": "agent_5",
+      "role": "Report Generator",
+      "capabilities": [
+        "compile_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the final research report, ensuring proper source attribution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_and_send_data",
+      "content": {
+        "data": "raw_energy_data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_and_forward_data",
+      "content": {
+        "data": "validated_energy_data"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "data": "synthesized_energy_data_corrupted"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "resolve_and_forward",
+      "content": {
+        "data": "resolved_energy_data_corrupted"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "all",
+      "action": "compile_report",
+      "content": {
+        "report": "final_report_with_errors"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:43:31.596666"
+}

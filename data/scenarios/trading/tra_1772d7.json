@@ -1,0 +1,341 @@
+{
+  "scenario_id": "tra_1772d7",
+  "domain": "trading",
+  "complexity": "complex",
+  "bug_type": "data_corruption",
+  "task_description": "Agents in a multi-agent trading system must collaborate to analyze incoming market data, make informed trading decisions, execute trades, and verify the integrity of these transactions. The goal is to maximize profit while ensuring accurate record-keeping and compliance with market regulations.",
+  "expected_outcome": "Agents should analyze market data correctly, make profitable trades, and maintain consistent records of positions and transactions without any data corruption or execution delays.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "collect_market_data",
+        "filter_invalid_data"
+      ],
+      "description": "Collects real-time market data from multiple sources and filters out invalid or outdated information."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyst",
+      "capabilities": [
+        "analyze_data",
+        "predict_market_trends"
+      ],
+      "description": "Analyzes incoming market data and predicts market trends based on historical patterns and real-time analysis."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Decision Maker",
+      "capabilities": [
+        "evaluate_risk",
+        "make_trade_decisions"
+      ],
+      "description": "Evaluates trading opportunities and risks, making decisions on which trades to execute."
+    },
+    {
+      "id": "agent_4",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trades",
+        "confirm_execution"
+      ],
+      "description": "Executes the trades as decided by the Trade Decision Maker and confirms the execution with financial exchanges."
+    },
+    {
+      "id": "agent_5",
+      "role": "Compliance Officer",
+      "capabilities": [
+        "verify_transactions",
+        "track_positions"
+      ],
+      "description": "Verifies the accuracy of executed trades and maintains consistent records of trading positions."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "market_data": "clean_data_set_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "positive_trend"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_decision": "buy_100_shares"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_execution",
+      "content": {
+        "execution_report": "trade_successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "position": "100_shares_bought"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_market_data",
+      "content": {
+        "market_data": "clean_data_set_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_analysis",
+      "content": {
+        "analysis": "neutral_trend"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_decision": "hold_position"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_execution",
+      "content": {
+        "execution_report": "no_action"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "position": "100_shares_held"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "market_data": "clean_data_set_3"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "negative_trend"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "market_data": "clean_data_set_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "positive_trend"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_decision": "buy_100_shares"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurs, modifying the trade decision to 'buy_1000_shares' during transfer."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_execution",
+      "content": {
+        "execution_report": "trade_successful_for_1000_shares"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "position": "1000_shares_bought"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_market_data",
+      "content": {
+        "market_data": "clean_data_set_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_analysis",
+      "content": {
+        "analysis": "neutral_trend"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_decision": "hold_position"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_execution",
+      "content": {
+        "execution_report": "no_action"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "position": "1000_shares_held"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "market_data": "clean_data_set_3"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "negative_trend"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing incorrect execution."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "position_update",
+      "description": "Incorrect position update is sent due to corrupted trade execution."
+    }
+  ],
+  "created_at": "2026-01-03T22:46:07.577421"
+}

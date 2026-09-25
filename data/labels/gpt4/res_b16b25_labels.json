@@ -1,0 +1,37 @@
+{
+  "scenario_id": "res_b16b25",
+  "trace_id": "res_b16b25",
+  "causal_edges": [
+    {
+      "source_node_id": "step_1",
+      "target_node_id": "step_3",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Data intended for verification is sent directly to synthesis, leading to partly unverified synthesis."
+    },
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Unverified data is used in synthesis, resulting in incomplete synthesis."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The synthesized data, containing errors, is sent to the report generator."
+    }
+  ],
+  "root_cause_node_id": "step_1",
+  "root_cause_explanation": "Data intended for agent_2 is incorrectly routed to agent_3, bypassing the verification step.",
+  "error_propagation_path": [
+    "step_1",
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

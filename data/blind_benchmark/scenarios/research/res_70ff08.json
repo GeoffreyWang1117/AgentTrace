@@ -1,0 +1,102 @@
+{
+  "scenario_id": "res_70ff08",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "Agents must collaboratively gather information from multiple online databases, synthesize this information into a cohesive summary, and generate a comprehensive research report on a given topic.",
+  "expected_outcome": "All agents correctly gather, process, and combine information from their respective sources, resulting in an accurate and well-attributed research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_data",
+        "query_database"
+      ],
+      "description": "This agent is responsible for retrieving raw data from assigned online databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "synthesize_information"
+      ],
+      "description": "This agent processes the collected data, identifying key insights and synthesizing information for the report."
+    },
+    {
+      "id": "agent_3",
+      "role": "Fact Checker",
+      "capabilities": [
+        "verify_information",
+        "validate_sources"
+      ],
+      "description": "This agent ensures that the synthesized information is accurate and the sources are credible."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "compile_report",
+        "format_output"
+      ],
+      "description": "This agent compiles the synthesized and validated information into a formatted research report."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_from_database_1"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_from_database_2"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesis",
+      "content": {
+        "synthesis": "combined_data_insights"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_verification",
+      "content": {
+        "verification": "incorrectly_verified_data"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_final_synthesis",
+      "content": {
+        "final_synthesis": "unverified_data_insights"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "external",
+      "action": "generate_report",
+      "content": {
+        "report": "incomplete_research_report"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:06:52.420072"
+}

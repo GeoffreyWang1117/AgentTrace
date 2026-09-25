@@ -1,0 +1,120 @@
+{
+  "scenario_id": "res_b16b25",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "In this scenario, four agents need to collaboratively gather information from different online databases about recent advancements in renewable energy technologies. The agents will synthesize the information and produce a comprehensive research report highlighting key findings, potential applications, and source attributions.",
+  "expected_outcome": "The agents successfully collect relevant data, synthesize the information into a coherent report, and accurately attribute sources without any data loss or corruption.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_data_from_source_A",
+        "fetch_data_from_source_B"
+      ],
+      "description": "This agent gathers information from two specified online databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Verifier",
+      "capabilities": [
+        "verify_data_integrity",
+        "confirm_source_authenticity"
+      ],
+      "description": "This agent verifies the integrity and authenticity of the data received from agent_1."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "identify_conflicts"
+      ],
+      "description": "This agent synthesizes the verified data and resolves any conflicts found."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the synthesized data into a report and ensures correct source attribution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_from_source_A"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_from_source_B"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_verified_data",
+      "content": {
+        "data": "verified_data_from_source_B"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "synthesize_data",
+      "content": {
+        "data": "partly_unverified_synthesized_information"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "partly_unverified_synthesized_data"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "generate_report",
+      "content": {
+        "report": "draft_report_with_issue"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "attribute_sources",
+      "content": {
+        "report": "report_with_incomplete_sources"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "distribute_report",
+      "content": {
+        "final_report": "final_report_with_data_errors"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:06:25.161129"
+}

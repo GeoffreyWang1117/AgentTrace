@@ -1,0 +1,264 @@
+{
+  "scenario_id": "pla_c0fdc8",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "race_condition",
+  "task_description": "The agents work together to construct a robotic assembly line. The task involves planning the placement of machinery, allocating power and network resources, programming workflows, and ensuring all dependencies are managed.",
+  "expected_outcome": "Agents successfully construct the assembly line with all machinery operational, resources optimally allocated, and workflows synchronized.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "dependency_management"
+      ],
+      "description": "Agent 1 breaks down the complex task into manageable subtasks and manages dependencies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Allocator",
+      "capabilities": [
+        "resource_management",
+        "conflict_resolution"
+      ],
+      "description": "Agent 2 allocates resources such as power and network bandwidth to each subtask."
+    },
+    {
+      "id": "agent_3",
+      "role": "Coordinator",
+      "capabilities": [
+        "execution_scheduling",
+        "plan_update_propagation"
+      ],
+      "description": "Agent 3 coordinates the execution of tasks and ensures all updates are propagated to every relevant agent."
+    },
+    {
+      "id": "agent_4",
+      "role": "Execution Monitor",
+      "capabilities": [
+        "task_execution",
+        "error_detection"
+      ],
+      "description": "Agent 4 executes the tasks and monitors for errors or deviations from the plan."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "allocate_subtasks",
+      "content": {
+        "subtasks": [
+          "machinery_placement",
+          "power_distribution"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resource_allocation": {
+          "machinery_placement": "network_bandwidth"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "schedule_execution",
+      "content": {
+        "schedule": "machinery_placement_t1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "report_execution_status",
+      "content": {
+        "status": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_resources",
+      "content": {
+        "additional_requirements": "power_increase"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_resource_allocation",
+      "content": {
+        "new_allocation": {
+          "machinery_placement": "power"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies_satisfied",
+      "content": {
+        "dependencies": "all_satisfied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "finalize_plan",
+      "content": {
+        "final_plan": "execute_fully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "allocate_subtasks",
+      "content": {
+        "subtasks": [
+          "machinery_placement",
+          "power_distribution"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resource_allocation": {
+          "machinery_placement": "network_bandwidth"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "schedule_execution",
+      "content": {
+        "schedule": "machinery_placement_t1"
+      },
+      "is_bug_point": true,
+      "bug_description": "Race condition: Execution schedule information is sent before resource allocation is updated, leading to potential conflicts."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "report_execution_status",
+      "content": {
+        "status": "partial_success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_resources",
+      "content": {
+        "additional_requirements": "power_increase"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_resource_allocation",
+      "content": {
+        "new_allocation": {
+          "machinery_placement": "power"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies_satisfied",
+      "content": {
+        "dependencies": "partially_satisfied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "finalize_plan",
+      "content": {
+        "final_plan": "execute_with_issues"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from the premature scheduling to execution, causing partial success."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "control_flow",
+      "description": "Partial execution status leads to additional resource requests."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Additional resource requests are handled but execution was already affected."
+    }
+  ],
+  "created_at": "2026-01-04T09:10:16.791122"
+}

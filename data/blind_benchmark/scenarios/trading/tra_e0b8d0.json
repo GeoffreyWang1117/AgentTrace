@@ -1,0 +1,170 @@
+{
+  "scenario_id": "tra_e0b8d0",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "The agents need to collaboratively analyze live market data, make informed trading decisions, execute trades, and ensure all transactions are correctly verified and tracked.",
+  "expected_outcome": "If everything works correctly, the agents will efficiently and accurately analyze data, decide on trades, execute and verify the transactions without discrepancies, and maintain an updated and consistent view of all positions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "Fetches real-time market data and performs trend analysis to provide insights."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "evaluate_trends",
+        "make_trade_decisions"
+      ],
+      "description": "Evaluates analyzed data to make trading decisions."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "place_orders",
+        "monitor_order_status"
+      ],
+      "description": "Executes the trade orders and monitors their status."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_execution",
+        "validate_transactions"
+      ],
+      "description": "Verifies that trades are executed correctly and validates transaction records."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "update_positions",
+        "resolve_discrepancies"
+      ],
+      "description": "Keeps track of all trading positions and resolves any inconsistencies."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend_data": "upward_trend"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_id": "12345"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_trade_status",
+      "content": {
+        "order_id": "12345"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_id": "12345",
+        "execution_status": "pending"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_execution",
+      "content": {
+        "order_id": "12345",
+        "execution_status": "delayed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position_id": "54321",
+        "update_status": "incomplete"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend_data": "stable_trend"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "hold"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_id": "12346"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_execution",
+      "content": {
+        "order_id": "12346",
+        "execution_status": "success"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position_id": "54322",
+        "update_status": "complete"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:13:27.981749"
+}

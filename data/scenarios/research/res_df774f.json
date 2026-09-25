@@ -1,0 +1,256 @@
+{
+  "scenario_id": "res_df774f",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "timeout_cascade",
+  "task_description": "The agents need to collaboratively gather and synthesize information from various online sources to compose a comprehensive research report on the impact of climate change on global agriculture.",
+  "expected_outcome": "The agents successfully gather data from specified sources, synthesize the information, resolve any conflicts, and produce an accurate, well-cited research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Gatherer",
+      "capabilities": [
+        "fetch_data",
+        "access_external_sources"
+      ],
+      "description": "This agent is responsible for collecting raw data from various online databases and news articles."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "identify_conflicts"
+      ],
+      "description": "This agent synthesizes information collected by other agents, resolves conflicts, and prepares data for reporting."
+    },
+    {
+      "id": "agent_3",
+      "role": "Fact Checker",
+      "capabilities": [
+        "verify_data",
+        "source_attribution"
+      ],
+      "description": "This agent verifies the accuracy of the information and ensures proper source attribution."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "compose_report",
+        "format_output"
+      ],
+      "description": "This agent compiles the verified and synthesized information into a formatted research report."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_information"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "synthesized_information"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_verified_data",
+      "content": {
+        "data": "verified_information"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_additional_data",
+      "content": {
+        "request": "additional_synthesis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_additional_data",
+      "content": {
+        "data": "additional_synthesis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_verification",
+      "content": {
+        "data": "final_draft"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_final_verification",
+      "content": {
+        "data": "verified_final_draft"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "external_system",
+      "action": "publish_report",
+      "content": {
+        "report": "complete_research_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_information"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "synthesized_information"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_verified_data",
+      "content": {
+        "data": "verified_information"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 experiences a timeout, causing a delay in sending the data to Agent 4."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_additional_data",
+      "content": {
+        "request": "additional_synthesis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_additional_data",
+      "content": {
+        "data": "additional_synthesis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_verification",
+      "content": {
+        "data": "final_draft"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_final_verification",
+      "content": {
+        "data": "verification_failed_due_to_timeout"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 fails to send final verification due to cascading timeouts."
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "external_system",
+      "action": "publish_report",
+      "content": {
+        "report": "incomplete_report_due_to_missing_verification"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The timeout in step 3 delays the flow of verified data, affecting subsequent steps."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The delayed response from step 3 causes agent 4 to receive incomplete data."
+    },
+    {
+      "source_step": 5,
+      "target_step": 7,
+      "relationship_type": "action_dependency",
+      "description": "Agent 3's failure to verify in step 7 is due to the compounded timeout issue originating from step 3."
+    },
+    {
+      "source_step": 7,
+      "target_step": 8,
+      "relationship_type": "action_dependency",
+      "description": "The incomplete verification in step 7 leads to the publication of an incomplete report in step 8."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:33.593949"
+}

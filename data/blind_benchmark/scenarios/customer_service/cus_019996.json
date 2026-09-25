@@ -1,0 +1,177 @@
+{
+  "scenario_id": "cus_019996",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "task_description": "In this multi-agent customer service scenario, agents are tasked with handling customer inquiries, escalating complex issues, and tracking and resolving tickets efficiently. Each agent has a specific role, and they must work collaboratively to ensure a seamless customer experience. The agents need to maintain customer context during handoffs, synchronize ticket statuses, and avoid duplicate or conflicting responses.",
+  "expected_outcome": "The system should handle customer inquiries smoothly, correctly escalate issues, and ensure that tickets are resolved with the customer context intact at all stages. All actions and updates should be synchronized across the system, with no duplication or conflicts in responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "handle_inquiries",
+        "create_tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "escalate_issues"
+      ],
+      "description": "Specializes in resolving technical issues and escalates complex cases."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Context Manager",
+      "capabilities": [
+        "maintain_context",
+        "handoff_context"
+      ],
+      "description": "Ensures that customer context is maintained during handoffs."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Synchronization Agent",
+      "capabilities": [
+        "synchronize_status",
+        "update_tickets"
+      ],
+      "description": "Responsible for synchronizing ticket statuses across the system."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance Agent",
+      "capabilities": [
+        "detect_conflicts",
+        "ensure_response_quality"
+      ],
+      "description": "Monitors for duplicate or conflicting responses and ensures response quality."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "123",
+        "issue": "login problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "transfer_context",
+      "content": {
+        "customer_id": "123",
+        "context": "login problem details"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "456",
+        "issue_type": "non_technical"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "synchronize_status",
+      "content": {
+        "ticket_id": "456",
+        "status": "awaiting_customer_support"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "456",
+        "resolution": "incorrect escalation"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "update_customer",
+      "content": {
+        "customer_id": "123",
+        "resolution": "issue pending"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "confirm_resolution",
+      "content": {
+        "customer_id": "123",
+        "feedback": "unresolved"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "detect_conflict",
+      "content": {
+        "customer_id": "123",
+        "conflict": "escalation error"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "reopen_ticket",
+      "content": {
+        "ticket_id": "456",
+        "status": "reopened"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "correct_category",
+      "content": {
+        "ticket_id": "456",
+        "correct_category": "technical"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_customer",
+      "content": {
+        "customer_id": "123",
+        "update": "issue being resolved"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "escalate_issue_correctly",
+      "content": {
+        "ticket_id": "456",
+        "status": "escalation underway"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:21.192636"
+}

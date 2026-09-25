@@ -1,0 +1,37 @@
+{
+  "scenario_id": "tra_90a78d",
+  "trace_id": "tra_90a78d",
+  "causal_edges": [
+    {
+      "source_node_id": "step_1",
+      "target_node_id": "step_2",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Incorrect market trend detection causes the Trading Strategist to make a sell decision instead of a buy."
+    },
+    {
+      "source_node_id": "step_2",
+      "target_node_id": "step_4",
+      "relationship_type": "execution_result",
+      "confidence": 1.0,
+      "explanation": "The incorrect sell order affects the positions tracked by the Transaction Verifier."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "verification_result",
+      "confidence": 1.0,
+      "explanation": "Position verification fails, revealing a discrepancy due to the initial logic error."
+    }
+  ],
+  "root_cause_node_id": "step_1",
+  "root_cause_explanation": "Incorrect trend detection due to logic error in data analysis.",
+  "error_propagation_path": [
+    "step_1",
+    "step_2",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

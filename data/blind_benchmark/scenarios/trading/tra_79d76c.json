@@ -1,0 +1,89 @@
+{
+  "scenario_id": "tra_79d76c",
+  "domain": "trading",
+  "complexity": "simple",
+  "task_description": "Agents in a multi-agent trading system need to collaborate to analyze live market data, make informed trading decisions, and execute trades while ensuring data consistency and transaction integrity.",
+  "expected_outcome": "Agents should correctly analyze market data, make timely trading decisions, execute orders accurately, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_market_trends"
+      ],
+      "description": "This agent fetches the latest market data and analyzes trends to provide insights for trading decisions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "evaluate_trading_opportunities",
+        "decide_on_trades"
+      ],
+      "description": "This agent evaluates trading opportunities based on analyzed data and decides which trades to execute."
+    },
+    {
+      "id": "agent_3",
+      "role": "Transaction Executor",
+      "capabilities": [
+        "execute_trades",
+        "track_positions"
+      ],
+      "description": "This agent is responsible for executing trades and ensuring accurate position tracking post-trade execution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "market_trend": "upward",
+        "confidence": 0.9
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "status": "not_executed",
+        "trade_id": null
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_execution_report",
+      "content": {
+        "trade_id": null,
+        "execution_time": "N/A"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:38.551393"
+}

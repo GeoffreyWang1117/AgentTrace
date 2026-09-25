@@ -1,0 +1,307 @@
+{
+  "scenario_id": "pla_881b33",
+  "domain": "planning",
+  "complexity": "complex",
+  "bug_type": "data_corruption",
+  "task_description": "Agents are tasked with planning and executing a large-scale automated warehouse operation where various goods need to be sorted, packaged, and shipped. The goal is to break down the overall task into subtasks, allocate resources like machinery and staff, and ensure smooth coordination while handling dependencies such as power usage and packaging materials.",
+  "expected_outcome": "The operation should proceed seamlessly with agents collaborating efficiently, subtasks completed in order, and no resource conflicts or unhandled dependencies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "dependency_analysis"
+      ],
+      "description": "Breaks down the main goal into subtasks and analyzes dependencies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Scheduler",
+      "capabilities": [
+        "resource_allocation",
+        "timeline_management"
+      ],
+      "description": "Allocates resources and creates schedules for task execution."
+    },
+    {
+      "id": "agent_3",
+      "role": "Executor",
+      "capabilities": [
+        "task_execution",
+        "real-time_adjustment"
+      ],
+      "description": "Executes tasks according to the schedule and makes on-the-fly adjustments."
+    },
+    {
+      "id": "agent_4",
+      "role": "Monitor",
+      "capabilities": [
+        "performance_tracking",
+        "error_detection"
+      ],
+      "description": "Monitors the execution process and detects any deviations or errors."
+    },
+    {
+      "id": "agent_5",
+      "role": "Communicator",
+      "capabilities": [
+        "inter-agent_communication",
+        "data_integrity_checks"
+      ],
+      "description": "Handles communication between agents and ensures data integrity."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_plan_details",
+      "content": {
+        "tasks": [
+          "sort_goods",
+          "package_goods",
+          "ship_goods"
+        ],
+        "dependencies": [
+          "power",
+          "materials"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_schedule",
+      "content": {
+        "schedule": {
+          "sort_goods": "9 AM",
+          "package_goods": "10 AM",
+          "ship_goods": "11 AM"
+        },
+        "resources": "staff_machinery"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_monitoring",
+      "content": {
+        "task_status": "execution_started"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_status_update",
+      "content": {
+        "status": "monitoring_active"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_data_integrity",
+      "content": {
+        "integrity": "data_intact"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_subtask_update",
+      "content": {
+        "update": "additional_sorting_criteria"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_plan_details",
+      "content": {
+        "tasks": [
+          "sort_goods",
+          "package_goods",
+          "ship_goods"
+        ],
+        "dependencies": [
+          "power",
+          "materials"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_schedule",
+      "content": {
+        "schedule": {
+          "sort_goods": "9 AM",
+          "package_goods": "10 AM",
+          "ship_goods": "11 AM"
+        },
+        "resources": "staff_machinery"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_monitoring",
+      "content": {
+        "task_status": "execution_started"
+      },
+      "is_bug_point": true,
+      "bug_description": "Task status data gets corrupted and incorrectly reflects as 'execution_delayed'."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_status_update",
+      "content": {
+        "status": "monitoring_active"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_data_integrity",
+      "content": {
+        "integrity": "data_intact"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_subtask_update",
+      "content": {
+        "update": "additional_sorting_criteria"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_error",
+      "content": {
+        "error": "delayed_execution_detected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_reassessment",
+      "content": {
+        "action": "recheck_schedule"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_clarification",
+      "content": {
+        "query": "is_execution_delayed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "verify_data",
+      "content": {
+        "verification": "check_status_mismatch"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "validate_corruption",
+      "content": {
+        "validation": "confirm_corruption"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "correct_data",
+      "content": {
+        "corrected_status": "execution_started"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "status_report",
+      "description": "Incorrect status report confirms data integrity"
+    },
+    {
+      "source_step": 5,
+      "target_step": 7,
+      "relationship_type": "error_detection",
+      "description": "Error detected based on incorrect status"
+    }
+  ],
+  "created_at": "2026-01-03T22:45:08.265340"
+}

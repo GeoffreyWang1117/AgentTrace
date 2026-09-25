@@ -1,0 +1,126 @@
+{
+  "scenario_id": "tra_5c83f9",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "In this multi-agent trading system, agents must collaborate to analyze real-time market data, make strategic trading decisions, execute trades, and verify the accuracy of transactions. The agents need to ensure synchronization and consistency to avoid using stale data, handle timing for order execution, and maintain accurate position tracking.",
+  "expected_outcome": "Agents should accurately analyze market data, make timely trading decisions, execute orders correctly, and maintain consistent track of trading positions without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyst",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "Fetches real-time market data and analyzes trends to provide actionable insights."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Strategist",
+      "capabilities": [
+        "formulate_strategy",
+        "optimize_portfolio"
+      ],
+      "description": "Uses market data analysis to formulate trading strategies and optimize the portfolio."
+    },
+    {
+      "id": "agent_3",
+      "role": "Execution Manager",
+      "capabilities": [
+        "execute_orders",
+        "monitor_execution"
+      ],
+      "description": "Executes trade orders on the market and monitors their outcomes."
+    },
+    {
+      "id": "agent_4",
+      "role": "Auditor",
+      "capabilities": [
+        "verify_transactions",
+        "track_positions"
+      ],
+      "description": "Verifies completed transactions and ensures accurate position tracking."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis",
+      "content": {
+        "market_trend": "upward"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_strategy",
+      "content": {
+        "trade_decision": "buy"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_id": "12345",
+        "status": "pending"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "order_id": "12345",
+        "status": "completed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_positions",
+      "content": {
+        "positions": {
+          "stock_a": 50
+        }
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "check_optimization",
+      "content": {
+        "optimization_result": "success"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "verify_positions",
+      "content": {
+        "positions": {
+          "stock_a": 45
+        }
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "final_audit",
+      "content": {
+        "audit_status": "discrepancy_found"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:46.955971"
+}

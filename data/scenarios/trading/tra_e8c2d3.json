@@ -1,0 +1,183 @@
+{
+  "scenario_id": "tra_e8c2d3",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "missing_context",
+  "task_description": "In this scenario, a team of agents is tasked with analyzing real-time market data to make informed trading decisions, execute trades, and ensure that transactions are accurately recorded and verified.",
+  "expected_outcome": "Agents collaboratively process market data, make optimal trading decisions, execute trades successfully, and maintain accurate records of all transactions without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Analyst",
+      "capabilities": [
+        "real_time_data_analysis",
+        "trend_identification"
+      ],
+      "description": "Analyzes incoming market data to identify trends and generates insights for trading decisions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Strategist",
+      "capabilities": [
+        "decision_making",
+        "risk_assessment"
+      ],
+      "description": "Uses insights from the Market Analyst to make trading decisions, assessing risks and potential rewards."
+    },
+    {
+      "id": "agent_3",
+      "role": "Execution Manager",
+      "capabilities": [
+        "order_placement",
+        "timing_optimization"
+      ],
+      "description": "Responsible for executing trades, focusing on optimal timing and order precision."
+    },
+    {
+      "id": "agent_4",
+      "role": "Compliance Officer",
+      "capabilities": [
+        "transaction_verification",
+        "record_maintenance"
+      ],
+      "description": "Verifies executed trades and ensures all transactions are accurately recorded in the system."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_insights",
+      "content": {
+        "trends": "bullish",
+        "confidence_score": 0.8
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "notify_execution",
+      "content": {
+        "executed_trade": "buy 100 shares at market price",
+        "execution_time": "14:32:10"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_verification",
+      "content": {
+        "verification_status": "success",
+        "record_id": "txn_123456"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "positive",
+        "next_steps": "continue monitoring"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_insights",
+      "content": {
+        "trends": "bullish",
+        "confidence_score": 0.8
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "notify_execution",
+      "content": {
+        "executed_trade": "buy 100 shares at market price",
+        "execution_time": null
+      },
+      "is_bug_point": true,
+      "bug_description": "Execution Manager failed to include execution time in the notification"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_verification",
+      "content": {
+        "verification_status": "failed",
+        "error": "Missing execution time",
+        "record_id": null
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "negative",
+        "issues": "Incomplete trade execution details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 4,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from Execution Manager to Compliance Officer leading to failed verification"
+    }
+  ],
+  "created_at": "2026-01-04T09:12:43.235185"
+}

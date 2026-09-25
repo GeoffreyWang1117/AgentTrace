@@ -1,0 +1,366 @@
+{
+  "scenario_id": "pla_f173d8",
+  "domain": "planning",
+  "complexity": "complex",
+  "bug_type": "logic_error",
+  "task_description": "The agents are tasked with planning and executing the construction of a modular space habitat. The complex goal must be broken down into subtasks such as designing modules, procuring materials, assembling parts, and testing systems. Each agent is responsible for specific resources and tasks, and they must collaborate to ensure the project progresses smoothly.",
+  "expected_outcome": "If everything works correctly, the space habitat is constructed efficiently with all modules seamlessly integrated, resource use optimized, and no delays due to uncoordinated actions or resource conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Architect",
+      "capabilities": [
+        "design",
+        "planning",
+        "resource_allocation"
+      ],
+      "description": "This agent is responsible for breaking down the complex goal into subtasks and designing the overall structure."
+    },
+    {
+      "id": "agent_2",
+      "role": "Procurement Officer",
+      "capabilities": [
+        "material_sourcing",
+        "budget_management"
+      ],
+      "description": "This agent handles sourcing of materials and manages the budget."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Supervisor",
+      "capabilities": [
+        "task_allocation",
+        "scheduling"
+      ],
+      "description": "This agent allocates construction tasks and schedules the workflow."
+    },
+    {
+      "id": "agent_4",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "testing",
+        "quality_check"
+      ],
+      "description": "This agent ensures that all components meet the required standards and conducts tests."
+    },
+    {
+      "id": "agent_5",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "supply_chain_management",
+        "transportation"
+      ],
+      "description": "This agent manages the transportation of materials and components to the construction site."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design_specifications",
+      "content": {
+        "design_plan": "module_blueprints"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_materials_transport",
+      "content": {
+        "materials_list": [
+          "steel",
+          "insulation"
+        ],
+        "delivery_date": "2023-12-01"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_task_schedule",
+      "content": {
+        "schedule": "construction_schedule"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "deliver_materials",
+      "content": {
+        "materials_received": [
+          "steel",
+          "insulation"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_quality_check",
+      "content": {
+        "location": "foundation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "report_quality_status",
+      "content": {
+        "status": "passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_progress",
+      "content": {
+        "progress": "50% complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_resource_needs",
+      "content": {
+        "additional_resources": [
+          "solar_panels"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "arrange_additional_transport",
+      "content": {
+        "materials": [
+          "solar_panels"
+        ],
+        "delivery_date": "2023-12-05"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "confirm_additional_delivery",
+      "content": {
+        "status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "final_quality_assessment",
+      "content": {
+        "module": "solar_array"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "final_report",
+      "content": {
+        "outcome": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design_specifications",
+      "content": {
+        "design_plan": "module_blueprints"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_materials_transport",
+      "content": {
+        "materials_list": [
+          "steel",
+          "insulation"
+        ],
+        "delivery_date": "2023-12-01"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_task_schedule",
+      "content": {
+        "schedule": "construction_schedule"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly assumes the foundation is completed and schedules next phase prematurely."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "deliver_materials",
+      "content": {
+        "materials_received": [
+          "steel",
+          "insulation"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_quality_check",
+      "content": {
+        "location": "foundation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "report_quality_status",
+      "content": {
+        "status": "not_ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_progress",
+      "content": {
+        "progress": "40% complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_resource_needs",
+      "content": {
+        "additional_resources": [
+          "solar_panels"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "arrange_additional_transport",
+      "content": {
+        "materials": [
+          "solar_panels"
+        ],
+        "delivery_date": "2023-12-05"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "confirm_additional_delivery",
+      "content": {
+        "status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "final_quality_assessment",
+      "content": {
+        "module": "solar_array"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "final_report",
+      "content": {
+        "outcome": "incomplete due to scheduling error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Incorrect scheduling decision affects material delivery preparation."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Materials delivered before foundation is ready."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:38.017589"
+}

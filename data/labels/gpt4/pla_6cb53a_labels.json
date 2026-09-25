@@ -1,0 +1,29 @@
+{
+  "scenario_id": "pla_6cb53a",
+  "trace_id": "pla_6cb53a",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The timeout in step 3 causes Agent 3 to not report the task completion properly, leading to incomplete data being passed to Agent 2 in step 4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "control_flow",
+      "confidence": 1.0,
+      "explanation": "Agent 1 is unable to confirm the next task (T2) due to missing completion status of T1, leading to an execution halt."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 experiences a timeout while executing Task T1, causing a delay in reporting the status back to Agent 2.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cus_30d977",
+  "trace_id": "cus_30d977",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_7",
+      "relationship_type": "state_dependency",
+      "confidence": 1.0,
+      "explanation": "State synchronization fails due to earlier corrupted context"
+    },
+    {
+      "source_node_id": "step_7",
+      "target_node_id": "step_11",
+      "relationship_type": "audit_failure",
+      "confidence": 1.0,
+      "explanation": "Audit failure due to unexpected state detected in step 11"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "State inconsistency: context about 'Router reset advised' is not updated in agent_5's system causing a pending state synchronization",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_7",
+    "step_11"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,133 @@
+{
+  "scenario_id": "pla_366726",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "Agents are tasked with organizing a charity event that involves setting up a venue, coordinating with vendors for food and decorations, managing guest lists, and ensuring smooth event execution. The goal is to break down these tasks into subtasks, allocate resources effectively, and ensure all dependencies are managed correctly.",
+  "expected_outcome": "Agents successfully coordinate the event by communicating and sharing resources, ensuring all subtasks are completed on schedule without any resource conflicts or dependency issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "break_down_tasks",
+        "assign_subtasks"
+      ],
+      "description": "Responsible for breaking down the main goal into subtasks and assigning these to other agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "allocate_resources",
+        "resolve_conflicts"
+      ],
+      "description": "In charge of allocating and managing resources necessary for task execution."
+    },
+    {
+      "id": "agent_3",
+      "role": "Coordinator",
+      "capabilities": [
+        "coordinate_tasks",
+        "manage_dependencies"
+      ],
+      "description": "Handles the coordination of task execution and ensures all dependencies are addressed."
+    },
+    {
+      "id": "agent_4",
+      "role": "Communicator",
+      "capabilities": [
+        "update_plans",
+        "communicate_changes"
+      ],
+      "description": "Ensures all agents are updated on any changes in the plan and manages communication."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "subtasks": [
+          "venue_setup",
+          "catering",
+          "guest_list"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "venue": "hall_a",
+          "budget": 5000
+        }
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "coordinate_schedule",
+      "content": {
+        "schedule": {
+          "setup": "9am-11am"
+        }
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_plan",
+      "content": {
+        "status": "approved"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_task_breakdown",
+      "content": {
+        "subtasks": [
+          "decorations"
+        ]
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_conflict",
+      "content": {
+        "conflict": "venue_availability"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_dependencies",
+      "content": {
+        "dependencies": [
+          "vendor_arrival"
+        ]
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "close_communication_loop",
+      "content": {
+        "status": "all_set"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:09:22.031935"
+}

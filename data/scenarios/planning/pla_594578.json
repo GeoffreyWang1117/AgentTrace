@@ -1,0 +1,266 @@
+{
+  "scenario_id": "pla_594578",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "data_corruption",
+  "task_description": "Four agents collaborate to organize a community event that requires breaking down complex tasks such as planning, resource allocation, and task execution. The goal is to ensure the event is planned, vendors are coordinated, and resources are allocated efficiently.",
+  "expected_outcome": "All tasks are successfully decomposed, resources are allocated without conflicts, and the event is executed smoothly with all dependencies handled correctly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "dependency_identification"
+      ],
+      "description": "Responsible for breaking down the event planning into smaller, manageable tasks and identifying dependencies between them."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource_Manager",
+      "capabilities": [
+        "resource_allocation",
+        "conflict_resolution"
+      ],
+      "description": "Handles the allocation of resources such as venues, equipment, and personnel, ensuring there are no conflicts."
+    },
+    {
+      "id": "agent_3",
+      "role": "Coordinator",
+      "capabilities": [
+        "task_scheduling",
+        "dependency_management"
+      ],
+      "description": "Ensures that tasks are scheduled correctly and dependencies between tasks are managed."
+    },
+    {
+      "id": "agent_4",
+      "role": "Execution_Supervisor",
+      "capabilities": [
+        "execution_monitoring",
+        "issue_resolution"
+      ],
+      "description": "Monitors the execution of tasks during the event and resolves any issues that arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "tasks": [
+          "venue_booking",
+          "vendor_coordination"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": [
+          "venue",
+          "sound_equipment"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_schedule",
+      "content": {
+        "schedule": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "notify_execution_plan",
+      "content": {
+        "execution_plan": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_additional_resources",
+      "content": {
+        "additional_resources": [
+          "extra_lighting"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_resources_status",
+      "content": {
+        "resources_status": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_schedule",
+      "content": {
+        "final_schedule": "locked"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_completion",
+      "content": {
+        "status": "event_completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "tasks": [
+          "venue_booking",
+          "vendor_coordination"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": [
+          "venue",
+          "sound_equipment"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_schedule",
+      "content": {
+        "schedule": "confirmeed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption during transfer; 'confirmed' was misspelled as 'confirmeed'."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "notify_execution_plan",
+      "content": {
+        "execution_plan": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_additional_resources",
+      "content": {
+        "additional_resources": [
+          "extra_lighting"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_resources_status",
+      "content": {
+        "resources_status": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_schedule",
+      "content": {
+        "final_schedule": "locked"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_completion",
+      "content": {
+        "status": "event_incomplete due to schedule misspelling"
+      },
+      "is_bug_point": true,
+      "bug_description": "The event could not fully proceed as the schedule was not correctly confirmed due to earlier data corruption."
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to a misunderstanding in the execution plan."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "resource_dependency",
+      "description": "Incorrect execution plan leads to unnecessary resource requests."
+    },
+    {
+      "source_step": 5,
+      "target_step": 8,
+      "relationship_type": "execution_outcome",
+      "description": "The corrupted schedule confirmation results in incomplete event execution."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:54.620371"
+}

@@ -1,0 +1,168 @@
+{
+  "scenario_id": "pla_42d002",
+  "domain": "planning",
+  "complexity": "complex",
+  "task_description": "The agents need to collaboratively plan the construction of a smart building. This includes designing the architecture, allocating construction resources, assembling materials, and managing time schedules, while ensuring that dependencies between tasks are properly coordinated and communicated.",
+  "expected_outcome": "All agents successfully coordinate to complete the smart building project on time with optimal resource utilization, without any conflicts or delays.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Architect",
+      "capabilities": [
+        "design_blueprints",
+        "allocate_space"
+      ],
+      "description": "Responsible for designing the building architecture and creating initial blueprints."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "allocate_resources",
+        "manage_inventory"
+      ],
+      "description": "Handles the allocation of construction materials and ensures availability of resources."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Foreman",
+      "capabilities": [
+        "assign_tasks",
+        "schedule_workers"
+      ],
+      "description": "Oversees the construction process, schedules tasks, and assigns workers to specific jobs."
+    },
+    {
+      "id": "agent_4",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "coordinate_shipments",
+        "track_deliveries"
+      ],
+      "description": "Coordinates the transportation of materials to the construction site and ensures timely delivery."
+    },
+    {
+      "id": "agent_5",
+      "role": "Compliance Officer",
+      "capabilities": [
+        "ensure_regulatory_compliance",
+        "audit_processes"
+      ],
+      "description": "Ensures that construction processes comply with regulatory requirements and audits the project."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design",
+      "content": {
+        "blueprint_version": "v1.0"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "materials": [
+          "steel",
+          "concrete"
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_logistics",
+      "content": {
+        "shipment_date": "2023-10-10"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_delivery_schedule",
+      "content": {
+        "status": "pending"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "audit_confirmation",
+      "content": {
+        "compliance_status": "delayed"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "finalize_design",
+      "content": {
+        "final_blueprint": "v1.1"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_progress",
+      "content": {
+        "progress": "halted"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_inventory",
+      "content": {
+        "steel": "pending"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "logistics_feedback",
+      "content": {
+        "next_delivery": "pending"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "compliance_review",
+      "content": {
+        "issues": "pending review"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "validate_design_changes",
+      "content": {
+        "changes_approved": false
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_resource_allocation",
+      "content": {
+        "status": "pending"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:09:14.591150"
+}

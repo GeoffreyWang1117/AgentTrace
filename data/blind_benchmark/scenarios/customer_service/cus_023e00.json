@@ -1,0 +1,89 @@
+{
+  "scenario_id": "cus_023e00",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "task_description": "In this scenario, the agents need to manage customer service by handling inquiries, escalating complex issues, and ensuring all tickets are tracked and resolved accurately. The agents must collaborate efficiently to prevent loss of context during handoffs and to keep ticket statuses synchronized, avoiding duplicate or conflicting responses.",
+  "expected_outcome": "All customer inquiries are addressed appropriately, complex issues are escalated correctly, and all tickets are resolved with statuses updated consistently across the system.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Representative",
+      "capabilities": [
+        "handle_inquiries",
+        "record_ticket"
+      ],
+      "description": "This agent is responsible for initial customer interactions, handling basic inquiries and creating tickets for issues that require further action."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "analyze_issue",
+        "escalate_issue"
+      ],
+      "description": "This agent analyzes more complex customer issues and escalates them to the appropriate department if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Manager",
+      "capabilities": [
+        "update_ticket_status",
+        "resolve_ticket"
+      ],
+      "description": "This agent manages the lifecycle of tickets, ensuring they are updated and resolved appropriately while maintaining accurate status."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "customer_query": "Internet not working"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_analysis": "Router configuration problem"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_info",
+      "content": {
+        "ticket_id": "123",
+        "requested_info": "Router model number"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_additional_info",
+      "content": {
+        "ticket_id": "123",
+        "router_model": "XYZ123"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "resolve_ticket",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "Reconfigured router settings"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:35.419821"
+}

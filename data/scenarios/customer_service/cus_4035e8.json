@@ -1,0 +1,234 @@
+{
+  "scenario_id": "cus_4035e8",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "bug_type": "wrong_routing",
+  "task_description": "The agents must collaboratively handle customer inquiries, escalate complex issues when necessary, and ensure all tickets are properly tracked and resolved in a synchronized manner. They need to maintain the customer context throughout the process and avoid duplicate or conflicting responses.",
+  "expected_outcome": "All customer inquiries are handled efficiently, complex issues are escalated appropriately, tickets remain synchronized without duplication, and customers receive consistent and accurate responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Inquiry Handler",
+      "capabilities": [
+        "handle_simple_inquiries",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and creates tickets if necessary."
+    },
+    {
+      "id": "agent_2",
+      "role": "Ticket Escalation Specialist",
+      "capabilities": [
+        "analyze_issue",
+        "escalate_issue"
+      ],
+      "description": "Analyzes complex issues and escalates them to the appropriate specialist."
+    },
+    {
+      "id": "agent_3",
+      "role": "Technical Specialist",
+      "capabilities": [
+        "resolve_technical_issue",
+        "update_ticket_status"
+      ],
+      "description": "Resolves technical issues and updates the ticket status."
+    },
+    {
+      "id": "agent_4",
+      "role": "Customer Feedback Coordinator",
+      "capabilities": [
+        "collect_feedback",
+        "close_ticket"
+      ],
+      "description": "Collects customer feedback after issue resolution and closes the ticket."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "123",
+        "issue": "login_problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "456",
+        "issue_details": "complex_login_issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resolve_technical_issue",
+      "content": {
+        "ticket_id": "456",
+        "resolution_details": "password_reset"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "collect_feedback",
+      "content": {
+        "ticket_id": "456",
+        "feedback_request": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "provide_feedback",
+      "content": {
+        "ticket_id": "456",
+        "feedback": "positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "456"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "123",
+        "issue": "login_problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "456",
+        "issue_details": "complex_login_issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "resolve_technical_issue",
+      "content": {
+        "ticket_id": "456",
+        "resolution_details": "password_reset"
+      },
+      "is_bug_point": true,
+      "bug_description": "The message is mistakenly sent back to agent_2 instead of proceeding to agent_4, causing a loop."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "456",
+        "issue_details": "complex_login_issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resolve_technical_issue",
+      "content": {
+        "ticket_id": "456",
+        "resolution_details": "password_reset"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "collect_feedback",
+      "content": {
+        "ticket_id": "456",
+        "feedback_request": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "provide_feedback",
+      "content": {
+        "ticket_id": "456",
+        "feedback": "positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "456"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Resolution data is incorrectly sent back to the escalation phase, causing unnecessary re-processing in steps 4 and 5."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "processing_loop",
+      "description": "The issue is re-escalated to technical specialists, leading to redundant processing."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:03.970222"
+}

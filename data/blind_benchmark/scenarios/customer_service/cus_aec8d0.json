@@ -1,0 +1,89 @@
+{
+  "scenario_id": "cus_aec8d0",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to manage customer support tickets for a retail company. Agent 1 handles initial inquiries, Agent 2 manages ticket escalation, and Agent 3 resolves complex issues. The goal is to ensure seamless customer service, accurate ticket status updates, and consistent communication between agents.",
+  "expected_outcome": "The customer inquiry is handled smoothly with proper ticket escalation and resolution. All agents maintain synchronized ticket states and avoid duplicate or conflicting responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support",
+      "capabilities": [
+        "handle_inquiries",
+        "create_tickets"
+      ],
+      "description": "Responsible for addressing initial customer inquiries and creating support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Ticket Escalation",
+      "capabilities": [
+        "escalate_tickets",
+        "update_ticket_status"
+      ],
+      "description": "Manages ticket escalation for complex issues and updates ticket status in the system."
+    },
+    {
+      "id": "agent_3",
+      "role": "Issue Resolution",
+      "capabilities": [
+        "resolve_tickets",
+        "close_tickets"
+      ],
+      "description": "Handles the resolution of complex issues and closes tickets after resolution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "123",
+        "issue": "login problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_ticket",
+      "content": {
+        "ticket_id": "T001",
+        "reason": "complex issue"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_resolution_status",
+      "content": {
+        "ticket_id": "T001",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "T001",
+        "status": "pending"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "customer",
+      "action": "inform_customer",
+      "content": {
+        "ticket_id": "T001",
+        "status": "pending"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:12:01.658286"
+}

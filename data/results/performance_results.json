@@ -1,0 +1,3555 @@
+{
+  "loading": [
+    {
+      "scenario_id": "cod_2077ab",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.32586332721014816,
+      "load_time_std": 0.28820265852312177
+    },
+    {
+      "scenario_id": "cus_023e00",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.08076167432591319,
+      "load_time_std": 0.01670026063026077
+    },
+    {
+      "scenario_id": "tra_e8c2d3",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.08740866906009614,
+      "load_time_std": 0.024994100593915932
+    },
+    {
+      "scenario_id": "res_a0cc25",
+      "node_count": 11,
+      "edge_count": 20,
+      "load_time_ms": 0.16648665769025683,
+      "load_time_std": 0.015699909491850756
+    },
+    {
+      "scenario_id": "tra_11d899",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.09697533096186817,
+      "load_time_std": 0.006458179161770478
+    },
+    {
+      "scenario_id": "tra_9b4fc0",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.06509132799692452,
+      "load_time_std": 0.008504690552450718
+    },
+    {
+      "scenario_id": "cus_e6c487",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.06730801154238482,
+      "load_time_std": 0.0036270737513076166
+    },
+    {
+      "scenario_id": "cus_280c1f",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05723435121277968,
+      "load_time_std": 0.004521697940581144
+    },
+    {
+      "scenario_id": "cod_1b01fd",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.13352633686736226,
+      "load_time_std": 0.007914754545351755
+    },
+    {
+      "scenario_id": "pla_f0f8fe",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0873053310594211,
+      "load_time_std": 0.005861413308107003
+    },
+    {
+      "scenario_id": "res_f1a2a6",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08334834516669314,
+      "load_time_std": 0.00399915345989963
+    },
+    {
+      "scenario_id": "cus_2f4da0",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08788499205062787,
+      "load_time_std": 0.007486577304996584
+    },
+    {
+      "scenario_id": "tra_c99077",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0843019806779921,
+      "load_time_std": 0.0031178342411004195
+    },
+    {
+      "scenario_id": "cus_d305db",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08616200648248196,
+      "load_time_std": 0.0038740084131045145
+    },
+    {
+      "scenario_id": "tra_b53311",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08963198827890058,
+      "load_time_std": 0.004514681706619892
+    },
+    {
+      "scenario_id": "tra_99d9c3",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05671766120940447,
+      "load_time_std": 0.004219399121185699
+    },
+    {
+      "scenario_id": "res_d3d3db",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05354100721888244,
+      "load_time_std": 0.0033084139368667873
+    },
+    {
+      "scenario_id": "cus_6af540",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05307099005828301,
+      "load_time_std": 0.0032153220275749467
+    },
+    {
+      "scenario_id": "cus_a6434c",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.06375799421221018,
+      "load_time_std": 0.0022986702598932793
+    },
+    {
+      "scenario_id": "res_702f30",
+      "node_count": 10,
+      "edge_count": 18,
+      "load_time_ms": 0.10361199383623898,
+      "load_time_std": 0.006379459214563533
+    },
+    {
+      "scenario_id": "tra_5c83f9",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08522200126511355,
+      "load_time_std": 0.0034499173019232367
+    },
+    {
+      "scenario_id": "cus_8db7db",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05550467176362872,
+      "load_time_std": 0.0040297819268431965
+    },
+    {
+      "scenario_id": "pla_ec0526",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.09027532845114668,
+      "load_time_std": 0.0032192069407500183
+    },
+    {
+      "scenario_id": "cod_2d1b39",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.0555743269311885,
+      "load_time_std": 0.005776287045663317
+    },
+    {
+      "scenario_id": "cus_4a9416",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05410765879787505,
+      "load_time_std": 0.003168431779971807
+    },
+    {
+      "scenario_id": "tra_e9517a",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08494200301356614,
+      "load_time_std": 0.0030673939566255256
+    },
+    {
+      "scenario_id": "cus_a23a84",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08167832856997848,
+      "load_time_std": 0.0032087309609457318
+    },
+    {
+      "scenario_id": "cod_11c313",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05774133023805916,
+      "load_time_std": 0.009178842903195884
+    },
+    {
+      "scenario_id": "cod_3ba03e",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08095833860958616,
+      "load_time_std": 0.0026725199918942615
+    },
+    {
+      "scenario_id": "pla_9019df",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.053814330991978444,
+      "load_time_std": 0.0038629173921388565
+    },
+    {
+      "scenario_id": "res_a15dc3",
+      "node_count": 8,
+      "edge_count": 16,
+      "load_time_ms": 0.08687866890492539,
+      "load_time_std": 0.0016991048681617696
+    },
+    {
+      "scenario_id": "res_184404",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.0575013206495593,
+      "load_time_std": 0.007338872790776864
+    },
+    {
+      "scenario_id": "cod_4f4ce3",
+      "node_count": 7,
+      "edge_count": 12,
+      "load_time_ms": 0.07280167968322833,
+      "load_time_std": 0.0028697345744746776
+    },
+    {
+      "scenario_id": "cus_8b7f5b",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08147167197118203,
+      "load_time_std": 0.0022106519319042587
+    },
+    {
+      "scenario_id": "cus_df482a",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.061091326642781496,
+      "load_time_std": 0.01343057374479396
+    },
+    {
+      "scenario_id": "cus_dc06db",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.056377670262008905,
+      "load_time_std": 0.003994147750438809
+    },
+    {
+      "scenario_id": "pla_0e65b1",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08214499879007538,
+      "load_time_std": 0.0024131575233086247
+    },
+    {
+      "scenario_id": "res_6eef0e",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08144832099787891,
+      "load_time_std": 0.0028752509300003243
+    },
+    {
+      "scenario_id": "pla_440cd2",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08255499415099621,
+      "load_time_std": 0.002409590925640012
+    },
+    {
+      "scenario_id": "cus_fe915b",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0855416680375735,
+      "load_time_std": 0.008710167560520463
+    },
+    {
+      "scenario_id": "cod_9c4157",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08232834322067599,
+      "load_time_std": 0.0029414336313581717
+    },
+    {
+      "scenario_id": "res_99b1a3",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.055197665157417454,
+      "load_time_std": 0.0030600276755115598
+    },
+    {
+      "scenario_id": "res_73a826",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05453466049705943,
+      "load_time_std": 0.002889572057959843
+    },
+    {
+      "scenario_id": "cus_3096b1",
+      "node_count": 5,
+      "edge_count": 9,
+      "load_time_ms": 0.06036799944316348,
+      "load_time_std": 0.006978753746997229
+    },
+    {
+      "scenario_id": "cod_f6e103",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08279499403821926,
+      "load_time_std": 0.0022613451206001237
+    },
+    {
+      "scenario_id": "res_444aff",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08588833346342047,
+      "load_time_std": 0.0034026699198507517
+    },
+    {
+      "scenario_id": "cod_fe9ac0",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05457433871924877,
+      "load_time_std": 0.00408113249381808
+    },
+    {
+      "scenario_id": "cod_f07c91",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.13100266611824432,
+      "load_time_std": 0.007709825505296727
+    },
+    {
+      "scenario_id": "cus_ecebb3",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.06949465993481378,
+      "load_time_std": 0.005574237350830029
+    },
+    {
+      "scenario_id": "cus_d1ac62",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.14039966238973042,
+      "load_time_std": 0.01823176804957811
+    },
+    {
+      "scenario_id": "res_8d3dbc",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.06641133222728968,
+      "load_time_std": 0.005453133788037536
+    },
+    {
+      "scenario_id": "cus_aec8d0",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.0576946670965602,
+      "load_time_std": 0.008881618362684904
+    },
+    {
+      "scenario_id": "cod_537ed1",
+      "node_count": 7,
+      "edge_count": 13,
+      "load_time_ms": 0.07953833361777167,
+      "load_time_std": 0.003852579337626487
+    },
+    {
+      "scenario_id": "res_878476",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.07018833033119638,
+      "load_time_std": 0.007705953641126606
+    },
+    {
+      "scenario_id": "res_a875c4",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08936832697751622,
+      "load_time_std": 0.004133247262408012
+    },
+    {
+      "scenario_id": "cus_297a1c",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.18913733462492624,
+      "load_time_std": 0.0435742161323781
+    },
+    {
+      "scenario_id": "tra_f6a947",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.1221993297804147,
+      "load_time_std": 0.04338715824232529
+    },
+    {
+      "scenario_id": "cod_7f5163",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.09452867864941557,
+      "load_time_std": 0.019897103581494255
+    },
+    {
+      "scenario_id": "cus_9559b4",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08433500382428367,
+      "load_time_std": 0.004261204809374098
+    },
+    {
+      "scenario_id": "cod_cbd644",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08955498924478889,
+      "load_time_std": 0.012067871295192122
+    },
+    {
+      "scenario_id": "pla_fb6582",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05638467458387216,
+      "load_time_std": 0.008283092661465425
+    },
+    {
+      "scenario_id": "pla_42d002",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.13299632701091468,
+      "load_time_std": 0.00846959706620691
+    },
+    {
+      "scenario_id": "res_d92ca7",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08711533155292273,
+      "load_time_std": 0.010564533888894553
+    },
+    {
+      "scenario_id": "cus_3e45b4",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.1280893241831412,
+      "load_time_std": 0.010049420507186498
+    },
+    {
+      "scenario_id": "tra_87b82b",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.09229866554960608,
+      "load_time_std": 0.006775832427550886
+    },
+    {
+      "scenario_id": "cod_1bc70f",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.1271626679226756,
+      "load_time_std": 0.01065287662643982
+    },
+    {
+      "scenario_id": "cod_19e63f",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.054237665608525276,
+      "load_time_std": 0.0057564632147848105
+    },
+    {
+      "scenario_id": "cod_25274a",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.061434664530679584,
+      "load_time_std": 0.012936351143276436
+    },
+    {
+      "scenario_id": "tra_5cae27",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08930499704244237,
+      "load_time_std": 0.007348490011956863
+    },
+    {
+      "scenario_id": "cod_f37626",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08177166455425322,
+      "load_time_std": 0.0036043880683053293
+    },
+    {
+      "scenario_id": "cod_a9c635",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05695465370081365,
+      "load_time_std": 0.004564230487050482
+    },
+    {
+      "scenario_id": "cod_2947e7",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.11622931924648583,
+      "load_time_std": 0.022226875577809987
+    },
+    {
+      "scenario_id": "cus_140e85",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.11967599857598543,
+      "load_time_std": 0.012475461623365953
+    },
+    {
+      "scenario_id": "cus_ac5447",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.09173867874778807,
+      "load_time_std": 0.016354175253003467
+    },
+    {
+      "scenario_id": "cus_91ea53",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05438133181693653,
+      "load_time_std": 0.0048526262107633205
+    },
+    {
+      "scenario_id": "tra_e0b8d0",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12484932085499167,
+      "load_time_std": 0.007618137688600551
+    },
+    {
+      "scenario_id": "cod_7efa06",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05480131949298084,
+      "load_time_std": 0.005358274746574153
+    },
+    {
+      "scenario_id": "tra_db2681",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0831746826103578,
+      "load_time_std": 0.0034354672132222218
+    },
+    {
+      "scenario_id": "tra_ec2f01",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.06236132079114517,
+      "load_time_std": 0.006874485459751776
+    },
+    {
+      "scenario_id": "cus_efe13b",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08797866757959127,
+      "load_time_std": 0.009682221048403616
+    },
+    {
+      "scenario_id": "res_2bd739",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.056267997327571116,
+      "load_time_std": 0.006807650072723636
+    },
+    {
+      "scenario_id": "cod_2a8886",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05352098378352821,
+      "load_time_std": 0.003199800250010053
+    },
+    {
+      "scenario_id": "pla_d4489d",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05553434796941777,
+      "load_time_std": 0.003278681718503194
+    },
+    {
+      "scenario_id": "res_3dfa7a",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.055808001585925616,
+      "load_time_std": 0.008772830293374206
+    },
+    {
+      "scenario_id": "res_3769cc",
+      "node_count": 10,
+      "edge_count": 18,
+      "load_time_ms": 0.10176233869666855,
+      "load_time_std": 0.002618741240091421
+    },
+    {
+      "scenario_id": "res_9b64d0",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12299932617073257,
+      "load_time_std": 0.0045557528573644795
+    },
+    {
+      "scenario_id": "res_70d908",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.058601329025502004,
+      "load_time_std": 0.006218994206323264
+    },
+    {
+      "scenario_id": "tra_b7d5c4",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12272900009217362,
+      "load_time_std": 0.005635124370916182
+    },
+    {
+      "scenario_id": "cod_2de509",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.12570601150703928,
+      "load_time_std": 0.00454238050462032
+    },
+    {
+      "scenario_id": "cod_4ead7c",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05993133527226746,
+      "load_time_std": 0.011747303118501147
+    },
+    {
+      "scenario_id": "cus_411406",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08279867082213362,
+      "load_time_std": 0.002222638249790175
+    },
+    {
+      "scenario_id": "tra_c4897f",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05769767449237406,
+      "load_time_std": 0.007291929497083518
+    },
+    {
+      "scenario_id": "tra_312683",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0833883435310175,
+      "load_time_std": 0.0028197164053780197
+    },
+    {
+      "scenario_id": "tra_89d7c9",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.1273093318256239,
+      "load_time_std": 0.008657015325732426
+    },
+    {
+      "scenario_id": "res_21e10d",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.06870133802294731,
+      "load_time_std": 0.004756177534407877
+    },
+    {
+      "scenario_id": "pla_b69893",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08326832903549075,
+      "load_time_std": 0.0033530984711989103
+    },
+    {
+      "scenario_id": "res_31188c",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08772532843674223,
+      "load_time_std": 0.0061113131372129955
+    },
+    {
+      "scenario_id": "cod_f4f333",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05387133569456637,
+      "load_time_std": 0.00367791142329411
+    },
+    {
+      "scenario_id": "pla_c69a42",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12344600205930571,
+      "load_time_std": 0.0021130971188332926
+    },
+    {
+      "scenario_id": "res_3867e9",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05533767398446798,
+      "load_time_std": 0.005689646658501113
+    },
+    {
+      "scenario_id": "cod_984aa9",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08328532567247748,
+      "load_time_std": 0.003708231766095301
+    },
+    {
+      "scenario_id": "cod_13104d",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08903833804652095,
+      "load_time_std": 0.011560570175461589
+    },
+    {
+      "scenario_id": "tra_5c48fc",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12723599017287293,
+      "load_time_std": 0.007878845212330735
+    },
+    {
+      "scenario_id": "pla_3d2050",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.12694267206825316,
+      "load_time_std": 0.005070831845553833
+    },
+    {
+      "scenario_id": "cod_634c55",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08621499485646685,
+      "load_time_std": 0.006035362024712533
+    },
+    {
+      "scenario_id": "res_878937",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.053057679906487465,
+      "load_time_std": 0.0052485688920992455
+    },
+    {
+      "scenario_id": "res_0ba7fa",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05638132764336964,
+      "load_time_std": 0.007715181787020806
+    },
+    {
+      "scenario_id": "res_bc35ab",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.06211132858879864,
+      "load_time_std": 0.0026237089447433363
+    },
+    {
+      "scenario_id": "pla_929520",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.1230426811768363,
+      "load_time_std": 0.030557131081851895
+    },
+    {
+      "scenario_id": "tra_e30293",
+      "node_count": 5,
+      "edge_count": 9,
+      "load_time_ms": 0.06905799576391776,
+      "load_time_std": 0.02123564531488464
+    },
+    {
+      "scenario_id": "res_70ff08",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.06351467648831506,
+      "load_time_std": 0.004579652816842159
+    },
+    {
+      "scenario_id": "tra_818e94",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05712767597287893,
+      "load_time_std": 0.006406177635766584
+    },
+    {
+      "scenario_id": "cod_b7fc72",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.0542713290390869,
+      "load_time_std": 0.004835008629366682
+    },
+    {
+      "scenario_id": "pla_59c04b",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.13140966378462812,
+      "load_time_std": 0.008457624043264908
+    },
+    {
+      "scenario_id": "cus_3c48ac",
+      "node_count": 7,
+      "edge_count": 12,
+      "load_time_ms": 0.07560800683374207,
+      "load_time_std": 0.005877845503623902
+    },
+    {
+      "scenario_id": "cod_e68080",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12067932402715087,
+      "load_time_std": 0.0032333741225108415
+    },
+    {
+      "scenario_id": "cus_98e4e2",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05528134837125739,
+      "load_time_std": 0.005925433967426854
+    },
+    {
+      "scenario_id": "res_b16b25",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.11714266535515587,
+      "load_time_std": 0.024494166922947425
+    },
+    {
+      "scenario_id": "pla_1ffd31",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.17234366775179902,
+      "load_time_std": 0.029444998656607463
+    },
+    {
+      "scenario_id": "cus_a1d5f4",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0889516668394208,
+      "load_time_std": 0.010359797102719021
+    },
+    {
+      "scenario_id": "pla_0d9288",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08084833583173652,
+      "load_time_std": 0.004099896346242629
+    },
+    {
+      "scenario_id": "res_1f2311",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08440834547703464,
+      "load_time_std": 0.0026686096327205276
+    },
+    {
+      "scenario_id": "pla_6cb53a",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05394099086212615,
+      "load_time_std": 0.004574521711958347
+    },
+    {
+      "scenario_id": "tra_1772d7",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.1603566634003073,
+      "load_time_std": 0.04799281894684004
+    },
+    {
+      "scenario_id": "pla_3e0276",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05597134198372563,
+      "load_time_std": 0.006985943943973873
+    },
+    {
+      "scenario_id": "cod_034b23",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.1247260079253465,
+      "load_time_std": 0.02100082044764698
+    },
+    {
+      "scenario_id": "res_a57563",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08637498831376433,
+      "load_time_std": 0.007423779164653197
+    },
+    {
+      "scenario_id": "pla_0aaa53",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08263831841759384,
+      "load_time_std": 0.0038046816799914597
+    },
+    {
+      "scenario_id": "tra_18b11f",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.055190990678966045,
+      "load_time_std": 0.004143370769921842
+    },
+    {
+      "scenario_id": "cus_4035e8",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.09310866395632426,
+      "load_time_std": 0.01984777879212134
+    },
+    {
+      "scenario_id": "cus_4af1ed",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05485800405343374,
+      "load_time_std": 0.0035125885613075856
+    },
+    {
+      "scenario_id": "pla_b99fb9",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.13991599553264678,
+      "load_time_std": 0.030586839890879163
+    },
+    {
+      "scenario_id": "pla_48e78a",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.10109867434948683,
+      "load_time_std": 0.010673602055919927
+    },
+    {
+      "scenario_id": "pla_a9eac0",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.1759703348701199,
+      "load_time_std": 0.042856524948922246
+    },
+    {
+      "scenario_id": "cus_243385",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.14150633554284772,
+      "load_time_std": 0.03355718937551276
+    },
+    {
+      "scenario_id": "tra_c4e009",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.055451334143678345,
+      "load_time_std": 0.005782310705598278
+    },
+    {
+      "scenario_id": "res_eff151",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05386466121611496,
+      "load_time_std": 0.002845378351821552
+    },
+    {
+      "scenario_id": "pla_366726",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08220534073188901,
+      "load_time_std": 0.0027923832080735864
+    },
+    {
+      "scenario_id": "cus_1acbd2",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0849953406335165,
+      "load_time_std": 0.00757129785183682
+    },
+    {
+      "scenario_id": "res_09837c",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08538167458027601,
+      "load_time_std": 0.003531511645311622
+    },
+    {
+      "scenario_id": "pla_278d16",
+      "node_count": 5,
+      "edge_count": 9,
+      "load_time_ms": 0.057377658473948635,
+      "load_time_std": 0.004556504471535178
+    },
+    {
+      "scenario_id": "cus_808eb0",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.054797662111620106,
+      "load_time_std": 0.004005330872005901
+    },
+    {
+      "scenario_id": "cod_755718",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05558465879100064,
+      "load_time_std": 0.005977548379491544
+    },
+    {
+      "scenario_id": "cod_215535",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.055167998652905226,
+      "load_time_std": 0.002585522868930779
+    },
+    {
+      "scenario_id": "pla_77aa96",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.1268660028775533,
+      "load_time_std": 0.004134327219327865
+    },
+    {
+      "scenario_id": "tra_69641e",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08516533610721429,
+      "load_time_std": 0.004007773989605379
+    },
+    {
+      "scenario_id": "cod_c86d76",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08283533194723229,
+      "load_time_std": 0.0036065158882022602
+    },
+    {
+      "scenario_id": "res_dc9bc6",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05380466852026681,
+      "load_time_std": 0.003873996910751912
+    },
+    {
+      "scenario_id": "res_1e1c82",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05295765974248449,
+      "load_time_std": 0.001950657623563205
+    },
+    {
+      "scenario_id": "pla_727734",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08341167510176699,
+      "load_time_std": 0.0028072091639889793
+    },
+    {
+      "scenario_id": "pla_a76c03",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08317166551326712,
+      "load_time_std": 0.004419733497324308
+    },
+    {
+      "scenario_id": "res_bff2fa",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.054004330498476825,
+      "load_time_std": 0.004115315604374934
+    },
+    {
+      "scenario_id": "cod_66f19b",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.1202556595671922,
+      "load_time_std": 0.0010819924402543366
+    },
+    {
+      "scenario_id": "cod_15bda4",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.1256060010443131,
+      "load_time_std": 0.00595508240824398
+    },
+    {
+      "scenario_id": "res_07c6ab",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08373499925558765,
+      "load_time_std": 0.004682817137670934
+    },
+    {
+      "scenario_id": "cus_69d43e",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12181266599024336,
+      "load_time_std": 0.0028110910825123346
+    },
+    {
+      "scenario_id": "cus_cf9cd6",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05946132781294485,
+      "load_time_std": 0.006724355017252628
+    },
+    {
+      "scenario_id": "res_c4a7af",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12278566525007288,
+      "load_time_std": 0.003303019086049519
+    },
+    {
+      "scenario_id": "cod_19d065",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05483099569876989,
+      "load_time_std": 0.00538654623474011
+    },
+    {
+      "scenario_id": "pla_a59fbd",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.09073200635612011,
+      "load_time_std": 0.005639965433187416
+    },
+    {
+      "scenario_id": "tra_046314",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.1410830106275777,
+      "load_time_std": 0.028473417647717193
+    },
+    {
+      "scenario_id": "cod_44e685",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.08956534050715466,
+      "load_time_std": 0.006847093088344245
+    },
+    {
+      "scenario_id": "pla_231f50",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.10609900346025825,
+      "load_time_std": 0.035805643930535536
+    },
+    {
+      "scenario_id": "tra_743850",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05699100438505411,
+      "load_time_std": 0.004969691227199315
+    },
+    {
+      "scenario_id": "tra_e7aa1f",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12128599337302148,
+      "load_time_std": 0.0009641229930389269
+    },
+    {
+      "scenario_id": "tra_ac5a53",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05959800910204649,
+      "load_time_std": 0.004986761508219869
+    },
+    {
+      "scenario_id": "res_ab8bb6",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08369500089126329,
+      "load_time_std": 0.003620664161579588
+    },
+    {
+      "scenario_id": "cus_62e83e",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0855216640047729,
+      "load_time_std": 0.0027449309846318804
+    },
+    {
+      "scenario_id": "cus_8af93f",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08421833626925945,
+      "load_time_std": 0.0035781103870587277
+    },
+    {
+      "scenario_id": "tra_585159",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.09393867609711985,
+      "load_time_std": 0.013779309460321815
+    },
+    {
+      "scenario_id": "pla_594578",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.1293259944456319,
+      "load_time_std": 0.019516453150893613
+    },
+    {
+      "scenario_id": "tra_f0cf50",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.09537201064328353,
+      "load_time_std": 0.0054487776803315525
+    },
+    {
+      "scenario_id": "tra_79d76c",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.09338200713197391,
+      "load_time_std": 0.00036428592183526204
+    },
+    {
+      "scenario_id": "tra_5934de",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.26177232696985203,
+      "load_time_std": 0.19973602189034442
+    },
+    {
+      "scenario_id": "tra_ddd1a9",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08916167037871976,
+      "load_time_std": 0.007215792272713354
+    },
+    {
+      "scenario_id": "pla_9a692e",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.09940198894279699,
+      "load_time_std": 0.016785725903215924
+    },
+    {
+      "scenario_id": "res_488df1",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.08849865601708491,
+      "load_time_std": 0.016105067436946962
+    },
+    {
+      "scenario_id": "cus_849da0",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0856783299241215,
+      "load_time_std": 0.0043225626436159586
+    },
+    {
+      "scenario_id": "tra_e87383",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12941266565273205,
+      "load_time_std": 0.011800948581047573
+    },
+    {
+      "scenario_id": "tra_4379f7",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12569933702858785,
+      "load_time_std": 0.006485233258552644
+    },
+    {
+      "scenario_id": "res_d85cb1",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.0655049904404829,
+      "load_time_std": 0.004668689623079969
+    },
+    {
+      "scenario_id": "pla_881b33",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.12378266546875238,
+      "load_time_std": 0.001867664874424951
+    },
+    {
+      "scenario_id": "cod_5e5fab",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08930833428166807,
+      "load_time_std": 0.005161554985692887
+    },
+    {
+      "scenario_id": "cod_8cbb16",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12132600143862267,
+      "load_time_std": 0.003264536068026264
+    },
+    {
+      "scenario_id": "cus_623dee",
+      "node_count": 7,
+      "edge_count": 12,
+      "load_time_ms": 0.07355466368608177,
+      "load_time_std": 0.00498737563993508
+    },
+    {
+      "scenario_id": "tra_ca83d1",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08729200150507192,
+      "load_time_std": 0.004419014423945567
+    },
+    {
+      "scenario_id": "cod_4b436f",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.120042668034633,
+      "load_time_std": 0.0026486206638505895
+    },
+    {
+      "scenario_id": "res_63b220",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05519433761946857,
+      "load_time_std": 0.004709766836706481
+    },
+    {
+      "scenario_id": "pla_75b6b2",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12420600008529921,
+      "load_time_std": 0.006212386056240086
+    },
+    {
+      "scenario_id": "pla_006020",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08392865614344676,
+      "load_time_std": 0.00497193093476459
+    },
+    {
+      "scenario_id": "cod_426958",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05391799883606533,
+      "load_time_std": 0.003616513139962723
+    },
+    {
+      "scenario_id": "pla_43cb30",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05503467400558293,
+      "load_time_std": 0.003332837239410106
+    },
+    {
+      "scenario_id": "pla_c385c3",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08510165692617495,
+      "load_time_std": 0.0030119569974433103
+    },
+    {
+      "scenario_id": "pla_64d96f",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0828916672617197,
+      "load_time_std": 0.003346135214138025
+    },
+    {
+      "scenario_id": "cod_9224ec",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08329833508469164,
+      "load_time_std": 0.0030405381062570493
+    },
+    {
+      "scenario_id": "cus_f4f2d6",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08301832713186741,
+      "load_time_std": 0.003364983166216669
+    },
+    {
+      "scenario_id": "cod_69de8f",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08585499017499387,
+      "load_time_std": 0.007342832179986798
+    },
+    {
+      "scenario_id": "cod_704ecb",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08221833074154954,
+      "load_time_std": 0.0029052973973339694
+    },
+    {
+      "scenario_id": "cus_bc504f",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.12489267586109538,
+      "load_time_std": 0.003053495766810165
+    },
+    {
+      "scenario_id": "pla_ea524e",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.09534200459408264,
+      "load_time_std": 0.008190870118426733
+    },
+    {
+      "scenario_id": "tra_7c6030",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.09048867893094818,
+      "load_time_std": 0.008562806631539188
+    },
+    {
+      "scenario_id": "res_6fe324",
+      "node_count": 4,
+      "edge_count": 6,
+      "load_time_ms": 0.045310657393808164,
+      "load_time_std": 0.004861737130117771
+    },
+    {
+      "scenario_id": "pla_f173d8",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.13648299500346184,
+      "load_time_std": 0.0248137118094398
+    },
+    {
+      "scenario_id": "res_4564fa",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12629599465678135,
+      "load_time_std": 0.007088311702701624
+    },
+    {
+      "scenario_id": "res_462ed9",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05591798496122161,
+      "load_time_std": 0.005296818835039541
+    },
+    {
+      "scenario_id": "pla_8f0d0d",
+      "node_count": 8,
+      "edge_count": 16,
+      "load_time_ms": 0.0932983336194108,
+      "load_time_std": 0.0038695819723552193
+    },
+    {
+      "scenario_id": "cod_14e62c",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.055984671538074814,
+      "load_time_std": 0.0049141792569803765
+    },
+    {
+      "scenario_id": "tra_cd4803",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.054648000514134765,
+      "load_time_std": 0.0034688457604369278
+    },
+    {
+      "scenario_id": "tra_90a78d",
+      "node_count": 5,
+      "edge_count": 9,
+      "load_time_ms": 0.05553433826814095,
+      "load_time_std": 0.0034103642928234087
+    },
+    {
+      "scenario_id": "tra_7fa754",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.052960996981710196,
+      "load_time_std": 0.0030458540803908886
+    },
+    {
+      "scenario_id": "cod_221686",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.06394465647948284,
+      "load_time_std": 0.003253067423511469
+    },
+    {
+      "scenario_id": "tra_a2e22e",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08352500541756551,
+      "load_time_std": 0.003412681632742451
+    },
+    {
+      "scenario_id": "res_fff139",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.12248934945091605,
+      "load_time_std": 0.011043865207503624
+    },
+    {
+      "scenario_id": "cus_019996",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.153432988251249,
+      "load_time_std": 0.040081294789275024
+    },
+    {
+      "scenario_id": "cus_6e2c71",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.09312535015245278,
+      "load_time_std": 0.0023155262350177033
+    },
+    {
+      "scenario_id": "tra_cc593a",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08514167469305296,
+      "load_time_std": 0.004808807206491913
+    },
+    {
+      "scenario_id": "cod_89edf6",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.07481834230323632,
+      "load_time_std": 0.021342650245080506
+    },
+    {
+      "scenario_id": "res_974fcd",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08304866302448015,
+      "load_time_std": 0.003180049968157351
+    },
+    {
+      "scenario_id": "cus_965782",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.0815686653368175,
+      "load_time_std": 0.004403317745721197
+    },
+    {
+      "scenario_id": "cod_0615d7",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.12384600510510306,
+      "load_time_std": 0.004325529910620856
+    },
+    {
+      "scenario_id": "pla_8247ec",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.054274326733623944,
+      "load_time_std": 0.005386728310812044
+    },
+    {
+      "scenario_id": "tra_241362",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.12556933991921446,
+      "load_time_std": 0.0014979171934771673
+    },
+    {
+      "scenario_id": "pla_932902",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05503467400558293,
+      "load_time_std": 0.004839295553486686
+    },
+    {
+      "scenario_id": "tra_d9500b",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.07562799146398902,
+      "load_time_std": 0.009636756903857022
+    },
+    {
+      "scenario_id": "cod_4eb21a",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.11056565563194454,
+      "load_time_std": 0.02500603842793577
+    },
+    {
+      "scenario_id": "cod_ee8390",
+      "node_count": 8,
+      "edge_count": 16,
+      "load_time_ms": 0.11265900684520602,
+      "load_time_std": 0.027522473689851674
+    },
+    {
+      "scenario_id": "tra_439d1c",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.1868873368948698,
+      "load_time_std": 0.021968541933653666
+    },
+    {
+      "scenario_id": "cus_d6f85d",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.09205532842315733,
+      "load_time_std": 0.02769465080284442
+    },
+    {
+      "scenario_id": "res_33b79c",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.06014100896815459,
+      "load_time_std": 0.006733959166449
+    },
+    {
+      "scenario_id": "tra_768fa3",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.087534999086832,
+      "load_time_std": 0.006274596794423988
+    },
+    {
+      "scenario_id": "res_b80612",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08841533175048728,
+      "load_time_std": 0.004979896840769836
+    },
+    {
+      "scenario_id": "pla_09619e",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08452866071214278,
+      "load_time_std": 0.002698270179691053
+    },
+    {
+      "scenario_id": "res_9a0bd8",
+      "node_count": 6,
+      "edge_count": 10,
+      "load_time_ms": 0.07369800005108118,
+      "load_time_std": 0.007295532828967407
+    },
+    {
+      "scenario_id": "pla_708a0f",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08774866970876853,
+      "load_time_std": 0.005302649883315676
+    },
+    {
+      "scenario_id": "cus_e4060e",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.13046633102931082,
+      "load_time_std": 0.007001837797366446
+    },
+    {
+      "scenario_id": "cod_b92bff",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05692433721075455,
+      "load_time_std": 0.006060541185143261
+    },
+    {
+      "scenario_id": "cus_2f3646",
+      "node_count": 9,
+      "edge_count": 16,
+      "load_time_ms": 0.09717533248476684,
+      "load_time_std": 0.0031000144262908202
+    },
+    {
+      "scenario_id": "pla_ed8dd4",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.05567099045341214,
+      "load_time_std": 0.005808150509747375
+    },
+    {
+      "scenario_id": "res_df774f",
+      "node_count": 8,
+      "edge_count": 15,
+      "load_time_ms": 0.08899866952560842,
+      "load_time_std": 0.003160135477223288
+    },
+    {
+      "scenario_id": "cus_30d977",
+      "node_count": 12,
+      "edge_count": 24,
+      "load_time_ms": 0.12956933157208064,
+      "load_time_std": 0.0027925199288928166
+    },
+    {
+      "scenario_id": "tra_8e0e72",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.1052290026564151,
+      "load_time_std": 0.030311041889616388
+    },
+    {
+      "scenario_id": "res_1b1235",
+      "node_count": 12,
+      "edge_count": 22,
+      "load_time_ms": 0.13443966357347867,
+      "load_time_std": 0.014777302670221006
+    },
+    {
+      "scenario_id": "pla_d8d524",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08640499436296523,
+      "load_time_std": 0.0062582066875004755
+    },
+    {
+      "scenario_id": "tra_c72eaa",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.12490934265467028,
+      "load_time_std": 0.04745242371123925
+    },
+    {
+      "scenario_id": "cod_e78eb3",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.06312134792096913,
+      "load_time_std": 0.011213260882065585
+    },
+    {
+      "scenario_id": "tra_f3de61",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08395199741547306,
+      "load_time_std": 0.003910538855697967
+    },
+    {
+      "scenario_id": "res_f00067",
+      "node_count": 5,
+      "edge_count": 8,
+      "load_time_ms": 0.06892833819923301,
+      "load_time_std": 0.022128773778420794
+    },
+    {
+      "scenario_id": "pla_c0fdc8",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.08639534159253041,
+      "load_time_std": 0.004967919258349934
+    },
+    {
+      "scenario_id": "cus_9c1b5c",
+      "node_count": 8,
+      "edge_count": 14,
+      "load_time_ms": 0.11456933377000193,
+      "load_time_std": 0.01103143463400674
+    },
+    {
+      "scenario_id": "cus_b37174",
+      "node_count": 12,
+      "edge_count": 23,
+      "load_time_ms": 0.14941634920736155,
+      "load_time_std": 0.03472638998887224
+    }
+  ],
+  "tracing": [
+    {
+      "scenario_id": "cod_2077ab",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.014263331346834699,
+      "trace_time_std": 0.018556303125408315
+    },
+    {
+      "scenario_id": "cus_023e00",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.004746669825787346,
+      "trace_time_std": 0.0035127006158381067
+    },
+    {
+      "scenario_id": "tra_e8c2d3",
+      "node_count": 5,
+      "trace_length": 3,
+      "trace_time_ms": 0.0033866866336514554,
+      "trace_time_std": 0.002027040481488878
+    },
+    {
+      "scenario_id": "res_a0cc25",
+      "node_count": 11,
+      "trace_length": 4,
+      "trace_time_ms": 0.003869994543492794,
+      "trace_time_std": 0.00213938026821267
+    },
+    {
+      "scenario_id": "tra_11d899",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037669960875064135,
+      "trace_time_std": 0.002066375994124504
+    },
+    {
+      "scenario_id": "tra_9b4fc0",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003933324478566647,
+      "trace_time_std": 0.002199820839216376
+    },
+    {
+      "scenario_id": "cus_e6c487",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037200031025956073,
+      "trace_time_std": 0.0020508695513388226
+    },
+    {
+      "scenario_id": "cus_280c1f",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036733205585430064,
+      "trace_time_std": 0.0018688625816216788
+    },
+    {
+      "scenario_id": "cod_1b01fd",
+      "node_count": 12,
+      "trace_length": 6,
+      "trace_time_ms": 0.004806662521635492,
+      "trace_time_std": 0.0022329713547889042
+    },
+    {
+      "scenario_id": "pla_f0f8fe",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003503334786122044,
+      "trace_time_std": 0.001757343000928376
+    },
+    {
+      "scenario_id": "res_f1a2a6",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035270059015601873,
+      "trace_time_std": 0.0019923121471822516
+    },
+    {
+      "scenario_id": "cus_2f4da0",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003683662119631966,
+      "trace_time_std": 0.001995591206163713
+    },
+    {
+      "scenario_id": "tra_c99077",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036000080096224942,
+      "trace_time_std": 0.001858570663174843
+    },
+    {
+      "scenario_id": "cus_d305db",
+      "node_count": 8,
+      "trace_length": 5,
+      "trace_time_ms": 0.00437667282919089,
+      "trace_time_std": 0.0019464539298116492
+    },
+    {
+      "scenario_id": "tra_b53311",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003616655400643746,
+      "trace_time_std": 0.001920210242298499
+    },
+    {
+      "scenario_id": "tra_99d9c3",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037199934013187885,
+      "trace_time_std": 0.0021923240718156015
+    },
+    {
+      "scenario_id": "res_d3d3db",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037266678797701993,
+      "trace_time_std": 0.002189451576552712
+    },
+    {
+      "scenario_id": "cus_6af540",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003483340454598268,
+      "trace_time_std": 0.0016998864410918435
+    },
+    {
+      "scenario_id": "cus_a6434c",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.00366366778810819,
+      "trace_time_std": 0.0019775461840275026
+    },
+    {
+      "scenario_id": "res_702f30",
+      "node_count": 10,
+      "trace_length": 4,
+      "trace_time_ms": 0.003686679216722647,
+      "trace_time_std": 0.002095713140650318
+    },
+    {
+      "scenario_id": "tra_5c83f9",
+      "node_count": 8,
+      "trace_length": 6,
+      "trace_time_ms": 0.0064203244013090926,
+      "trace_time_std": 0.0020905536914430675
+    },
+    {
+      "scenario_id": "cus_8db7db",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003730005118995905,
+      "trace_time_std": 0.0019162464482391501
+    },
+    {
+      "scenario_id": "pla_ec0526",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.00359666106911997,
+      "trace_time_std": 0.002069112727729208
+    },
+    {
+      "scenario_id": "cod_2d1b39",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003750329293931524,
+      "trace_time_std": 0.0018821359129865232
+    },
+    {
+      "scenario_id": "cus_4a9416",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036600104067474604,
+      "trace_time_std": 0.0019755332620757403
+    },
+    {
+      "scenario_id": "tra_e9517a",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003616665101920565,
+      "trace_time_std": 0.0018658154246224547
+    },
+    {
+      "scenario_id": "cus_a23a84",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034266655954221883,
+      "trace_time_std": 0.0018181922463968276
+    },
+    {
+      "scenario_id": "cod_11c313",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035803241189569235,
+      "trace_time_std": 0.001599281548129512
+    },
+    {
+      "scenario_id": "cod_3ba03e",
+      "node_count": 8,
+      "trace_length": 5,
+      "trace_time_ms": 0.004076651142289241,
+      "trace_time_std": 0.0017956742466926183
+    },
+    {
+      "scenario_id": "pla_9019df",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003576666737596194,
+      "trace_time_std": 0.0016606431617925022
+    },
+    {
+      "scenario_id": "res_a15dc3",
+      "node_count": 8,
+      "trace_length": 7,
+      "trace_time_ms": 0.008103660851096114,
+      "trace_time_std": 0.0027616402283810585
+    },
+    {
+      "scenario_id": "res_184404",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.005043664714321494,
+      "trace_time_std": 0.0023893435798736594
+    },
+    {
+      "scenario_id": "cod_4f4ce3",
+      "node_count": 7,
+      "trace_length": 6,
+      "trace_time_ms": 0.005176989361643791,
+      "trace_time_std": 0.002718144628079796
+    },
+    {
+      "scenario_id": "cus_8b7f5b",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.004146674958368142,
+      "trace_time_std": 0.0024726595841279672
+    },
+    {
+      "scenario_id": "cus_df482a",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037203329460074506,
+      "trace_time_std": 0.001869903173665837
+    },
+    {
+      "scenario_id": "cus_dc06db",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038470025174319744,
+      "trace_time_std": 0.002083867586963624
+    },
+    {
+      "scenario_id": "pla_0e65b1",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.00363666913472116,
+      "trace_time_std": 0.001870865174356702
+    },
+    {
+      "scenario_id": "res_6eef0e",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003696671531846126,
+      "trace_time_std": 0.00192619005111297
+    },
+    {
+      "scenario_id": "pla_440cd2",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034666639597465596,
+      "trace_time_std": 0.001741831333668906
+    },
+    {
+      "scenario_id": "cus_fe915b",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.008733671468993029,
+      "trace_time_std": 0.009485446953233787
+    },
+    {
+      "scenario_id": "cod_9c4157",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.004186663621415694,
+      "trace_time_std": 0.0025761659320231267
+    },
+    {
+      "scenario_id": "res_99b1a3",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038966730547448,
+      "trace_time_std": 0.002392817646727842
+    },
+    {
+      "scenario_id": "res_73a826",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0040266604628413916,
+      "trace_time_std": 0.002211199198483795
+    },
+    {
+      "scenario_id": "cus_3096b1",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.004196665637815992,
+      "trace_time_std": 0.002021507410132605
+    },
+    {
+      "scenario_id": "cod_f6e103",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038203337074567876,
+      "trace_time_std": 0.0021485239007417167
+    },
+    {
+      "scenario_id": "res_444aff",
+      "node_count": 8,
+      "trace_length": 6,
+      "trace_time_ms": 0.007823342457413673,
+      "trace_time_std": 0.0029127814966439522
+    },
+    {
+      "scenario_id": "cod_fe9ac0",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038000095325211682,
+      "trace_time_std": 0.0021573807135614738
+    },
+    {
+      "scenario_id": "cod_f07c91",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037000087710718312,
+      "trace_time_std": 0.002012760860610474
+    },
+    {
+      "scenario_id": "cus_ecebb3",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.005680330408116181,
+      "trace_time_std": 0.0028660753710198464
+    },
+    {
+      "scenario_id": "cus_d1ac62",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.005063668747122089,
+      "trace_time_std": 0.0024197755343929052
+    },
+    {
+      "scenario_id": "res_8d3dbc",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.00539333753598233,
+      "trace_time_std": 0.0025704648193132307
+    },
+    {
+      "scenario_id": "cus_aec8d0",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003876998865356048,
+      "trace_time_std": 0.0020434606358971557
+    },
+    {
+      "scenario_id": "cod_537ed1",
+      "node_count": 7,
+      "trace_length": 6,
+      "trace_time_ms": 0.007203663699328899,
+      "trace_time_std": 0.0027634338870636656
+    },
+    {
+      "scenario_id": "res_878476",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.0051103221873442335,
+      "trace_time_std": 0.0023345675320500885
+    },
+    {
+      "scenario_id": "res_a875c4",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.005260333030795057,
+      "trace_time_std": 0.0025375675582813627
+    },
+    {
+      "scenario_id": "cus_297a1c",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038533277499179044,
+      "trace_time_std": 0.002224558168494592
+    },
+    {
+      "scenario_id": "tra_f6a947",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035666647211958966,
+      "trace_time_std": 0.0018502569489284794
+    },
+    {
+      "scenario_id": "cod_7f5163",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.003796662592018644,
+      "trace_time_std": 0.0019399292890560965
+    },
+    {
+      "scenario_id": "cus_9559b4",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036033452488482,
+      "trace_time_std": 0.0019672283004105477
+    },
+    {
+      "scenario_id": "cod_cbd644",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.00378333303766946,
+      "trace_time_std": 0.0019873079081626165
+    },
+    {
+      "scenario_id": "pla_fb6582",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038403377402573824,
+      "trace_time_std": 0.0022289312616599597
+    },
+    {
+      "scenario_id": "pla_42d002",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003843335434794426,
+      "trace_time_std": 0.001956973342515839
+    },
+    {
+      "scenario_id": "res_d92ca7",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036600007054706416,
+      "trace_time_std": 0.0020838657064897637
+    },
+    {
+      "scenario_id": "cus_3e45b4",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003543333150446415,
+      "trace_time_std": 0.0018766257636388592
+    },
+    {
+      "scenario_id": "tra_87b82b",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003596680471673608,
+      "trace_time_std": 0.0017113197488046157
+    },
+    {
+      "scenario_id": "cod_1bc70f",
+      "node_count": 12,
+      "trace_length": 9,
+      "trace_time_ms": 0.005946669261902571,
+      "trace_time_std": 0.002189276919612995
+    },
+    {
+      "scenario_id": "cod_19e63f",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034333400738735995,
+      "trace_time_std": 0.0015786425259286623
+    },
+    {
+      "scenario_id": "cod_25274a",
+      "node_count": 5,
+      "trace_length": 2,
+      "trace_time_ms": 0.002593335617954532,
+      "trace_time_std": 0.0016346739766441713
+    },
+    {
+      "scenario_id": "tra_5cae27",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003556662704795599,
+      "trace_time_std": 0.0019316874163356396
+    },
+    {
+      "scenario_id": "cod_f37626",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.00352332911764582,
+      "trace_time_std": 0.0018996413811201392
+    },
+    {
+      "scenario_id": "cod_a9c635",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.00481033930554986,
+      "trace_time_std": 0.0032948922939619856
+    },
+    {
+      "scenario_id": "cod_2947e7",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003703326607743899,
+      "trace_time_std": 0.002101974868718504
+    },
+    {
+      "scenario_id": "cus_140e85",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.00359666106911997,
+      "trace_time_std": 0.0017854140304720558
+    },
+    {
+      "scenario_id": "cus_ac5447",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003543672695135077,
+      "trace_time_std": 0.0019666929507327724
+    },
+    {
+      "scenario_id": "cus_91ea53",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003569992259144783,
+      "trace_time_std": 0.001809330050868182
+    },
+    {
+      "scenario_id": "tra_e0b8d0",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036066630855202675,
+      "trace_time_std": 0.0018299276919000217
+    },
+    {
+      "scenario_id": "cod_7efa06",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036533165257424116,
+      "trace_time_std": 0.0018350050247056126
+    },
+    {
+      "scenario_id": "tra_db2681",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035666647211958966,
+      "trace_time_std": 0.001907931824263107
+    },
+    {
+      "scenario_id": "tra_ec2f01",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037466719125707946,
+      "trace_time_std": 0.0018002633134509695
+    },
+    {
+      "scenario_id": "cus_efe13b",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036866695154458284,
+      "trace_time_std": 0.0017401804768383293
+    },
+    {
+      "scenario_id": "res_2bd739",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003703326607743899,
+      "trace_time_std": 0.0017688750478209961
+    },
+    {
+      "scenario_id": "cod_2a8886",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003536668373271823,
+      "trace_time_std": 0.0018208230423224303
+    },
+    {
+      "scenario_id": "pla_d4489d",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036000080096224942,
+      "trace_time_std": 0.0017023706376032262
+    },
+    {
+      "scenario_id": "res_3dfa7a",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036300140588233867,
+      "trace_time_std": 0.0016852082984159162
+    },
+    {
+      "scenario_id": "res_3769cc",
+      "node_count": 10,
+      "trace_length": 4,
+      "trace_time_ms": 0.003583661358182629,
+      "trace_time_std": 0.0018649210072508
+    },
+    {
+      "scenario_id": "res_9b64d0",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034866679925471544,
+      "trace_time_std": 0.0017470076003092238
+    },
+    {
+      "scenario_id": "res_70d908",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036633379446963468,
+      "trace_time_std": 0.0017643481832140208
+    },
+    {
+      "scenario_id": "tra_b7d5c4",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.006833676404009263,
+      "trace_time_std": 0.004769695815825301
+    },
+    {
+      "scenario_id": "cod_2de509",
+      "node_count": 12,
+      "trace_length": 9,
+      "trace_time_ms": 0.009030326812838515,
+      "trace_time_std": 0.0035708096889326547
+    },
+    {
+      "scenario_id": "cod_4ead7c",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003863669311006864,
+      "trace_time_std": 0.002184639865973578
+    },
+    {
+      "scenario_id": "cus_411406",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003703656451155742,
+      "trace_time_std": 0.0019264304780430277
+    },
+    {
+      "scenario_id": "tra_c4897f",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037599917656431594,
+      "trace_time_std": 0.0018479435357870166
+    },
+    {
+      "scenario_id": "tra_312683",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036369989781330028,
+      "trace_time_std": 0.001710575147175309
+    },
+    {
+      "scenario_id": "tra_89d7c9",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.00474333258656164,
+      "trace_time_std": 0.003170535167410782
+    },
+    {
+      "scenario_id": "res_21e10d",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.0040000013541430235,
+      "trace_time_std": 0.002221442979620353
+    },
+    {
+      "scenario_id": "pla_b69893",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038000095325211682,
+      "trace_time_std": 0.0016495688385298765
+    },
+    {
+      "scenario_id": "res_31188c",
+      "node_count": 8,
+      "trace_length": 7,
+      "trace_time_ms": 0.005163329963882764,
+      "trace_time_std": 0.0019449007333423804
+    },
+    {
+      "scenario_id": "cod_f4f333",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036333415967722735,
+      "trace_time_std": 0.0017745510981651514
+    },
+    {
+      "scenario_id": "pla_c69a42",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.00352332911764582,
+      "trace_time_std": 0.0018305771105106227
+    },
+    {
+      "scenario_id": "res_3867e9",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003603325846294562,
+      "trace_time_std": 0.0018515212506381516
+    },
+    {
+      "scenario_id": "cod_984aa9",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003556662704795599,
+      "trace_time_std": 0.0018100429394673836
+    },
+    {
+      "scenario_id": "cod_13104d",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003660340250159303,
+      "trace_time_std": 0.0017654142308112515
+    },
+    {
+      "scenario_id": "tra_5c48fc",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035633371832470098,
+      "trace_time_std": 0.0018832104912760285
+    },
+    {
+      "scenario_id": "pla_3d2050",
+      "node_count": 12,
+      "trace_length": 10,
+      "trace_time_ms": 0.006666678624848525,
+      "trace_time_std": 0.0022151035912326943
+    },
+    {
+      "scenario_id": "cod_634c55",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035069921674827733,
+      "trace_time_std": 0.0017476432265221265
+    },
+    {
+      "scenario_id": "res_878937",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0033933320082724094,
+      "trace_time_std": 0.0017862198739428325
+    },
+    {
+      "scenario_id": "res_0ba7fa",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034866679925471544,
+      "trace_time_std": 0.001656570846114616
+    },
+    {
+      "scenario_id": "res_bc35ab",
+      "node_count": 6,
+      "trace_length": 5,
+      "trace_time_ms": 0.0038566746904204288,
+      "trace_time_std": 0.0017221558516544151
+    },
+    {
+      "scenario_id": "pla_929520",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034700011989722648,
+      "trace_time_std": 0.0016718044465304637
+    },
+    {
+      "scenario_id": "tra_e30293",
+      "node_count": 5,
+      "trace_length": 3,
+      "trace_time_ms": 0.00319667742587626,
+      "trace_time_std": 0.0017221652873381094
+    },
+    {
+      "scenario_id": "res_70ff08",
+      "node_count": 6,
+      "trace_length": 5,
+      "trace_time_ms": 0.003870004244769613,
+      "trace_time_std": 0.0017023946574316149
+    },
+    {
+      "scenario_id": "tra_818e94",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034800032153725624,
+      "trace_time_std": 0.001843810927127232
+    },
+    {
+      "scenario_id": "cod_b7fc72",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034466599269459644,
+      "trace_time_std": 0.001801021241255929
+    },
+    {
+      "scenario_id": "pla_59c04b",
+      "node_count": 12,
+      "trace_length": 9,
+      "trace_time_ms": 0.00610999995842576,
+      "trace_time_std": 0.001992766473300726
+    },
+    {
+      "scenario_id": "cus_3c48ac",
+      "node_count": 7,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035333311340461173,
+      "trace_time_std": 0.0019267573952760444
+    },
+    {
+      "scenario_id": "cod_e68080",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036733399610966444,
+      "trace_time_std": 0.002154614466786945
+    },
+    {
+      "scenario_id": "cus_98e4e2",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0033633162577946982,
+      "trace_time_std": 0.0018110862221229233
+    },
+    {
+      "scenario_id": "res_b16b25",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.006013666279613972,
+      "trace_time_std": 0.0027019361026620254
+    },
+    {
+      "scenario_id": "pla_1ffd31",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.006086668387676279,
+      "trace_time_std": 0.003189243865472114
+    },
+    {
+      "scenario_id": "cus_a1d5f4",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.004250003257766366,
+      "trace_time_std": 0.002342486647385136
+    },
+    {
+      "scenario_id": "pla_0d9288",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003823331401993831,
+      "trace_time_std": 0.002183087934122741
+    },
+    {
+      "scenario_id": "res_1f2311",
+      "node_count": 8,
+      "trace_length": 7,
+      "trace_time_ms": 0.005689992879827817,
+      "trace_time_std": 0.0021700044661497556
+    },
+    {
+      "scenario_id": "pla_6cb53a",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035266663568715253,
+      "trace_time_std": 0.0019464539298116492
+    },
+    {
+      "scenario_id": "tra_1772d7",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003689997053394715,
+      "trace_time_std": 0.0021336651868634256
+    },
+    {
+      "scenario_id": "pla_3e0276",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003583331514770786,
+      "trace_time_std": 0.0019295586722182735
+    },
+    {
+      "scenario_id": "cod_034b23",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038799965598930917,
+      "trace_time_std": 0.0022514560446518705
+    },
+    {
+      "scenario_id": "res_a57563",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003696652129292488,
+      "trace_time_std": 0.0020369096786572115
+    },
+    {
+      "scenario_id": "pla_0aaa53",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003649998689070344,
+      "trace_time_std": 0.0018995046532445114
+    },
+    {
+      "scenario_id": "tra_18b11f",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003536668373271823,
+      "trace_time_std": 0.001781048520905096
+    },
+    {
+      "scenario_id": "cus_4035e8",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035433428517232337,
+      "trace_time_std": 0.0017233904056978193
+    },
+    {
+      "scenario_id": "cus_4af1ed",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003463326720520854,
+      "trace_time_std": 0.0018251685601841133
+    },
+    {
+      "scenario_id": "pla_b99fb9",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034999975468963385,
+      "trace_time_std": 0.001825186573777946
+    },
+    {
+      "scenario_id": "pla_48e78a",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038333431196709475,
+      "trace_time_std": 0.0018209031309444907
+    },
+    {
+      "scenario_id": "pla_a9eac0",
+      "node_count": 12,
+      "trace_length": 7,
+      "trace_time_ms": 0.00536999626395603,
+      "trace_time_std": 0.0022006177829952283
+    },
+    {
+      "scenario_id": "cus_243385",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038666670055439076,
+      "trace_time_std": 0.0021312986786999554
+    },
+    {
+      "scenario_id": "tra_c4e009",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037866605756183467,
+      "trace_time_std": 0.002121658591687283
+    },
+    {
+      "scenario_id": "res_eff151",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003589996291945378,
+      "trace_time_std": 0.001936683363686735
+    },
+    {
+      "scenario_id": "pla_366726",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037200031025956073,
+      "trace_time_std": 0.0020154832828166293
+    },
+    {
+      "scenario_id": "cus_1acbd2",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.00385666498914361,
+      "trace_time_std": 0.0019673941686041557
+    },
+    {
+      "scenario_id": "res_09837c",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003809992146367828,
+      "trace_time_std": 0.0021035002101772423
+    },
+    {
+      "scenario_id": "pla_278d16",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.004036681881795327,
+      "trace_time_std": 0.001978885320164909
+    },
+    {
+      "scenario_id": "cus_808eb0",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035799942755450806,
+      "trace_time_std": 0.0017883187733796501
+    },
+    {
+      "scenario_id": "cod_755718",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035269962002833686,
+      "trace_time_std": 0.0017669656465300063
+    },
+    {
+      "scenario_id": "cod_215535",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003837010202308496,
+      "trace_time_std": 0.0017215990531412747
+    },
+    {
+      "scenario_id": "pla_77aa96",
+      "node_count": 12,
+      "trace_length": 11,
+      "trace_time_ms": 0.007063344431420167,
+      "trace_time_std": 0.002313650116803362
+    },
+    {
+      "scenario_id": "tra_69641e",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003523338818922639,
+      "trace_time_std": 0.0017573330365088368
+    },
+    {
+      "scenario_id": "cod_c86d76",
+      "node_count": 8,
+      "trace_length": 3,
+      "trace_time_ms": 0.004183326382189989,
+      "trace_time_std": 0.002115222832700954
+    },
+    {
+      "scenario_id": "res_dc9bc6",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.00501331912043194,
+      "trace_time_std": 0.0024932306025631065
+    },
+    {
+      "scenario_id": "res_1e1c82",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003929987239340941,
+      "trace_time_std": 0.0020936313125343308
+    },
+    {
+      "scenario_id": "pla_727734",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.005583327341203888,
+      "trace_time_std": 0.0027286795072344583
+    },
+    {
+      "scenario_id": "pla_a76c03",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.004083674866706133,
+      "trace_time_std": 0.0024821897905243848
+    },
+    {
+      "scenario_id": "res_bff2fa",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003789997814844052,
+      "trace_time_std": 0.0019765396603906803
+    },
+    {
+      "scenario_id": "cod_66f19b",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036336714401841164,
+      "trace_time_std": 0.0017771026034019994
+    },
+    {
+      "scenario_id": "cod_15bda4",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003816996468231082,
+      "trace_time_std": 0.002261917325977651
+    },
+    {
+      "scenario_id": "res_07c6ab",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037936745987584195,
+      "trace_time_std": 0.0019839444796576748
+    },
+    {
+      "scenario_id": "cus_69d43e",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0055433289768795175,
+      "trace_time_std": 0.002598697136318431
+    },
+    {
+      "scenario_id": "cus_cf9cd6",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.005043334870909651,
+      "trace_time_std": 0.002277916577516194
+    },
+    {
+      "scenario_id": "res_c4a7af",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.005003666349997123,
+      "trace_time_std": 0.002556561948186976
+    },
+    {
+      "scenario_id": "cod_19d065",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.005847008045141895,
+      "trace_time_std": 0.0028098197076220966
+    },
+    {
+      "scenario_id": "pla_a59fbd",
+      "node_count": 8,
+      "trace_length": 7,
+      "trace_time_ms": 0.006293334687749545,
+      "trace_time_std": 0.0035180353614794684
+    },
+    {
+      "scenario_id": "tra_046314",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.005850005739678939,
+      "trace_time_std": 0.002886936057299593
+    },
+    {
+      "scenario_id": "cod_44e685",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.005200000790258248,
+      "trace_time_std": 0.0023665856929607613
+    },
+    {
+      "scenario_id": "pla_231f50",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035000072481731572,
+      "trace_time_std": 0.0019167856239166584
+    },
+    {
+      "scenario_id": "tra_743850",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0038066549071421227,
+      "trace_time_std": 0.0018410896628739963
+    },
+    {
+      "scenario_id": "tra_e7aa1f",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035799942755450806,
+      "trace_time_std": 0.002057870605732084
+    },
+    {
+      "scenario_id": "tra_ac5a53",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036266574170440435,
+      "trace_time_std": 0.0018329408599401758
+    },
+    {
+      "scenario_id": "res_ab8bb6",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034936723144104085,
+      "trace_time_std": 0.0018565705708874273
+    },
+    {
+      "scenario_id": "cus_62e83e",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003570011661698421,
+      "trace_time_std": 0.0019319352869679302
+    },
+    {
+      "scenario_id": "cus_8af93f",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003370010138799747,
+      "trace_time_std": 0.0017275427314893054
+    },
+    {
+      "scenario_id": "tra_585159",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036566731675217548,
+      "trace_time_std": 0.001729804487796374
+    },
+    {
+      "scenario_id": "pla_594578",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.005513672173644106,
+      "trace_time_std": 0.002501214857756544
+    },
+    {
+      "scenario_id": "tra_f0cf50",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035633371832470098,
+      "trace_time_std": 0.001983339319511415
+    },
+    {
+      "scenario_id": "tra_79d76c",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.00523999915458262,
+      "trace_time_std": 0.002630662179760551
+    },
+    {
+      "scenario_id": "tra_5934de",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037536665331572294,
+      "trace_time_std": 0.0021861945095190015
+    },
+    {
+      "scenario_id": "tra_ddd1a9",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036933342926204205,
+      "trace_time_std": 0.001825706338044497
+    },
+    {
+      "scenario_id": "pla_9a692e",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035266663568715253,
+      "trace_time_std": 0.0017919931405377231
+    },
+    {
+      "scenario_id": "res_488df1",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003623339580371976,
+      "trace_time_std": 0.0018051206566112562
+    },
+    {
+      "scenario_id": "cus_849da0",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035999886070688567,
+      "trace_time_std": 0.0020155329711533383
+    },
+    {
+      "scenario_id": "tra_e87383",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003583671059459448,
+      "trace_time_std": 0.0018632732897424778
+    },
+    {
+      "scenario_id": "tra_4379f7",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003643333911895752,
+      "trace_time_std": 0.0019148067377380885
+    },
+    {
+      "scenario_id": "res_d85cb1",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036903462993601957,
+      "trace_time_std": 0.0019282466428691665
+    },
+    {
+      "scenario_id": "pla_881b33",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003973332544167836,
+      "trace_time_std": 0.0023239458535967445
+    },
+    {
+      "scenario_id": "cod_5e5fab",
+      "node_count": 8,
+      "trace_length": 7,
+      "trace_time_ms": 0.005390000296756625,
+      "trace_time_std": 0.0022816568107687377
+    },
+    {
+      "scenario_id": "cod_8cbb16",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035599999440213046,
+      "trace_time_std": 0.0019248722253081873
+    },
+    {
+      "scenario_id": "cus_623dee",
+      "node_count": 7,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034266752966990075,
+      "trace_time_std": 0.0017873098530720162
+    },
+    {
+      "scenario_id": "tra_ca83d1",
+      "node_count": 8,
+      "trace_length": 6,
+      "trace_time_ms": 0.004733320868884523,
+      "trace_time_std": 0.002013072849238428
+    },
+    {
+      "scenario_id": "cod_4b436f",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034936626131335893,
+      "trace_time_std": 0.0017157346268722655
+    },
+    {
+      "scenario_id": "res_63b220",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003430322976782918,
+      "trace_time_std": 0.0017777350949820777
+    },
+    {
+      "scenario_id": "pla_75b6b2",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003483340454598268,
+      "trace_time_std": 0.0016894579103091637
+    },
+    {
+      "scenario_id": "pla_006020",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.00654366643478473,
+      "trace_time_std": 0.004772674688492868
+    },
+    {
+      "scenario_id": "cod_426958",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003376655513420701,
+      "trace_time_std": 0.0017734008053040286
+    },
+    {
+      "scenario_id": "pla_43cb30",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035666744224727154,
+      "trace_time_std": 0.0017930524712765437
+    },
+    {
+      "scenario_id": "pla_c385c3",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003463666265209516,
+      "trace_time_std": 0.0017237711118447021
+    },
+    {
+      "scenario_id": "pla_64d96f",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034066712638984122,
+      "trace_time_std": 0.0017229114778061609
+    },
+    {
+      "scenario_id": "cod_9224ec",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0033400040895988545,
+      "trace_time_std": 0.0017707488134483843
+    },
+    {
+      "scenario_id": "cus_f4f2d6",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034436622324089208,
+      "trace_time_std": 0.0017929058505155853
+    },
+    {
+      "scenario_id": "cod_69de8f",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003509999563296636,
+      "trace_time_std": 0.001887423344561548
+    },
+    {
+      "scenario_id": "cod_704ecb",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036466711511214576,
+      "trace_time_std": 0.001775508476996732
+    },
+    {
+      "scenario_id": "cus_bc504f",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003610349570711454,
+      "trace_time_std": 0.0019652300442667267
+    },
+    {
+      "scenario_id": "pla_ea524e",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035633371832470098,
+      "trace_time_std": 0.001773488757461001
+    },
+    {
+      "scenario_id": "tra_7c6030",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003443332388997078,
+      "trace_time_std": 0.0017312532472022395
+    },
+    {
+      "scenario_id": "res_6fe324",
+      "node_count": 4,
+      "trace_length": 3,
+      "trace_time_ms": 0.002916669473052025,
+      "trace_time_std": 0.0016038700714886714
+    },
+    {
+      "scenario_id": "pla_f173d8",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003690336598083377,
+      "trace_time_std": 0.0020243562271454398
+    },
+    {
+      "scenario_id": "res_4564fa",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036203418858349323,
+      "trace_time_std": 0.001920695254065259
+    },
+    {
+      "scenario_id": "res_462ed9",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035136666459341845,
+      "trace_time_std": 0.0017751288944820598
+    },
+    {
+      "scenario_id": "pla_8f0d0d",
+      "node_count": 8,
+      "trace_length": 7,
+      "trace_time_ms": 0.005576992407441139,
+      "trace_time_std": 0.0019725025529054308
+    },
+    {
+      "scenario_id": "cod_14e62c",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035470002330839634,
+      "trace_time_std": 0.0017685173317919496
+    },
+    {
+      "scenario_id": "tra_cd4803",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035136763472110033,
+      "trace_time_std": 0.001530824687921989
+    },
+    {
+      "scenario_id": "tra_90a78d",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036236694237838187,
+      "trace_time_std": 0.0016699279756194406
+    },
+    {
+      "scenario_id": "tra_7fa754",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003390324612458547,
+      "trace_time_std": 0.0017085932987084434
+    },
+    {
+      "scenario_id": "cod_221686",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.003303323561946551,
+      "trace_time_std": 0.0016563343055412824
+    },
+    {
+      "scenario_id": "tra_a2e22e",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034300125359247127,
+      "trace_time_std": 0.0017413827647626294
+    },
+    {
+      "scenario_id": "res_fff139",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035733294983704886,
+      "trace_time_std": 0.0019119670528025875
+    },
+    {
+      "scenario_id": "cus_019996",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036136674073835215,
+      "trace_time_std": 0.0018683486291733117
+    },
+    {
+      "scenario_id": "cus_6e2c71",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034200008182475963,
+      "trace_time_std": 0.0016423397287159492
+    },
+    {
+      "scenario_id": "tra_cc593a",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003370010138799747,
+      "trace_time_std": 0.0015332542614630797
+    },
+    {
+      "scenario_id": "cod_89edf6",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.003396669247498115,
+      "trace_time_std": 0.0016231476765927188
+    },
+    {
+      "scenario_id": "res_974fcd",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034066712638984122,
+      "trace_time_std": 0.0017164415299134542
+    },
+    {
+      "scenario_id": "cus_965782",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034433420902738967,
+      "trace_time_std": 0.0017697643291657208
+    },
+    {
+      "scenario_id": "cod_0615d7",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0033003355686863265,
+      "trace_time_std": 0.0017092826539090618
+    },
+    {
+      "scenario_id": "pla_8247ec",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003496670008947452,
+      "trace_time_std": 0.0018057915141870594
+    },
+    {
+      "scenario_id": "tra_241362",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0036136674073835215,
+      "trace_time_std": 0.0018190813696356888
+    },
+    {
+      "scenario_id": "pla_932902",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0033269946773846946,
+      "trace_time_std": 0.001674387917343714
+    },
+    {
+      "scenario_id": "tra_d9500b",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003563327481970191,
+      "trace_time_std": 0.0017915699812671082
+    },
+    {
+      "scenario_id": "cod_4eb21a",
+      "node_count": 8,
+      "trace_length": 7,
+      "trace_time_ms": 0.005096672490860025,
+      "trace_time_std": 0.00209863106458835
+    },
+    {
+      "scenario_id": "cod_ee8390",
+      "node_count": 8,
+      "trace_length": 6,
+      "trace_time_ms": 0.005627002489442627,
+      "trace_time_std": 0.002467122471674083
+    },
+    {
+      "scenario_id": "tra_439d1c",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.003570001960421602,
+      "trace_time_std": 0.0019501744502637625
+    },
+    {
+      "scenario_id": "cus_d6f85d",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034769958195587,
+      "trace_time_std": 0.0017464454893158462
+    },
+    {
+      "scenario_id": "res_33b79c",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003457001488034924,
+      "trace_time_std": 0.0016308039372139563
+    },
+    {
+      "scenario_id": "tra_768fa3",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003323317893470327,
+      "trace_time_std": 0.0016293020817974512
+    },
+    {
+      "scenario_id": "res_b80612",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.00337666521469752,
+      "trace_time_std": 0.0016829195521319827
+    },
+    {
+      "scenario_id": "pla_09619e",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003383329991872112,
+      "trace_time_std": 0.0016328737290821583
+    },
+    {
+      "scenario_id": "res_9a0bd8",
+      "node_count": 6,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034433420902738967,
+      "trace_time_std": 0.0016701470184934126
+    },
+    {
+      "scenario_id": "pla_708a0f",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034000064867238202,
+      "trace_time_std": 0.0016867677930859754
+    },
+    {
+      "scenario_id": "cus_e4060e",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.005260003187383215,
+      "trace_time_std": 0.0027642568440511724
+    },
+    {
+      "scenario_id": "cod_b92bff",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.00488999648950994,
+      "trace_time_std": 0.0029759618544056266
+    },
+    {
+      "scenario_id": "cus_2f3646",
+      "node_count": 9,
+      "trace_length": 8,
+      "trace_time_ms": 0.007313336633766691,
+      "trace_time_std": 0.002226080726315559
+    },
+    {
+      "scenario_id": "pla_ed8dd4",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.003790007516120871,
+      "trace_time_std": 0.0019366760752433194
+    },
+    {
+      "scenario_id": "res_df774f",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035103391079852977,
+      "trace_time_std": 0.0016407253662390055
+    },
+    {
+      "scenario_id": "cus_30d977",
+      "node_count": 12,
+      "trace_length": 10,
+      "trace_time_ms": 0.006973335985094309,
+      "trace_time_std": 0.0021479063278264016
+    },
+    {
+      "scenario_id": "tra_8e0e72",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0037936551962047815,
+      "trace_time_std": 0.0018787364701197276
+    },
+    {
+      "scenario_id": "res_1b1235",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034433420902738967,
+      "trace_time_std": 0.0016908608459791595
+    },
+    {
+      "scenario_id": "pla_d8d524",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003496670008947452,
+      "trace_time_std": 0.0017975005445272992
+    },
+    {
+      "scenario_id": "tra_c72eaa",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034500068674484887,
+      "trace_time_std": 0.0017748480590045208
+    },
+    {
+      "scenario_id": "cod_e78eb3",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035133271012455225,
+      "trace_time_std": 0.0017451856473991762
+    },
+    {
+      "scenario_id": "tra_f3de61",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.0035333214327692986,
+      "trace_time_std": 0.0020122697084807035
+    },
+    {
+      "scenario_id": "res_f00067",
+      "node_count": 5,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034400048510481915,
+      "trace_time_std": 0.001829614675553354
+    },
+    {
+      "scenario_id": "pla_c0fdc8",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003863329766318202,
+      "trace_time_std": 0.002249235039327124
+    },
+    {
+      "scenario_id": "cus_9c1b5c",
+      "node_count": 8,
+      "trace_length": 4,
+      "trace_time_ms": 0.003483340454598268,
+      "trace_time_std": 0.001784212469908613
+    },
+    {
+      "scenario_id": "cus_b37174",
+      "node_count": 12,
+      "trace_length": 4,
+      "trace_time_ms": 0.0034170031237105527,
+      "trace_time_std": 0.0017869412193725637
+    }
+  ],
+  "scalability": [
+    {
+      "size": 10,
+      "serialize_ms": 0.17803400987759233,
+      "deserialize_ms": 0.14128300244919956,
+      "trace_ms": 0.0109999964479357,
+      "trace_length": 9
+    },
+    {
+      "size": 50,
+      "serialize_ms": 0.3483769833110273,
+      "deserialize_ms": 0.4412689886521548,
+      "trace_ms": 0.031240982934832573,
+      "trace_length": 49
+    },
+    {
+      "size": 100,
+      "serialize_ms": 0.7011250127106905,
+      "deserialize_ms": 1.0293419763911515,
+      "trace_ms": 0.06335100624710321,
+      "trace_length": 99
+    },
+    {
+      "size": 200,
+      "serialize_ms": 1.4697410224471241,
+      "deserialize_ms": 2.501603012206033,
+      "trace_ms": 0.12345198774710298,
+      "trace_length": 199
+    },
+    {
+      "size": 500,
+      "serialize_ms": 4.034314973978326,
+      "deserialize_ms": 6.7329430021345615,
+      "trace_ms": 0.8759780030231923,
+      "trace_length": 499
+    },
+    {
+      "size": 1000,
+      "serialize_ms": 11.487122974358499,
+      "deserialize_ms": 10.807508020661771,
+      "trace_ms": 1.461431005736813,
+      "trace_length": 999
+    }
+  ],
+  "summary": {
+    "avg_load_ms": 0.08929826920696844,
+    "avg_trace_ms": 0.004096465767361224,
+    "total_traces": 250
+  }
+}

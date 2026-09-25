@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_6af540",
+  "trace_id": "cus_6af540",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The approval delay in step 3 caused agent 2's ticket update to remain in a pending state, affecting the acknowledgment sent to the customer."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "communication",
+      "confidence": 1.0,
+      "explanation": "The pending status in step 4 led to an incorrect resolution message being communicated to the customer in step 5."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 experiences a timeout when approving the resolution, causing a delay in the response.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

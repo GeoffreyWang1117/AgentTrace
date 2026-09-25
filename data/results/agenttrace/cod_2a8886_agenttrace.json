@@ -1,0 +1,10 @@
+{
+  "scenario_id": "cod_2a8886",
+  "node_count": 5,
+  "edge_count": 8,
+  "gt_root_cause": "b2cfc895-1779-4348-a3c5-d0fc9c8fef24",
+  "gt_error_node": "83543de6-1f96-4e66-acce-d54abf1800d8",
+  "root_cause_in_trace": true,
+  "root_cause_rank": 2,
+  "backward_trace_length": 4
+}

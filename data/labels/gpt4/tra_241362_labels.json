@@ -1,0 +1,61 @@
+{
+  "scenario_id": "tra_241362",
+  "trace_id": "tra_241362",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Execution Manager's timeout affects subsequent compliance check."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_dependency",
+      "confidence": 1.0,
+      "explanation": "Compliance error causes Position Tracker to malfunction."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_9",
+      "relationship_type": "process_dependency",
+      "confidence": 1.0,
+      "explanation": "Position Tracker's failure impacts position auditing."
+    },
+    {
+      "source_node_id": "step_9",
+      "target_node_id": "step_10",
+      "relationship_type": "error_propagation",
+      "confidence": 1.0,
+      "explanation": "Auditing failure leads to reported discrepancies."
+    },
+    {
+      "source_node_id": "step_10",
+      "target_node_id": "step_11",
+      "relationship_type": "state_dependency",
+      "confidence": 1.0,
+      "explanation": "Discrepancy report delays data feed refresh."
+    },
+    {
+      "source_node_id": "step_11",
+      "target_node_id": "step_12",
+      "relationship_type": "operational_failure",
+      "confidence": 1.0,
+      "explanation": "Delayed data feed results in trade finalization failure."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Execution Manager experiences a timeout waiting for response from the exchange.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_9",
+    "step_10",
+    "step_11",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

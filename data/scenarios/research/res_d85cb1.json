@@ -1,0 +1,204 @@
+{
+  "scenario_id": "res_d85cb1",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "data_corruption",
+  "task_description": "The agents need to collaborate to gather, synthesize, and report on the latest advancements in renewable energy technologies from various online sources. The task requires collecting data from diverse sources, reconciling conflicting information, attributing sources correctly, and finally synthesizing the findings into a coherent research report.",
+  "expected_outcome": "Agents successfully collect accurate data, reconcile any discrepancies, correctly attribute sources, and produce a comprehensive research report on renewable energy advancements.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "data_parsing"
+      ],
+      "description": "This agent is responsible for gathering information from a list of online sources related to renewable energy."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Verifier",
+      "capabilities": [
+        "data_validation",
+        "consistency_checking"
+      ],
+      "description": "This agent verifies the integrity and accuracy of the collected data."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_analysis",
+        "conflict_resolution"
+      ],
+      "description": "This agent analyzes the data, resolves conflicts, and synthesizes a coherent dataset."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "report_writing",
+        "source_attribution"
+      ],
+      "description": "This agent compiles the final report, ensuring all sources are correctly attributed and the report is coherent."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "source": "source_A",
+        "data": "raw_data_A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "source": "source_B",
+        "data": "raw_data_B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_data",
+      "content": {
+        "data": "verified_data_A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_data",
+      "content": {
+        "data": "verified_data_B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "synthesized_data_AB"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "generate_report",
+      "content": {
+        "report": "final_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "source": "source_A",
+        "data": "raw_data_A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "source": "source_B",
+        "data": "raw_data_B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_data",
+      "content": {
+        "data": "verfied_data_A_corrupted"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurred while transferring verified data A due to incorrect encoding."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_data",
+      "content": {
+        "data": "verified_data_B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "synthesized_data_AB_corrupted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "generate_report",
+      "content": {
+        "report": "final_report_incorrect"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_synthesis",
+      "description": "Corrupted data is used in synthesis at step 5, leading to incorrect output"
+    }
+  ],
+  "created_at": "2026-01-04T09:14:38.116628"
+}

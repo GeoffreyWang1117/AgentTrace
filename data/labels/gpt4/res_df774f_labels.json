@@ -1,0 +1,45 @@
+{
+  "scenario_id": "res_df774f",
+  "trace_id": "res_df774f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The timeout in step 3 delays the flow of verified data, affecting subsequent steps."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The delayed response from step 3 causes agent 4 to receive incomplete data."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_7",
+      "relationship_type": "action_dependency",
+      "confidence": 1.0,
+      "explanation": "Agent 3's failure to verify in step 7 is due to the compounded timeout issue originating from step 3."
+    },
+    {
+      "source_node_id": "step_7",
+      "target_node_id": "step_8",
+      "relationship_type": "action_dependency",
+      "confidence": 1.0,
+      "explanation": "The incomplete verification in step 7 leads to the publication of an incomplete report in step 8."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 experiences a timeout, causing a delay in sending the data to Agent 4.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_7",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

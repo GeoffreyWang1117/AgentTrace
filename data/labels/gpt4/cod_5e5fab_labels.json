@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cod_5e5fab",
+  "trace_id": "cod_5e5fab",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Missing context flows from step 3 to step 4, causing lack of critical information for proper testing."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Code is passed without full context, leading to incomplete integration steps at step 8."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_8",
+      "relationship_type": "integration_issue",
+      "confidence": 1.0,
+      "explanation": "The missing context causes the Integrator to fail integration at step 8."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Missing context: 'reviewed and approved' context was not passed to the Tester.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_8"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

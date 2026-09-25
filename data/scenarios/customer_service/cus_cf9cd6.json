@@ -1,0 +1,180 @@
+{
+  "scenario_id": "cus_cf9cd6",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "Agents are tasked with handling customer service inquiries by responding promptly, escalating complex issues, and ensuring ticket information is synchronized across the system. Agents must maintain customer context during interactions and provide accurate, non-conflicting responses.",
+  "expected_outcome": "Customer inquiries are handled efficiently with correct responses, complex issues are escalated appropriately, and ticket statuses are synchronized and consistent.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "respond_to_inquiries",
+        "create_ticket",
+        "update_ticket_status"
+      ],
+      "description": "Handles initial customer inquiries, creates tickets, and updates ticket statuses."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "handle_technical_queries",
+        "escalate_issues"
+      ],
+      "description": "Addresses technical queries and escalates issues when required."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Manager",
+      "capabilities": [
+        "synchronize_ticket_status",
+        "resolve_conflicts"
+      ],
+      "description": "Ensures ticket statuses are synchronized across the system and resolves any conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "query": "technical issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_details": "needs deeper analysis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_update",
+      "content": {
+        "ticket_id": "123",
+        "update_required": "status update"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_update",
+      "content": {
+        "ticket_id": "123",
+        "status": "in progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "123",
+        "status": "resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "query": "technical issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_details": "needs deeper analysis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_update",
+      "content": {
+        "ticket_id": "123",
+        "update_required": "status update"
+      },
+      "is_bug_point": true,
+      "bug_description": "The update request was incorrectly routed back to agent_1 instead of agent_2."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "status": "in progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "123",
+        "status": "resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The request update was directed to the wrong agent, causing incorrect status forwarding."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "action_sequence",
+      "description": "Incorrect data flow led to premature confirmation of resolution."
+    }
+  ],
+  "created_at": "2026-01-03T22:45:17.326398"
+}

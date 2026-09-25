@@ -1,0 +1,259 @@
+{
+  "scenario_id": "cus_2f4da0",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "bug_type": "logic_error",
+  "task_description": "The multi-agent system is tasked with handling customer inquiries efficiently. Agents need to collaborate to provide accurate responses, escalate complex issues, and ensure all customer tickets are resolved and tracked correctly without losing context during handoffs.",
+  "expected_outcome": "Customer inquiries should be addressed accurately, issues should be escalated correctly when needed, and tickets should be resolved with synchronized status updates without duplicates or conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "handle_basic_inquiries",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and creates a ticket if needed."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "handle_technical_queries",
+        "escalate_issue"
+      ],
+      "description": "Handles technical queries and escalates issues to higher-level support if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Support Manager",
+      "capabilities": [
+        "approve_escalation",
+        "resolve_ticket"
+      ],
+      "description": "Approves escalations and ensures tickets are resolved and closed properly."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Synchronizer",
+      "capabilities": [
+        "synchronize_ticket_status"
+      ],
+      "description": "Ensures ticket statuses are updated and synchronized across the system."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_inquiry",
+      "content": {
+        "customer_id": "123",
+        "inquiry": "technical issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_escalation",
+      "content": {
+        "ticket_id": "T456",
+        "issue_details": "requires manager intervention"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "approve_escalation",
+      "content": {
+        "ticket_id": "T456"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "T456",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_status_update",
+      "content": {
+        "ticket_id": "T456",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "T456",
+        "resolution": "issue fixed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "customer_id": "123",
+        "ticket_id": "T456",
+        "status": "resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "final_status_update",
+      "content": {
+        "ticket_id": "T456",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_inquiry",
+      "content": {
+        "customer_id": "123",
+        "inquiry": "technical issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_escalation",
+      "content": {
+        "ticket_id": "T456",
+        "issue_details": "requires manager intervention"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "approve_escalation",
+      "content": {
+        "ticket_id": "T456"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 erroneously approves escalation for an issue that does not require manager intervention due to misunderstanding inquiry context."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "T456",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_status_update",
+      "content": {
+        "ticket_id": "T456",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "T456",
+        "resolution": "no resolution needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "customer_id": "123",
+        "ticket_id": "T456",
+        "status": "resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "final_status_update",
+      "content": {
+        "ticket_id": "T456",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, where escalation approval was incorrect and leads to unnecessary processing."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "consequence",
+      "description": "The incorrect escalation approval affects ticket status updates, leading to incorrect tracking."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:51.931942"
+}

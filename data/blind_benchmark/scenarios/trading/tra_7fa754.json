@@ -1,0 +1,102 @@
+{
+  "scenario_id": "tra_7fa754",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "In this scenario, agents need to collaborate to analyze market data, make informed trading decisions, execute those trades effectively, and ensure the positions are tracked accurately. Each agent has specific responsibilities to ensure that transactions are executed based on the freshest data available, executed timely without delay, and all positions are correctly recorded in the system.",
+  "expected_outcome": "Agents successfully analyze real-time market data, make profitable trading decisions, execute trades without delay, and maintain consistent position records, resulting in increased portfolio value.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Analyst",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "This agent fetches the latest market data and analyzes trends to identify potential trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "receive_analysis",
+        "make_decision"
+      ],
+      "description": "This agent receives market analysis and decides whether to buy or sell specific assets."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trader",
+      "capabilities": [
+        "execute_order",
+        "confirm_execution"
+      ],
+      "description": "This agent executes trading orders and confirms their execution status."
+    },
+    {
+      "id": "agent_4",
+      "role": "Verifier",
+      "capabilities": [
+        "verify_execution",
+        "log_transaction"
+      ],
+      "description": "This agent verifies the execution of trades and logs the transactions for record-keeping."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Manager",
+      "capabilities": [
+        "track_positions",
+        "update_portfolio"
+      ],
+      "description": "This agent tracks current positions and updates the portfolio based on new trades."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis",
+      "content": {
+        "market_analysis": "bullish_trend_detected"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_order",
+      "content": {
+        "decision": "buy_100_shares_of_AAPL"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_details": "executed_order_id_123"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_and_log",
+      "content": {
+        "order_status": "execution_failed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_positions",
+      "content": {
+        "portfolio": "not_updated_due_to_failed_execution"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:12:43.398075"
+}

@@ -1,0 +1,130 @@
+{
+  "scenario_id": "pla_ec0526",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively plan and execute the construction of a small housing community. This involves breaking down tasks such as site preparation, resource gathering, construction, and inspection into manageable subtasks, allocating the necessary resources, handling dependencies, and coordinating execution to ensure successful completion.",
+  "expected_outcome": "The agents should work together seamlessly to complete the construction project on schedule, with all dependencies managed correctly, no resource conflicts, and all communication about plan updates properly propagated.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Site Preparation Leader",
+      "capabilities": [
+        "Terrain Analysis",
+        "Clearing Planning",
+        "Resource Allocation"
+      ],
+      "description": "Responsible for analyzing the site, planning the clearing tasks, and ensuring that the necessary resources are allocated."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "Materials Procurement",
+        "Resource Scheduling"
+      ],
+      "description": "Handles procurement of materials and scheduling resources to ensure they are available when needed for construction tasks."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Supervisor",
+      "capabilities": [
+        "Task Coordination",
+        "Execution Monitoring"
+      ],
+      "description": "Coordinates construction tasks, monitors progress, and ensures that the construction is executed according to plan."
+    },
+    {
+      "id": "agent_4",
+      "role": "Inspector",
+      "capabilities": [
+        "Quality Assurance",
+        "Safety Checks"
+      ],
+      "description": "Performs quality assurance and safety checks once the construction tasks are completed."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_resources",
+      "content": {
+        "materials": "concrete",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_resources",
+      "content": {
+        "materials": "concrete",
+        "quantity": 100,
+        "availability": "confirmed"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "site_ready",
+      "content": {
+        "site_section": "A",
+        "status": "clear"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_resources",
+      "content": {
+        "materials": "steel beams",
+        "quantity": 50
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_additional_resources",
+      "content": {
+        "materials": "steel beams",
+        "quantity": 50,
+        "availability": "delayed"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "construction_progress",
+      "content": {
+        "section": "A",
+        "progress": "stalled"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "request_inspection",
+      "content": {
+        "section": "A"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "inspection_complete",
+      "content": {
+        "section": "A",
+        "status": "pending"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:09:58.985604"
+}

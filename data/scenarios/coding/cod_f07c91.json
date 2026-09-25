@@ -1,0 +1,347 @@
+{
+  "scenario_id": "cod_f07c91",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "data_corruption",
+  "task_description": "The agents need to collaboratively develop, review, test, and integrate a new software feature based on specific requirements. They must ensure code quality, perform thorough testing, fix any bugs, and manage version control during integration.",
+  "expected_outcome": "The new software feature should be correctly developed, reviewed, tested, and integrated with existing systems without any bugs or conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "clarify_requirements"
+      ],
+      "description": "Gathers and clarifies the software feature requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_code"
+      ],
+      "description": "Writes the code based on the requirements and commits it to the repository."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews the committed code for quality and adherence to standards."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "Tests the code against the requirements and reports any bugs found."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "manage_integration",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates the new code with the existing codebase and resolves any conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_requirements",
+      "content": {
+        "feature": "new_feature_specifications"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "initial_commit"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "feedback",
+      "content": {
+        "issues": "minor_styling_issues"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "submit_code_for_testing",
+      "content": {
+        "code_version": "1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "all_tests_passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_integration",
+      "content": {
+        "code_version": "1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_integration_status",
+      "content": {
+        "status": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "verify_integration",
+      "content": {
+        "code_version": "1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_final_verification",
+      "content": {
+        "status": "feature_operational"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "feedback_on_feature",
+      "content": {
+        "feedback": "well_done"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "acknowledge_review",
+      "content": {
+        "status": "thanks_for_review"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "thank_you_note",
+      "content": {
+        "message": "good_collaboration"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_requirements",
+      "content": {
+        "feature": "new_feature_specifications"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "initial_commit"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "feedback",
+      "content": {
+        "issues": "minor_styling_issues"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "submit_code_for_testing",
+      "content": {
+        "code_version": "1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "all_tests_passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_integration",
+      "content": {
+        "code_version": "1.0"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurs and the wrong code version is sent."
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_integration_status",
+      "content": {
+        "status": "conflict_detected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "request_retesting",
+      "content": {
+        "code_version": "1.0_corrupted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_test_failure",
+      "content": {
+        "status": "issues_found_due_to_corruption"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "feedback": "check_data_integrity"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_review_again",
+      "content": {
+        "status": "review_corrupted_version"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "feedback_on_issue",
+      "content": {
+        "message": "corruption_detected_needs_fix"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The feedback given at step 3 results in a corrupted code version being prepared for testing at step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "testing",
+      "description": "The erroneous version is tested, leading to unnoticed corruption."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "integration_request",
+      "description": "Corrupted data is used to request integration, causing a conflict."
+    }
+  ],
+  "created_at": "2026-01-04T09:08:12.519019"
+}

@@ -1,0 +1,86 @@
+{
+  "scenario_id": "cod_426958",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to develop a software module. Agent 1 writes code based on given requirements, Agent 2 reviews and tests the code, and Agent 3 integrates the changes into the main codebase. The goal is to ensure seamless functionality without any integration issues or bugs.",
+  "expected_outcome": "The module is developed, reviewed, tested, and integrated without any critical issues, ensuring smooth functionality across the system.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "interpret_requirements"
+      ],
+      "description": "Agent 1 is responsible for writing the initial code based on the requirements provided."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer/Tester",
+      "capabilities": [
+        "code_review",
+        "run_tests"
+      ],
+      "description": "Agent 2 reviews the code for potential issues and runs tests to ensure functionality."
+    },
+    {
+      "id": "agent_3",
+      "role": "Integrator",
+      "capabilities": [
+        "resolve_conflicts",
+        "merge_code"
+      ],
+      "description": "Agent 3 integrates the reviewed and tested code into the main branch, ensuring there are no conflicts."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_code",
+      "content": {
+        "code": "v1.0",
+        "requirements": "feature_X"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "review": "no_critical_issues",
+        "test_results": "pass"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_integration",
+      "content": {
+        "code": "v1.0"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_integration",
+      "content": {
+        "merge_status": "success"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "notify_completion",
+      "content": {
+        "status": "completed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:07:53.775064"
+}

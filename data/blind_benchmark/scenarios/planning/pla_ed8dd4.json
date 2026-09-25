@@ -1,0 +1,85 @@
+{
+  "scenario_id": "pla_ed8dd4",
+  "domain": "planning",
+  "complexity": "simple",
+  "task_description": "Three agents collaboratively plan and execute a project to build a simple automated greenhouse with distinct phases: design, procurement, and construction. Each phase requires coordination and resource allocation, with dependencies between tasks in each phase.",
+  "expected_outcome": "The agents successfully break down the complex project into subtasks, allocate resources without conflicts, coordinate execution, and complete the greenhouse construction smoothly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Project Planner",
+      "capabilities": [
+        "plan_design",
+        "breakdown_tasks",
+        "assign_resources"
+      ],
+      "description": "Agent 1 is responsible for creating the overall project plan, breaking down the project into subtasks, and assigning initial resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Procurement Manager",
+      "capabilities": [
+        "identify_resources",
+        "procure_materials"
+      ],
+      "description": "Agent 2 handles the identification and procurement of necessary resources and materials as outlined in the project plan."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Coordinator",
+      "capabilities": [
+        "manage_construction",
+        "monitor_progress"
+      ],
+      "description": "Agent 3 coordinates the actual construction work, ensuring tasks are completed on time and dependencies are properly managed."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design_plan",
+      "content": {
+        "design": "greenhouse_blueprint"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_resource_availability",
+      "content": {
+        "resources": "available"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "initiate_construction",
+      "content": {
+        "task_list": "construction_phase_1"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "forward_misrouted_message",
+      "content": {
+        "task_list": "construction_phase_1"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_confusion",
+      "content": {
+        "issue": "received_incomplete_instructions"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:57.811803"
+}

@@ -1,0 +1,221 @@
+{
+  "scenario_id": "cus_d6f85d",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "timeout_cascade",
+  "task_description": "Agents collaborate to manage customer service inquiries efficiently by handling simple queries, escalating complex issues, and ensuring ticket statuses are synchronized across the system.",
+  "expected_outcome": "Customer inquiries are resolved efficiently, with complex issues being properly escalated and ticket statuses kept in sync, ensuring no customer context is lost during agent handoffs.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Inquiry Handler",
+      "capabilities": [
+        "Handle basic inquiries",
+        "Create new tickets"
+      ],
+      "description": "This agent receives incoming customer inquiries and creates new tickets for each case."
+    },
+    {
+      "id": "agent_2",
+      "role": "Ticket Router",
+      "capabilities": [
+        "Determine ticket priority",
+        "Route tickets to appropriate agents"
+      ],
+      "description": "This agent analyzes ticket content and routes them based on complexity and priority."
+    },
+    {
+      "id": "agent_3",
+      "role": "Complex Issue Specialist",
+      "capabilities": [
+        "Resolve complex issues",
+        "Provide detailed solutions"
+      ],
+      "description": "This agent handles escalated tickets requiring specialized knowledge."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Synchronizer",
+      "capabilities": [
+        "Ensure ticket status consistency",
+        "Synchronize across systems"
+      ],
+      "description": "This agent ensures ticket statuses are updated and synchronized across the entire system."
+    },
+    {
+      "id": "agent_5",
+      "role": "Customer Feedback Collector",
+      "capabilities": [
+        "Collect customer feedback",
+        "Update ticket with feedback"
+      ],
+      "description": "This agent gathers customer feedback post-resolution to ensure customer satisfaction."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "123",
+        "issue": "Basic inquiry"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_ticket",
+      "content": {
+        "ticket_id": "T001",
+        "priority": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resolve_and_notify",
+      "content": {
+        "ticket_id": "T001",
+        "resolution": "Issue resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "sync_ticket_status",
+      "content": {
+        "ticket_id": "T001",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "collect_feedback",
+      "content": {
+        "ticket_id": "T001",
+        "feedback": "Satisfied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "log_feedback",
+      "content": {
+        "ticket_id": "T001",
+        "feedback": "Satisfied"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "123",
+        "issue": "Basic inquiry"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_ticket",
+      "content": {
+        "ticket_id": "T001",
+        "priority": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resolve_and_notify",
+      "content": {
+        "ticket_id": "T001",
+        "resolution": "Issue resolved"
+      },
+      "is_bug_point": true,
+      "bug_description": "A timeout in agent_3 prevents the resolution from being passed to agent_4."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "sync_ticket_status",
+      "content": {
+        "ticket_id": "T001",
+        "status": "Pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "collect_feedback",
+      "content": {
+        "ticket_id": "T001",
+        "feedback": "Unresolved issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "log_feedback",
+      "content": {
+        "ticket_id": "T001",
+        "feedback": "Unresolved issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The resolution did not reach agent_4, leading to an incorrect ticket status update."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The incorrect ticket status led to misleading feedback collection."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:14.858036"
+}

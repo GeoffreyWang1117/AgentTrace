@@ -1,0 +1,180 @@
+{
+  "scenario_id": "pla_59c04b",
+  "domain": "planning",
+  "complexity": "complex",
+  "task_description": "The agents need to organize and execute a supply chain operation for manufacturing a product, which involves breaking down the tasks into sourcing raw materials, manufacturing components, assembling final products, quality control, and delivery. The tasks require resource allocation and dependency management across agents.",
+  "expected_outcome": "All agents successfully collaborate to achieve the manufacturing and delivery of the product on schedule, with no resource conflicts or dependency issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Raw Material Supplier",
+      "capabilities": [
+        "source_materials",
+        "manage_inventory"
+      ],
+      "description": "Responsible for sourcing and managing the inventory of raw materials required for manufacturing."
+    },
+    {
+      "id": "agent_2",
+      "role": "Component Manufacturer",
+      "capabilities": [
+        "manufacture_components",
+        "schedule_tasks"
+      ],
+      "description": "Responsible for manufacturing components from raw materials and scheduling production tasks."
+    },
+    {
+      "id": "agent_3",
+      "role": "Assembler",
+      "capabilities": [
+        "assemble_product",
+        "handle_dependencies"
+      ],
+      "description": "Responsible for assembling the final product from manufactured components and coordinating with other agents to resolve dependencies."
+    },
+    {
+      "id": "agent_4",
+      "role": "Quality Control",
+      "capabilities": [
+        "perform_checks",
+        "report_quality"
+      ],
+      "description": "Ensures product quality by performing checks and reporting any issues to relevant agents."
+    },
+    {
+      "id": "agent_5",
+      "role": "Delivery Coordinator",
+      "capabilities": [
+        "schedule_delivery",
+        "confirm_dispatch"
+      ],
+      "description": "Handles logistics and schedules delivery of the finished products to the customers."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_raw_materials",
+      "content": {
+        "materials": [
+          "steel",
+          "plastic"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_components",
+      "content": {
+        "components": [
+          "frame",
+          "casing"
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_components",
+      "content": {
+        "components_needed": [
+          "screws"
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "quality_check_pass",
+      "content": {
+        "status": "pass"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "notify_ready_for_delivery",
+      "content": {
+        "product": "assembled_product"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_dispatch_schedule",
+      "content": {
+        "dispatch_time": "10:00 AM"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_inventory",
+      "content": {
+        "materials_used": [
+          "steel",
+          "plastic"
+        ]
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_component_supply",
+      "content": {
+        "components_supplied": [
+          "screws"
+        ]
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_final_check",
+      "content": {
+        "product": "assembled_product"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "final_check_fail",
+      "content": {
+        "quality_status": "fail due to missing screws"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "halt_dispatch",
+      "content": {
+        "dispatch_halted": true
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "missing_screws_notification",
+      "content": {
+        "missing_items": [
+          "screws"
+        ]
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:09.226507"
+}

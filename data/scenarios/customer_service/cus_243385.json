@@ -1,0 +1,359 @@
+{
+  "scenario_id": "cus_243385",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "race_condition",
+  "task_description": "The agents collaborate to handle customer inquiries, escalate complex issues, and track and resolve tickets efficiently. They must maintain consistent communication and synchronization across ticket statuses while handling concurrent operations.",
+  "expected_outcome": "Each customer inquiry is addressed accurately with no loss of context during handoffs, ticket statuses are synchronized, and there are no duplicate or conflicting responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "handle_inquiries",
+        "open_tickets"
+      ],
+      "description": "Handles initial customer inquiries and opens new tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "analyze_issues",
+        "provide_tech_support"
+      ],
+      "description": "Analyzes technical issues and provides support or escalates if needed."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Manager",
+      "capabilities": [
+        "manage_escalations",
+        "track_tickets"
+      ],
+      "description": "Manages escalated issues and ensures tickets are tracked properly."
+    },
+    {
+      "id": "agent_4",
+      "role": "Quality Assurance Specialist",
+      "capabilities": [
+        "review_tickets",
+        "ensure_quality"
+      ],
+      "description": "Reviews ticket resolutions and ensures quality standards are met."
+    },
+    {
+      "id": "agent_5",
+      "role": "System Synchronization Agent",
+      "capabilities": [
+        "sync_ticket_status",
+        "resolve_conflicts"
+      ],
+      "description": "Ensures ticket statuses are synchronized across the system and resolves conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "customer_issue": "Login problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "complex_issue": "Database error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "escalated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "sync_statuses",
+      "content": {
+        "ticket_id": "123",
+        "status": "escalated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "review_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution_quality": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_resolution",
+      "content": {
+        "ticket_id": "123",
+        "fix_provided": "use password reset"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "final_sync",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "feedback_provided",
+      "content": {
+        "ticket_id": "123",
+        "feedback": "positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "confirm_sync",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "audit_complete",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "customer_issue": "Login problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "complex_issue": "Database error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "escalated"
+      },
+      "is_bug_point": true,
+      "bug_description": "Race condition occurs when two threads attempt to update the ticket status simultaneously, leading to inconsistent status."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "sync_statuses",
+      "content": {
+        "ticket_id": "123",
+        "status": "escalated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "review_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution_quality": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_resolution",
+      "content": {
+        "ticket_id": "123",
+        "fix_provided": "use password reset"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "final_sync",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "feedback_provided",
+      "content": {
+        "ticket_id": "123",
+        "feedback": "positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "confirm_sync",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "audit_complete",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to race condition, causing inconsistent status update that later impacts resolution confirmation."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:26.674329"
+}

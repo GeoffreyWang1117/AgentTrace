@@ -1,0 +1,120 @@
+{
+  "scenario_id": "tra_5cae27",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to analyze real-time market data, make informed trading decisions, execute buy/sell orders, and verify transactions to maximize profit while minimizing risk.",
+  "expected_outcome": "If everything works correctly, the agents should successfully analyze market trends, make timely trading decisions, execute transactions accurately, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "fetch_real_time_data",
+        "process_historical_data"
+      ],
+      "description": "This agent collects and processes both real-time and historical market data to provide insights into market trends."
+    },
+    {
+      "id": "agent_2",
+      "role": "Analysis and Decision Maker",
+      "capabilities": [
+        "analyze_data",
+        "make_trading_decisions"
+      ],
+      "description": "Using data from the Market Data Collector, this agent analyzes trends and makes buy/sell/hold decisions based on predefined strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Execution Manager",
+      "capabilities": [
+        "execute_orders",
+        "manage_timing"
+      ],
+      "description": "Responsible for executing trade orders on the market with optimal timing, based on decisions made by the Analysis and Decision Maker."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_transactions",
+        "track_positions"
+      ],
+      "description": "Verifies that transactions have been executed correctly and ensures that position tracking is consistent across the system."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "market_data": "stale market data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_decision",
+      "content": {
+        "trade_decision": "buy 100 shares of XYZ"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "order_executed",
+      "content": {
+        "order_status": "timeout"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "verification_failed",
+      "content": {
+        "verification_status": "positions inconsistent"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "market_data": "outdated market data"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_decision",
+      "content": {
+        "trade_decision": "sell 50 shares of ABC"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "order_executed",
+      "content": {
+        "order_status": "partial_failure"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "verification_failed",
+      "content": {
+        "verification_status": "positions inconsistent"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:59.748103"
+}

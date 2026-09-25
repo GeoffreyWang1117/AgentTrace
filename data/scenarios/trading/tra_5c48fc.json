@@ -1,0 +1,341 @@
+{
+  "scenario_id": "tra_5c48fc",
+  "domain": "trading",
+  "complexity": "complex",
+  "bug_type": "wrong_routing",
+  "task_description": "The agents need to collaboratively analyze current market data, make informed trading decisions based on this data, execute trades, and verify the accuracy of the transactions. The goal is to maximize profitability while ensuring data integrity and correct process flow.",
+  "expected_outcome": "If everything works correctly, the agents will process market data efficiently, make optimal trading decisions, execute all trades in a timely manner, and maintain accurate position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "process_data"
+      ],
+      "description": "This agent is responsible for fetching and processing market data to generate insights for trading decisions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Strategist",
+      "capabilities": [
+        "analyze_insights",
+        "develop_strategy"
+      ],
+      "description": "This agent analyzes insights from the market data and develops trading strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_orders",
+        "transaction_confirmation"
+      ],
+      "description": "This agent is responsible for executing the trades and confirming the transactions."
+    },
+    {
+      "id": "agent_4",
+      "role": "Compliance Officer",
+      "capabilities": [
+        "verify_transactions",
+        "ensure_regulations"
+      ],
+      "description": "This agent ensures that all executed trades comply with regulations and verifies transaction accuracy."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "update_positions",
+        "report_discrepancies"
+      ],
+      "description": "This agent updates the positions post-trade and reports any discrepancies."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_insights",
+      "content": {
+        "market_data": "processed_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_strategy",
+      "content": {
+        "strategy": "buy_low_sell_high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_order_execution",
+      "content": {
+        "order_details": "order_executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_transaction",
+      "content": {
+        "verification_status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_insights",
+      "content": {
+        "market_data": "new_processed_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_strategy",
+      "content": {
+        "strategy": "adjust_strategy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_order_execution",
+      "content": {
+        "order_details": "new_order_executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_transaction",
+      "content": {
+        "verification_status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "new_position_updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_insights",
+      "content": {
+        "market_data": "latest_processed_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_strategy",
+      "content": {
+        "strategy": "final_strategy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_insights",
+      "content": {
+        "market_data": "processed_data"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_strategy",
+      "content": {
+        "strategy": "buy_low_sell_high"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "send_order_execution",
+      "content": {
+        "order_details": "order_executed"
+      },
+      "is_bug_point": true,
+      "bug_description": "The order execution message was incorrectly routed to the Position Tracker instead of the Compliance Officer."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "forward_wrong_message",
+      "content": {
+        "order_details": "order_executed"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_verification_failure",
+      "content": {
+        "verification_status": "failed"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_insights",
+      "content": {
+        "market_data": "new_processed_data"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_strategy",
+      "content": {
+        "strategy": "adjust_strategy"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_order_execution",
+      "content": {
+        "order_details": "new_order_executed"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_transaction",
+      "content": {
+        "verification_status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "new_position_updated"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_insights",
+      "content": {
+        "market_data": "latest_processed_data"
+      },
+      "is_bug_point": false,
+      "bug_description": ""
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The order execution message was misrouted to the Position Tracker instead of the Compliance Officer, causing a cascade of incorrect transactions and verification processes."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "verification",
+      "description": "The incorrect message was forwarded, resulting in failed verification by the Compliance Officer."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:56.368941"
+}

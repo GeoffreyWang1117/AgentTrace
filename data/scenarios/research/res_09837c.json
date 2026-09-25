@@ -1,0 +1,262 @@
+{
+  "scenario_id": "res_09837c",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "race_condition",
+  "task_description": "Four agents collaborate to gather, synthesize, and report information on the topic of renewable energy technologies. They will pull data from various sources, combine the findings, and generate a comprehensive report. They must ensure the integrity of data and proper attribution.",
+  "expected_outcome": "Agents successfully gather and validate data, reconcile any conflicting information, and produce a cohesive and accurate research report with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "gather_data",
+        "validate_sources"
+      ],
+      "description": "Gathers information from online databases and academic journals related to renewable energy."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyst",
+      "capabilities": [
+        "analyze_data",
+        "identify_conflicts"
+      ],
+      "description": "Analyzes the gathered data, identifies any conflicting information, and attempts to resolve discrepancies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "prepare_report_structure"
+      ],
+      "description": "Compiles and synthesizes the analyzed data into a coherent report structure."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "ensure_attribution"
+      ],
+      "description": "Generates the final report with proper source attribution and ensures clarity and coherence."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transmit_data",
+      "content": {
+        "data": "collected_renewable_energy_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analyzed_data",
+      "content": {
+        "data": "analyzed_renewable_energy_insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_report",
+      "content": {
+        "report_structure": "draft_report_structure"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_data_validation",
+      "content": {
+        "data_request": "validate_conflicting_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_validated_data",
+      "content": {
+        "data": "resolved_conflicts"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_report_structure",
+      "content": {
+        "confirmation": "structure_validated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "complete_report_structure"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "distribute_report",
+      "content": {
+        "report": "final_renewable_energy_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transmit_data",
+      "content": {
+        "data": "collected_renewable_energy_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analyzed_data",
+      "content": {
+        "data": "analyzed_renewable_energy_insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_report",
+      "content": {
+        "report_structure": "draft_report_structure_race_condition"
+      },
+      "is_bug_point": true,
+      "bug_description": "A race condition occurs where agent_3 and agent_2 update the report at the same time, causing inconsistencies in the draft report structure."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_data_validation",
+      "content": {
+        "data_request": "validate_conflicting_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_validated_data",
+      "content": {
+        "data": "resolved_conflicts_incomplete"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent_2 sends incomplete data due to the race condition in step 3, leading to unresolved conflicts."
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_report_structure",
+      "content": {
+        "confirmation": "structure_invalid"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent_4 receives invalid structure confirmation because of unresolved data inconsistencies."
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "incomplete_report"
+      },
+      "is_bug_point": true,
+      "bug_description": "Final report is generated with missing sections due to incorrect confirmation in step 6."
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "distribute_report",
+      "content": {
+        "report": "inaccurate_renewable_energy_report"
+      },
+      "is_bug_point": true,
+      "bug_description": "The distributed report contains inconsistencies and missing data inferred from previous steps\u2019 errors."
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to the race condition."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_validation",
+      "description": "Incomplete validation in step 4 leads to unresolved conflicts in step 5."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "validation_response",
+      "description": "Incomplete data from step 5 results in invalid confirmation in step 6."
+    },
+    {
+      "source_step": 6,
+      "target_step": 7,
+      "relationship_type": "report_generation",
+      "description": "Invalid report structure confirmation from step 6 leads to incomplete report generation in step 7."
+    },
+    {
+      "source_step": 7,
+      "target_step": 8,
+      "relationship_type": "report_distribution",
+      "description": "Incomplete report from step 7 gets distributed in step 8 with inaccuracies."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:28.592863"
+}

@@ -1,0 +1,132 @@
+{
+  "scenario_id": "cod_634c55",
+  "domain": "coding",
+  "complexity": "medium",
+  "task_description": "In this scenario, four agents collaborate to develop a new feature for a software project based on given requirements. They need to write, review, test, and integrate code changes efficiently while maintaining consistent shared state across all agents.",
+  "expected_outcome": "The agents should successfully develop and integrate the new feature with all code changes reviewed and tested without any state inconsistency issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "refactor_code"
+      ],
+      "description": "Responsible for writing code according to the requirements and refactoring existing code."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews submitted code for quality assurance and identifies potential issues."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "Tests the code using unit and integration tests, reporting any bugs found."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "Merges code from different branches and resolves any integration conflicts."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "changes": [
+          "feature_x_implementation"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "approve_code",
+      "content": {
+        "code_version": "v1.0",
+        "approval_status": "approved"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_code_for_testing",
+      "content": {
+        "code_version": "v1.0",
+        "test_plan": [
+          "unit_tests"
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "code_version": "v1.0",
+        "test_results": "fail_due_to_outdated_version"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "prepare_for_integration",
+      "content": {
+        "code_version": "v1.0",
+        "merge_plan": "main_branch"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_integration",
+      "content": {
+        "code_version": "v1.0",
+        "integration_status": "successful"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "final_test",
+      "content": {
+        "code_version": "v1.0",
+        "final_test_status": "error_due_to_inconsistency"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "complete_integration",
+      "content": {
+        "code_version": "v1.0",
+        "completion_status": "failed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:07:23.505361"
+}

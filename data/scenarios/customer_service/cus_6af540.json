@@ -1,0 +1,184 @@
+{
+  "scenario_id": "cus_6af540",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "bug_type": "timeout_cascade",
+  "task_description": "In this scenario, agents work collaboratively to handle customer support tickets. The primary tasks include receiving customer inquiries, escalating complex issues to a higher level when necessary, and ensuring that the status of each ticket is tracked and updated accurately across the system.",
+  "expected_outcome": "The customer inquiry is handled efficiently with correct ticket status updates, and any complex issues are escalated properly without losing customer context. All agents should be synchronized with the correct ticket status and avoid duplicate or conflicting responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Agent",
+      "capabilities": [
+        "receive_inquiry",
+        "create_ticket",
+        "provide_basic_support"
+      ],
+      "description": "Agent 1 receives customer inquiries and handles basic support questions. It creates a ticket for each customer interaction."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "analyze_issue",
+        "provide_technical_support",
+        "escalate_issue"
+      ],
+      "description": "Agent 2 handles technical issues that require deeper insight. It can escalate complex problems to a supervisor if needed."
+    },
+    {
+      "id": "agent_3",
+      "role": "Supervisor Agent",
+      "capabilities": [
+        "approve_resolution",
+        "update_ticket_status",
+        "resolve_escalation"
+      ],
+      "description": "Agent 3 supervises the resolution of complex issues and ensures that ticket statuses are updated correctly."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "customer_issue": "technical problem",
+        "customer_context": "basic support attempted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_details": "requires advanced support"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "approve_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "advanced steps approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "customer",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution_message": "Issue resolved. Thank you for your patience."
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "customer_issue": "technical problem",
+        "customer_context": "basic support attempted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_details": "requires advanced support"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "approve_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "advanced steps approved"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 experiences a timeout when approving the resolution, causing a delay in the response."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "customer",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution_message": "Issue unresolved due to delay."
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The approval delay in step 3 caused agent 2's ticket update to remain in a pending state, affecting the acknowledgment sent to the customer."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "communication",
+      "description": "The pending status in step 4 led to an incorrect resolution message being communicated to the customer in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:02.689471"
+}

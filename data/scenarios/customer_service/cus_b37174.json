@@ -1,0 +1,347 @@
+{
+  "scenario_id": "cus_b37174",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "logic_error",
+  "task_description": "In this scenario, agents need to collaboratively handle customer inquiries, escalate complex issues, track and resolve tickets while ensuring that customer context is preserved, ticket status is synchronized, and responses are consistent.",
+  "expected_outcome": "The customer inquiry is handled smoothly, with any complex issues escalated appropriately, no loss of customer context during handoffs, all ticket statuses synchronized, and all responses consistent and non-duplicative.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "handle_inquiries",
+        "create_tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates tickets for issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "analyze_issues",
+        "provide_technical_solutions"
+      ],
+      "description": "Analyzes technical issues and provides solutions or escalates them if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Manager",
+      "capabilities": [
+        "evaluate_escalations",
+        "assign_to_experts"
+      ],
+      "description": "Evaluates issues that need escalation and assigns them to the appropriate experts."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Synchronization Agent",
+      "capabilities": [
+        "update_ticket_status",
+        "ensure_ticket_consistency"
+      ],
+      "description": "Ensures ticket status is updated and consistent across the system."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance Agent",
+      "capabilities": [
+        "review_responses",
+        "identify_conflicts"
+      ],
+      "description": "Reviews agent responses to ensure quality and resolve any conflicts or duplicates."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "inquiry_details": "Customer cannot access account"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "issue_details": "Potential server issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "assign_expert",
+      "content": {
+        "expertise_required": "Server specialist"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "notify_ticket_update",
+      "content": {
+        "ticket_status": "Assigned to expert"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "resolution_status": "Issue escalated successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "verify_ticket_status",
+      "content": {
+        "ticket_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "check_consistency",
+      "content": {
+        "ticket_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "feedback_review",
+      "content": {
+        "review_notes": "Consistent responses"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "final_resolution",
+      "content": {
+        "resolution_details": "Customer account access restored"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "update_final_status",
+      "content": {
+        "ticket_status": "Closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "notify_completion",
+      "content": {
+        "completion_status": "All tasks completed successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "inquiry_details": "Customer cannot access account"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "issue_details": "Potential server issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "assign_expert",
+      "content": {
+        "expertise_required": "Network specialist"
+      },
+      "is_bug_point": true,
+      "bug_description": "Incorrect decision made; assigned to network specialist instead of server specialist."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "notify_ticket_update",
+      "content": {
+        "ticket_status": "Assigned to expert"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "resolution_status": "Issue escalated successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "verify_ticket_status",
+      "content": {
+        "ticket_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "check_consistency",
+      "content": {
+        "ticket_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "feedback_review",
+      "content": {
+        "review_notes": "Inconsistent specialist assignment"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "final_resolution",
+      "content": {
+        "resolution_details": "Customer account access not restored"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "12345"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "update_final_status",
+      "content": {
+        "ticket_status": "Reopened"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "notify_completion",
+      "content": {
+        "completion_status": "Additional intervention required"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 8,
+      "relationship_type": "feedback_loop",
+      "description": "Feedback review identifies the inconsistency from the incorrect assignment"
+    },
+    {
+      "source_step": 8,
+      "target_step": 9,
+      "relationship_type": "resolution_outcome",
+      "description": "The incorrect assignment results in unresolved customer issue"
+    }
+  ],
+  "created_at": "2026-01-04T09:16:18.574556"
+}

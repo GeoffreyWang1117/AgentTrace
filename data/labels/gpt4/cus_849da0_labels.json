@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_849da0",
+  "trace_id": "cus_849da0",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4, leading to incorrect issue escalation."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "decision_dependency",
+      "confidence": 1.0,
+      "explanation": "Resolution decision at step 5 is based on incorrect status from step 4."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "An inconsistency occurs where ticket status is incorrectly recorded as 'in_progress' instead of 'require_escalation'.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

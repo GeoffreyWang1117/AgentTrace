@@ -1,0 +1,179 @@
+{
+  "scenario_id": "cus_dc06db",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "A team of customer service agents need to handle a customer inquiry, escalate a complex issue to a specialized agent, and ensure the ticket is tracked and resolved. The process must maintain customer context throughout multiple handoffs.",
+  "expected_outcome": "The customer's inquiry is resolved efficiently with seamless handoffs between agents, and the ticket status is updated correctly without losing any context.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "handle_inquiries",
+        "create_ticket",
+        "provide_initial_support"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Escalation Specialist",
+      "capabilities": [
+        "handle_complex_issues",
+        "update_ticket"
+      ],
+      "description": "Takes over complex issues and ensures they are escalated correctly."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticketing System",
+      "capabilities": [
+        "track_ticket_status",
+        "synchronize_ticket_data"
+      ],
+      "description": "Manages the status and synchronization of support tickets."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "customer_context": "Customer's specific issue description"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "In Progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "add_resolution_notes",
+      "content": {
+        "ticket_id": "123",
+        "resolution_notes": "Details of the resolution"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "123",
+        "confirmation": "Resolution confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "final_status": "Closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "customer_context": "Customer's specific issue description"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "In Progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "add_resolution_notes",
+      "content": {
+        "ticket_id": "123"
+      },
+      "is_bug_point": true,
+      "bug_description": "Resolution notes were not included, missing important context."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "123",
+        "confirmation": "Resolution confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "final_status": "Closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Missing resolution notes leads to incomplete resolution confirmation."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Agent 1 believes the issue is resolved, but without the context, the ticket closure may be premature."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:57.457822"
+}

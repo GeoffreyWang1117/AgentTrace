@@ -1,0 +1,169 @@
+{
+  "scenario_id": "res_0ba7fa",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "timeout_cascade",
+  "task_description": "The agents are tasked with gathering information on renewable energy technologies from various online databases, synthesizing the gathered data, and compiling a joint research report that includes source attributions.",
+  "expected_outcome": "Agent_3 synthesizes the information collected by Agent_1 and Agent_2, reconciles any conflicting data, and compiles a comprehensive research report with accurate source attributions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Information Gatherer",
+      "capabilities": [
+        "web_scraping",
+        "database_query"
+      ],
+      "description": "This agent is responsible for searching and retrieving information related to renewable energy from various online databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "data_validation",
+        "conflict_resolution"
+      ],
+      "description": "This agent validates the data gathered by Agent_1, identifies conflicting information, and resolves discrepancies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Compiler",
+      "capabilities": [
+        "data_synthesis",
+        "report_generation"
+      ],
+      "description": "This agent synthesizes validated data from Agent_2 and generates a comprehensive research report ensuring proper source attributions."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data_chunk": "renewable_energy_info_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "missing_info": "additional_sources_needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_data",
+      "content": {
+        "data_chunk": "renewable_energy_info_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "all_renewable_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_clarification",
+      "content": {
+        "clarification_needed": "source_attribution_check"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data_chunk": "renewable_energy_info_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "missing_info": "additional_sources_needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_data",
+      "content": {
+        "data_chunk": "renewable_energy_info_2"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent_1 experiences a timeout while trying to access new sources, causing delays."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "incomplete_renewable_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_clarification",
+      "content": {
+        "clarification_needed": "missing data affects source attribution"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Due to the timeout in step 3, Agent_2 receives incomplete data and passes it to Agent_3, leading to incomplete synthesis."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Incomplete data causes Agent_3 to generate a report with missing source attributions, prompting a clarification request."
+    }
+  ],
+  "created_at": "2026-01-04T09:06:42.590021"
+}

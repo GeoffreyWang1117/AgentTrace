@@ -1,0 +1,106 @@
+{
+  "scenario_id": "pla_48e78a",
+  "domain": "planning",
+  "complexity": "simple",
+  "task_description": "Three agents need to collaboratively plan and execute a complex task of setting up a multi-room conference. They must break down the task into subtasks like arranging seating, setting up audiovisual equipment, and managing catering services, ensure resources such as staff and equipment are allocated appropriately, and coordinate execution while managing interdependencies effectively.",
+  "expected_outcome": "The conference is set up successfully with all rooms prepared as needed, resources are appropriately allocated, and all dependencies are managed so that no conflicts occur.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "resource_allocation"
+      ],
+      "description": "Responsible for breaking down the complex task into subtasks and allocating resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Coordinator",
+      "capabilities": [
+        "dependency_management",
+        "schedule_optimization"
+      ],
+      "description": "Handles task dependencies and optimizes the schedule for task execution."
+    },
+    {
+      "id": "agent_3",
+      "role": "Executor",
+      "capabilities": [
+        "task_execution",
+        "status_reporting"
+      ],
+      "description": "Executes the subtasks assigned and reports back the status of task completion."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_plan",
+      "content": {
+        "subtasks": [
+          "seating",
+          "audiovisual",
+          "catering"
+        ],
+        "resources": {
+          "staff": 5,
+          "equipment": [
+            "projector",
+            "microphone"
+          ]
+        }
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_schedule",
+      "content": {
+        "subtasks": [
+          "seating",
+          "audiovisual",
+          "catering"
+        ],
+        "timing": {
+          "start": "0800",
+          "end": "1000"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": []
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "status": "in_progress",
+        "completed_subtasks": [
+          "seating"
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_next_task",
+      "content": {
+        "current_task": "audiovisual"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:41.725513"
+}

@@ -1,0 +1,125 @@
+{
+  "scenario_id": "cus_140e85",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to handle customer service inquiries, escalate complex issues, and track and resolve support tickets. The system should seamlessly handle customer handoffs, maintain ticket status synchronization, and avoid duplicate or conflicting responses.",
+  "expected_outcome": "Customer inquiries are efficiently handled, complex issues are escalated appropriately, tickets are tracked and resolved in a timely manner with consistent status updates and no information loss during agent handoffs.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "respond_to_inquiries",
+        "escalate_ticket"
+      ],
+      "description": "Handles initial customer inquiries and escalates complex issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_ticket_status"
+      ],
+      "description": "Resolves escalated technical issues and updates ticket statuses."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Care Supervisor",
+      "capabilities": [
+        "monitor_interactions",
+        "intervene_escalations"
+      ],
+      "description": "Oversees interactions and intervenes in escalations when necessary."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Management System",
+      "capabilities": [
+        "sync_ticket_status",
+        "alert_agents"
+      ],
+      "description": "Maintains ticket status synchronization and alerts agents on updates."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "12345",
+        "issue": "login_problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "TKT001",
+        "details": "unable to login"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "TKT001",
+        "solution": "password_reset"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "TKT001",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "TKT001",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "TKT001"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "archive_ticket",
+      "content": {
+        "ticket_id": "TKT001"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "acknowledge_archival",
+      "content": {
+        "ticket_id": "TKT001"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:25.916676"
+}

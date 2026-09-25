@@ -1,0 +1,169 @@
+{
+  "scenario_id": "res_99b1a3",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "Three agents collaborate to gather and synthesize research about renewable energy sources from various online publications and databases, reconcile any conflicting information, and produce a comprehensive report with clear source attribution.",
+  "expected_outcome": "If everything works correctly, agents will gather accurate and complete information, reconcile conflicts, and create a cohesive report with correct source attributions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Information Gatherer",
+      "capabilities": [
+        "search_online_databases",
+        "retrieve_information"
+      ],
+      "description": "This agent is responsible for searching and retrieving information from multiple online sources related to renewable energy."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "detect_conflicts"
+      ],
+      "description": "This agent synthesizes the gathered data, checks for conflicts, and resolves them by verifying with additional sources."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Generator",
+      "capabilities": [
+        "compile_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the final report, ensuring all sources are properly attributed and the report is well-structured."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "renewable_energy_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_clarification",
+      "content": {
+        "query": "verify_conflict"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_verification",
+      "content": {
+        "verification": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "resolved_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "output",
+      "action": "generate_report",
+      "content": {
+        "report": "final_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "renewable_energy_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_clarification",
+      "content": {
+        "query": "verify_conflict"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_verification",
+      "content": {
+        "verification": "unconfirmed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Verification message was mistakenly routed to agent_3 instead of agent_2."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "incomplete_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "output",
+      "action": "generate_report",
+      "content": {
+        "report": "inaccurate_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Agent 2 receives incomplete data due to wrong routing at step 3, affecting the synthesis process."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "output",
+      "description": "Agent 3 generates an inaccurate report based on incomplete synthesized data."
+    }
+  ],
+  "created_at": "2026-01-04T09:05:45.179056"
+}

@@ -1,0 +1,179 @@
+{
+  "scenario_id": "cod_25274a",
+  "domain": "coding",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "Agents are collaborating to develop a simple feature enhancement for a software application. The task involves writing the code based on given requirements, reviewing the code for quality and correctness, testing it to ensure it meets the requirements, and finally integrating the changes into the main codebase. The agents need to effectively communicate and share context throughout the process to avoid integration issues.",
+  "expected_outcome": "If everything works correctly, the new feature will be successfully implemented, reviewed, tested, and integrated without any bugs or conflicts in the main codebase.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "interpret_requirements"
+      ],
+      "description": "Writes code based on software requirements provided."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews the code for adherence to standards and identifies any potential issues."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "Tests the code to ensure it meets specified requirements and reports any bugs."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature_code_v1",
+        "context": "requirement_details_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "review_code",
+      "content": {
+        "code": "feature_code_v1",
+        "context": "review_notes_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "test_code",
+      "content": {
+        "test_results": "pass",
+        "context": "test_context_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "resolve_issues",
+      "content": {
+        "resolved_code": "feature_code_v2",
+        "context": "resolution_context_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "final_review",
+      "content": {
+        "code": "feature_code_v2",
+        "context": "final_review_context_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature_code_v1",
+        "context": "requirement_details_v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "review_code",
+      "content": {
+        "code": "feature_code_v1",
+        "context": "missing_context"
+      },
+      "is_bug_point": true,
+      "bug_description": "The reviewer did not provide important context about certain edge cases to the tester."
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "test_code",
+      "content": {
+        "test_results": "fail",
+        "context": "test_missing_context"
+      },
+      "is_bug_point": true,
+      "bug_description": "The test code failed due to lack of edge case context."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "resolve_issues",
+      "content": {
+        "resolved_code": "feature_code_v2",
+        "context": "resolution_missing_context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "final_review",
+      "content": {
+        "code": "feature_code_v2",
+        "context": "final_review_missing_context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 2,
+  "root_cause_step": 2,
+  "error_manifestation_step": 3,
+  "causal_chain": [
+    {
+      "source_step": 2,
+      "target_step": 3,
+      "relationship_type": "data_flow",
+      "description": "The missing context in step 2 led to incorrect testing procedures in step 3."
+    },
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The lack of context affected the bug resolution process in step 4."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:46.886831"
+}

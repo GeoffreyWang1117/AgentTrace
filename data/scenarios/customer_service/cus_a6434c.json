@@ -1,0 +1,229 @@
+{
+  "scenario_id": "cus_a6434c",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "invalid_output",
+  "task_description": "In this scenario, a team of five agents collaborates to handle customer service inquiries. They must efficiently manage customer inquiries, escalate complex issues to the appropriate channels, and ensure all tickets are tracked and resolved. The system should maintain customer context during handoffs, synchronize ticket statuses, and prevent duplicate or conflicting responses.",
+  "expected_outcome": "Agents should seamlessly handle customer inquiries, with accurate escalation and resolution processes. Context should be preserved during handoffs, ticket statuses should be synchronized across the system, and responses should be consistent and conflict-free.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "handle_basic_inquiries",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and creates tickets for issues that need further investigation."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "diagnose_issues",
+        "escalate_issues"
+      ],
+      "description": "Handles technical questions and escalates complex issues to specialized teams."
+    },
+    {
+      "id": "agent_3",
+      "role": "Specialist Agent",
+      "capabilities": [
+        "resolve_specialized_issues",
+        "update_ticket_status"
+      ],
+      "description": "Resolves specialized issues that require in-depth knowledge and updates the ticket status."
+    },
+    {
+      "id": "agent_4",
+      "role": "Customer Context Manager",
+      "capabilities": [
+        "preserve_context",
+        "handoff_context"
+      ],
+      "description": "Ensures that customer context is maintained during agent handoffs."
+    },
+    {
+      "id": "agent_5",
+      "role": "Ticket Synchronization Agent",
+      "capabilities": [
+        "synchronize_ticket_statuses",
+        "prevent_duplicates"
+      ],
+      "description": "Ensures ticket statuses are synchronized across the system and prevents duplicate tickets or responses."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "12345",
+        "inquiry": "Basic issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "handoff_with_context",
+      "content": {
+        "ticket_id": "T-001",
+        "context": {
+          "customer_id": "12345",
+          "history": "Previous inquiries"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T-001",
+        "issue_details": "Complex technical issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "T-001",
+        "resolution": "Issue resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "T-001",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "T-001",
+        "customer_id": "12345",
+        "confirmation": "Confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "12345",
+        "inquiry": "Basic issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "handoff_with_context",
+      "content": {
+        "ticket_id": "T-001",
+        "context": {
+          "customer_id": "12345",
+          "history": "Previous inquiries"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T-001",
+        "issue_details": 12345
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 2 produces an invalid output format by sending an integer instead of a string for 'issue_details'."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "T-001",
+        "resolution": "Issue resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "T-001",
+        "status": "Error in resolution"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "T-001",
+        "customer_id": "12345",
+        "confirmation": "Failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to incorrect issue resolution."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "update_propagation",
+      "description": "The incorrect resolution is propagated during ticket status update, manifesting the error."
+    }
+  ],
+  "created_at": "2026-01-03T22:45:37.815535"
+}

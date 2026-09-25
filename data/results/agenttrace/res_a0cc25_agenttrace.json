@@ -1,0 +1,10 @@
+{
+  "scenario_id": "res_a0cc25",
+  "node_count": 11,
+  "edge_count": 20,
+  "gt_root_cause": "0f3132ba-3d75-4099-8660-1dde8f6eeb69",
+  "gt_error_node": "6aeaf820-6a8c-4a02-b033-f935c84f7731",
+  "root_cause_in_trace": true,
+  "root_cause_rank": 2,
+  "backward_trace_length": 4
+}

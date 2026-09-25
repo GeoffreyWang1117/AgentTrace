@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_8af93f",
+  "trace_id": "cus_8af93f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 due to wrong escalation approval routing."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Incorrect handoff leads to ticket status being updated without proper resolution."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Escalation approval sent to the wrong agent; agent_4 instead of agent_2.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

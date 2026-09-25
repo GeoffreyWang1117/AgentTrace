@@ -1,0 +1,349 @@
+{
+  "scenario_id": "cod_4b436f",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "data_corruption",
+  "task_description": "The agents are tasked with collaboratively developing a software module. They must write code, review and test it, fix bugs, and integrate changes while maintaining version control and data integrity.",
+  "expected_outcome": "The software module is developed without critical issues, all tests pass correctly, and the final integration is seamless without any data corruption or conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "specify_features"
+      ],
+      "description": "Gathers requirements and specifies the features that need to be implemented by the development agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_changes"
+      ],
+      "description": "Writes the code according to specifications and commits changes to the version control system."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews the written code to identify any issues or improvements needed before testing."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "execute_tests",
+        "report_results"
+      ],
+      "description": "Tests the code against specified requirements and reports any discrepancies or bugs found."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "integrate_code",
+        "resolve_conflicts"
+      ],
+      "description": "Manages the integration of code changes, resolves conflicts, and ensures the final system is coherent."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_requirements",
+      "content": {
+        "requirements": "User authentication feature"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "code_snippet": "auth_module"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "return_review",
+      "content": {
+        "review_notes": "All clear"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_results",
+      "content": {
+        "test_results": "Passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "prepare_for_integration",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "final_check_before_integration",
+      "content": {
+        "integrity_check": "Passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_final_integration",
+      "content": {
+        "confirmation": "Ready to integrate"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "integrate_code",
+      "content": {
+        "integration_status": "Successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "feedback_loop",
+      "content": {
+        "project_status": "Completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "review_feedback",
+      "content": {
+        "feedback_summary": "Positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "acknowledge",
+      "content": {
+        "acknowledgment": "Received"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_requirements",
+      "content": {
+        "requirements": "User authentication feature"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "code_snippet": "auth_module"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "return_review",
+      "content": {
+        "review_notes": "Minor changes needed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Review notes indicate changes, but data is corrupted during transfer, causing incorrect data to be sent back."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_results",
+      "content": {
+        "test_results": "Failed due to feature mismatch"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "prepare_for_integration",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "final_check_before_integration",
+      "content": {
+        "integrity_check": "Failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_final_integration",
+      "content": {
+        "confirmation": "Issues detected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "integrate_code",
+      "content": {
+        "integration_status": "Failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "feedback_loop",
+      "content": {
+        "project_status": "Integration failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "review_feedback",
+      "content": {
+        "feedback_summary": "Negative, due to data corruption"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "acknowledge",
+      "content": {
+        "acknowledgment": "Received with concern"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from review feedback to the testing phase, causing incorrect code to be tested."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "error_propagation",
+      "description": "Testing results are affected by incorrect data leading to failed tests."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "error_propagation",
+      "description": "Failed tests lead to downstream integration issues."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:04.421745"
+}

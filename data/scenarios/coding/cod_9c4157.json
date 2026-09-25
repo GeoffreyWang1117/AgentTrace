@@ -1,0 +1,246 @@
+{
+  "scenario_id": "cod_9c4157",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "data_corruption",
+  "task_description": "The agents need to collaboratively develop a software module. The process involves writing code based on requirements, reviewing and testing the code, fixing any identified bugs, and integrating the changes into the main codebase. The interaction should ensure accurate data transfer between agents to avoid any corruption that could lead to integration issues.",
+  "expected_outcome": "If everything works correctly, the software module should be developed according to the requirements, thoroughly reviewed, successfully tested, and seamlessly integrated into the main codebase without any conflicts or data corruption.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "analyze_requirements"
+      ],
+      "description": "Responsible for interpreting requirements and writing initial code."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews the code written by the developer for any potential issues or improvements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "verify_requirements"
+      ],
+      "description": "Tests the reviewed code to ensure it meets the specified requirements."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "integrate_code",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates the tested code into the main codebase and resolves any merge conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_change",
+      "content": {
+        "issue": "minor_bug",
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_fix",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "verify_fix",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_integration",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_success",
+      "content": {
+        "message": "Code integrated successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "handover_success",
+      "content": {
+        "message": "Development cycle complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_change",
+      "content": {
+        "issue": "minor_bug",
+        "code_version": "v1.0"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurred during transfer, altering the code version to 'v1.0-bug'."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_fix",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "verify_fix",
+      "content": {
+        "code_version": "v1.0-bug"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_integration",
+      "content": {
+        "code_version": "v1.0-bug"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_failure",
+      "content": {
+        "message": "Code integration failed due to version mismatch"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_rework",
+      "content": {
+        "message": "Please resolve the version mismatch issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing incorrect code version to be processed."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The incorrect code version is used for testing, leading to an error when verifying the fix."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:47.027539"
+}

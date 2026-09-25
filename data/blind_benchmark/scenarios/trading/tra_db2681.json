@@ -1,0 +1,127 @@
+{
+  "scenario_id": "tra_db2681",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively analyze incoming market data, make informed trading decisions, execute trades, and verify the correct tracking of positions in a dynamic financial environment.",
+  "expected_outcome": "All agents analyze data accurately, execute trades in a timely manner, and maintain consistent shared state regarding market positions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Analyzer",
+      "capabilities": [
+        "data_analysis",
+        "trend_identification"
+      ],
+      "description": "Analyzes incoming market data to identify trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "decision_making",
+        "risk_assessment"
+      ],
+      "description": "Makes trading decisions based on analyzed market data and assesses associated risks."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "order_execution",
+        "transaction_logging"
+      ],
+      "description": "Executes trading orders and logs transactions accurately in the system."
+    },
+    {
+      "id": "agent_4",
+      "role": "Position Tracker",
+      "capabilities": [
+        "state_management",
+        "consistency_checking"
+      ],
+      "description": "Tracks the positions of all trades executed and ensures shared state consistency among agents."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "market_trend": "upward",
+        "confidence_level": 0.9
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "trade_id": "T123",
+        "status": "executed"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "update_position_state",
+      "content": {
+        "trade_id": "T123",
+        "position": "unknown"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "verify_market_trends",
+      "content": {
+        "verification_status": "negative"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "confirm_position",
+      "content": {
+        "trade_id": "T123",
+        "confirmed": false
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "log_transaction",
+      "content": {
+        "trade_id": "T123",
+        "log_status": "pending"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "acknowledge_trade_execution",
+      "content": {
+        "trade_id": "T123",
+        "acknowledged": false
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:13:06.074791"
+}

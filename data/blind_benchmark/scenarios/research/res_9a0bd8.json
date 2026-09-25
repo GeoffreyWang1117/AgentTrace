@@ -1,0 +1,114 @@
+{
+  "scenario_id": "res_9a0bd8",
+  "domain": "research",
+  "complexity": "complex",
+  "task_description": "The agents need to collaboratively gather information from various online sources, synthesize the collected data, and produce a comprehensive research report on the impact of climate change on global food security.",
+  "expected_outcome": "If everything works correctly, the agents will produce an accurate and well-referenced research report that integrates findings from multiple sources and resolves any conflicting data.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_crawling",
+        "data_extraction"
+      ],
+      "description": "This agent searches online databases and scientific publications to collect relevant information on climate change and food security."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "data_verification",
+        "source_credibility_assessment"
+      ],
+      "description": "This agent validates the data collected by Agent 1 to ensure it is from credible sources and correct."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_integration",
+        "conflict_resolution"
+      ],
+      "description": "This agent synthesizes data from validated sources, resolving any conflicts and producing a coherent dataset."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "text_generation",
+        "source_attribution"
+      ],
+      "description": "This agent generates the research report, ensuring proper referencing of sources."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "content_review",
+        "error_detection"
+      ],
+      "description": "This agent reviews the final report for accuracy, consistency, and source attribution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "data": "raw climate data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_data",
+      "content": {
+        "validated_data": "climate data with sources"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": {
+          "dataset": "integrated dataset",
+          "format": "unexpected"
+        }
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report_draft": "draft report with incorrect data integration"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "review_report",
+      "content": {
+        "review_feedback": "highlighted integration issues"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "incomplete research report"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:05:55.096814"
+}

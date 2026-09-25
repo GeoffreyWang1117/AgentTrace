@@ -1,0 +1,84 @@
+{
+  "scenario_id": "cod_215535",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to develop a software feature. They must write code according to requirements, review and test the code for errors, and fix any identified issues before integrating the final version. Agents need to ensure proper communication and version control to avoid common pitfalls such as incorrect code review, testing the wrong version, and integration conflicts.",
+  "expected_outcome": "If everything works correctly, the code is successfully written, reviewed, tested, and integrated without errors or conflicts. Each agent communicates effectively, and no messages are routed wrongly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_code"
+      ],
+      "description": "Responsible for writing and committing code based on received requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "provide_feedback"
+      ],
+      "description": "Reviews submitted code to ensure it meets quality standards and provides feedback."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "Tests the reviewed code for functionality and reports any bugs found."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "Looks good, minor adjustments needed"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "test_result": "Tests failed due to missing features"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "clarify_test_failures",
+      "content": {
+        "clarification_request": "Tests failed unexpectedly"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:04.445336"
+}

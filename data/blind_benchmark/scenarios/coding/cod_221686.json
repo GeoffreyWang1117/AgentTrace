@@ -1,0 +1,112 @@
+{
+  "scenario_id": "cod_221686",
+  "domain": "coding",
+  "complexity": "complex",
+  "task_description": "Five agents collaborate to develop a new software feature. They must gather requirements, write code, review it, test it, and integrate it into the existing system. Communication between agents must include all necessary context to avoid issues.",
+  "expected_outcome": "The software feature is developed, reviewed, tested, and integrated successfully without any bugs or integration conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "document_requirements"
+      ],
+      "description": "Collects and documents the software feature requirements from stakeholders."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_changes"
+      ],
+      "description": "Develops the code according to requirements and commits it for review."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Examines the submitted code for any issues or improvements."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "Runs tests to ensure code is functioning as expected and reports any bugs."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "manage_merges",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates the approved code into the main codebase and resolves any conflicts."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_requirements",
+      "content": {
+        "requirements": "Partial feature specifications"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_code",
+      "content": {
+        "review_status": "approved",
+        "missing_context": "performance constraints"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_test_results",
+      "content": {
+        "test_results": "all_passed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "integrate_code",
+      "content": {
+        "integration_status": "success"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "customer reported performance issue"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:08:06.905302"
+}

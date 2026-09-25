@@ -1,0 +1,120 @@
+{
+  "scenario_id": "res_09837c",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to gather, synthesize, and report information on the topic of renewable energy technologies. They will pull data from various sources, combine the findings, and generate a comprehensive report. They must ensure the integrity of data and proper attribution.",
+  "expected_outcome": "Agents successfully gather and validate data, reconcile any conflicting information, and produce a cohesive and accurate research report with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "gather_data",
+        "validate_sources"
+      ],
+      "description": "Gathers information from online databases and academic journals related to renewable energy."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyst",
+      "capabilities": [
+        "analyze_data",
+        "identify_conflicts"
+      ],
+      "description": "Analyzes the gathered data, identifies any conflicting information, and attempts to resolve discrepancies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "prepare_report_structure"
+      ],
+      "description": "Compiles and synthesizes the analyzed data into a coherent report structure."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "ensure_attribution"
+      ],
+      "description": "Generates the final report with proper source attribution and ensures clarity and coherence."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transmit_data",
+      "content": {
+        "data": "collected_renewable_energy_info"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analyzed_data",
+      "content": {
+        "data": "analyzed_renewable_energy_insights"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_report",
+      "content": {
+        "report_structure": "draft_report_structure_race_condition"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_data_validation",
+      "content": {
+        "data_request": "validate_conflicting_data"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_validated_data",
+      "content": {
+        "data": "resolved_conflicts_incomplete"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_report_structure",
+      "content": {
+        "confirmation": "structure_invalid"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "incomplete_report"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "distribute_report",
+      "content": {
+        "report": "inaccurate_renewable_energy_report"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:14:28.592863"
+}

@@ -1,0 +1,88 @@
+{
+  "scenario_id": "cod_e78eb3",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to develop software, starting from writing code based on requirements, then reviewing and testing the code, and finally fixing bugs and integrating changes.",
+  "expected_outcome": "The software module should be correctly implemented, reviewed, tested, and integrated without any output format errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "Write code",
+        "Understand requirements"
+      ],
+      "description": "This agent is responsible for interpreting the requirements and writing the initial code."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "Review code",
+        "Identify issues"
+      ],
+      "description": "This agent reviews the code written by the developer to identify any issues or improvements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "Test code",
+        "Report bugs"
+      ],
+      "description": "This agent tests the code against the requirements and reports any bugs or discrepancies."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "format": "JSON"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "Code looks good, minor improvements suggested."
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_to_testing",
+      "content": {
+        "code_version": "v1.1",
+        "format": "XML"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "Fail due to format error",
+        "format": "XML"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "integration_notification",
+      "content": {
+        "integration_status": "Failed",
+        "format": "XML"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:08:17.854581"
+}

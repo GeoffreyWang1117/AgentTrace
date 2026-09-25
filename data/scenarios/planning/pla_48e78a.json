@@ -1,0 +1,216 @@
+{
+  "scenario_id": "pla_48e78a",
+  "domain": "planning",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "Three agents need to collaboratively plan and execute a complex task of setting up a multi-room conference. They must break down the task into subtasks like arranging seating, setting up audiovisual equipment, and managing catering services, ensure resources such as staff and equipment are allocated appropriately, and coordinate execution while managing interdependencies effectively.",
+  "expected_outcome": "The conference is set up successfully with all rooms prepared as needed, resources are appropriately allocated, and all dependencies are managed so that no conflicts occur.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "resource_allocation"
+      ],
+      "description": "Responsible for breaking down the complex task into subtasks and allocating resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Coordinator",
+      "capabilities": [
+        "dependency_management",
+        "schedule_optimization"
+      ],
+      "description": "Handles task dependencies and optimizes the schedule for task execution."
+    },
+    {
+      "id": "agent_3",
+      "role": "Executor",
+      "capabilities": [
+        "task_execution",
+        "status_reporting"
+      ],
+      "description": "Executes the subtasks assigned and reports back the status of task completion."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_plan",
+      "content": {
+        "subtasks": [
+          "seating",
+          "audiovisual",
+          "catering"
+        ],
+        "resources": {
+          "staff": 5,
+          "equipment": [
+            "projector",
+            "microphone"
+          ]
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_schedule",
+      "content": {
+        "subtasks": [
+          "seating",
+          "audiovisual",
+          "catering"
+        ],
+        "timing": {
+          "start": "0800",
+          "end": "1000"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": [
+          "seating->audiovisual",
+          "audiovisual->catering"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "status": "in_progress",
+        "completed_subtasks": [
+          "seating"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_next_task",
+      "content": {
+        "current_task": "audiovisual"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_plan",
+      "content": {
+        "subtasks": [
+          "seating",
+          "audiovisual",
+          "catering"
+        ],
+        "resources": {
+          "staff": 5,
+          "equipment": [
+            "projector",
+            "microphone"
+          ]
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_schedule",
+      "content": {
+        "subtasks": [
+          "seating",
+          "audiovisual",
+          "catering"
+        ],
+        "timing": {
+          "start": "0800",
+          "end": "1000"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": []
+      },
+      "is_bug_point": true,
+      "bug_description": "Dependency information is missing, leading to potential execution conflicts."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "status": "in_progress",
+        "completed_subtasks": [
+          "seating"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_next_task",
+      "content": {
+        "current_task": "audiovisual"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Missing dependency information causes confusion in task scheduling."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "execution_flow",
+      "description": "Agent 3 requests an independent task, unaware of missing dependencies, leading to execution conflicts."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:41.725513"
+}

@@ -1,0 +1,182 @@
+{
+  "scenario_id": "pla_3d2050",
+  "domain": "planning",
+  "complexity": "complex",
+  "task_description": "The agents need to collaborate to organize a large-scale community event, which involves planning, resource allocation, scheduling, and coordination of sub-tasks such as venue booking, catering, publicity, and attendee management.",
+  "expected_outcome": "All agents successfully collaborate to break down tasks, allocate resources, coordinate dependencies, and execute tasks on schedule, resulting in a well-organized event without resource conflicts or missed deadlines.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Event Planner",
+      "capabilities": [
+        "task_breakdown",
+        "scheduling"
+      ],
+      "description": "Responsible for creating the overall plan and breaking down complex goals into manageable tasks."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "resource_allocation",
+        "budget_management"
+      ],
+      "description": "Allocates resources and manages the budget for the event."
+    },
+    {
+      "id": "agent_3",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "venue_booking",
+        "transportation"
+      ],
+      "description": "Handles logistics such as booking venues and arranging transportation."
+    },
+    {
+      "id": "agent_4",
+      "role": "Publicity Officer",
+      "capabilities": [
+        "marketing",
+        "communications"
+      ],
+      "description": "Responsible for marketing the event and communicating with potential attendees."
+    },
+    {
+      "id": "agent_5",
+      "role": "Operations Manager",
+      "capabilities": [
+        "execution",
+        "monitoring"
+      ],
+      "description": "Oversees the execution of plans and ensures that all tasks are completed on time."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "task_assignment",
+      "content": {
+        "task_list": [
+          "book venue",
+          "arrange catering",
+          "plan publicity"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resource_allocation",
+      "content": {
+        "task": "book venue",
+        "budget": 1000
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "logistics_update",
+      "content": {
+        "venue": "Community Hall"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "execution_status",
+      "content": {
+        "status": "venue booked"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "task_assignment",
+      "content": {
+        "task_list": [
+          "arrange catering",
+          "plan publicity"
+        ]
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resource_allocation",
+      "content": {
+        "task": "arrange catering",
+        "budget": 500
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "catering_update",
+      "content": {
+        "caterer": "Good Eats",
+        "menu": "buffet"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "publicity_start",
+      "content": {
+        "channels": [
+          "social media",
+          "flyers"
+        ]
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "marketing_status",
+      "content": {
+        "progress": "campaign launched"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "final_check",
+      "content": {
+        "check_list": [
+          "venue",
+          "catering",
+          "publicity"
+        ]
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirmation",
+      "content": {
+        "confirmation_status": "transportation missing"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": null,
+      "action": "event_execution",
+      "content": {
+        "event_status": "failure"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:09:30.824955"
+}

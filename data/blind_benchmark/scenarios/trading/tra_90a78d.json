@@ -1,0 +1,85 @@
+{
+  "scenario_id": "tra_90a78d",
+  "domain": "trading",
+  "complexity": "simple",
+  "task_description": "Three agents work together to analyze stock market data, make trading decisions based on analysis, execute trades, and verify transactions for accuracy. The main goal is to optimize trading performance while ensuring data consistency and correctness in execution.",
+  "expected_outcome": "The agents should successfully process market data, make informed trading decisions, execute trades without timing issues, and maintain accurate position tracking. All transactions should be verified to match executed trades.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Analyst",
+      "capabilities": [
+        "market_data_analysis",
+        "trend_detection"
+      ],
+      "description": "Analyzes incoming market data to detect trends and provide actionable insights for trading decisions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Strategist",
+      "capabilities": [
+        "decision_making",
+        "order_placement"
+      ],
+      "description": "Uses insights from the Data Analyst to make trading decisions and place orders in the market."
+    },
+    {
+      "id": "agent_3",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "trade_execution",
+        "position_tracking"
+      ],
+      "description": "Executes trades placed by the Trading Strategist and ensures all transactions are accurately recorded and verified."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis",
+      "content": {
+        "market_trends": "downward"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "place_order",
+      "content": {
+        "order_type": "sell",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_execution",
+      "content": {
+        "execution_status": "success"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_positions",
+      "content": {
+        "positions": "incorrect"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_verification",
+      "content": {
+        "verification_status": "discrepancy_found"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:13:26.845326"
+}

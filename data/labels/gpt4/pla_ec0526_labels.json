@@ -1,0 +1,45 @@
+{
+  "scenario_id": "pla_ec0526",
+  "trace_id": "pla_ec0526",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The timeout in step 3 delays the site readiness information, causing a cascading effect on resource requests."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "resource_dependency",
+      "confidence": 1.0,
+      "explanation": "Agent 3's delayed request in step 4 affects resource confirmation in step 5."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "resource_flow",
+      "confidence": 1.0,
+      "explanation": "The delayed confirmation in step 5 leads to a stalled progress report in step 6."
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_8",
+      "relationship_type": "task_dependency",
+      "confidence": 1.0,
+      "explanation": "The stalled progress in step 6 results in delayed inspection completion in step 8."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 1 experiences a timeout while attempting to notify Agent 3, causing the message to be delayed.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_6",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

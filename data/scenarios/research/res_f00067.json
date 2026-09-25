@@ -1,0 +1,189 @@
+{
+  "scenario_id": "res_f00067",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "missing_context",
+  "task_description": "Agents are tasked with compiling a comprehensive research report on climate change impacts in urban areas by gathering data from various online sources, synthesizing the findings, and producing a coherent report with source attributions.",
+  "expected_outcome": "Agents should successfully gather and integrate information from various sources without loss or corruption, accurately reconcile conflicting data, and correctly attribute all sources in the final report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "data_extraction"
+      ],
+      "description": "This agent collects raw data from designated online sources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "data_cleaning",
+        "data_validation"
+      ],
+      "description": "This agent validates and cleans the collected data, ensuring accuracy and relevance."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_analysis",
+        "conflict_resolution"
+      ],
+      "description": "This agent synthesizes validated data, resolving any conflicts and integrating findings."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "report_writing",
+        "source_attribution"
+      ],
+      "description": "This agent generates the research report, ensuring correct source attribution."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurer",
+      "capabilities": [
+        "consistency_check",
+        "final_review"
+      ],
+      "description": "This agent conducts a final review of the report, checking for consistency and completeness."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "data": "raw_climate_data",
+        "source": "site_A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_data",
+      "content": {
+        "data": "validated_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "data": "synthesized_climate_findings"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "climate_report_with_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "review_report",
+      "content": {
+        "status": "report_approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "data": "raw_climate_data",
+        "source": "site_A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_data",
+      "content": {
+        "data": "validated_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "data": "synthesized_climate_findings_missing_context"
+      },
+      "is_bug_point": true,
+      "bug_description": "Context about conflicting data sources was not passed, leading to incomplete synthesis."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "incomplete_climate_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "review_report",
+      "content": {
+        "status": "report_incomplete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Incomplete report is passed to the Quality Assurer"
+    }
+  ],
+  "created_at": "2026-01-04T09:06:14.937517"
+}

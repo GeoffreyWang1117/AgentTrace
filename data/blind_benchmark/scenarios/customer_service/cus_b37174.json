@@ -1,0 +1,165 @@
+{
+  "scenario_id": "cus_b37174",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "task_description": "In this scenario, agents need to collaboratively handle customer inquiries, escalate complex issues, track and resolve tickets while ensuring that customer context is preserved, ticket status is synchronized, and responses are consistent.",
+  "expected_outcome": "The customer inquiry is handled smoothly, with any complex issues escalated appropriately, no loss of customer context during handoffs, all ticket statuses synchronized, and all responses consistent and non-duplicative.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "handle_inquiries",
+        "create_tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates tickets for issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "analyze_issues",
+        "provide_technical_solutions"
+      ],
+      "description": "Analyzes technical issues and provides solutions or escalates them if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Manager",
+      "capabilities": [
+        "evaluate_escalations",
+        "assign_to_experts"
+      ],
+      "description": "Evaluates issues that need escalation and assigns them to the appropriate experts."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Synchronization Agent",
+      "capabilities": [
+        "update_ticket_status",
+        "ensure_ticket_consistency"
+      ],
+      "description": "Ensures ticket status is updated and consistent across the system."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance Agent",
+      "capabilities": [
+        "review_responses",
+        "identify_conflicts"
+      ],
+      "description": "Reviews agent responses to ensure quality and resolve any conflicts or duplicates."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "inquiry_details": "Customer cannot access account"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "issue_details": "Potential server issue"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "assign_expert",
+      "content": {
+        "expertise_required": "Network specialist"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "notify_ticket_update",
+      "content": {
+        "ticket_status": "Assigned to expert"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "resolution_status": "Issue escalated successfully"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "verify_ticket_status",
+      "content": {
+        "ticket_id": "12345"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "check_consistency",
+      "content": {
+        "ticket_id": "12345"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "feedback_review",
+      "content": {
+        "review_notes": "Inconsistent specialist assignment"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "final_resolution",
+      "content": {
+        "resolution_details": "Customer account access not restored"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "12345"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "update_final_status",
+      "content": {
+        "ticket_status": "Reopened"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "notify_completion",
+      "content": {
+        "completion_status": "Additional intervention required"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:18.574556"
+}

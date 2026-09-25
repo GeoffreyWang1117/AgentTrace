@@ -1,0 +1,37 @@
+{
+  "scenario_id": "pla_708a0f",
+  "trace_id": "pla_708a0f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4, missing crucial dependency information on venue affecting the catering task."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "dependency_check",
+      "confidence": 1.0,
+      "explanation": "The missing context about venue availability is not checked, leading to incorrect dependency update in step 5."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "resource_allocation",
+      "confidence": 1.0,
+      "explanation": "Erroneous dependency update results in resource allocation being performed without resolving the venue dependency."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The notification lacks context about the critical dependency on venue availability for catering to proceed.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

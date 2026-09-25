@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_89edf6",
+  "trace_id": "cod_89edf6",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Feedback meant for Developer is incorrectly routed to Tester, causing the Tester to proceed without required changes."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "action_dependency",
+      "confidence": 1.0,
+      "explanation": "Tester conducts tests on unreviewed code due to the misrouted feedback."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Feedback meant for Developer (agent_2) was sent to Tester (agent_4) due to wrong routing",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

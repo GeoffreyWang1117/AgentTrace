@@ -1,0 +1,274 @@
+{
+  "scenario_id": "pla_8f0d0d",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "state_inconsistency",
+  "task_description": "A team of robots is tasked with organizing a conference. This involves breaking down the goal into subtasks such as venue booking, catering, scheduling talks, and managing registrations. The agents must collaborate to allocate resources, coordinate execution, and handle dependencies among tasks.",
+  "expected_outcome": "The conference is successfully organized with all tasks completed in a coordinated manner, utilizing resources efficiently without conflicts, and all agents maintaining a consistent shared state.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Venue Manager",
+      "capabilities": [
+        "book_venue",
+        "coordinate_layout"
+      ],
+      "description": "Responsible for booking the conference venue and arranging the layout."
+    },
+    {
+      "id": "agent_2",
+      "role": "Catering Manager",
+      "capabilities": [
+        "arrange_catering",
+        "coordinate_meals"
+      ],
+      "description": "Handles all catering arrangements including meals and refreshments."
+    },
+    {
+      "id": "agent_3",
+      "role": "Scheduler",
+      "capabilities": [
+        "schedule_talks",
+        "manage_time_slots"
+      ],
+      "description": "Organizes the schedule for talks and ensures there are no overlaps."
+    },
+    {
+      "id": "agent_4",
+      "role": "Registration Manager",
+      "capabilities": [
+        "manage_registrations",
+        "update_attendee_list"
+      ],
+      "description": "Manages attendee registrations and keeps the list of attendees updated."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "share_venue_availability",
+      "content": {
+        "venue": "Grand Hall",
+        "availability": [
+          "2023-11-20",
+          "2023-11-21"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_schedule",
+      "content": {
+        "schedule": "confirmed",
+        "dates": [
+          "2023-11-20"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_event_date",
+      "content": {
+        "date": "2023-11-20"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "request_attendee_numbers",
+      "content": {
+        "date": "2023-11-20"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "send_attendee_numbers",
+      "content": {
+        "attendees": 150
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_catering",
+      "content": {
+        "catering_status": "confirmed",
+        "date": "2023-11-20"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_schedule",
+      "content": {
+        "schedule": "finalized",
+        "sessions": [
+          "Session A",
+          "Session B"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "final_summary",
+      "content": {
+        "status": "all_tasks_confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "share_venue_availability",
+      "content": {
+        "venue": "Grand Hall",
+        "availability": [
+          "2023-11-20",
+          "2023-11-21"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_schedule",
+      "content": {
+        "schedule": "confirmed",
+        "dates": [
+          "2023-11-20"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_event_date",
+      "content": {
+        "date": "2023-11-21"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 1 incorrectly communicates the event date to Agent 2 due to a state inconsistency."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "request_attendee_numbers",
+      "content": {
+        "date": "2023-11-21"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "send_attendee_numbers",
+      "content": {
+        "attendees": 150
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_catering",
+      "content": {
+        "catering_status": "confirmed",
+        "date": "2023-11-21"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_schedule",
+      "content": {
+        "schedule": "finalized",
+        "sessions": [
+          "Session A",
+          "Session B"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "final_summary",
+      "content": {
+        "status": "catering_date_mismatch"
+      },
+      "is_bug_point": true,
+      "bug_description": "The state inconsistency results in a mismatch between catering and the event date during the final summary."
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 8,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The incorrect date flows from Step 3 to Step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 6,
+      "relationship_type": "task_dependency",
+      "description": "Catering confirmations are based on the incorrect date provided in Step 4."
+    },
+    {
+      "source_step": 6,
+      "target_step": 8,
+      "relationship_type": "state_dependency",
+      "description": "The incorrect catering date causes a mismatch in the final summary in Step 8."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:43.463959"
+}

@@ -1,0 +1,469 @@
+/* AgentTrace UI Styles */
+
+:root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-tertiary: #0f3460;
+    --text-primary: #e8e8e8;
+    --text-secondary: #a0a0a0;
+    --accent: #e94560;
+    --accent-secondary: #533483;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --error: #ef4444;
+    --border: #2a2a4a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.header-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background: var(--accent-secondary);
+    border-color: var(--accent);
+}
+
+.btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.btn-primary:hover {
+    background: #d13550;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Select */
+select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    min-width: 200px;
+}
+
+/* Main content */
+.main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Panels */
+.panel {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-header h2 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.graph-panel {
+    flex: 2;
+    margin: 1rem;
+    border-radius: 8px;
+}
+
+.details-panel {
+    flex: 1;
+    margin: 1rem 1rem 1rem 0;
+    border-radius: 8px;
+    min-width: 350px;
+}
+
+/* Graph container */
+#graph-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+#graph-svg {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+}
+
+.graph-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Timeline */
+.timeline-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border);
+}
+
+.timeline-container input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border);
+}
+
+.tab {
+    padding: 0.75rem 1rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    color: var(--text-primary);
+}
+
+.tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.tab-content {
+    flex: 1;
+    overflow: auto;
+}
+
+.tab-pane {
+    display: none;
+    padding: 1rem;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Node info */
+.node-info-card {
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.node-info-card h3 {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.node-info-card .value {
+    font-family: monospace;
+    word-break: break-all;
+}
+
+.node-type {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.node-type.agent_input { background: #3b82f6; }
+.node-type.agent_output { background: #8b5cf6; }
+.node-type.tool_call { background: #f59e0b; }
+.node-type.tool_result { background: #10b981; }
+.node-type.error { background: var(--error); }
+.node-type.state_read { background: #06b6d4; }
+.node-type.state_write { background: #ec4899; }
+
+/* Trace controls */
+.trace-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.trace-controls input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+/* Trace results */
+.trace-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.trace-item:hover {
+    background: var(--accent-secondary);
+}
+
+.trace-arrow {
+    color: var(--accent);
+}
+
+/* Error list */
+.error-item {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid var(--error);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.error-item:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.error-item h4 {
+    color: var(--error);
+    margin-bottom: 0.25rem;
+}
+
+.error-item p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Stats */
+.stat-card {
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.stat-list {
+    margin-top: 0.5rem;
+}
+
+.stat-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+.modal-content h3 {
+    margin-bottom: 1rem;
+}
+
+.modal-content label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    color: var(--text-secondary);
+}
+
+.modal-content textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-family: monospace;
+}
+
+.modal-content pre {
+    background: var(--bg-tertiary);
+    padding: 0.5rem;
+    border-radius: 4px;
+    overflow: auto;
+    font-size: 0.875rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Placeholder */
+.placeholder {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Graph nodes and edges */
+.node-circle {
+    stroke: var(--bg-primary);
+    stroke-width: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.node-circle:hover {
+    stroke: var(--accent);
+    stroke-width: 3px;
+}
+
+.node-circle.selected {
+    stroke: var(--accent);
+    stroke-width: 4px;
+}
+
+.node-label {
+    font-size: 10px;
+    fill: var(--text-primary);
+    pointer-events: none;
+}
+
+.edge-line {
+    stroke: var(--text-secondary);
+    stroke-opacity: 0.6;
+    fill: none;
+}
+
+.edge-line.highlighted {
+    stroke: var(--accent);
+    stroke-opacity: 1;
+    stroke-width: 2px;
+}
+
+.edge-arrow {
+    fill: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .graph-panel,
+    .details-panel {
+        margin: 0.5rem;
+    }
+
+    .details-panel {
+        min-width: unset;
+    }
+}

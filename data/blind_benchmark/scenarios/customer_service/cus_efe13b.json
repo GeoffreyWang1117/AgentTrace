@@ -1,0 +1,128 @@
+{
+  "scenario_id": "cus_efe13b",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to handle customer inquiries, escalate complex issues, and track and resolve tickets while maintaining consistent ticket status and customer context.",
+  "expected_outcome": "All customer inquiries are handled efficiently, complex issues are correctly escalated, ticket statuses remain synchronized, and there are no duplicate or conflicting responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Bot",
+      "capabilities": [
+        "handle_basic_inquiries",
+        "create_ticket"
+      ],
+      "description": "Initial point of contact for the customer, handling basic inquiries and creating tickets for unresolved issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "escalate_to_manager"
+      ],
+      "description": "Handles technical issues that are beyond the customer service bot's capabilities and escalates complex issues to the manager."
+    },
+    {
+      "id": "agent_3",
+      "role": "Support Manager",
+      "capabilities": [
+        "approve_escalations",
+        "provide_final_resolution"
+      ],
+      "description": "Approves escalations and provides final resolutions for complex issues."
+    },
+    {
+      "id": "agent_4",
+      "role": "Synchronization Agent",
+      "capabilities": [
+        "update_ticket_status",
+        "ensure_data_consistency"
+      ],
+      "description": "Ensures that ticket statuses are synchronized across all agents and maintains data consistency."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue": "complex technical issue"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_approval",
+      "content": {
+        "ticket_id": "123",
+        "details": "requires manager approval"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_status",
+      "content": {
+        "ticket-id": "123",
+        "status": "pending manager approval"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "confirm_status_update",
+      "content": {
+        "ticket_id": "123",
+        "status": "pending manager approval"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "approval_response",
+      "content": {
+        "ticket_id": "123",
+        "approval": "approved"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "issue resolved"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "finalize_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "synchronize",
+      "content": {
+        "ticket_id": "123",
+        "status": "resolved"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:49.790349"
+}

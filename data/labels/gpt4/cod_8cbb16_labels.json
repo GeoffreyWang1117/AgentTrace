@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cod_8cbb16",
+  "trace_id": "cod_8cbb16",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 as outdated feedback affects testing process."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "test_feedback",
+      "confidence": 1.0,
+      "explanation": "Test results reflect inconsistency due to outdated feedback, leading to failed tests."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "integration_request",
+      "confidence": 1.0,
+      "explanation": "Test failure impacts integration request, which is submitted with potential conflicts."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "State inconsistency occurs here as agent_3's feedback is based on an outdated shared state not updated with latest changes.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

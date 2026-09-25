@@ -1,0 +1,181 @@
+{
+  "scenario_id": "pla_8247ec",
+  "domain": "planning",
+  "complexity": "simple",
+  "bug_type": "logic_error",
+  "task_description": "The agents need to collaboratively plan and execute a project to construct a small garden, breaking down the goal into subtasks such as site assessment, resource gathering, and construction. They must allocate resources like tools and materials, and coordinate the execution of tasks, ensuring dependencies like the sequential use of tools are respected.",
+  "expected_outcome": "Agents should successfully create and execute a plan that results in the construction of the garden, with resources efficiently allocated and no dependency conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_planning",
+        "resource_allocation"
+      ],
+      "description": "Responsible for breaking down the goal into subtasks and allocating initial resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Executor",
+      "capabilities": [
+        "task_execution",
+        "dependency_management"
+      ],
+      "description": "Executes tasks according to plan and manages task dependencies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Communicator",
+      "capabilities": [
+        "information_sharing",
+        "update_propagation"
+      ],
+      "description": "Ensures all agents are updated with the current plan and resolves communication issues."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_plan",
+      "content": {
+        "subtasks": [
+          "site assessment",
+          "resource gathering",
+          "construction"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": [
+          "resource gathering before construction"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "propagate_update",
+      "content": {
+        "update": "All dependencies confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "execute_task",
+      "content": {
+        "task": "site assessment"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "execute_task",
+      "content": {
+        "task": "resource gathering"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_plan",
+      "content": {
+        "subtasks": [
+          "site assessment",
+          "resource gathering",
+          "construction"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": [
+          "resource gathering before construction"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "propagate_update",
+      "content": {
+        "update": "Dependency misinterpreted: construction can start anytime"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly interprets the dependency information, leading to an incorrect update."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "execute_task",
+      "content": {
+        "task": "site assessment"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "execute_task",
+      "content": {
+        "task": "construction"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The incorrect dependency update flows to Agent 2, leading them to execute tasks out of order."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "execution_flow",
+      "description": "Agent 2, acting on the incorrect update, begins construction before resource gathering is complete."
+    }
+  ],
+  "created_at": "2026-01-04T09:09:37.549748"
+}

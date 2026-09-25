@@ -1,0 +1,200 @@
+{
+  "scenario_id": "res_21e10d",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "logic_error",
+  "task_description": "Agents need to collaboratively gather information from various online academic databases, synthesize this information into a coherent understanding of a scientific topic, and produce a comprehensive research report that includes accurate source attribution.",
+  "expected_outcome": "All agents successfully gather, synthesize, and compile information into a coherent research report without data loss, corruption, conflicts, or source attribution errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_databases",
+        "extract_information"
+      ],
+      "description": "This agent searches various academic databases and extracts relevant information on the given topic."
+    },
+    {
+      "id": "agent_2",
+      "role": "Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "synthesize_information"
+      ],
+      "description": "This agent analyzes the data collected by agent_1, identifies key insights, and synthesizes the information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Validator",
+      "capabilities": [
+        "validate_data",
+        "resolve_conflicts"
+      ],
+      "description": "This agent cross-verifies the synthesized data, resolves any conflicts, and ensures the information integrity."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "compile_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the validated data into a final report and ensures correct source attribution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "relevant scientific articles"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_info",
+      "content": {
+        "synthesis": "key insights from data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "validate_data",
+      "content": {
+        "validation_status": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "validated insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "generate_report",
+      "content": {
+        "report_status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "user",
+      "action": "deliver_report",
+      "content": {
+        "report": "final research report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "relevant scientific articles"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_info",
+      "content": {
+        "synthesis": "key insights from data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "validate_data",
+      "content": {
+        "validation_status": "successful"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent_3 incorrectly validates conflicting data without resolving inconsistencies."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "conflicting insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "generate_report",
+      "content": {
+        "report_status": "completed with errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "user",
+      "action": "deliver_report",
+      "content": {
+        "report": "final research report with errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 as agent_3 fails to resolve data conflicts."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Agent_4 generates a report based on conflicting insights received from agent_3."
+    }
+  ],
+  "created_at": "2026-01-04T09:06:25.321794"
+}

@@ -1,0 +1,111 @@
+{
+  "scenario_id": "res_878476",
+  "domain": "research",
+  "complexity": "complex",
+  "task_description": "Agents collaboratively search for information on renewable energy technologies from various online databases, synthesize the data, and produce a detailed research report.",
+  "expected_outcome": "The agents successfully gather accurate, consistent information from multiple sources and compile a coherent research report with correct source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "data_extraction"
+      ],
+      "description": "Searches and collects data on renewable energy technologies from online databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Aggregator",
+      "capabilities": [
+        "data_merging",
+        "conflict_resolution"
+      ],
+      "description": "Merges data from various sources and resolves conflicts."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Validator",
+      "capabilities": [
+        "data_verification",
+        "consistency_check"
+      ],
+      "description": "Validates the data for accuracy and checks for any inconsistencies."
+    },
+    {
+      "id": "agent_4",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_analysis",
+        "synthesis"
+      ],
+      "description": "Analyzes and synthesizes validated data to produce coherent insights."
+    },
+    {
+      "id": "agent_5",
+      "role": "Report Generator",
+      "capabilities": [
+        "report_writing",
+        "source_attribution"
+      ],
+      "description": "Compiles the final research report and ensures correct source attribution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_and_send_data",
+      "content": {
+        "data": "raw_renewable_energy_data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "merge_and_send_data",
+      "content": {
+        "data": "merged_data_no_conflicts"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "validate_and_send_data",
+      "content": {
+        "data": "validated_data_corrupted"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "synthesize_and_send_data",
+      "content": {
+        "data": "synthesized_insights_with_errors"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "generate_report_and_request_review",
+      "content": {
+        "report": "draft_report_with_errors"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "review_and_confirm_report",
+      "content": {
+        "confirmation": "report_rejected_due_to_errors"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:06:13.805796"
+}

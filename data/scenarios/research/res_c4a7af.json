@@ -1,0 +1,349 @@
+{
+  "scenario_id": "res_c4a7af",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "data_corruption",
+  "task_description": "The agents need to collaborate to gather comprehensive information on the impact of climate change on agriculture from various sources and produce a synthesized report that includes validated data and source attributions.",
+  "expected_outcome": "If everything works correctly, agents will successfully gather, verify, and synthesize information into a coherent and precise research report with accurate source attributions and reconciled data.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Gatherer",
+      "capabilities": [
+        "search_databases",
+        "fetch_online_journals"
+      ],
+      "description": "Collects data from online databases and journals."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Verifier",
+      "capabilities": [
+        "validate_data",
+        "check_source_legitimacy"
+      ],
+      "description": "Verifies the authenticity and accuracy of the gathered data."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "detect_conflicts"
+      ],
+      "description": "Synthesizes data from verified sources and resolves conflicts."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Compiler",
+      "capabilities": [
+        "format_report",
+        "add_source_attribution"
+      ],
+      "description": "Compiles the synthesized information into a structured report with proper attributions."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "review_report",
+        "check_for_errors"
+      ],
+      "description": "Reviews the final report for completeness and accuracy before submission."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw climate data",
+        "source": "online_journal_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_verification",
+      "content": {
+        "status": "verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "transfer_data",
+      "content": {
+        "data": "verified climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "analyzed climate impact"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "compile_report",
+      "content": {
+        "report_section": "compiled report section"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "feedback",
+      "content": {
+        "feedback": "no errors found"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_additional_data",
+      "content": {
+        "data": "additional climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_synthesis",
+      "content": {
+        "updated_data": "integrated additional data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "ready for review"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "approve_report",
+      "content": {
+        "approval_status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "submit_report",
+      "content": {
+        "submission_status": "submitted successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "external_system",
+      "action": "archive_report",
+      "content": {
+        "archive_status": "archived"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw climate data",
+        "source": "online_journal_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_verification",
+      "content": {
+        "status": "verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "transfer_data",
+      "content": {
+        "data": "verified climate data with errors"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurred during transfer, altering key data metrics."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "analyzed climate impact with errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "compile_report",
+      "content": {
+        "report_section": "compiled report section with errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "feedback",
+      "content": {
+        "feedback": "errors detected in report section"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_additional_data",
+      "content": {
+        "data": "additional climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_synthesis",
+      "content": {
+        "updated_data": "integrated additional data with existing errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "ready for review with detected errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "approve_report",
+      "content": {
+        "approval_status": "not approved due to errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "submit_report",
+      "content": {
+        "submission_status": "submission failed due to errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "external_system",
+      "action": "archive_report",
+      "content": {
+        "archive_status": "archiving failed due to errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_integration",
+      "description": "Synthesized data with errors is compiled into the report"
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "error_detection",
+      "description": "Errors in the report section are detected during review"
+    }
+  ],
+  "created_at": "2026-01-03T22:43:26.966435"
+}

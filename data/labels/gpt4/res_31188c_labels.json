@@ -1,0 +1,29 @@
+{
+  "scenario_id": "res_31188c",
+  "trace_id": "res_31188c",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data format causes misunderstanding in report generation process."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_8",
+      "relationship_type": "process_dependency",
+      "confidence": 1.0,
+      "explanation": "Agent 4's report generation relies on correct data format, leading to an incomplete report."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 outputs the synthesized data in an invalid format, which is not expected by Agent 4.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_8"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

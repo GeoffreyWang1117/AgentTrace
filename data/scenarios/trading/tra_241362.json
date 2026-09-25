@@ -1,0 +1,379 @@
+{
+  "scenario_id": "tra_241362",
+  "domain": "trading",
+  "complexity": "complex",
+  "bug_type": "timeout_cascade",
+  "task_description": "Agents need to collaboratively analyze real-time market data to make informed trading decisions, execute trades on behalf of their respective clients, and ensure accurate transaction records are maintained.",
+  "expected_outcome": "Agents successfully analyze data, make collaborative decisions, execute trades on time, and maintain accurate transaction records without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "This agent fetches and analyzes real-time market data to identify trends and anomalies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Strategist",
+      "capabilities": [
+        "generate_trading_strategies",
+        "evaluate_risks"
+      ],
+      "description": "This agent creates trading strategies based on analyzed data and evaluates potential risks and returns."
+    },
+    {
+      "id": "agent_3",
+      "role": "Execution Manager",
+      "capabilities": [
+        "execute_orders",
+        "verify_execution"
+      ],
+      "description": "This agent is responsible for executing trades and verifying that execution matches the strategy."
+    },
+    {
+      "id": "agent_4",
+      "role": "Compliance Checker",
+      "capabilities": [
+        "check_regulatory_compliance",
+        "validate_transactions"
+      ],
+      "description": "This agent ensures that all trades comply with regulations and validates transaction records."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "report_discrepancies"
+      ],
+      "description": "This agent tracks open positions and reports any discrepancies in position records."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend": "upward",
+        "confidence": 0.8
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_strategy",
+      "content": {
+        "strategy": "buy",
+        "volume": 1000
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_id": 1234,
+        "status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "validate_trade",
+      "content": {
+        "order_id": 1234,
+        "compliance": "pass"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "confirm_execution",
+      "content": {
+        "order_id": 1234,
+        "status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_market_data",
+      "content": {
+        "latest_price": 105
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_updated_analysis",
+      "content": {
+        "trend": "stable",
+        "confidence": 0.7
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "evaluate_new_strategy",
+      "content": {
+        "strategy": "hold"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "audit_position",
+      "content": {
+        "current_position": 1000
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "report_discrepancy",
+      "content": {
+        "discrepancy": "none"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "refresh_data_feed",
+      "content": {
+        "status": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_trade",
+      "content": {
+        "order_id": 1234,
+        "final_status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend": "upward",
+        "confidence": 0.8
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_strategy",
+      "content": {
+        "strategy": "buy",
+        "volume": 1000
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_id": 1234,
+        "status": "timeout"
+      },
+      "is_bug_point": true,
+      "bug_description": "Execution Manager experiences a timeout waiting for response from the exchange."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "validate_trade",
+      "content": {
+        "order_id": 1234,
+        "compliance": "pending"
+      },
+      "is_bug_point": true,
+      "bug_description": "Compliance Checker waits indefinitely for trade validation due to timeout."
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "confirm_execution",
+      "content": {
+        "order_id": 1234,
+        "status": "unknown"
+      },
+      "is_bug_point": true,
+      "bug_description": "Position Tracker unable to confirm execution due to previous agent errors."
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_market_data",
+      "content": {
+        "latest_price": "unknown"
+      },
+      "is_bug_point": true,
+      "bug_description": "Market Data Analyzer not updated with accurate price as execution fails."
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_updated_analysis",
+      "content": {
+        "trend": "stable",
+        "confidence": 0.7
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "evaluate_new_strategy",
+      "content": {
+        "strategy": "hold"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "audit_position",
+      "content": {
+        "current_position": "unknown"
+      },
+      "is_bug_point": true,
+      "bug_description": "Position auditing fails due to incomplete transaction data."
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "report_discrepancy",
+      "content": {
+        "discrepancy": "inconsistency detected"
+      },
+      "is_bug_point": true,
+      "bug_description": "Discrepancy reported due to cascading effect of initial timeout."
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "refresh_data_feed",
+      "content": {
+        "status": "delayed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data feed refresh delayed due to unhandled exceptions down the chain."
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_trade",
+      "content": {
+        "order_id": 1234,
+        "final_status": "failed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Trade finalization fails due to unresolved timeout issues."
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Execution Manager's timeout affects subsequent compliance check."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_dependency",
+      "description": "Compliance error causes Position Tracker to malfunction."
+    },
+    {
+      "source_step": 5,
+      "target_step": 9,
+      "relationship_type": "process_dependency",
+      "description": "Position Tracker's failure impacts position auditing."
+    },
+    {
+      "source_step": 9,
+      "target_step": 10,
+      "relationship_type": "error_propagation",
+      "description": "Auditing failure leads to reported discrepancies."
+    },
+    {
+      "source_step": 10,
+      "target_step": 11,
+      "relationship_type": "state_dependency",
+      "description": "Discrepancy report delays data feed refresh."
+    },
+    {
+      "source_step": 11,
+      "target_step": 12,
+      "relationship_type": "operational_failure",
+      "description": "Delayed data feed results in trade finalization failure."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:44.095429"
+}

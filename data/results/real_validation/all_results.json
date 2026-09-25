@@ -1,0 +1,6842 @@
+[
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_0",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_1",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_2",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 12
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_3",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_4",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_5",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_6",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_7",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_8",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_coder_syntax_error_9",
+    "task": "code_review",
+    "failure_mode": "coder_syntax_error",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_0",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_1",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_2",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 12
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_3",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_4",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_5",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_6",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_7",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_8",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_reviewer_miss_bug_9",
+    "task": "code_review",
+    "failure_mode": "reviewer_miss_bug",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_0",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_1",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_2",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_3",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_4",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_5",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_6",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_7",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_8",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_code_review_executor_timeout_9",
+    "task": "code_review",
+    "failure_mode": "executor_timeout",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_0",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_1",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_2",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_3",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_4",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_5",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_6",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_7",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_8",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_code_review_pm_unclear_spec_9",
+    "task": "code_review",
+    "failure_mode": "pm_unclear_spec",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_0",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_1",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_2",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_3",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_4",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 12
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_5",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_6",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_7",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_8",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_planner_scope_creep_9",
+    "task": "research_assistant",
+    "failure_mode": "planner_scope_creep",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_0",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_1",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_2",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_3",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_4",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_5",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_6",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_7",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_8",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_searcher_irrelevant_9",
+    "task": "research_assistant",
+    "failure_mode": "searcher_irrelevant",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_0",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_1",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_2",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_3",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_4",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_5",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_6",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_7",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_8",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_summarizer_hallucinate_9",
+    "task": "research_assistant",
+    "failure_mode": "summarizer_hallucinate",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_0",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_1",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_2",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_3",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_4",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_5",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 12
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_6",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_7",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_8",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_research_assistant_validator_false_positive_9",
+    "task": "research_assistant",
+    "failure_mode": "validator_false_positive",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_0",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_1",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_2",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_3",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_4",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_5",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_6",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_7",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_8",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_loader_schema_mismatch_9",
+    "task": "data_analysis",
+    "failure_mode": "loader_schema_mismatch",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      5,
+      3
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_0",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_1",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_2",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_3",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_4",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_5",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 12
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_6",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_7",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      3,
+      1,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_8",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_cleaner_data_loss_9",
+    "task": "data_analysis",
+    "failure_mode": "cleaner_data_loss",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_0",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_1",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_2",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      2,
+      1,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_3",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_4",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_5",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 10
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_6",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_7",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_8",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      2,
+      1,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_analyzer_wrong_method_9",
+    "task": "data_analysis",
+    "failure_mode": "analyzer_wrong_method",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_0",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_1",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_2",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_3",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_4",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_5",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      3,
+      2,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_6",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 8
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_7",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_8",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      3,
+      2,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 9
+  },
+  {
+    "experiment_id": "autogen_data_analysis_visualizer_misleading_9",
+    "task": "data_analysis",
+    "failure_mode": "visualizer_misleading",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      3,
+      2,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 11
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_0",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_1",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_2",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_3",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_4",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_5",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_6",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_7",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_8",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_architect_overengineering_9",
+    "task": "game_development",
+    "failure_mode": "architect_overengineering",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_0",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_1",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_2",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_3",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_4",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_5",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_6",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_7",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_8",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_engineer_api_mismatch_9",
+    "task": "game_development",
+    "failure_mode": "engineer_api_mismatch",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_0",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_1",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_2",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_3",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_4",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_5",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_6",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      5,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 0,
+    "mrr": 0.25,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_7",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_8",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_qa_incomplete_coverage_9",
+    "task": "game_development",
+    "failure_mode": "qa_incomplete_coverage",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_0",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_1",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_2",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_3",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_4",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_5",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_6",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_7",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_8",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_game_development_pm_scope_change_9",
+    "task": "game_development",
+    "failure_mode": "pm_scope_change",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_0",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_1",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_2",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_3",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_4",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_5",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_6",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_7",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_8",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_architect_security_gap_9",
+    "task": "api_development",
+    "failure_mode": "architect_security_gap",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_0",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_1",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_2",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_3",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_4",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_5",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_6",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_7",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_8",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 4,
+    "ranking": [
+      4,
+      1,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_engineer_race_condition_9",
+    "task": "api_development",
+    "failure_mode": "engineer_race_condition",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_0",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      5,
+      2,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_1",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_2",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_3",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      5,
+      2,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_4",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      5,
+      2,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_5",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_6",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      5,
+      2,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_7",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      5,
+      2,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_8",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_qa_missing_edge_case_9",
+    "task": "api_development",
+    "failure_mode": "qa_missing_edge_case",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      5,
+      2,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_0",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_1",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_2",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_3",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_4",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_5",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_6",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_7",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_8",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_api_development_pm_conflicting_requirements_9",
+    "task": "api_development",
+    "failure_mode": "pm_conflicting_requirements",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 7
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_0",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_1",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_2",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_3",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_4",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_5",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_6",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_7",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_8",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_architect_wrong_pattern_9",
+    "task": "data_pipeline",
+    "failure_mode": "architect_wrong_pattern",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_0",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_1",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_2",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_3",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_4",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_5",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_6",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_7",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_8",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_engineer_memory_leak_9",
+    "task": "data_pipeline",
+    "failure_mode": "engineer_memory_leak",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_0",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_1",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_2",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_3",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_4",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_5",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_6",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_7",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_8",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_qa_performance_miss_9",
+    "task": "data_pipeline",
+    "failure_mode": "qa_performance_miss",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_0",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_1",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_2",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_3",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_4",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_5",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_6",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_7",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_8",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "metagpt_data_pipeline_pm_unclear_metrics_9",
+    "task": "data_pipeline",
+    "failure_mode": "pm_unclear_metrics",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_0",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_1",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_2",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_3",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_4",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_5",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_6",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_7",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_8",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_analyst_bias_9",
+    "task": "market_research",
+    "failure_mode": "analyst_bias",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_0",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_1",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_2",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_3",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_4",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_5",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_6",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_7",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_8",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_researcher_outdated_data_9",
+    "task": "market_research",
+    "failure_mode": "researcher_outdated_data",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_0",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_1",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_2",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_3",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_4",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_5",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_6",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_7",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_8",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_writer_misinterpretation_9",
+    "task": "market_research",
+    "failure_mode": "writer_misinterpretation",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_0",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_1",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_2",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_3",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_4",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_5",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_6",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_7",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_8",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_market_research_checker_oversight_9",
+    "task": "market_research",
+    "failure_mode": "checker_oversight",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 5
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_0",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_1",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_2",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_3",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_4",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_5",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_6",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_7",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_8",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_researcher_irrelevant_topic_9",
+    "task": "content_creation",
+    "failure_mode": "researcher_irrelevant_topic",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_0",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_1",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_2",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_3",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_4",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_5",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_6",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_7",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_8",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_strategist_wrong_audience_9",
+    "task": "content_creation",
+    "failure_mode": "strategist_wrong_audience",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      6
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_0",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_1",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_2",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_3",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_4",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_5",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_6",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_7",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_8",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_writer_plagiarism_9",
+    "task": "content_creation",
+    "failure_mode": "writer_plagiarism",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_0",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_1",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_2",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_3",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_4",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_5",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_6",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      4,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_7",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_8",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_editor_miss_factual_error_9",
+    "task": "content_creation",
+    "failure_mode": "editor_miss_factual_error",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      6
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_0",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_1",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_2",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_3",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_4",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_5",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_6",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_7",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_8",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_content_creation_seo_keyword_stuffing_9",
+    "task": "content_creation",
+    "failure_mode": "seo_keyword_stuffing",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_0",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_1",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_2",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_3",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_4",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_5",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_6",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_7",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_8",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_classifier_wrong_intent_9",
+    "task": "customer_support",
+    "failure_mode": "classifier_wrong_intent",
+    "ground_truth": 1,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_0",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_1",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_2",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_3",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_4",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_5",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_6",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_7",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_8",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_retriever_irrelevant_docs_9",
+    "task": "customer_support",
+    "failure_mode": "retriever_irrelevant_docs",
+    "ground_truth": 2,
+    "predicted": 2,
+    "ranking": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_0",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_1",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_2",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 3,
+    "ranking": [
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 1,
+    "hit_at_3": 1,
+    "mrr": 1.0,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_3",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_4",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_5",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_6",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_7",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_8",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_generator_wrong_solution_9",
+    "task": "customer_support",
+    "failure_mode": "generator_wrong_solution",
+    "ground_truth": 3,
+    "predicted": 1,
+    "ranking": [
+      1,
+      3,
+      2,
+      4,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_0",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_1",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_2",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_3",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_4",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_5",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_6",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_7",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_8",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_tone_inappropriate_9",
+    "task": "customer_support",
+    "failure_mode": "tone_inappropriate",
+    "ground_truth": 4,
+    "predicted": 1,
+    "ranking": [
+      1,
+      4,
+      2,
+      3,
+      5
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.5,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_0",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_1",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_2",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_3",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_4",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_5",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_6",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_7",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_8",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  },
+  {
+    "experiment_id": "crewai_customer_support_escalation_false_negative_9",
+    "task": "customer_support",
+    "failure_mode": "escalation_false_negative",
+    "ground_truth": 5,
+    "predicted": 1,
+    "ranking": [
+      1,
+      2,
+      5,
+      3,
+      4
+    ],
+    "hit_at_1": 0,
+    "hit_at_3": 1,
+    "mrr": 0.3333333333333333,
+    "num_candidates": 6
+  }
+]

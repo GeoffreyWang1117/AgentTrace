@@ -1,0 +1,7 @@
+{
+  "scenario_id": "cod_11c313",
+  "guessed_root_cause": null,
+  "guessed_root_cause_index": -1,
+  "error_count": 0,
+  "formatted_output": "=== Log-Only Analysis for cod_11c313 ===\n\nFound Errors:\n\nGuessed Root Cause: Unknown\nRoot Cause Location: Log entry #0\n\nCausal Chain: NOT AVAILABLE (log-only baseline)\n\nAnalysis Method: Sequential log scanning with error pattern matching"
+}

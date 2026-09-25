@@ -1,0 +1,170 @@
+{
+  "scenario_id": "tra_e7aa1f",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "Five agents collaborate to analyze market data, make informed trading decisions, execute trades, and verify transactions. The agents must ensure that the correct data is analyzed, decisions are made in real time, trades are executed efficiently, and positions are accurately tracked.",
+  "expected_outcome": "Agents successfully analyze accurate market data, make optimal trading decisions, execute trades timely, and maintain consistent position tracking without errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "collect_data",
+        "filter_data",
+        "update_data"
+      ],
+      "description": "Gathers market data from multiple sources and filters it for the latest information to share with other agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Market Analyst",
+      "capabilities": [
+        "analyze_data",
+        "generate_signals",
+        "risk_assessment"
+      ],
+      "description": "Analyzes market data to generate buy/sell signals and conducts risk assessments."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trade",
+        "cancel_trade",
+        "confirm_trade"
+      ],
+      "description": "Executes trades based on signals received and confirms execution or adjusts as necessary."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_execution",
+        "audit_trades",
+        "record_positions"
+      ],
+      "description": "Verifies executed trades against intended orders and records positions."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "report_status",
+        "alert_discrepancies"
+      ],
+      "description": "Tracks current positions and alerts the team to any discrepancies."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "market_data": "latest_filtered_data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "buy"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "execute_trade",
+      "content": {
+        "trade_details": "buy_order"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "wrong_verification",
+      "content": {
+        "incorrect_execution_status": "not_verified"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_error",
+      "content": {
+        "error": "trade_not_verified"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_data",
+      "content": {
+        "new_market_data": "latest_data"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "sell"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "trade_details": "sell_order"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_and_record",
+      "content": {
+        "execution_status": "confirmed"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "position_status": "current"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_data",
+      "content": {
+        "new_market_data": "freshest_data"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_signal",
+      "content": {
+        "trade_signal": "hold"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:12:33.958019"
+}

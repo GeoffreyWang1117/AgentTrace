@@ -1,0 +1,163 @@
+{
+  "scenario_id": "res_33b79c",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "race_condition",
+  "task_description": "In this scenario, a team of three agents collaborates to gather and synthesize information on recent advancements in renewable energy sources from multiple online databases and produce a comprehensive research report.",
+  "expected_outcome": "Agent 1 successfully collects data from various online sources, Agent 2 synthesizes the collected data into a coherent structure, and Agent 3 writes a comprehensive research report. The report should accurately reflect the findings with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "API_access"
+      ],
+      "description": "This agent is responsible for collecting relevant data from multiple online databases and repositories."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_analysis",
+        "conflict_resolution"
+      ],
+      "description": "This agent synthesizes the collected data, resolves conflicts, and prepares an organized dataset."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Writer",
+      "capabilities": [
+        "natural_language_generation",
+        "citation_management"
+      ],
+      "description": "This agent writes the final research report using the synthesized data, ensuring proper source attribution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_collected_data",
+      "content": {
+        "data": "raw data from sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "synthesized data with resolved conflicts"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_data",
+      "content": {
+        "data": "new data from additional sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_verification",
+      "content": {
+        "request": "verify source attribution"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "confirm_verification",
+      "content": {
+        "status": "verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_collected_data",
+      "content": {
+        "data": "raw data from sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "data": "synthesized data with resolved conflicts"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_data",
+      "content": {
+        "data": "new data from additional sources with race condition"
+      },
+      "is_bug_point": true,
+      "bug_description": "Concurrent update from Agent 1 causes inconsistent state in Agent 2's synthesized dataset due to race condition."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_verification",
+      "content": {
+        "request": "verify source attribution"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "confirm_verification",
+      "content": {
+        "status": "verification failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to source attribution errors."
+    }
+  ],
+  "created_at": "2026-01-04T09:05:52.738765"
+}

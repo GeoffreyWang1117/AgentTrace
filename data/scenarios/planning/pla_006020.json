@@ -1,0 +1,266 @@
+{
+  "scenario_id": "pla_006020",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "invalid_output",
+  "task_description": "The agents need to collaboratively set up a renewable energy system for a small community. This involves planning the installation of solar panels, coordinating with suppliers for necessary equipment, and scheduling maintenance tasks.",
+  "expected_outcome": "The renewable energy system is installed on time with all components working efficiently and maintenance schedules properly planned.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "dependency_management"
+      ],
+      "description": "Breaks down the overall goal into smaller tasks and manages dependencies among them."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Allocator",
+      "capabilities": [
+        "resource_management",
+        "conflict_resolution"
+      ],
+      "description": "Allocates necessary resources for tasks and resolves conflicts related to resource allocation."
+    },
+    {
+      "id": "agent_3",
+      "role": "Coordinator",
+      "capabilities": [
+        "schedule_management",
+        "communication"
+      ],
+      "description": "Coordinates the execution of tasks and ensures all agents are up-to-date with the latest plans."
+    },
+    {
+      "id": "agent_4",
+      "role": "Execution Monitor",
+      "capabilities": [
+        "progress_tracking",
+        "error_detection"
+      ],
+      "description": "Tracks the progress of the overall plan execution and detects any errors or deviations."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "tasks": [
+          "install_solar_panels",
+          "setup_battery_storage"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "solar_panels": 50,
+          "batteries": 20
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_schedule",
+      "content": {
+        "schedule": {
+          "start": "2023-11-01",
+          "end": "2023-11-10"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_progress",
+      "content": {
+        "status": "on_track"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_tasks",
+      "content": {
+        "tasks": [
+          "install_wind_turbines"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_conflicts",
+      "content": {
+        "conflicts": []
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_schedule",
+      "content": {
+        "confirmation": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "final_report",
+      "content": {
+        "status": "complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "tasks": [
+          "install_solar_panels",
+          "setup_battery_storage"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "solar_panels": 50,
+          "batteries": 20
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_schedule",
+      "content": {
+        "schedule": {
+          "initial": "2023-11-01",
+          "finish": "2023-11-10"
+        }
+      },
+      "is_bug_point": true,
+      "bug_description": "The schedule format does not match the expected keys 'start' and 'end'."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_progress",
+      "content": {
+        "status": "on_track"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_tasks",
+      "content": {
+        "tasks": [
+          "install_wind_turbines"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_conflicts",
+      "content": {
+        "conflicts": []
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_schedule",
+      "content": {
+        "confirmation": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "final_report",
+      "content": {
+        "status": "complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "task_dependency",
+      "description": "Incorrect schedule format leads to misalignment in task execution"
+    }
+  ],
+  "created_at": "2026-01-04T09:15:42.667486"
+}

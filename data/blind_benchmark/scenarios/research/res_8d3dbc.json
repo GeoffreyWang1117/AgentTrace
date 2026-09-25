@@ -1,0 +1,111 @@
+{
+  "scenario_id": "res_8d3dbc",
+  "domain": "research",
+  "complexity": "complex",
+  "task_description": "Five agents collaborate to research the impact of agricultural practices on climate change by gathering data from academic papers, government reports, and environmental datasets. The agents must synthesize this information into a coherent research report while ensuring data integrity and proper source attribution.",
+  "expected_outcome": "The agents should successfully compile a research report that accurately reflects the data collected, with all sources correctly attributed and any conflicting information reconciled.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_academic_papers",
+        "parse_data_from_web"
+      ],
+      "description": "Responsible for collecting data from academic and government sources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "validate_data_integrity",
+        "identify_conflicts"
+      ],
+      "description": "Ensures data integrity and identifies conflicting information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "reconcile_conflicts"
+      ],
+      "description": "Synthesizes data from multiple sources and reconciles conflicts."
+    },
+    {
+      "id": "agent_4",
+      "role": "Source Attributor",
+      "capabilities": [
+        "track_source_origin",
+        "attribute_information"
+      ],
+      "description": "Tracks the origin of information and attributes sources correctly."
+    },
+    {
+      "id": "agent_5",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "format_document"
+      ],
+      "description": "Generates the final research report and formats it appropriately."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "data_from_academic_sources"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "validate_data",
+      "content": {
+        "data": "data_from_academic_sources"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "data": "validated_data_with_error"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "data": "synthesized_data_with_error"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "attribute_sources",
+      "content": {
+        "data": "attributed_data_with_error"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "final_report_with_errors"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:42:41.299071"
+}

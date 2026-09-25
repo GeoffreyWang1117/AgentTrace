@@ -1,0 +1,120 @@
+{
+  "scenario_id": "tra_69641e",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "Agents collaborate to analyze real-time market data, make informed trading decisions, and execute transactions while ensuring data integrity and timely operations.",
+  "expected_outcome": "Agents should successfully analyze market data, make accurate trading decisions, execute trades promptly, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "collect_market_data",
+        "filter_relevant_info"
+      ],
+      "description": "Collects live market data and filters it for relevant information"
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyst",
+      "capabilities": [
+        "analyze_data",
+        "identify_trends"
+      ],
+      "description": "Analyzes the filtered market data to identify trading trends and opportunities"
+    },
+    {
+      "id": "agent_3",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "make_decisions",
+        "prioritize_trades"
+      ],
+      "description": "Makes trading decisions based on analyzed data and prioritizes trade executions"
+    },
+    {
+      "id": "agent_4",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trades",
+        "verify_transaction"
+      ],
+      "description": "Executes the trades and verifies that transactions are processed correctly"
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_filtered_data",
+      "content": {
+        "market_data": "latest_filtered_data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analysis",
+      "content": {
+        "analysis": "data_analysis_results"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "decision": "buy_order_at_price_corrupted"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_execution",
+      "content": {
+        "execution_status": "successful"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_execution_report",
+      "content": {
+        "report": "execution_details_with_error"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_position_update",
+      "content": {
+        "positions": "incorrect_updated_positions"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_market_data",
+      "content": {
+        "request": "latest_data_request"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "acknowledge_request",
+      "content": {
+        "acknowledgment": "request_received"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:46:21.107134"
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_id": "pla_231f50",
+  "trace_id": "pla_231f50",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4, causing the status to be incorrectly set to 'on_hold'."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "status_update",
+      "confidence": 1.0,
+      "explanation": "The incorrect status 'on_hold' leads Agent 2 to report the subtask as 'pending' instead of 'completed'."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 incorrectly informs Agent 4 that resources have not been allocated, due to a logic error in status evaluation.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

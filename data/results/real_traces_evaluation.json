@@ -1,0 +1,260 @@
+{
+  "total": 22,
+  "hit_at_1": 12,
+  "hit_at_3": 22,
+  "found": 22,
+  "by_workflow": {
+    "research": {
+      "total": 3,
+      "hit_at_1": 3,
+      "hit_at_3": 3,
+      "hit_at_1_rate": 1.0,
+      "hit_at_3_rate": 1.0
+    },
+    "api_orchestration": {
+      "total": 2,
+      "hit_at_1": 0,
+      "hit_at_3": 2,
+      "hit_at_1_rate": 0.0,
+      "hit_at_3_rate": 1.0
+    },
+    "customer_service": {
+      "total": 1,
+      "hit_at_1": 1,
+      "hit_at_3": 1,
+      "hit_at_1_rate": 1.0,
+      "hit_at_3_rate": 1.0
+    },
+    "data_pipeline": {
+      "total": 6,
+      "hit_at_1": 3,
+      "hit_at_3": 6,
+      "hit_at_1_rate": 0.5,
+      "hit_at_3_rate": 1.0
+    },
+    "debate": {
+      "total": 3,
+      "hit_at_1": 0,
+      "hit_at_3": 3,
+      "hit_at_1_rate": 0.0,
+      "hit_at_3_rate": 1.0
+    },
+    "distributed": {
+      "total": 3,
+      "hit_at_1": 1,
+      "hit_at_3": 3,
+      "hit_at_1_rate": 0.3333333333333333,
+      "hit_at_3_rate": 1.0
+    },
+    "coding": {
+      "total": 4,
+      "hit_at_1": 4,
+      "hit_at_3": 4,
+      "hit_at_1_rate": 1.0,
+      "hit_at_3_rate": 1.0
+    }
+  },
+  "details": [
+    {
+      "scenario_id": "research_cfb7d8d2",
+      "workflow": "research",
+      "bug_type": "missing_context",
+      "ground_truth_node": "7215ac2d-b1d7-417b-a5a9-cd3013e3d17f",
+      "predicted_node": "7215ac2d-b1d7-417b-a5a9-cd3013e3d17f",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "api_0b94480f",
+      "workflow": "api_orchestration",
+      "bug_type": "auth_failure",
+      "ground_truth_node": "ce8109af-724e-43ed-aef4-681fd60637f8",
+      "predicted_node": "734db01b-01e3-443f-a319-cc29a9ddf18b",
+      "rank": 2,
+      "correct": false
+    },
+    {
+      "scenario_id": "customer_39885f33",
+      "workflow": "customer_service",
+      "bug_type": "wrong_routing",
+      "ground_truth_node": "f0a93781-538e-4386-a652-82333f10d6e3",
+      "predicted_node": "f0a93781-538e-4386-a652-82333f10d6e3",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "pipeline_583339de",
+      "workflow": "data_pipeline",
+      "bug_type": null,
+      "ground_truth_node": "339aa3c3-9445-43f5-93ef-35c6c67be2f9",
+      "predicted_node": "ab49698a-23f5-4226-9d25-3ec2ba585d42",
+      "rank": 2,
+      "correct": false
+    },
+    {
+      "scenario_id": "debate_17fab524",
+      "workflow": "debate",
+      "bug_type": "misunderstanding",
+      "ground_truth_node": "f4e60082-61d6-4d33-b927-e56e5eea0b28",
+      "predicted_node": "5a135b37-95c0-48ac-bbc9-29e79bc6e141",
+      "rank": 2,
+      "correct": false
+    },
+    {
+      "scenario_id": "distributed_cfe923ea",
+      "workflow": "distributed",
+      "bug_type": null,
+      "ground_truth_node": "67fc94f5-e8b7-4fb8-a564-5a8e8258a2eb",
+      "predicted_node": "b78c767f-2ca8-4c46-a61b-25f6459b59c5",
+      "rank": 3,
+      "correct": false
+    },
+    {
+      "scenario_id": "pipeline_e0bc2579",
+      "workflow": "data_pipeline",
+      "bug_type": null,
+      "ground_truth_node": "0e6ad578-bed8-48be-a3e5-404240964d1e",
+      "predicted_node": "0e6ad578-bed8-48be-a3e5-404240964d1e",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "debate_7843eb32",
+      "workflow": "debate",
+      "bug_type": "misunderstanding",
+      "ground_truth_node": "01e4bb06-dbf6-4da9-816c-79bd8fa08be5",
+      "predicted_node": "00ceadbf-72ca-435a-a365-4b7c97084d21",
+      "rank": 2,
+      "correct": false
+    },
+    {
+      "scenario_id": "api_472df2e0",
+      "workflow": "api_orchestration",
+      "bug_type": "data_error",
+      "ground_truth_node": "4667f062-832f-483e-884f-dcf813bbb7b0",
+      "predicted_node": "3c18ea03-0ac4-484f-b955-334d7dff7b47",
+      "rank": 3,
+      "correct": false
+    },
+    {
+      "scenario_id": "pipeline_7ced65fc",
+      "workflow": "data_pipeline",
+      "bug_type": null,
+      "ground_truth_node": "8a4e7765-0b0b-47ec-8cf6-c03171aa20f0",
+      "predicted_node": "88a57a66-c739-4f98-b30f-0c9716edc622",
+      "rank": 2,
+      "correct": false
+    },
+    {
+      "scenario_id": "pipeline_9ceaef7a",
+      "workflow": "data_pipeline",
+      "bug_type": null,
+      "ground_truth_node": "798e4281-94ee-45d2-a657-dac038e343d9",
+      "predicted_node": "798e4281-94ee-45d2-a657-dac038e343d9",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "coding_dfb56353",
+      "workflow": "coding",
+      "bug_type": "logic_error",
+      "ground_truth_node": "9da1fcf9-33d8-4589-8e5c-0ec15d02c6d2",
+      "predicted_node": "9da1fcf9-33d8-4589-8e5c-0ec15d02c6d2",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "distributed_ee57e788",
+      "workflow": "distributed",
+      "bug_type": null,
+      "ground_truth_node": "40e15bd4-9acc-4849-b81a-f0a3cbb95b66",
+      "predicted_node": "40e15bd4-9acc-4849-b81a-f0a3cbb95b66",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "research_f0d7f2b6",
+      "workflow": "research",
+      "bug_type": "missing_context",
+      "ground_truth_node": "29946e0a-60df-4b73-acda-fbb4600d2d60",
+      "predicted_node": "29946e0a-60df-4b73-acda-fbb4600d2d60",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "coding_0c52cc5c",
+      "workflow": "coding",
+      "bug_type": "type_error",
+      "ground_truth_node": "a167494f-e16f-4447-bed3-e9e51a0a8045",
+      "predicted_node": "a167494f-e16f-4447-bed3-e9e51a0a8045",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "pipeline_91aff660",
+      "workflow": "data_pipeline",
+      "bug_type": null,
+      "ground_truth_node": "8be08d8b-2459-4a60-a5ef-cd33ff1767c9",
+      "predicted_node": "8be08d8b-2459-4a60-a5ef-cd33ff1767c9",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "research_8b214e19",
+      "workflow": "research",
+      "bug_type": "missing_context",
+      "ground_truth_node": "76ba208b-87c2-44c0-b0e3-0948945eec59",
+      "predicted_node": "76ba208b-87c2-44c0-b0e3-0948945eec59",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "coding_97e5f79b",
+      "workflow": "coding",
+      "bug_type": "missing_check",
+      "ground_truth_node": "9b8957e6-e31b-4a35-8b90-6d225c7625fb",
+      "predicted_node": "9b8957e6-e31b-4a35-8b90-6d225c7625fb",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "coding_c393ff7d",
+      "workflow": "coding",
+      "bug_type": "off_by_one",
+      "ground_truth_node": "90b8e72a-df65-4e32-895b-5384001a45cf",
+      "predicted_node": "90b8e72a-df65-4e32-895b-5384001a45cf",
+      "rank": 1,
+      "correct": true
+    },
+    {
+      "scenario_id": "debate_ecf241bb",
+      "workflow": "debate",
+      "bug_type": "misunderstanding",
+      "ground_truth_node": "e231e418-83f1-4bbe-bca2-3bf477b46a50",
+      "predicted_node": "d167754b-ed25-4622-92e1-f82252a830c6",
+      "rank": 2,
+      "correct": false
+    },
+    {
+      "scenario_id": "distributed_e3de1d01",
+      "workflow": "distributed",
+      "bug_type": null,
+      "ground_truth_node": "d465082c-4837-4971-8d8c-a8acf75e294d",
+      "predicted_node": "67ee346f-05fb-46cb-8a4a-010893484449",
+      "rank": 2,
+      "correct": false
+    },
+    {
+      "scenario_id": "pipeline_de4c293d",
+      "workflow": "data_pipeline",
+      "bug_type": null,
+      "ground_truth_node": "45b03763-2ed1-4bf0-bd27-9609e85f82c0",
+      "predicted_node": "5f5a765a-ef0a-4420-b5bc-6b8482ac8274",
+      "rank": 2,
+      "correct": false
+    }
+  ],
+  "hit_at_1_rate": 0.5454545454545454,
+  "hit_at_3_rate": 1.0,
+  "recall": 1.0
+}

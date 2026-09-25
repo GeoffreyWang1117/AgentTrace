@@ -1,0 +1,35 @@
+{
+  "log_only": {
+    "total": 250,
+    "first_error_accuracy": 0.964,
+    "error_detection_rate": 1.0,
+    "recall": 0.988
+  },
+  "statistical_tests": {
+    "mcnemar_at_vs_ld": {
+      "p_value": 0.0,
+      "details": "b=114, c=16, chi2=72.38"
+    },
+    "mcnemar_at_vs_lo": {
+      "p_value": 0.004606532263391805,
+      "details": "b=9, c=27, chi2=8.03"
+    },
+    "ci_agenttrace": {
+      "mean": 0.892,
+      "ci_lower": 0.852,
+      "ci_upper": 0.928
+    },
+    "ci_llm_direct": {
+      "mean": 0.5,
+      "ci_lower": 0.44,
+      "ci_upper": 0.56
+    },
+    "ci_log_only": {
+      "mean": 0.964,
+      "ci_lower": 0.94,
+      "ci_upper": 0.984
+    },
+    "effect_size_at_ld": 0.9010835578413714,
+    "effect_size_at_lo": -0.28792491473003556
+  }
+}

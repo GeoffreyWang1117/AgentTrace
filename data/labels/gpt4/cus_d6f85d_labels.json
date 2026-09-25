@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_d6f85d",
+  "trace_id": "cus_d6f85d",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The resolution did not reach agent_4, leading to an incorrect ticket status update."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The incorrect ticket status led to misleading feedback collection."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "A timeout in agent_3 prevents the resolution from being passed to agent_4.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

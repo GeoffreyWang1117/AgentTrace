@@ -1,0 +1,182 @@
+{
+  "scenario_id": "cus_30d977",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "task_description": "Agents are tasked with collaboratively handling customer service inquiries, escalating complex issues to senior agents, and ensuring that all customer issues are tracked and resolved efficiently. The system should maintain synchronization of ticket status and customer context during agent handoffs.",
+  "expected_outcome": "Customer inquiries are handled promptly with accurate information being relayed between agents, issues are escalated when necessary, and all tickets are resolved with their status properly updated and synchronized across all agents.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support",
+      "capabilities": [
+        "receive_inquiry",
+        "initial_resolution",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and attempts to resolve basic issues"
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Specialist",
+      "capabilities": [
+        "analyze_issue",
+        "provide_technical_solution",
+        "update_ticket"
+      ],
+      "description": "Provides technical expertise and solutions to more complex customer issues"
+    },
+    {
+      "id": "agent_3",
+      "role": "Senior Support",
+      "capabilities": [
+        "review_escalation",
+        "final_resolution",
+        "close_ticket"
+      ],
+      "description": "Handles escalated issues and ensures tickets are resolved and closed"
+    },
+    {
+      "id": "agent_4",
+      "role": "Customer Liaison",
+      "capabilities": [
+        "customer_followup",
+        "context_relay",
+        "feedback_collection"
+      ],
+      "description": "Ensures customer communication is maintained and feedback is gathered"
+    },
+    {
+      "id": "agent_5",
+      "role": "System Manager",
+      "capabilities": [
+        "synchronize_state",
+        "audit_tickets",
+        "report_issues"
+      ],
+      "description": "Maintains the synchronization of ticket statuses and audits the system for inconsistencies"
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "ticket_id": "123",
+        "customer_issue": "Internet connectivity problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "analyze_issue",
+      "content": {
+        "ticket_id": "123",
+        "analysis_result": "Router needs reset"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "context_relay",
+      "content": {
+        "ticket_id": "123",
+        "context": "Router reset advised"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "escalation_reason": "Customer unable to reset router"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_technical_solution",
+      "content": {
+        "ticket_id": "123",
+        "solution": "Technician visit scheduled"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "Scheduled for technician visit"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "synchronize_state",
+      "content": {
+        "ticket_id": "123",
+        "status": "Scheduled for technician visit"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "customer_followup",
+      "content": {
+        "ticket_id": "123",
+        "followup_result": "Customer updated"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "resolution_status": "Resolved, technician visit"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "final_audit",
+      "content": {
+        "ticket_id": "123",
+        "final_status": "Closed"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "report_issues",
+      "content": {
+        "tickets_audited": 50,
+        "issues_found": 1
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "feedback_collection",
+      "content": {
+        "ticket_id": "123",
+        "customer_feedback": "Satisfied"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:20.627543"
+}

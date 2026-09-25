@@ -1,0 +1,254 @@
+{
+  "scenario_id": "tra_312683",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "invalid_output",
+  "task_description": "The agents need to collaboratively analyze market data, make informed trading decisions, and execute transactions while ensuring data accuracy and timing synchronization.",
+  "expected_outcome": "Agents should process market data correctly, make timely trading decisions, execute orders without delay, and maintain accurate position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Analyst",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "This agent is responsible for gathering and analyzing market data to identify trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "evaluate_analysis",
+        "make_trade_decisions"
+      ],
+      "description": "This agent evaluates analyses from the Data Analyst and makes trading decisions."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trades",
+        "confirm_order_execution"
+      ],
+      "description": "This agent executes the trades decided by the Decision Maker and confirms their execution."
+    },
+    {
+      "id": "agent_4",
+      "role": "Position Tracker",
+      "capabilities": [
+        "update_positions",
+        "verify_balances"
+      ],
+      "description": "This agent updates and verifies trading positions to ensure accurate account balance tracking."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analyzed_data",
+      "content": {
+        "market_trend": "upward",
+        "confidence_level": 0.9
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_order",
+      "content": {
+        "order_type": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_execution",
+      "content": {
+        "order_id": 1234,
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "update_market_data",
+      "content": {
+        "position_change": 100,
+        "new_balance": 5000
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_updated_analysis",
+      "content": {
+        "market_trend": "stable",
+        "confidence_level": 0.7
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_order",
+      "content": {
+        "order_type": "sell",
+        "quantity": 50
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_execution",
+      "content": {
+        "order_id": 5678,
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "update_market_data",
+      "content": {
+        "position_change": -50,
+        "new_balance": 4500
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analyzed_data",
+      "content": {
+        "market_trend": "upward",
+        "confidence_level": 0.9
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_order",
+      "content": {
+        "order_type": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_execution",
+      "content": {
+        "order_id": "unknown_format",
+        "status": "executed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 sends the order_id in an unexpected string format instead of a numerical format."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "update_market_data",
+      "content": {
+        "position_change": 100,
+        "new_balance": 5000
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_updated_analysis",
+      "content": {
+        "market_trend": "stable",
+        "confidence_level": 0.7
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_order",
+      "content": {
+        "order_type": "sell",
+        "quantity": 50
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_execution",
+      "content": {
+        "order_id": 5678,
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "update_market_data",
+      "content": {
+        "position_change": -50,
+        "new_balance": 4500
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing potential issues in position tracking."
+    }
+  ],
+  "created_at": "2026-01-04T09:13:11.778335"
+}

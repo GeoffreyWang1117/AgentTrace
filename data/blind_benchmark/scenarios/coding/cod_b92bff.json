@@ -1,0 +1,84 @@
+{
+  "scenario_id": "cod_b92bff",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Agents collaborate to develop a simple software feature where they need to write code, review it, test it, and fix any bugs before integrating the final product.",
+  "expected_outcome": "Agent 1 writes code based on requirements, Agent 2 reviews and tests the code correctly, and Agent 3 integrates the changes smoothly without conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "understand_requirements"
+      ],
+      "description": "This agent is responsible for writing initial code based on given requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer and Tester",
+      "capabilities": [
+        "review_code",
+        "conduct_tests"
+      ],
+      "description": "This agent reviews the written code for potential issues and conducts tests to ensure functionality."
+    },
+    {
+      "id": "agent_3",
+      "role": "Integrator",
+      "capabilities": [
+        "resolve_conflicts",
+        "integrate_code"
+      ],
+      "description": "This agent resolves any integration conflicts and integrates the code into the main codebase."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "Initial code version 1.0"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "review_code",
+      "content": {
+        "review_status": "Code approved with minor comments"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "conduct_tests",
+      "content": {
+        "test_results": "Invalid output format encountered"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "hand_off_code",
+      "content": {
+        "code": "Reviewed code version 1.1"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "integrate_code",
+      "content": {
+        "integration_status": "Integration failed due to unexpected output format"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:07:41.525115"
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_id": "res_f1a2a6",
+  "trace_id": "res_f1a2a6",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4, causing inconsistencies in the corrections."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "feedback_loop",
+      "confidence": 1.0,
+      "explanation": "Agent 4's corrections are based on outdated information, leading to an incorrect corrected report."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "State inconsistency: draft_report_v1 contains outdated data due to missed synchronization with agent_2.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

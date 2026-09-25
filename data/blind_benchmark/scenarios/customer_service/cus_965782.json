@@ -1,0 +1,127 @@
+{
+  "scenario_id": "cus_965782",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "In this scenario, four agents collaborate to handle customer inquiries, escalate complex issues, and track and resolve tickets. The agents must ensure customer context is maintained throughout the process, ticket status is synchronized, and no duplicate or conflicting responses are made.",
+  "expected_outcome": "Customer inquiries are resolved efficiently with clear communication between agents. Tickets are tracked without loss of context, and complex issues are escalated correctly, ensuring customer satisfaction.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "handle_inquiries",
+        "create_tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_ticket_status"
+      ],
+      "description": "Addresses technical issues and updates the ticket status."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Service Supervisor",
+      "capabilities": [
+        "escalate_issues",
+        "provide_overview"
+      ],
+      "description": "Escalates complex issues and provides an overview of ticket status."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticketing System",
+      "capabilities": [
+        "track_tickets",
+        "synchronize_status"
+      ],
+      "description": "Manages ticket tracking and ensures ticket statuses are synchronized."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "12345",
+        "issue": "login_problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_status",
+      "content": {
+        "ticket_id": "T001",
+        "status": "in_progress"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate",
+      "content": {
+        "ticket_id": "T001"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synchronize",
+      "content": {
+        "ticket_id": "T001",
+        "status": "escalated"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "notify",
+      "content": {
+        "ticket_id": "T001",
+        "resolution": "pending"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "follow_up",
+      "content": {
+        "ticket_id": "T001",
+        "query": "status_update"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "respond",
+      "content": {
+        "ticket_id": "T001",
+        "info": "unable_to_update"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "feedback",
+      "content": {
+        "ticket_id": "T001",
+        "customer_feedback": "unresolved_due_to_missing_context"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:28.911675"
+}

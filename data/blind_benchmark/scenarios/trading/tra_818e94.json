@@ -1,0 +1,116 @@
+{
+  "scenario_id": "tra_818e94",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "The agents collaborate to analyze real-time market data, make informed trading decisions, execute trades on a simulated market platform, and ensure accurate position tracking.",
+  "expected_outcome": "Agents should successfully analyze market trends, execute trades at optimal times, and maintain accurate records of all trading positions without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "Retrieve market data",
+        "Analyze trends",
+        "Generate insights"
+      ],
+      "description": "Aggregates real-time market data and identifies potential trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "Evaluate insights",
+        "Assess risk",
+        "Make trading decisions"
+      ],
+      "description": "Evaluates insights from agent_1 and makes decisions on which trades to execute."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "Execute trades",
+        "Verify execution",
+        "Handle exceptions"
+      ],
+      "description": "Executes trades based on decisions made by agent_2 and verifies successful execution."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "Confirm transactions",
+        "Reconcile records",
+        "Report discrepancies"
+      ],
+      "description": "Verifies that executed trades are accurately recorded and reconciles them with market data."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "Track positions",
+        "Provide summaries",
+        "Alert inconsistencies"
+      ],
+      "description": "Maintains a comprehensive record of all trading positions and alerts any inconsistencies."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_insights",
+      "content": {
+        "market_trends": "uptrend",
+        "confidence": 0.85
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": 1234,
+        "status": "executed"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_transaction",
+      "content": {
+        "order_id": 1234,
+        "verified": false
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_market_data",
+      "content": {
+        "positions": [
+          {
+            "id": 1234,
+            "status": "discrepancy_alert"
+          }
+        ]
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:57.794296"
+}

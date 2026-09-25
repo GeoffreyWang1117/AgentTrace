@@ -1,0 +1,128 @@
+{
+  "scenario_id": "cus_a1d5f4",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively manage customer service interactions, ensuring inquiries are addressed, complex issues are escalated effectively, and tickets are tracked and resolved without losing context or creating conflicts.",
+  "expected_outcome": "Customer inquiries are handled smoothly with proper escalation of complex issues, maintaining synchronized ticket statuses, with seamless handoffs that preserve customer context.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "initial_inquiry_handling",
+        "basic_issue_resolution"
+      ],
+      "description": "Handles incoming customer inquiries and resolves basic issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "advanced_issue_resolution",
+        "technical_escalation"
+      ],
+      "description": "Addresses complex technical issues and escalates them if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Service Supervisor",
+      "capabilities": [
+        "ticket_overview",
+        "escalation_approval"
+      ],
+      "description": "Oversees ticket progress and approves escalations when required."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Management System",
+      "capabilities": [
+        "ticket_tracking",
+        "status_synchronization"
+      ],
+      "description": "Manages ticket statuses and ensures they are synchronized across the system."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "123",
+        "issue": "Basic inquiry"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T-001",
+        "issue_details": "Requires technical expertise"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_approval",
+      "content": {
+        "ticket_id": "T-001",
+        "escalation_reason": "Complex technical problem"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "grant_approval",
+      "content": {
+        "ticket_id": "T-001",
+        "approval_status": "pending"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_resolution",
+      "content": {
+        "ticket_id": "T-001",
+        "resolution_details": "Pending approval"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "T-001",
+        "status": "pending"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "customer",
+      "action": "notify_resolution",
+      "content": {
+        "customer_id": "123",
+        "message": "Your issue is pending"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "customer",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "customer_id": "123",
+        "confirmation": "unsatisfied"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:51.008594"
+}

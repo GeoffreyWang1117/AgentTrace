@@ -1,0 +1,20 @@
+
+\begin{table}[t]
+\centering
+\caption{Root Cause Localization: Fair Comparison (Same Task, Same Metric)}
+\label{tab:fair_comparison}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & \textbf{Hit@1} & \textbf{Hit@3} & \textbf{Hit@5} & \textbf{N} \\
+\midrule
+AgentTrace & 1.6% & 89.2% & 98.0% & 250 \\
+LLM-Direct (GPT-4o) & 50.4% & 50.4% & 50.4% & 250 \\
+Log-Only (First Error) & 98.4% & 98.8% & 98.8% & 250 \\
+Random & 14.4% & 43.3% & 72.1% & 250 \\
+
+\bottomrule
+\end{tabular}
+\vspace{0.5em}
+\caption*{Task: Given an error trace, identify the ground truth root cause node.\\
+Hit@K = root cause in top K candidates.}
+\end{table}

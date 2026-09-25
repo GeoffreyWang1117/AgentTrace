@@ -1,0 +1,89 @@
+{
+  "scenario_id": "cus_8db7db",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "task_description": "Agents collaborate to handle customer inquiries, escalate complex issues if needed, and ensure tickets are tracked and resolved efficiently.",
+  "expected_outcome": "Customer inquiries are handled efficiently, complex issues are escalated correctly, and ticket statuses are kept synchronized without losing context.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Representative",
+      "capabilities": [
+        "respond to inquiries",
+        "create tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Specialist",
+      "capabilities": [
+        "analyze issues",
+        "escalate tickets"
+      ],
+      "description": "Handles technical inquiries and escalates complex issues to management."
+    },
+    {
+      "id": "agent_3",
+      "role": "Support Manager",
+      "capabilities": [
+        "resolve escalated issues",
+        "update ticket status"
+      ],
+      "description": "Oversees escalated issues, resolves them, and ensures ticket status is updated."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "customer_context": "Issue with product installation"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "Approved generic workaround"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "Resolved",
+        "resolution": "Approved generic workaround"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": null,
+      "action": "notify_customer",
+      "content": {
+        "ticket_id": "123",
+        "message": "Your issue has been resolved with the approved generic workaround, though it may not fully address your installation concern."
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:26.617893"
+}

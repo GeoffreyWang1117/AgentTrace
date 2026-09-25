@@ -1,0 +1,120 @@
+{
+  "scenario_id": "tra_b53311",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to analyze market data, make trading decisions, and execute transactions while maintaining consistency across shared state.",
+  "expected_outcome": "All agents successfully share and utilize market data to make unified trading decisions, execute trades efficiently, and maintain consistent state information across the system.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "process_market_trends"
+      ],
+      "description": "Responsible for fetching and analyzing market data to identify trends."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Strategy Planner",
+      "capabilities": [
+        "formulate_trading_strategy",
+        "optimize_strategy"
+      ],
+      "description": "Develops trading strategies based on market data and optimizes them for execution."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trades",
+        "monitor_execution_status"
+      ],
+      "description": "Executes trades according to the strategies developed and ensures successful transaction completion."
+    },
+    {
+      "id": "agent_4",
+      "role": "State Verifier",
+      "capabilities": [
+        "verify_position_state",
+        "reconcile_trading_records"
+      ],
+      "description": "Verifies the consistency of state information across the system and reconciles any discrepancies."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend_data": "upward_trend"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_strategy",
+      "content": {
+        "strategy": "buy"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_position_state",
+      "content": {
+        "position": "open"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_state_update",
+      "content": {
+        "state": "inconsistent"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_analysis",
+      "content": {
+        "additional_data": "volatility_increase"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_strategy",
+      "content": {
+        "strategy": "hold"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "reconfirm_position_state",
+      "content": {
+        "position": "hold"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "state_verification_complete",
+      "content": {
+        "final_state": "inconsistent"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:36.444610"
+}

@@ -1,0 +1,210 @@
+{
+  "scenario_id": "cod_89edf6",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "wrong_routing",
+  "task_description": "In this multi-agent system, four agents collaborate to develop a module in a software project. The task involves writing code based on given requirements, reviewing and testing the code, and finally fixing bugs and integrating changes into the main branch.",
+  "expected_outcome": "If everything works correctly, the module should be successfully coded, reviewed, tested, and integrated without conflicts or bugs.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirement Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "generate_specifications"
+      ],
+      "description": "This agent gathers project requirements and generates specifications for the development team."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_changes"
+      ],
+      "description": "This agent writes the code according to specifications and commits changes to the version control system."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "suggest_changes"
+      ],
+      "description": "This agent reviews the code, suggests changes, and ensures it meets quality standards."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "This agent tests the code and reports any bugs found to the development team."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_specifications",
+      "content": {
+        "spec_id": "1234",
+        "requirements": "Implement feature X"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_review",
+      "content": {
+        "commit_id": "abcd1234",
+        "code_snippet": "function featureX() {...}"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "review_feedback",
+      "content": {
+        "commit_id": "abcd1234",
+        "feedback": "Looks good, minor changes needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_for_testing",
+      "content": {
+        "commit_id": "abcd1234"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "result": "pass",
+        "commit_id": "abcd1234"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_completion",
+      "content": {
+        "spec_id": "1234",
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_specifications",
+      "content": {
+        "spec_id": "1234",
+        "requirements": "Implement feature X"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_review",
+      "content": {
+        "commit_id": "abcd1234",
+        "code_snippet": "function featureX() {...}"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "review_feedback",
+      "content": {
+        "commit_id": "abcd1234",
+        "feedback": "Looks good, minor changes needed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Feedback meant for Developer (agent_2) was sent to Tester (agent_4) due to wrong routing"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_for_testing",
+      "content": {
+        "commit_id": "abcd1234"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "result": "pass",
+        "commit_id": "abcd1234"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_completion",
+      "content": {
+        "spec_id": "1234",
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Feedback meant for Developer is incorrectly routed to Tester, causing the Tester to proceed without required changes."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "action_dependency",
+      "description": "Tester conducts tests on unreviewed code due to the misrouted feedback."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:47.061636"
+}

@@ -1,0 +1,177 @@
+{
+  "scenario_id": "cus_bc504f",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "task_description": "Agents collaborate to handle customer inquiries, escalate complex issues when necessary, and track and resolve support tickets while maintaining shared state consistency.",
+  "expected_outcome": "Customer inquiries are handled efficiently, escalated issues are resolved accurately, and all ticket statuses remain synchronized across all agents.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support",
+      "capabilities": [
+        "handle_inquiry",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support",
+      "capabilities": [
+        "analyze_issue",
+        "escalate_issue"
+      ],
+      "description": "Analyzes technical issues and escalates them if necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Support Supervisor",
+      "capabilities": [
+        "review_ticket",
+        "approve_escalation"
+      ],
+      "description": "Reviews escalated tickets and approves them for resolution by the specialist."
+    },
+    {
+      "id": "agent_4",
+      "role": "Support Specialist",
+      "capabilities": [
+        "resolve_issue",
+        "update_ticket"
+      ],
+      "description": "Resolves complex issues and updates the ticket with resolution details."
+    },
+    {
+      "id": "agent_5",
+      "role": "Ticket Synchronizer",
+      "capabilities": [
+        "synchronize_ticket_status",
+        "notify_agents"
+      ],
+      "description": "Ensures all ticket status updates are synchronized across the system."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_ticket",
+      "content": {
+        "ticket_id": "T123",
+        "customer_inquiry": "Issue with product installation"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T123",
+        "issue_details": "Installation error code 504"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_escalation",
+      "content": {
+        "ticket_id": "T123",
+        "approval_status": "approved"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "T123",
+        "resolution_details": "Reinstalled drivers, problem solved"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "synchronize_ticket_status",
+      "content": {
+        "ticket_id": "T123",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "notify_customer",
+      "content": {
+        "ticket_id": "T123",
+        "customer_notification": "Your issue has been resolved"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "check_ticket_status",
+      "content": {
+        "ticket_id": "T123",
+        "expected_status": "resolved"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "T123",
+        "status": "pending"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "query_resolution",
+      "content": {
+        "ticket_id": "T123",
+        "query": "Why is this ticket still pending?"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "T123",
+        "confirmation": "Resolved"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "synchronize_ticket_status",
+      "content": {
+        "ticket_id": "T123",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "T123",
+        "final_confirmation": "Resolved"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:32.660825"
+}

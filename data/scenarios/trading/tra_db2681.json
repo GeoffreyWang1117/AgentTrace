@@ -1,0 +1,264 @@
+{
+  "scenario_id": "tra_db2681",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "state_inconsistency",
+  "task_description": "The agents need to collaboratively analyze incoming market data, make informed trading decisions, execute trades, and verify the correct tracking of positions in a dynamic financial environment.",
+  "expected_outcome": "All agents analyze data accurately, execute trades in a timely manner, and maintain consistent shared state regarding market positions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Analyzer",
+      "capabilities": [
+        "data_analysis",
+        "trend_identification"
+      ],
+      "description": "Analyzes incoming market data to identify trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "decision_making",
+        "risk_assessment"
+      ],
+      "description": "Makes trading decisions based on analyzed market data and assesses associated risks."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "order_execution",
+        "transaction_logging"
+      ],
+      "description": "Executes trading orders and logs transactions accurately in the system."
+    },
+    {
+      "id": "agent_4",
+      "role": "Position Tracker",
+      "capabilities": [
+        "state_management",
+        "consistency_checking"
+      ],
+      "description": "Tracks the positions of all trades executed and ensures shared state consistency among agents."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "market_trend": "upward",
+        "confidence_level": 0.9
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "trade_id": "T123",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "update_position_state",
+      "content": {
+        "trade_id": "T123",
+        "position": "long"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "verify_market_trends",
+      "content": {
+        "verification_status": "positive"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "confirm_position",
+      "content": {
+        "trade_id": "T123",
+        "confirmed": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "log_transaction",
+      "content": {
+        "trade_id": "T123",
+        "log_status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "acknowledge_trade_execution",
+      "content": {
+        "trade_id": "T123",
+        "acknowledged": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "market_trend": "upward",
+        "confidence_level": 0.9
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "trade_id": "T123",
+        "status": "executed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Trade status updated in agent_3 but not in agent_4, causing state inconsistency."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "update_position_state",
+      "content": {
+        "trade_id": "T123",
+        "position": "unknown"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "verify_market_trends",
+      "content": {
+        "verification_status": "negative"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "confirm_position",
+      "content": {
+        "trade_id": "T123",
+        "confirmed": false
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "log_transaction",
+      "content": {
+        "trade_id": "T123",
+        "log_status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "acknowledge_trade_execution",
+      "content": {
+        "trade_id": "T123",
+        "acknowledged": false
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_dependency",
+      "description": "Incorrect position causes incorrect trend verification"
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "decision_dependency",
+      "description": "Negative verification affects position confirmation"
+    }
+  ],
+  "created_at": "2026-01-04T09:13:06.074791"
+}

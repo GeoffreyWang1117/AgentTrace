@@ -1,0 +1,171 @@
+{
+  "scenario_id": "tra_e87383",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "The agents need to collaboratively analyze real-time market data, make informed trading decisions based on this data, execute those trades, and then verify transaction accuracy and update their shared state to reflect any changes in holdings or market conditions.",
+  "expected_outcome": "Agents collectively analyze market data and execute trades with precise timing, leading to successful transactions. The shared state among agents remains consistent, ensuring accurate position tracking and decision-making in future trades.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "real-time data analysis",
+        "trend detection"
+      ],
+      "description": "Analyzes live market data to detect trends and signals for trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "risk assessment",
+        "trade decision-making"
+      ],
+      "description": "Evaluates trading signals, assesses risk, and decides on executing trades."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "order placement",
+        "timing optimization"
+      ],
+      "description": "Executes trades by placing orders in the market at optimal times based on decision maker's inputs."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verification",
+        "consistency check"
+      ],
+      "description": "Verifies the successful execution of trades and checks for consistency in transaction records."
+    },
+    {
+      "id": "agent_5",
+      "role": "State Manager",
+      "capabilities": [
+        "state synchronization",
+        "position tracking"
+      ],
+      "description": "Maintains and updates the shared state of all agents to ensure consistency of positions and transactions."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_trend",
+      "content": {
+        "trend": "upward"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_trade_order",
+      "content": {
+        "order_type": "buy",
+        "amount": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": "A123"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_transaction",
+      "content": {
+        "transaction_id": "A123",
+        "status": "successful"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_shared_state",
+      "content": {
+        "position": "outdated",
+        "order_id": "missing"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "broadcast_new_market_trend",
+      "content": {
+        "trend": "stable"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_trade_order",
+      "content": {
+        "order_type": "sell",
+        "amount": 50
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": "B456"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_transaction",
+      "content": {
+        "transaction_id": "B456",
+        "status": "successful"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_shared_state",
+      "content": {
+        "position": "incorrect"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_trend",
+      "content": {
+        "trend": "downward"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "issue_trade_order",
+      "content": {
+        "order_type": "sell",
+        "amount": 30
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:12:33.707799"
+}

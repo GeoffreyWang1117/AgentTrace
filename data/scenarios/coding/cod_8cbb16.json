@@ -1,0 +1,347 @@
+{
+  "scenario_id": "cod_8cbb16",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "state_inconsistency",
+  "task_description": "In this scenario, five agents collaborate to develop a software module. The agents need to write code based on given requirements, perform code reviews, run tests, fix identified bugs, and integrate changes into a main codebase. The workflow involves multiple stages of communication and collaboration, with each agent responsible for specific tasks. The focus is on maintaining consistency across shared states, particularly during integration and testing.",
+  "expected_outcome": "If everything works correctly, the agents will successfully write, review, test, and integrate a software module without any integration conflicts or latent bugs. The final product should meet all specified requirements.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "capture_requirements",
+        "specify_use_cases"
+      ],
+      "description": "This agent gathers and analyzes software requirements and communicates them to the development team."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "implement_features"
+      ],
+      "description": "This agent writes code based on the requirements provided, implementing new features and functionalities."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "detect_issues"
+      ],
+      "description": "This agent reviews the code written by the Developer, ensuring quality and adherence to standards."
+    },
+    {
+      "id": "agent_4",
+      "role": "Test Engineer",
+      "capabilities": [
+        "run_tests",
+        "report_defects"
+      ],
+      "description": "This agent runs test cases on the code to verify correctness and reports any defects found."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "resolve_conflicts",
+        "merge_code"
+      ],
+      "description": "This agent manages the integration of code into the main branch, resolving any conflicts that arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transmit_requirements",
+      "content": {
+        "requirements": "specs for module X"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "code_review_feedback",
+      "content": {
+        "feedback": "approve with minor changes"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "results": "pass"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_integration",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_integration",
+      "content": {
+        "status": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "code_review_feedback",
+      "content": {
+        "feedback": "no issues"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "results": "pass"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_integration",
+      "content": {
+        "code_version": "v1.2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transmit_requirements",
+      "content": {
+        "requirements": "specs for module X"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "code_review_feedback",
+      "content": {
+        "feedback": "approve with minor changes"
+      },
+      "is_bug_point": true,
+      "bug_description": "State inconsistency occurs here as agent_3's feedback is based on an outdated shared state not updated with latest changes."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "results": "fail due to outdated feedback"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_integration",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_integration",
+      "content": {
+        "status": "conflict detected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "code_review_feedback",
+      "content": {
+        "feedback": "minor issues remain"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_for_testing",
+      "content": {
+        "code_version": "v1.2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "results": "pass"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_integration",
+      "content": {
+        "code_version": "v1.2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 as outdated feedback affects testing process."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "test_feedback",
+      "description": "Test results reflect inconsistency due to outdated feedback, leading to failed tests."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "integration_request",
+      "description": "Test failure impacts integration request, which is submitted with potential conflicts."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:22.336809"
+}

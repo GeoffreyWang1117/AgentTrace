@@ -1,0 +1,169 @@
+{
+  "scenario_id": "res_462ed9",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "race_condition",
+  "task_description": "The agents are tasked with compiling a comprehensive research report on the topic of renewable energy technologies. They will gather data from a variety of online sources, synthesize the information into a coherent narrative, and accurately attribute each piece of information to its source. The agents must communicate effectively to reconcile conflicting data and ensure no information is lost or corrupted.",
+  "expected_outcome": "The agents successfully produce a well-structured research report that integrates findings from multiple sources without any data loss, corruption, or incorrect source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_online_sources",
+        "extract_information"
+      ],
+      "description": "This agent is responsible for searching online databases and extracting relevant information about renewable energy technologies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "reconcile_conflicts"
+      ],
+      "description": "This agent synthesizes the collected data, reconciles any conflicting pieces of information, and prepares the content for the final report."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Compiler",
+      "capabilities": [
+        "compile_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the synthesized information into a coherent report and ensures all sources are correctly attributed."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_data",
+      "content": {
+        "data": "extracted information on solar energy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "request": "need more data on wind energy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_data",
+      "content": {
+        "data": "extracted information on wind energy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "combined insights on solar and wind energy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_data_integration",
+      "content": {
+        "confirmation": "data integrated with correct attributions"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_data",
+      "content": {
+        "data": "extracted information on solar energy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "request": "need more data on wind energy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_data",
+      "content": {
+        "data": "extracted information on wind energy"
+      },
+      "is_bug_point": true,
+      "bug_description": "A race condition occurs here, where two concurrent data deliveries cause data corruption."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "incorrectly combined insights due to race condition"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_data_integration",
+      "content": {
+        "confirmation": "data integrated with incorrect attributions"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to a race condition in concurrent data deliveries."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "integration",
+      "description": "Incorrectly synthesized data from step 4 is integrated into the final report in step 5, leading to incorrect source attributions."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:36.245677"
+}

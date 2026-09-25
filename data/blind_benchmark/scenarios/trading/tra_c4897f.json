@@ -1,0 +1,89 @@
+{
+  "scenario_id": "tra_c4897f",
+  "domain": "trading",
+  "complexity": "simple",
+  "task_description": "The agents need to collaborate to analyze current market data, make informed trading decisions, and execute transactions. They must verify the execution and ensure all positions are accurately tracked.",
+  "expected_outcome": "The agents should successfully analyze the market, decide on a trade, execute it at the right time, and accurately update all positions without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Analyst",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "This agent gathers real-time market data and analyzes it to identify potential trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_order",
+        "verify_order"
+      ],
+      "description": "This agent receives trading signals and executes the orders on the market, ensuring they are processed correctly."
+    },
+    {
+      "id": "agent_3",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "report_balance"
+      ],
+      "description": "This agent tracks all open positions and account balances to ensure consistency and report on any discrepancies."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_trading_signal",
+      "content": {
+        "trading_signal": "BUY",
+        "asset": "AAPL",
+        "price": 150.0
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "acknowledge_signal",
+      "content": {
+        "status": "received"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "execute_order",
+      "content": {
+        "order_id": "12345",
+        "status": 200
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "verify_execution",
+      "content": {
+        "order_id": "12345",
+        "status": "unverified"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "asset": "AAPL",
+        "balance": 95
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:41.734253"
+}

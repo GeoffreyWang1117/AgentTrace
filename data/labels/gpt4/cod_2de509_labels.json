@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cod_2de509",
+  "trace_id": "cod_2de509",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Lack of context about error handling affects code delivery"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "process_dependency",
+      "confidence": 1.0,
+      "explanation": "Testing misses error handling due to lack of context"
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_10",
+      "relationship_type": "data_integrity",
+      "confidence": 1.0,
+      "explanation": "Integration testing fails due to missing error handling"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Feedback was given without mentioning the need for error handling",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_10"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

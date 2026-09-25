@@ -1,0 +1,83 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# LaTeX build artifacts (*.bbl and *.pdf kept for paper reproducibility)
+*.aux
+*.blg
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+
+# Archives
+*.tar.gz
+
+# Claude Code local config (contains API keys)
+.claude/
+
+# Project specific
+*.json.bak
+
+# Paper source (available on arxiv: 2603.14688 and OpenReview)
+paper/
+
+# User study (not in paper, should not be published)
+experiments/user_study/
+data/results/user_study_report.md
+data/results/user_study_results.json
+
+# Temp/debug scripts
+test_and_log.py
+
+# Development notes (not in paper)
+data/results/EXPERIMENT_SUMMARY.md
+data/results/improvement_analysis.md
+
+# Deprecated experiment scripts
+experiments/scripts/expand_benchmark_simple.py
+experiments/scripts/regenerate_new_domains.py
+experiments/scripts/test_pipeline.py

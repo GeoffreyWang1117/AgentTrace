@@ -1,0 +1,129 @@
+{
+  "scenario_id": "cus_a23a84",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "The multi-agent system is designed to handle customer service inquiries efficiently. Agents need to collaborate to resolve issues by answering queries, escalating complex issues to specialized agents, and ensuring that ticket information is properly tracked and synchronized across all agents.",
+  "expected_outcome": "All customer inquiries are handled efficiently, escalations are done smoothly without losing customer context, and ticket statuses are accurately updated and synchronized across the system.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "First-line Support",
+      "capabilities": [
+        "answer_basic_queries",
+        "create_ticket"
+      ],
+      "description": "This agent handles initial customer inquiries and creates tickets for further processing if needed."
+    },
+    {
+      "id": "agent_2",
+      "role": "Specialist Support",
+      "capabilities": [
+        "handle_technical_queries",
+        "escalate_ticket"
+      ],
+      "description": "This agent deals with more complex, technical queries and escalates tickets to higher-level support when necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Manager",
+      "capabilities": [
+        "track_ticket_status",
+        "synchronize_ticket_data"
+      ],
+      "description": "This agent ensures that ticket statuses are updated and synchronized across the system."
+    },
+    {
+      "id": "agent_4",
+      "role": "Supervisor",
+      "capabilities": [
+        "review_escalations",
+        "resolve_conflicts"
+      ],
+      "description": "This agent reviews escalations, resolves conflicts, and ensures customer satisfaction."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "1234",
+        "customer_context": "contextual information"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "1234",
+        "status": "escalated"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "escalate_for_review",
+      "content": {
+        "ticket_id": "1234",
+        "escalation_details": [
+          "incorrect",
+          "format"
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "finalize_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "status": "pending"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "message": "Issue pending"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "customer",
+      "action": "inform_customer",
+      "content": {
+        "message": "Your issue is still pending"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "customer",
+      "to_agent": "agent_1",
+      "action": "inquire_status",
+      "content": {
+        "ticket_id": "1234",
+        "query": "When will this be resolved?"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "review_pending_ticket",
+      "content": {
+        "ticket_id": "1234"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:14.998873"
+}

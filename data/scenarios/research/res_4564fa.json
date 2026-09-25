@@ -1,0 +1,379 @@
+{
+  "scenario_id": "res_4564fa",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "missing_context",
+  "task_description": "The agents need to collaboratively retrieve and synthesize information from various digital libraries and databases to assemble a comprehensive research report on renewable energy technologies. The agents must ensure that all information is accurate and properly attributed to its source, reconciling any conflicting data.",
+  "expected_outcome": "The agents successfully gather accurate information from all sources, resolve conflicts, and produce a cohesive and well-attributed research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Retriever",
+      "capabilities": [
+        "search_databases",
+        "fetch_documents"
+      ],
+      "description": "This agent searches various digital libraries and databases to retrieve relevant documents on renewable energy technologies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Extractor",
+      "capabilities": [
+        "parse_documents",
+        "extract_relevant_sections"
+      ],
+      "description": "This agent processes the documents retrieved by agent_1, extracting key information related to the topic."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "synthesize_information"
+      ],
+      "description": "This agent synthesizes the extracted data to create a coherent narrative, resolving any informational conflicts."
+    },
+    {
+      "id": "agent_4",
+      "role": "Quality Checker",
+      "capabilities": [
+        "validate_information",
+        "check_attributes"
+      ],
+      "description": "This agent validates the synthesized information, ensuring all data is accurately represented and properly attributed."
+    },
+    {
+      "id": "agent_5",
+      "role": "Report Generator",
+      "capabilities": [
+        "format_report",
+        "generate_final_document"
+      ],
+      "description": "This agent compiles the validated information into a structured report."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_documents",
+      "content": {
+        "documents": [
+          "doc1",
+          "doc2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_extracted_data",
+      "content": {
+        "data": [
+          "info1",
+          "info2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": [
+          "synth_info1",
+          "synth_info2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": [
+          "valid_info1",
+          "valid_info2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "request_additional_information",
+      "content": {
+        "request": "additional_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_documents",
+      "content": {
+        "documents": [
+          "doc3"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_additional_extracted_data",
+      "content": {
+        "data": [
+          "additional_info"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_additional_synthesized_data",
+      "content": {
+        "synthesized_data": [
+          "additional_synth_info"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_additional_validated_data",
+      "content": {
+        "validated_data": [
+          "additional_valid_info"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_report_completion",
+      "content": {
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "send_feedback",
+      "content": {
+        "feedback": "all data confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "final_report",
+      "content": {
+        "report": "final_report_document"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_documents",
+      "content": {
+        "documents": [
+          "doc1",
+          "doc2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_extracted_data",
+      "content": {
+        "data": [
+          "info1",
+          "info2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": [
+          "synth_info1"
+        ]
+      },
+      "is_bug_point": true,
+      "bug_description": "Important context about 'synth_info2' is missing, leading to incomplete synthesis."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": [
+          "valid_info1"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "request_additional_information",
+      "content": {
+        "request": "additional_info"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_documents",
+      "content": {
+        "documents": [
+          "doc3"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_additional_extracted_data",
+      "content": {
+        "data": [
+          "additional_info"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_additional_synthesized_data",
+      "content": {
+        "synthesized_data": [
+          "additional_synth_info"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_additional_validated_data",
+      "content": {
+        "validated_data": [
+          "additional_valid_info"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_report_completion",
+      "content": {
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "send_feedback",
+      "content": {
+        "feedback": "missing data noticed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "final_report",
+      "content": {
+        "report": "incomplete_report_document"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "workflow_dependency",
+      "description": "Agent 5's request for additional information is based on incomplete data received from Agent 4."
+    }
+  ],
+  "created_at": "2026-01-03T22:42:37.544497"
+}

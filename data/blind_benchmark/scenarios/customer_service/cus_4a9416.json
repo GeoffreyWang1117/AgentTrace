@@ -1,0 +1,89 @@
+{
+  "scenario_id": "cus_4a9416",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "task_description": "Agents need to collaborate to handle customer inquiries, escalate complex issues, and track and resolve tickets in a customer service system.",
+  "expected_outcome": "Customer inquiries are handled efficiently, complex issues are escalated properly, and all tickets are tracked and resolved with synchronized statuses across the system.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Representative",
+      "capabilities": [
+        "handle_basic_inquiries",
+        "open_tickets"
+      ],
+      "description": "Handles initial customer inquiries and opens support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_tickets"
+      ],
+      "description": "Handles complex technical issues and updates ticket status."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Manager",
+      "capabilities": [
+        "escalate_tickets",
+        "synchronize_ticket_status"
+      ],
+      "description": "Oversees ticket management and ensures that ticket statuses are synchronized."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "open_support_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "customer_issue": "Internet not working"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "1234",
+        "complexity_level": "high"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "resolution_details": "Reset router"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_customer",
+      "content": {
+        "ticket_id": "1234",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "1234",
+        "customer_feedback": "satisfied"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:27.562943"
+}

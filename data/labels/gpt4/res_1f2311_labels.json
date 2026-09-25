@@ -1,0 +1,37 @@
+{
+  "scenario_id": "res_1f2311",
+  "trace_id": "res_1f2311",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "synthesis",
+      "confidence": 1.0,
+      "explanation": "Corrupted data is synthesized without detection"
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_8",
+      "relationship_type": "report_generation",
+      "confidence": 1.0,
+      "explanation": "Errors in synthesis propagate to final report"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Data corruption occurs when data set B is modified incorrectly during transfer.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_8"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

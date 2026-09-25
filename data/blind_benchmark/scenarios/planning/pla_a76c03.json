@@ -1,0 +1,130 @@
+{
+  "scenario_id": "pla_a76c03",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to plan and execute a delivery operation where they transport goods from a warehouse to multiple retail locations. This involves breaking down the task into planning the route, loading the goods, and coordinating delivery time slots.",
+  "expected_outcome": "All goods are delivered to the correct locations on schedule, with no resource conflicts or unmet dependencies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "route_planning",
+        "schedule_optimization"
+      ],
+      "description": "Agent responsible for creating the optimal delivery route and schedule."
+    },
+    {
+      "id": "agent_2",
+      "role": "Loader",
+      "capabilities": [
+        "resource_allocation",
+        "load_optimization"
+      ],
+      "description": "Agent responsible for allocating loading resources and optimizing the loading process."
+    },
+    {
+      "id": "agent_3",
+      "role": "Driver",
+      "capabilities": [
+        "navigation",
+        "time_management"
+      ],
+      "description": "Agent responsible for navigating the delivery route and managing time to meet delivery slots."
+    },
+    {
+      "id": "agent_4",
+      "role": "Coordinator",
+      "capabilities": [
+        "communication",
+        "dependency_management"
+      ],
+      "description": "Agent responsible for ensuring communication and managing dependencies between all agents."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "plan_route",
+      "content": {
+        "route_id": "R1",
+        "stops": [
+          "Location_A",
+          "Location_B"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "allocate_resources",
+      "content": {
+        "route_id": "R1",
+        "resources": "Truck_1, Loader_1"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_schedule",
+      "content": {
+        "route_id": "R1"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "load_goods",
+      "content": {
+        "route_id": "R1",
+        "goods": "Pallet_1, Pallet_2"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "report_progress",
+      "content": {
+        "route_id": "R1",
+        "status": "loaded"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "start_delivery",
+      "content": {
+        "route_id": "R1",
+        "departure_time": "08:15"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "update_route",
+      "content": {
+        "route_id": "R1",
+        "update": "avoid_traffic_congestion"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "complete_delivery",
+      "content": {
+        "route_id": "R1",
+        "status": "completed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:20.685235"
+}

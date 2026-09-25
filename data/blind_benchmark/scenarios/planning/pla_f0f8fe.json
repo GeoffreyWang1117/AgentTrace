@@ -1,0 +1,126 @@
+{
+  "scenario_id": "pla_f0f8fe",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively plan and execute a community event involving multiple activities, requiring efficient allocation of resources and scheduling while ensuring all dependencies are met.",
+  "expected_outcome": "The community event is successfully planned and executed with all activities occurring as scheduled, resources allocated efficiently, and all dependencies handled seamlessly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_breakdown",
+        "dependency_management"
+      ],
+      "description": "Responsible for breaking down the main goal into manageable subtasks and identifying dependencies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "resource_allocation",
+        "conflict_resolution"
+      ],
+      "description": "Allocates resources to each subtask and resolves any conflicts that arise."
+    },
+    {
+      "id": "agent_3",
+      "role": "Execution Coordinator",
+      "capabilities": [
+        "task_execution",
+        "monitoring"
+      ],
+      "description": "Oversees the execution of tasks and ensures they follow the plan."
+    },
+    {
+      "id": "agent_4",
+      "role": "Communicator",
+      "capabilities": [
+        "information_sharing",
+        "update_propagation"
+      ],
+      "description": "Ensures all agents are informed of the latest updates and changes to the plan."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_subtasks",
+      "content": {
+        "subtasks": [
+          "setup_venue",
+          "arrange_catering",
+          "organize_entertainment"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_resources",
+      "content": {
+        "resources": {
+          "setup_venue": "venue_team",
+          "arrange_catering": "catering_team"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "send_dependencies",
+      "content": "dependencies: {arrange_catering: [setup_venue]}"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "update_dependencies",
+      "content": {
+        "updated_dependencies": "arrange_catering: [setup_venue]"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_execution",
+      "content": {
+        "task": "setup_venue"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "execute_task",
+      "content": {
+        "execution_status": "completed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "inform_completion",
+      "content": {
+        "completed_task": "setup_venue"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "next_task_ready",
+      "content": {
+        "task": "arrange_catering",
+        "can_proceed": false
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:09:56.190025"
+}

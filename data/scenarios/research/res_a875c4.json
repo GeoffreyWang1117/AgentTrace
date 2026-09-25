@@ -1,0 +1,250 @@
+{
+  "scenario_id": "res_a875c4",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "missing_context",
+  "task_description": "The agents need to collaboratively gather and synthesize information from various online sources to create a comprehensive report on the impact of climate change on ocean biodiversity. This involves searching for information, analyzing data, and generating a final document.",
+  "expected_outcome": "Agents successfully collect relevant data from multiple sources, reconcile any conflicting information, and produce an accurate and well-attributed research report on the specified topic.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Information Gatherer",
+      "capabilities": [
+        "search_web",
+        "fetch_data"
+      ],
+      "description": "This agent is responsible for searching and collecting raw data from online scientific databases and reputable websites."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "detect_conflicts"
+      ],
+      "description": "This agent analyzes the gathered data for relevance and identifies any conflicting information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Context Provider",
+      "capabilities": [
+        "provide_context",
+        "ensure_consistency"
+      ],
+      "description": "This agent ensures that the data passed to the synthesizer is accompanied by necessary context to maintain consistency."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "generate_report"
+      ],
+      "description": "This agent synthesizes the processed data and context into a coherent research report."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_raw_data",
+      "content": {
+        "data": "raw climate change data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "forward_analyzed_data",
+      "content": {
+        "analyzed_data": "filtered and relevant data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "provide_contextual_data",
+      "content": {
+        "context": "data source and relevance context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "synthesize_information",
+      "content": {
+        "report_content": "compiled data with context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "additional details needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "deliver_additional_data",
+      "content": {
+        "data": "new data with context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "complete research report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "distribute_report",
+      "content": {
+        "report": "distributed to stakeholders"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_raw_data",
+      "content": {
+        "data": "raw climate change data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "forward_analyzed_data",
+      "content": {
+        "analyzed_data": "filtered and relevant data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "provide_contextual_data",
+      "content": {
+        "context": "missing context information"
+      },
+      "is_bug_point": true,
+      "bug_description": "The context about data source and relevance is not included"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "synthesize_information",
+      "content": {
+        "report_content": "compiled data missing context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "additional details needed due to missing context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "deliver_additional_data",
+      "content": {
+        "data": "additional raw data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "incomplete research report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "distribute_report",
+      "content": {
+        "report": "distributable but inaccurate report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_request",
+      "description": "Missing context results in a request for additional data at step 5"
+    },
+    {
+      "source_step": 5,
+      "target_step": 7,
+      "relationship_type": "data_utilization",
+      "description": "The incomplete context affects the final report synthesis at step 7"
+    }
+  ],
+  "created_at": "2026-01-04T09:14:24.307540"
+}

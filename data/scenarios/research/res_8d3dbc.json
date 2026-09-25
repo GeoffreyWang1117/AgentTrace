@@ -1,0 +1,215 @@
+{
+  "scenario_id": "res_8d3dbc",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "logic_error",
+  "task_description": "Five agents collaborate to research the impact of agricultural practices on climate change by gathering data from academic papers, government reports, and environmental datasets. The agents must synthesize this information into a coherent research report while ensuring data integrity and proper source attribution.",
+  "expected_outcome": "The agents should successfully compile a research report that accurately reflects the data collected, with all sources correctly attributed and any conflicting information reconciled.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_academic_papers",
+        "parse_data_from_web"
+      ],
+      "description": "Responsible for collecting data from academic and government sources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "validate_data_integrity",
+        "identify_conflicts"
+      ],
+      "description": "Ensures data integrity and identifies conflicting information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "reconcile_conflicts"
+      ],
+      "description": "Synthesizes data from multiple sources and reconciles conflicts."
+    },
+    {
+      "id": "agent_4",
+      "role": "Source Attributor",
+      "capabilities": [
+        "track_source_origin",
+        "attribute_information"
+      ],
+      "description": "Tracks the origin of information and attributes sources correctly."
+    },
+    {
+      "id": "agent_5",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "format_document"
+      ],
+      "description": "Generates the final research report and formats it appropriately."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "data_from_academic_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "validate_data",
+      "content": {
+        "data": "data_from_academic_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "data": "validated_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "data": "synthesized_non_conflicting_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "attribute_sources",
+      "content": {
+        "data": "attributed_synthesized_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "final_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "data_from_academic_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "validate_data",
+      "content": {
+        "data": "data_from_academic_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "data": "validated_data_with_error"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data mistakenly marked as validated due to a logic error in validation logic."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "data": "synthesized_data_with_error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "attribute_sources",
+      "content": {
+        "data": "attributed_data_with_error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "final_report_with_errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Validated data with error flows to agent_3 for synthesis."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Synthesis error propagates to source attribution."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Attribution errors manifest in the final report."
+    }
+  ],
+  "created_at": "2026-01-03T22:42:41.299071"
+}

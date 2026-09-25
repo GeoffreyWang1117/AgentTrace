@@ -1,0 +1,174 @@
+
+\section{Case Studies}
+\label{sec:case_studies}
+
+This section presents detailed case studies illustrating AgentTrace's capabilities and limitations.
+
+\subsection{Successful Cases}
+
+
+\subsection{Success Case: Trading Domain}
+\label{case:tra_e8c2d3}
+
+\textbf{Scenario:} In this scenario, a team of agents is tasked with analyzing real-time market data to make informed trading decisions, execute trades, and ensure that transactions are accurately recorded and verified....
+
+\textbf{Bug Type:} Missing Context
+
+\textbf{Ground Truth:} Error at step 4,
+root cause at step 3.
+
+\begin{table}[h]
+\centering
+\caption{Method Comparison for Case tra_e8c2d3}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Method} & \textbf{Identified Root Cause} & \textbf{Correct?} \\
+\midrule
+AgentTrace & Rank 1 in backward trace & \checkmark \\
+LLM-Direct & Missing execution time in trade notification... & $\times$ \\
+CoT & Agent_3 (Execution Manager) failed to include exec... & \checkmark \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Causal Path (AgentTrace):}
+\begin{enumerate}
+  \item [agent_3] notify_execution \textbf{(BUG)}
+  \item [agent_4] confirm_verification
+\end{enumerate}
+
+\subsection{Success Case: Coding Domain}
+\label{case:cod_25274a}
+
+\textbf{Scenario:} Agents are collaborating to develop a simple feature enhancement for a software application. The task involves writing the code based on given requirements, reviewing the code for quality and correctn...
+
+\textbf{Bug Type:} Missing Context
+
+\textbf{Ground Truth:} Error at step 3,
+root cause at step 2.
+
+\begin{table}[h]
+\centering
+\caption{Method Comparison for Case cod_25274a}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Method} & \textbf{Identified Root Cause} & \textbf{Correct?} \\
+\midrule
+AgentTrace & Rank 1 in backward trace & \checkmark \\
+LLM-Direct & Missing context during code submission and review... & $\times$ \\
+CoT & Agent_1 submitted the code without providing neces... & \checkmark \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Causal Path (AgentTrace):}
+\begin{enumerate}
+  \item [agent_2] review_code \textbf{(BUG)}
+  \item [agent_3] test_code \textbf{(BUG)}
+  \item [agent_1] resolve_issues
+\end{enumerate}
+
+\subsection{Success Case: Coding Domain}
+\label{case:cod_c86d76}
+
+\textbf{Scenario:} Four agents collaborate to develop a software feature where they need to write code according to given requirements, review each other's code, conduct testing, and resolve any bugs before integrating ...
+
+\textbf{Bug Type:} Invalid Output
+
+\textbf{Ground Truth:} Error at step 4,
+root cause at step 3.
+
+\begin{table}[h]
+\centering
+\caption{Method Comparison for Case cod_c86d76}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Method} & \textbf{Identified Root Cause} & \textbf{Correct?} \\
+\midrule
+AgentTrace & Rank 1 in backward trace & \checkmark \\
+LLM-Direct & Agent 1 submitted code with an invalid output form... & $\times$ \\
+CoT & Agent_2 failed to identify the potential for 'inva... & \checkmark \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Causal Path (AgentTrace):}
+\begin{enumerate}
+  \item [agent_1] submit_code_for_testing \textbf{(BUG)}
+  \item [agent_3] report_test_results
+\end{enumerate}
+
+\subsection{Failure Analysis}
+
+The following cases illustrate scenarios where AgentTrace's performance was suboptimal:
+
+
+\subsection{Failure Case: Customer_Service Domain}
+\label{case:cus_30d977}
+
+\textbf{Scenario:} Agents are tasked with collaboratively handling customer service inquiries, escalating complex issues to senior agents, and ensuring that all customer issues are tracked and resolved efficiently. The ...
+
+\textbf{Bug Type:} State Inconsistency
+
+\textbf{Ground Truth:} Error at step 11,
+root cause at step 3.
+
+\begin{table}[h]
+\centering
+\caption{Method Comparison for Case cus_30d977}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Method} & \textbf{Identified Root Cause} & \textbf{Correct?} \\
+\midrule
+AgentTrace & Rank 8 in backward trace & $\times$ \\
+LLM-Direct & State inconsistency during context relay... & $\times$ \\
+CoT & Agent_1 failed to update the context about 'Router... & \checkmark \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Causal Path (AgentTrace):}
+\begin{enumerate}
+  \item [agent_1] context_relay \textbf{(BUG)}
+  \item [agent_4] escalate_issue
+  \item [agent_5] synchronize_state
+  \item [agent_5] report_issues \textbf{(BUG)}
+\end{enumerate}
+
+\subsection{Failure Case: Coding Domain}
+\label{case:cod_1bc70f}
+
+\textbf{Scenario:} The agents need to collaboratively develop a new feature for a software application. The agents are required to: write the code according to the given requirements, conduct code reviews, perform testi...
+
+\textbf{Bug Type:} Race Condition
+
+\textbf{Ground Truth:} Error at step 10,
+root cause at step 3.
+
+\begin{table}[h]
+\centering
+\caption{Method Comparison for Case cod_1bc70f}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Method} & \textbf{Identified Root Cause} & \textbf{Correct?} \\
+\midrule
+AgentTrace & Rank 7 in backward trace & $\times$ \\
+LLM-Direct & Race condition due to unsynchronized access to sha... & $\times$ \\
+CoT & The initial submission of code by agent_1 containe... & \checkmark \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Causal Path (AgentTrace):}
+\begin{enumerate}
+  \item [agent_1] submit_for_testing \textbf{(BUG)}
+  \item [agent_3] report_bugs
+  \item [agent_4] confirm_fix
+  \item [agent_5] integrate_changes
+  \item [agent_3] report_bugs \textbf{(BUG)}
+\end{enumerate}

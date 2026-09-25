@@ -1,0 +1,120 @@
+{
+  "scenario_id": "res_1f2311",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "In this scenario, four agents collaborate to search for information on recent advancements in renewable energy from multiple databases. They combine their findings to produce a comprehensive research report.",
+  "expected_outcome": "Agents correctly retrieve, synthesize, and compile a detailed report on renewable energy advancements without data loss or corruption, ensuring accurate source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Retriever",
+      "capabilities": [
+        "access_database",
+        "fetch_data"
+      ],
+      "description": "Agent 1 is responsible for accessing databases and retrieving data on renewable energy."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Verifier",
+      "capabilities": [
+        "verify_data",
+        "flag_conflicts"
+      ],
+      "description": "Agent 2 verifies the data from Agent 1 and flags any conflicts or discrepancies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_data",
+        "reconcile_conflicts"
+      ],
+      "description": "Agent 3 synthesizes the verified data, reconciles conflicts, and prepares it for reporting."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "create_report",
+        "ensure_attribution"
+      ],
+      "description": "Agent 4 compiles the synthesized data into a final report, ensuring all sources are correctly attributed."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "renewable energy data set A"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_and_forward",
+      "content": {
+        "data": "verified renewable energy data set A"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "renewable energy data set B"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_and_forward",
+      "content": {
+        "data": "corrupted renewable energy data set B"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_and_send",
+      "content": {
+        "synthesized_data": "combined data set A with corrupted data set B"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "additional data on policy impacts"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "send_additional_data",
+      "content": {
+        "data": "policy impacts data"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "finalize_report",
+      "content": {
+        "report": "completed report with errors in data set B"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:14:12.684654"
+}

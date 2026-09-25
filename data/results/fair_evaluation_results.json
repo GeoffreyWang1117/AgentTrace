@@ -1,0 +1,31 @@
+[
+  {
+    "method": "AgentTrace",
+    "hit_at_1": 0.016,
+    "hit_at_3": 0.892,
+    "hit_at_5": 0.98,
+    "mrr": 0.4725380952380953,
+    "total": 250
+  },
+  {
+    "method": "LLM-Direct (GPT-4o)",
+    "hit_at_1": 0.504,
+    "hit_at_3": 0.504,
+    "hit_at_5": 0.504,
+    "total": 250
+  },
+  {
+    "method": "Log-Only (First Error)",
+    "hit_at_1": 0.984,
+    "hit_at_3": 0.988,
+    "hit_at_5": 0.988,
+    "total": 250
+  },
+  {
+    "method": "Random",
+    "hit_at_1": 0.144493795093795,
+    "hit_at_3": 0.4334813852813848,
+    "hit_at_5": 0.7214689754689753,
+    "total": 250
+  }
+]

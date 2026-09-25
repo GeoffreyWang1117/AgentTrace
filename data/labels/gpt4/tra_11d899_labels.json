@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_11d899",
+  "trace_id": "tra_11d899",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data with 'pending' status flows from agent 3 to agent 1, causing agent 1 to propagate incorrect information."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Agent 2 receives incorrect confirmation, leading to finalization with 'pending' status."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 accidentally shared a 'pending' state instead of 'updated', causing state inconsistency.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

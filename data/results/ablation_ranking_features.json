@@ -1,0 +1,92 @@
+{
+  "Full Model": {
+    "hit_at_1": 0.452,
+    "hit_at_3": 0.984,
+    "mrr": 0.6882380952380954,
+    "total": 250
+  },
+  "w/o position": {
+    "hit_at_1": 0.052,
+    "hit_at_3": 0.808,
+    "mrr": 0.41197142857142804,
+    "total": 250
+  },
+  "w/o structure": {
+    "hit_at_1": 0.412,
+    "hit_at_3": 0.98,
+    "mrr": 0.6628380952380956,
+    "total": 250
+  },
+  "w/o content": {
+    "hit_at_1": 0.604,
+    "hit_at_3": 0.98,
+    "mrr": 0.7919047619047619,
+    "total": 250
+  },
+  "w/o flow": {
+    "hit_at_1": 0.544,
+    "hit_at_3": 0.988,
+    "mrr": 0.7439047619047621,
+    "total": 250
+  },
+  "w/o confidence": {
+    "hit_at_1": 0.512,
+    "hit_at_3": 0.98,
+    "mrr": 0.7265714285714286,
+    "total": 250
+  },
+  "only position": {
+    "hit_at_1": 0.896,
+    "hit_at_3": 0.96,
+    "mrr": 0.9352380952380953,
+    "total": 250
+  },
+  "only structure": {
+    "hit_at_1": 0.36,
+    "hit_at_3": 0.988,
+    "mrr": 0.6145999999999998,
+    "total": 250
+  },
+  "only content": {
+    "hit_at_1": 0.224,
+    "hit_at_3": 0.656,
+    "mrr": 0.4384666666666663,
+    "total": 250
+  },
+  "only flow": {
+    "hit_at_1": 0.084,
+    "hit_at_3": 0.66,
+    "mrr": 0.37580952380952376,
+    "total": 250
+  },
+  "only confidence": {
+    "hit_at_1": 0.028,
+    "hit_at_3": 0.028,
+    "mrr": 0.028,
+    "total": 250
+  },
+  "position-heavy": {
+    "hit_at_1": 0.612,
+    "hit_at_3": 0.988,
+    "mrr": 0.7977047619047619,
+    "total": 250
+  },
+  "structure-heavy": {
+    "hit_at_1": 0.484,
+    "hit_at_3": 0.988,
+    "mrr": 0.7033333333333334,
+    "total": 250
+  },
+  "content-heavy": {
+    "hit_at_1": 0.32,
+    "hit_at_3": 0.84,
+    "mrr": 0.5720380952380951,
+    "total": 250
+  },
+  "balanced": {
+    "hit_at_1": 0.336,
+    "hit_at_3": 0.988,
+    "mrr": 0.6031666666666667,
+    "total": 250
+  }
+}

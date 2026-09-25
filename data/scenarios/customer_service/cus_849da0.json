@@ -1,0 +1,269 @@
+{
+  "scenario_id": "cus_849da0",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "state_inconsistency",
+  "task_description": "In this scenario, agents collaborate to handle customer inquiries, escalate complex issues, and track and resolve tickets. They need to maintain a consistent state across all interactions to provide seamless customer service.",
+  "expected_outcome": "The customer inquiry should be handled smoothly, with issue escalation and resolution happening without loss of context or synchronization issues. Customers receive prompt and consistent responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "handle_customer_inquiries",
+        "create_tickets"
+      ],
+      "description": "Handles initial customer inquiries and creates tickets for unresolved issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_ticket_status"
+      ],
+      "description": "Resolves technical issues and updates the ticket status as necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Support Supervisor",
+      "capabilities": [
+        "escalate_issues",
+        "review_ticket_updates"
+      ],
+      "description": "Oversees ticket progress and escalates complex issues as needed."
+    },
+    {
+      "id": "agent_4",
+      "role": "Customer Relationship Manager",
+      "capabilities": [
+        "manage_customer_relationships",
+        "ensure_satisfaction"
+      ],
+      "description": "Ensures customer satisfaction and coordinates with other agents to provide a comprehensive solution."
+    },
+    {
+      "id": "agent_5",
+      "role": "System Synchronization Agent",
+      "capabilities": [
+        "synchronize_shared_state",
+        "monitor_system_consistency"
+      ],
+      "description": "Responsible for keeping the shared state consistent across all agents."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "ticket_id": "123",
+        "issue": "login_problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "update_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "notify_escalation",
+      "content": {
+        "ticket_id": "123",
+        "status": "require_escalation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "priority": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "reset_password"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "123",
+        "customer_confirmation": "ok"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "finalize_system_update",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket",
+      "content": {
+        "ticket_id": "123",
+        "issue": "login_problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "update_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "notify_escalation",
+      "content": {
+        "ticket_id": "123",
+        "status": "require_escalation"
+      },
+      "is_bug_point": true,
+      "bug_description": "An inconsistency occurs where ticket status is incorrectly recorded as 'in_progress' instead of 'require_escalation'."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "priority": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "reset_password"
+      },
+      "is_bug_point": true,
+      "bug_description": "Resolution is applied based on incorrect status information."
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "123",
+        "customer_confirmation": "ok"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_3",
+      "action": "finalize_system_update",
+      "content": {
+        "ticket_id": "123",
+        "status": "closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to incorrect issue escalation."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "decision_dependency",
+      "description": "Resolution decision at step 5 is based on incorrect status from step 4."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:04.452739"
+}

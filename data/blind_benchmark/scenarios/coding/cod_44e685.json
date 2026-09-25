@@ -1,0 +1,89 @@
+{
+  "scenario_id": "cod_44e685",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "The agents need to collaboratively develop a feature for a project management software, which involves writing code based on specified requirements, reviewing and testing the code to ensure quality, and fixing any bugs to ensure smooth integration and deployment.",
+  "expected_outcome": "If everything works correctly, the feature is implemented without errors, passes all tests, and integrates seamlessly with the existing system without causing any downtime or data inconsistency.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "implement_features"
+      ],
+      "description": "Agent_1 is responsible for writing and implementing code based on the specified requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Agent_2 reviews the code written by Agent_1, ensuring it meets quality standards and adheres to specifications."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs",
+        "fix_bugs"
+      ],
+      "description": "Agent_3 tests the code for functionality, identifies and reports any bugs, and assists in fixing them."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "feature": "project_tracker"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "issues_found": false
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "release_code_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "test_status": "failed",
+        "bugs_found": [
+          "inconsistent_state"
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "finalize_integration",
+      "content": {
+        "code_version": "v1.0"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:11.810510"
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentTrace - Causal Debugging</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="/ui/styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <h1>AgentTrace</h1>
+            <div class="header-controls">
+                <select id="run-select">
+                    <option value="">Select a run...</option>
+                </select>
+                <button id="refresh-btn" class="btn">Refresh</button>
+                <button id="infer-btn" class="btn btn-primary">Infer Relationships</button>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="main">
+            <!-- Left panel: Graph visualization -->
+            <div class="panel graph-panel">
+                <div class="panel-header">
+                    <h2>Causal Graph</h2>
+                    <div class="graph-controls">
+                        <button id="zoom-in" class="btn-icon" title="Zoom In">+</button>
+                        <button id="zoom-out" class="btn-icon" title="Zoom Out">-</button>
+                        <button id="zoom-reset" class="btn-icon" title="Reset">⟲</button>
+                    </div>
+                </div>
+                <div id="graph-container">
+                    <svg id="graph-svg"></svg>
+                </div>
+                <!-- Timeline slider -->
+                <div class="timeline-container">
+                    <label>Time Travel:</label>
+                    <input type="range" id="timeline-slider" min="0" max="100" value="100">
+                    <span id="timeline-label">Now</span>
+                </div>
+            </div>
+
+            <!-- Right panel: Details and queries -->
+            <div class="panel details-panel">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active" data-tab="node-details">Node Details</button>
+                    <button class="tab" data-tab="trace">Trace</button>
+                    <button class="tab" data-tab="errors">Errors</button>
+                    <button class="tab" data-tab="stats">Statistics</button>
+                </div>
+
+                <!-- Tab content -->
+                <div class="tab-content">
+                    <!-- Node Details Tab -->
+                    <div id="node-details" class="tab-pane active">
+                        <div id="node-info" class="placeholder">
+                            Select a node to view details
+                        </div>
+                    </div>
+
+                    <!-- Trace Tab -->
+                    <div id="trace" class="tab-pane">
+                        <div class="trace-controls">
+                            <input type="text" id="trace-node-id" placeholder="Node ID">
+                            <button id="trace-forward-btn" class="btn">Forward →</button>
+                            <button id="trace-backward-btn" class="btn">← Backward</button>
+                        </div>
+                        <div id="trace-results"></div>
+                    </div>
+
+                    <!-- Errors Tab -->
+                    <div id="errors" class="tab-pane">
+                        <div id="error-list"></div>
+                    </div>
+
+                    <!-- Statistics Tab -->
+                    <div id="stats" class="tab-pane">
+                        <div id="stats-content"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Counterfactual Modal -->
+        <div id="cf-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Counterfactual Analysis</h3>
+                <p>What if this node had different data?</p>
+                <label>Node ID: <span id="cf-node-id"></span></label>
+                <label>Original Data:</label>
+                <pre id="cf-original-data"></pre>
+                <label>Alternative Data:</label>
+                <textarea id="cf-alternative-data" rows="5"></textarea>
+                <div class="modal-actions">
+                    <button id="cf-analyze-btn" class="btn btn-primary">Analyze</button>
+                    <button id="cf-cancel-btn" class="btn">Cancel</button>
+                </div>
+                <div id="cf-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/ui/app.js"></script>
+</body>
+</html>

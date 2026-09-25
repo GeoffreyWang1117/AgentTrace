@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_b7d5c4",
+  "trace_id": "tra_b7d5c4",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted strategy data leads to incorrect volume being traded."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "confirmation_flow",
+      "confidence": 1.0,
+      "explanation": "Execution of trade with incorrect volume confirmed."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Strategy data gets corrupted during transfer, altering the buy decision.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

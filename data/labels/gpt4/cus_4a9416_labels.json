@@ -1,0 +1,45 @@
+{
+  "scenario_id": "cus_4a9416",
+  "trace_id": "cus_4a9416",
+  "causal_edges": [
+    {
+      "source_node_id": "step_1",
+      "target_node_id": "step_2",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The ticket was initially routed incorrectly, which led to confusion in the handling process."
+    },
+    {
+      "source_node_id": "step_2",
+      "target_node_id": "step_3",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The incorrect routing caused a delay in resolution provision as the escalation was expected from the wrong agent."
+    },
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Resolution details were delayed, affecting the update process back to the customer."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The delay in resolution and update affected the final feedback and closure confirmation."
+    }
+  ],
+  "root_cause_node_id": "step_1",
+  "root_cause_explanation": "The ticket was incorrectly routed to the Ticket Manager instead of the Technical Support Specialist.",
+  "error_propagation_path": [
+    "step_1",
+    "step_2",
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

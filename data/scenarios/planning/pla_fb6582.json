@@ -1,0 +1,172 @@
+{
+  "scenario_id": "pla_fb6582",
+  "domain": "planning",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "The agents need to collaboratively plan the setup of a remote research station. This involves breaking down the main goal into subtasks such as establishing communication, setting up the power source, and preparing living quarters. They must allocate resources like power units, communication equipment, and construction materials, and coordinate their actions to handle dependencies between tasks.",
+  "expected_outcome": "Each agent should complete their assigned tasks successfully, with dependencies managed and resources allocated efficiently. The research station should be operational without any resource conflicts or unmet dependencies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Communications Specialist",
+      "capabilities": [
+        "establish_communication",
+        "allocate_bandwidth"
+      ],
+      "description": "Responsible for setting up the communication network, ensuring all equipment is configured and operational."
+    },
+    {
+      "id": "agent_2",
+      "role": "Power Systems Engineer",
+      "capabilities": [
+        "setup_power_source",
+        "manage_power_distribution"
+      ],
+      "description": "In charge of establishing and managing the power supply for the station."
+    },
+    {
+      "id": "agent_3",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "organize_resources",
+        "coordinate_construction"
+      ],
+      "description": "Handles the logistics of moving materials and coordinating construction efforts for the station."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_power_allocation",
+      "content": {
+        "required_bandwidth": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_power_availability",
+      "content": {
+        "power_units": 100,
+        "status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "schedule_communication_install",
+      "content": {
+        "time_slot": "morning",
+        "resources_ready": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "report_communication_status",
+      "content": {
+        "status": "operational"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "finalize_setup",
+      "content": {
+        "station_status": "ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_power_allocation",
+      "content": {
+        "required_bandwidth": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_power_availability",
+      "content": {
+        "power_units": 100,
+        "status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "schedule_communication_install",
+      "content": {
+        "time_slot": "morning"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 forgot to mention that resources are ready for installation, missing crucial context for Agent 1."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "report_communication_status",
+      "content": {
+        "status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "finalize_setup",
+      "content": {
+        "station_status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The missing context about resource readiness affects Agent 1's ability to commence installation, leading to a pending status."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "The pending communication status causes the final setup to be delayed, affecting the overall station readiness."
+    }
+  ],
+  "created_at": "2026-01-04T09:10:04.103278"
+}

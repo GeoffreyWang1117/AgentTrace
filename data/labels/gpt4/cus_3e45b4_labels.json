@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_3e45b4",
+  "trace_id": "cus_3e45b4",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4, the incomplete customer context impacts the resolution process."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "context_transfer",
+      "confidence": 1.0,
+      "explanation": "The truncated context causes incomplete resolution information to be communicated back to the customer."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "During transfer, the customer's context was truncated, leading to incomplete information being sent to the Senior Support Engineer.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

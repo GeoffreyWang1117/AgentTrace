@@ -1,0 +1,91 @@
+{
+  "scenario_id": "cus_280c1f",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "task_description": "In this multi-agent scenario, three agents collaborate to handle a customer service request. Agent 1 is responsible for initial inquiry handling and contextual data gathering. Agent 2 specializes in resolving standard customer issues and escalating complex ones. Agent 3 tracks and closes tickets, ensuring that the resolution is communicated back to the customer. The agents need to maintain seamless context sharing and ticket status synchronization.",
+  "expected_outcome": "The customer inquiry is handled efficiently with proper context handoff, timely resolution or escalation of the issue, and accurate ticket status tracking, resulting in a satisfied customer without any system errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Inquiry Handler",
+      "capabilities": [
+        "receive_inquiry",
+        "gather_context",
+        "forward_request"
+      ],
+      "description": "Agent 1 handles the initial customer inquiry, collects necessary information, and forwards the request to Agent 2."
+    },
+    {
+      "id": "agent_2",
+      "role": "Issue Resolver",
+      "capabilities": [
+        "analyze_issue",
+        "resolve_issue",
+        "escalate_issue"
+      ],
+      "description": "Agent 2 analyzes the issue, attempts resolution, and escalates complex issues to Agent 3 if needed."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Tracker",
+      "capabilities": [
+        "track_ticket",
+        "update_status",
+        "notify_customer"
+      ],
+      "description": "Agent 3 tracks the ticket status, updates it as resolved or escalated, and ensures the customer is notified about the outcome."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_request",
+      "content": {
+        "customer_id": "123",
+        "inquiry_details": "General billing question"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_2",
+      "action": "analyze_issue",
+      "content": {
+        "inquiry_details": "General billing question"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "customer_id": "123",
+        "issue_details": "Requires management approval"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "track_ticket",
+      "content": {
+        "ticket_id": "456",
+        "status": "Pending"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_customer",
+      "content": {
+        "customer_id": "123",
+        "status": "Unhandled due to timeout"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:12:03.379834"
+}

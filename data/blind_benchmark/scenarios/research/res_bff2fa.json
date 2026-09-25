@@ -1,0 +1,102 @@
+{
+  "scenario_id": "res_bff2fa",
+  "domain": "research",
+  "complexity": "complex",
+  "task_description": "Agents need to collaboratively search multiple online databases and repositories to gather information on recent advancements in renewable energy technologies, synthesize their findings, and produce a comprehensive research report.",
+  "expected_outcome": "Agents successfully gather accurate data, reconcile conflicting information, synthesize findings correctly, and produce a well-attributed, comprehensive research report on renewable energy technologies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "API_access"
+      ],
+      "description": "This agent is responsible for gathering information from online databases and repositories."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Verifier",
+      "capabilities": [
+        "data_validation",
+        "conflict_detection"
+      ],
+      "description": "This agent verifies the accuracy of the collected data and checks for conflicts."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_analysis",
+        "information_synthesis"
+      ],
+      "description": "This agent synthesizes information from the verified data and prepares it for reporting."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Writer",
+      "capabilities": [
+        "report_generation",
+        "source_attribution"
+      ],
+      "description": "This agent compiles the synthesized data into a structured report with proper source attribution."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "error_detection",
+        "report_review"
+      ],
+      "description": "This agent reviews the final report for errors and ensures quality standards are met."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "data_collection",
+      "content": {
+        "data": "raw_data_from_sources"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "data_verification",
+      "content": {
+        "verified_data": "clean_data_set"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "data_synthesis",
+      "content": {
+        "synthesized_data": "unexpected_format_data"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "report_generation",
+      "content": {
+        "report_draft": "incomplete_report"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "report_review",
+      "content": {
+        "feedback": "format_error_feedback"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:06:44.415237"
+}

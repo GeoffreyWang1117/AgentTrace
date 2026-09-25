@@ -1,0 +1,10 @@
+{
+  "scenario_id": "pla_fb6582",
+  "node_count": 5,
+  "edge_count": 8,
+  "gt_root_cause": "35fa84bb-aece-45e6-add2-9c7d0132f4fa",
+  "gt_error_node": "b7a2e297-335d-4efb-8ac9-c956df322c19",
+  "root_cause_in_trace": true,
+  "root_cause_rank": 2,
+  "backward_trace_length": 4
+}

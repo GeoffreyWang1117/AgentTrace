@@ -1,0 +1,84 @@
+{
+  "scenario_id": "cod_a9c635",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "In this scenario, three agents collaborate to develop a software module. Agent 1 writes code based on given requirements, Agent 2 reviews and tests the code, and Agent 3 is responsible for fixing bugs and integrating changes into the main codebase. The goal is to ensure a seamless workflow from writing code to integration, with effective communication and collaboration among agents.",
+  "expected_outcome": "Agent 1 successfully writes the code, which is then reviewed and tested by Agent 2. After successful testing, Agent 3 integrates the changes into the main branch, resolving any issues that arise. The final outcome should be a stable and error-free codebase.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "interpret_requirements"
+      ],
+      "description": "Writes code based on the requirements provided and sends it to the reviewer for testing."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer/Tester",
+      "capabilities": [
+        "review_code",
+        "run_tests"
+      ],
+      "description": "Reviews the code for logical errors or deviations from the requirements and runs tests to ensure functionality."
+    },
+    {
+      "id": "agent_3",
+      "role": "Integrator",
+      "capabilities": [
+        "fix_bugs",
+        "integrate_code"
+      ],
+      "description": "Fixes any identified bugs and integrates the changes into the main codebase, ensuring no conflicts arise."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "review_complete",
+      "content": {
+        "review_notes": "Minor issues found"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "integration_request",
+      "content": {
+        "integration_status": "ready"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "unexpected_message_received",
+      "content": {
+        "alert": "Integration request message received incorrectly"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "system",
+      "action": "integrate_code",
+      "content": {
+        "integration_result": "failure"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:30.918317"
+}

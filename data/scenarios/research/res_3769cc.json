@@ -1,0 +1,253 @@
+{
+  "scenario_id": "res_3769cc",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "invalid_output",
+  "task_description": "The agents are tasked with collaboratively gathering information on renewable energy technologies from multiple data sources, synthesizing the findings, and producing a comprehensive research report.",
+  "expected_outcome": "All agents successfully collect, analyze, and integrate information, resulting in a coherent and accurate research report with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "API_access"
+      ],
+      "description": "Collects raw data from online sources about solar energy technologies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "data_validation",
+        "error_detection"
+      ],
+      "description": "Validates collected data for accuracy and consistency."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "data_integration",
+        "conflict_resolution"
+      ],
+      "description": "Synthesizes and integrates validated data from different sources."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "report_writing",
+        "source_attribution"
+      ],
+      "description": "Generates the final research report, ensuring proper source attribution."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Checker",
+      "capabilities": [
+        "content_review",
+        "consistency_check"
+      ],
+      "description": "Reviews the report for content accuracy and consistency."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "solar_technologies_raw"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_and_send",
+      "content": {
+        "validated_data": "solar_technologies_clean"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_and_send",
+      "content": {
+        "synthesized_data": "integrated_energy_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_and_send_report",
+      "content": {
+        "report": "final_report_with_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "feedback",
+      "content": {
+        "feedback": "report_is_valid"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "finalize_report",
+      "content": {
+        "report": "final_report_ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "solar_technologies_raw"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_and_send",
+      "content": {
+        "validated_data": "solar_technologies_clean"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_and_send",
+      "content": {
+        "synthesized_data": "unexpected_format_data"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 produces output in a format that Agent 4 is not programmed to understand."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_and_send_report",
+      "content": {
+        "report": "incomplete_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "feedback",
+      "content": {
+        "feedback": "report_has_errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_correction",
+      "content": {
+        "issue": "format_error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resend_data",
+      "content": {
+        "synthesized_data": "corrected_format_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "generate_and_send_report",
+      "content": {
+        "report": "revised_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "feedback",
+      "content": {
+        "feedback": "report_is_valid"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "finalize_report",
+      "content": {
+        "report": "final_report_ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to an incomplete report."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "feedback_loop",
+      "description": "Feedback loop identifies the format error but requires manual intervention."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:34.594063"
+}

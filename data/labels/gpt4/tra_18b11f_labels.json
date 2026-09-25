@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_18b11f",
+  "trace_id": "tra_18b11f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 due to the missing trade_id in the execution confirmation."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "verification_error",
+      "confidence": 1.0,
+      "explanation": "The missing trade_id leads to incorrect position verification, manifesting as a discrepancy."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Missing trade_id context, preventing accurate order tracking",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

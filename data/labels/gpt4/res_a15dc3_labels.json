@@ -1,0 +1,37 @@
+{
+  "scenario_id": "res_a15dc3",
+  "trace_id": "res_a15dc3",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_6",
+      "relationship_type": "state_dependency",
+      "confidence": 1.0,
+      "explanation": "State inconsistency affects subsequent data synthesis"
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_8",
+      "relationship_type": "output_dependency",
+      "confidence": 1.0,
+      "explanation": "Final report generation impacted by previous inconsistencies"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "State inconsistency occurs; synthesized data contains outdated information",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_6",
+    "step_8"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

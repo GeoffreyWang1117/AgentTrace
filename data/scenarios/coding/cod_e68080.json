@@ -1,0 +1,319 @@
+{
+  "scenario_id": "cod_e68080",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "missing_context",
+  "task_description": "Five agents collaborate in a multi-agent software development environment to write, review, test, and integrate code for a new feature based on provided requirements. They need to ensure smooth communication, comprehensive code reviews, effective testing, and seamless integration while dealing with a missing context bug.",
+  "expected_outcome": "The agents successfully develop the new feature without any critical bugs, ensuring that the code is well-documented, reviewed, tested, and integrated seamlessly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirement Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "document_context",
+        "clarify_requirements"
+      ],
+      "description": "Collects requirements and writes detailed documentation, ensuring all context is captured for development."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "interpret_requirements",
+        "document_code"
+      ],
+      "description": "Writes code based on the requirements provided and ensures that the code is documented."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues",
+        "suggest_improvements"
+      ],
+      "description": "Reviews the code written by the developer, identifies potential issues, and suggests improvements."
+    },
+    {
+      "id": "agent_4",
+      "role": "Test Engineer",
+      "capabilities": [
+        "write_tests",
+        "execute_tests",
+        "report_bugs"
+      ],
+      "description": "Writes and executes test cases to ensure the functionality works as expected and reports any bugs found."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "manage_dependencies",
+        "resolve_conflicts",
+        "integrate_code"
+      ],
+      "description": "Manages integration of code, resolves any conflicts that arise, and ensures the build is successful."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "pass_requirements",
+      "content": {
+        "requirements": "Feature A requirements",
+        "context": "Full context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_review",
+      "content": {
+        "code": "Initial implementation of Feature A",
+        "context": "Used context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "code_review_feedback",
+      "content": {
+        "feedback": "Minor improvements",
+        "context": "Reviewed correctly"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "pass_code_to_testing",
+      "content": {
+        "code": "Reviewed code of Feature A",
+        "context": "Complete context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "All tests passed",
+        "context": "Tested thoroughly"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "pass_code_for_integration",
+      "content": {
+        "code": "Tested code of Feature A",
+        "context": "Integration-ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "resolve_integration_conflicts",
+      "content": {
+        "conflicts": "No conflicts",
+        "context": "Resolved successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_integration_success",
+      "content": {
+        "integration_status": "Successful",
+        "context": "Fully integrated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "pass_requirements",
+      "content": {
+        "requirements": "Feature A requirements",
+        "context": "Missing context"
+      },
+      "is_bug_point": true,
+      "bug_description": "The context was not fully documented and passed along, leaving out critical environment setup details."
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_review",
+      "content": {
+        "code": "Initial implementation of Feature A",
+        "context": "Partial context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "code_review_feedback",
+      "content": {
+        "feedback": "Looks good",
+        "context": "Reviewed with partial context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "pass_code_to_testing",
+      "content": {
+        "code": "Reviewed code of Feature A",
+        "context": "Partial context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "Tests failed due to environment issues",
+        "context": "Testing with insufficient context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_context_clarification",
+      "content": {
+        "context_clarification": "Request for missing setup details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_missing_context",
+      "content": {
+        "additional_context": "Environment setup details provided"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "retest_code",
+      "content": {
+        "code": "Retested with complete context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_retest_results",
+      "content": {
+        "test_results": "All tests passed",
+        "context": "Retested with full context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "pass_code_for_integration",
+      "content": {
+        "code": "Code ready for integration",
+        "context": "Complete for integration"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "resolve_integration_conflicts",
+      "content": {
+        "conflicts": "Minor conflicts",
+        "context": "Resolved after retries"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_integration_success",
+      "content": {
+        "integration_status": "Successful post-fix",
+        "context": "Fully integrated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted context data (missing details) flows from code review to testing, causing test failures."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "action_outcome",
+      "description": "The lack of complete context during testing leads to failed test results, requiring re-evaluation of context."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:07.002436"
+}

@@ -1,0 +1,177 @@
+{
+  "scenario_id": "tra_89d7c9",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "Agents are tasked to collaboratively analyze live market data, make informed trading decisions, execute trades, and verify successful transaction completion with consistent position tracking across all agents.",
+  "expected_outcome": "Agents successfully analyze market data, execute trades with precise timing, share consistent position information, and verify transaction completion without any inconsistencies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "data_analysis",
+        "trend_detection"
+      ],
+      "description": "Analyzes live market data to detect trends and provide insights to other agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "decision_making",
+        "risk_assessment"
+      ],
+      "description": "Receives analyzed data and makes informed trading decisions based on predefined risk assessment criteria."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "order_execution",
+        "timing_optimization"
+      ],
+      "description": "Executes trades based on decisions received, optimizing for timing and market conditions."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "transaction_verification",
+        "error_detection"
+      ],
+      "description": "Verifies that trades have been executed and completed successfully, checking for any discrepancies."
+    },
+    {
+      "id": "agent_5",
+      "role": "Position Tracker",
+      "capabilities": [
+        "state_monitoring",
+        "inconsistency_detection"
+      ],
+      "description": "Maintains and updates the shared position state to ensure consistency across all trading activities."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend": "upward",
+        "confidence": 0.8
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "action": "buy",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": "12345",
+        "status": "executed"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_transaction",
+      "content": {
+        "order_id": "12345",
+        "verified": false
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "long",
+        "quantity": 0
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend": "downward",
+        "confidence": 0.7
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "action": "sell",
+        "quantity": 50
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": "12346",
+        "status": "executed"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_transaction",
+      "content": {
+        "order_id": "12346",
+        "verified": true
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "position": "long",
+        "quantity": 50
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "trend": "neutral",
+        "confidence": 0.5
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "action": "hold",
+        "quantity": 0
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:13:25.324330"
+}

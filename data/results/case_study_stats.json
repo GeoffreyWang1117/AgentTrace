@@ -1,0 +1,87 @@
+{
+  "total": 250,
+  "hit_at_1": 4,
+  "hit_at_3": 223,
+  "by_domain": {
+    "coding": {
+      "total": 52,
+      "hit_at_3": 44
+    },
+    "customer_service": {
+      "total": 51,
+      "hit_at_3": 47
+    },
+    "trading": {
+      "total": 50,
+      "hit_at_3": 47
+    },
+    "research": {
+      "total": 51,
+      "hit_at_3": 46
+    },
+    "planning": {
+      "total": 46,
+      "hit_at_3": 39
+    }
+  },
+  "by_bug_type": {
+    "data_corruption": {
+      "total": 38,
+      "hit_at_3": 35
+    },
+    "race_condition": {
+      "total": 25,
+      "hit_at_3": 21
+    },
+    "missing_context": {
+      "total": 37,
+      "hit_at_3": 32
+    },
+    "logic_error": {
+      "total": 26,
+      "hit_at_3": 24
+    },
+    "state_inconsistency": {
+      "total": 36,
+      "hit_at_3": 33
+    },
+    "wrong_routing": {
+      "total": 33,
+      "hit_at_3": 28
+    },
+    "timeout_cascade": {
+      "total": 28,
+      "hit_at_3": 25
+    },
+    "invalid_output": {
+      "total": 27,
+      "hit_at_3": 25
+    }
+  },
+  "by_distance": {
+    "2": {
+      "total": 172,
+      "hit_at_3": 164
+    },
+    "1": {
+      "total": 14,
+      "hit_at_3": 14
+    },
+    "3": {
+      "total": 53,
+      "hit_at_3": 39
+    },
+    "4": {
+      "total": 7,
+      "hit_at_3": 4
+    },
+    "6": {
+      "total": 3,
+      "hit_at_3": 1
+    },
+    "5": {
+      "total": 1,
+      "hit_at_3": 1
+    }
+  }
+}

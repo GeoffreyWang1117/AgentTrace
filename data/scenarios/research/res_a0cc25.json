@@ -1,0 +1,275 @@
+{
+  "scenario_id": "res_a0cc25",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "logic_error",
+  "task_description": "The agents need to gather and synthesize information from various online academic databases and news sources to generate a comprehensive research report on the impact of climate change on marine biodiversity. They must ensure the information is accurately collected, reconciled, synthesized, and sourced.",
+  "expected_outcome": "The agents should successfully collect relevant data, reconcile any conflicting information, correctly attribute sources, synthesize the data, and produce a coherent research report on climate change's impact on marine biodiversity.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "web_scraping",
+        "API_access"
+      ],
+      "description": "This agent is responsible for collecting data from online academic databases and news sources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "data_validation",
+        "error_detection"
+      ],
+      "description": "This agent validates the collected data for accuracy and relevance."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Reconciler",
+      "capabilities": [
+        "conflict_resolution",
+        "data_merging"
+      ],
+      "description": "This agent reconciles conflicting data and merges information from different sources."
+    },
+    {
+      "id": "agent_4",
+      "role": "Synthesis Agent",
+      "capabilities": [
+        "data_analysis",
+        "report_generation"
+      ],
+      "description": "This agent analyzes the reconciled data and generates a draft report."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Checker",
+      "capabilities": [
+        "content_review",
+        "source_attribution"
+      ],
+      "description": "This agent reviews the draft report for errors and ensures proper source attribution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_and_send_data",
+      "content": {
+        "data": "raw climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "data": "validated climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_reconciled_data",
+      "content": {
+        "data": "reconciled climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_draft_report",
+      "content": {
+        "report": "draft report on climate change"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "send_review_feedback",
+      "content": {
+        "feedback": "no errors found, sources correct"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "completed report on climate change"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": null,
+      "action": "publish_report",
+      "content": {
+        "status": "report published"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_and_send_data",
+      "content": {
+        "data": "raw climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "data": "validated climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_reconciled_data",
+      "content": {
+        "data": "conflicting climate data"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly reconciles the data, leading to conflicting information being passed."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_draft_report",
+      "content": {
+        "report": "draft report with inconsistencies"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "send_review_feedback",
+      "content": {
+        "feedback": "identified inconsistencies in data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_data_reconciliation",
+      "content": {
+        "issue": "inconsistencies in data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "reconcile_and_resend_data",
+      "content": {
+        "data": "corrected climate data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_corrected_draft",
+      "content": {
+        "report": "corrected draft report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "send_final_review",
+      "content": {
+        "feedback": "report clear, sources correct"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "finalize_report",
+      "content": {
+        "final_report": "completed report on climate change"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": null,
+      "action": "publish_report",
+      "content": {
+        "status": "report published"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data with inconsistencies was sent from step 3 to step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_analysis",
+      "description": "The inconsistencies in the draft report were identified during review at step 5."
+    }
+  ],
+  "created_at": "2026-01-03T22:43:43.987257"
+}

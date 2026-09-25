@@ -1,0 +1,29 @@
+{
+  "scenario_id": "res_d92ca7",
+  "trace_id": "res_d92ca7",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Data meant for conflict resolution is incorrectly sent to agent_4, causing delayed and incomplete conflict resolution."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_correction",
+      "confidence": 1.0,
+      "explanation": "Agent 2 receives unresolved data from agent 4 and resolves conflicts, but data integrity is compromised."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Data intended for conflict resolution was incorrectly routed to agent_4 instead of agent_2.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

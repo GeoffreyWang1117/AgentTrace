@@ -1,0 +1,150 @@
+{
+  "scenario_id": "res_6fe324",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "data_corruption",
+  "task_description": "In this scenario, four agents are tasked with gathering information from various sources on climate change impacts, synthesizing this data, and producing a comprehensive research report. Each agent has a specific role, such as data gathering, data verification, data synthesis, and report generation. They must ensure data integrity and proper source attribution while reconciling conflicting information.",
+  "expected_outcome": "The agents should successfully gather accurate data from multiple sources, verify and synthesize this information, and produce a coherent and accurate research report on climate change impacts. All information should be correctly attributed, and conflicting data reconciled.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Gatherer",
+      "capabilities": [
+        "search_sources",
+        "collect_data"
+      ],
+      "description": "This agent searches various online databases and public records to collect raw data on climate change impacts."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Verifier",
+      "capabilities": [
+        "verify_data",
+        "check_accuracy"
+      ],
+      "description": "This agent verifies the accuracy and credibility of the data collected by Agent 1."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "reconcile_conflicts"
+      ],
+      "description": "This agent synthesizes verified data, resolves any conflicts in the information, and prepares it for the report."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "attribute_sources"
+      ],
+      "description": "This agent creates the final research report, ensuring all data is correctly attributed to the respective sources."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "dataset": "raw_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_verified_data",
+      "content": {
+        "verified_data": "climate_data_verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "climate_insights"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "generate_report",
+      "content": {
+        "status": "report_generated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "dataset": "raw_climate_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_verified_data",
+      "content": {
+        "verified_data": "climate_data_verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "climate_insights_corrupted"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurs during the transfer, altering climate insights."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "generate_report",
+      "content": {
+        "status": "report_with_errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 4,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from Agent 3 to Agent 4, leading to errors in the final report."
+    }
+  ],
+  "created_at": "2026-01-04T09:06:44.920706"
+}

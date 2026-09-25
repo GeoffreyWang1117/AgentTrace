@@ -1,0 +1,139 @@
+{
+  "scenario_id": "pla_708a0f",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively plan a community event, which involves breaking down tasks such as venue booking, catering, and marketing into smaller subtasks. Each agent is responsible for specific tasks, and they must coordinate resources such as budget and personnel, taking into account dependencies like venue availability before catering.",
+  "expected_outcome": "All tasks are successfully allocated and executed, ensuring the event is organized efficiently with all dependencies and resource constraints managed effectively.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "dependency_management"
+      ],
+      "description": "Responsible for breaking down the overall event planning into subtasks and managing task dependencies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "resource_allocation",
+        "conflict_resolution"
+      ],
+      "description": "Allocates resources like budget and personnel to tasks and resolves any conflicts that arise."
+    },
+    {
+      "id": "agent_3",
+      "role": "Execution Coordinator",
+      "capabilities": [
+        "task_assignment",
+        "progress_tracking"
+      ],
+      "description": "Assigns tasks to appropriate team members and tracks progress to ensure timely completion."
+    },
+    {
+      "id": "agent_4",
+      "role": "Communicator",
+      "capabilities": [
+        "information_sharing",
+        "dependency_notification"
+      ],
+      "description": "Ensures that all agents are kept informed of task statuses and any changes affecting dependencies."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "decompose_event",
+      "content": {
+        "tasks": [
+          "venue_booking",
+          "catering",
+          "marketing"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "task": "venue_booking",
+        "resources": {
+          "budget": 1000,
+          "personnel": 2
+        }
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "notify_progress",
+      "content": {
+        "task": "venue_booking",
+        "status": "in_progress"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "task": "venue_booking",
+        "status": "completed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_dependencies",
+      "content": {
+        "task": "venue_booking",
+        "next_tasks": [
+          "catering"
+        ]
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "task": "catering",
+        "resources": {
+          "budget": 500,
+          "personnel": 3
+        }
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "notify_progress",
+      "content": {
+        "task": "catering",
+        "status": "in_progress"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_status",
+      "content": {
+        "task": "catering",
+        "status": "completed"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:53.691945"
+}

@@ -1,0 +1,262 @@
+{
+  "scenario_id": "tra_e9517a",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "timeout_cascade",
+  "task_description": "In this scenario, four agents collaborate to analyze market data, make informed trading decisions, execute trades, and ensure accurate position tracking. The agents need to process incoming market data efficiently and execute orders quickly to capitalize on trading opportunities.",
+  "expected_outcome": "All agents work together seamlessly, ensuring that market analysis is accurate, trades are executed on time, and position tracking remains consistent without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "analyze_market_data",
+        "detect_trends"
+      ],
+      "description": "This agent collects and analyzes market data to detect trading trends and generate insights for decision-making."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "make_trading_decisions",
+        "generate_trade_signals"
+      ],
+      "description": "This agent uses analyzed data to make trading decisions and generate trade signals to execute orders."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_orders",
+        "verify_transactions"
+      ],
+      "description": "This agent receives trade signals and executes buy/sell orders while verifying the successful completion of transactions."
+    },
+    {
+      "id": "agent_4",
+      "role": "Position Tracker",
+      "capabilities": [
+        "track_positions",
+        "update_portfolio_status"
+      ],
+      "description": "This agent tracks the portfolio positions and updates the portfolio status post-trade execution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis",
+      "content": {
+        "market_trend": "bullish"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "trade_signal": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": 12345,
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "acknowledge_execution",
+      "content": {
+        "order_id": 12345,
+        "ack": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "trade_signal": "sell",
+        "quantity": 50
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_market_update",
+      "content": {
+        "info": "latest_market_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "provide_market_update",
+      "content": {
+        "market_trend": "bearish"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": 12346,
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analysis",
+      "content": {
+        "market_trend": "bullish"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "trade_signal": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": 12345,
+        "status": "pending"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 experiences a timeout waiting for market confirmation, causing a delay."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_execution_delay",
+      "content": {
+        "order_id": 12345,
+        "status": "delayed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_signal",
+      "content": {
+        "trade_signal": "sell",
+        "quantity": 50
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_order_execution",
+      "content": {
+        "order_id": 12346,
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "acknowledge_execution",
+      "content": {
+        "order_id": 12346,
+        "ack": false
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_final_execution_status",
+      "content": {
+        "order_id": 12345,
+        "status": "failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Delayed confirmation of order execution causes agent 3 to report the delay to agent 2, affecting subsequent actions."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Agent 2 sends a new trade signal without resolving the delay of previous order execution."
+    },
+    {
+      "source_step": 5,
+      "target_step": 8,
+      "relationship_type": "timing",
+      "description": "The delay in execution confirmation leads to a failure in processing the next order correctly."
+    }
+  ],
+  "created_at": "2026-01-04T09:12:32.787714"
+}

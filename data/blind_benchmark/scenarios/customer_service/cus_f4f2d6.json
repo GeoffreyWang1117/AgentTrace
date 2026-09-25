@@ -1,0 +1,128 @@
+{
+  "scenario_id": "cus_f4f2d6",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "The agents are responsible for managing customer service interactions involving handling inquiries, escalating complex issues, and ensuring that tickets are tracked and resolved efficiently.",
+  "expected_outcome": "Customer inquiries are handled promptly, complex issues are escalated as needed, ticket statuses are consistently synchronized, and no duplicate or conflicting responses occur.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "handle_inquiries",
+        "create_ticket"
+      ],
+      "description": "This agent receives and processes initial customer inquiries, creates tickets for new issues, and provides basic support."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "escalate_issue",
+        "resolve_technical_issue"
+      ],
+      "description": "This agent handles technical support issues and escalates complex issues to the lead agent if needed."
+    },
+    {
+      "id": "agent_3",
+      "role": "Support Lead Agent",
+      "capabilities": [
+        "oversee_tickets",
+        "coordinate_team"
+      ],
+      "description": "This agent oversees ticket statuses, resolves escalated issues, and coordinates among support agents for complex cases."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Management Agent",
+      "capabilities": [
+        "synchronize_ticket_status",
+        "update_ticket_database"
+      ],
+      "description": "This agent ensures ticket statuses are consistently updated across systems and prevents duplicate or conflicting ticket entries."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "123",
+        "issue": "Login problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "assign_ticket",
+      "content": {
+        "ticket_id": "T456",
+        "assigned_to": "agent_2"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T456",
+        "issue_details": "Requires lead intervention"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "T456",
+        "status": "In progress"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "notify_customer",
+      "content": {
+        "customer_id": "123",
+        "status_update": "Your issue is being processed"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_resolution",
+      "content": {
+        "ticket_id": "T456",
+        "resolution": "Issue resolved"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "T456",
+        "status": "Closed"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_resolution",
+      "content": {
+        "customer_id": "123",
+        "final_status": "Closed"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:41.999450"
+}

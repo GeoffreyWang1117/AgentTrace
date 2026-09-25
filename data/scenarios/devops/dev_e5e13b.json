@@ -1,0 +1,173 @@
+{
+  "scenario_id": "dev_e5e13b",
+  "domain": "devops",
+  "complexity": "medium",
+  "bug_type": "state_inconsistency",
+  "task_description": "Monitor service health after deployment",
+  "expected_outcome": "Successful completion of devops workflow task",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Builder",
+      "capabilities": [
+        "compile",
+        "package"
+      ]
+    },
+    {
+      "id": "agent_2",
+      "role": "Tester",
+      "capabilities": [
+        "test",
+        "validate"
+      ]
+    },
+    {
+      "id": "agent_3",
+      "role": "Deployer",
+      "capabilities": [
+        "deploy",
+        "configure"
+      ]
+    },
+    {
+      "id": "agent_4",
+      "role": "Monitor",
+      "capabilities": [
+        "monitor",
+        "alert"
+      ]
+    },
+    {
+      "id": "agent_5",
+      "role": "Responder",
+      "capabilities": [
+        "rollback",
+        "fix"
+      ]
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "rollback_step_1",
+      "content": {
+        "data": "processed_data_1",
+        "status": "ok"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "rollback_step_2",
+      "content": {
+        "data": "processed_data_2",
+        "status": "ok"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "configure_step_3",
+      "content": {
+        "data": "processed_data_3",
+        "status": "ok"
+      },
+      "is_bug_point": true,
+      "bug_description": "Shared state became inconsistent"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "monitor_step_4",
+      "content": {
+        "data": "processed_data_4",
+        "status": "ok"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "build_step_5",
+      "content": {
+        "data": "processed_data_5",
+        "status": "ok"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "test_step_6",
+      "content": {
+        "data": "processed_data_6",
+        "status": "error",
+        "error": "Operation failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "alert_step_7",
+      "content": {
+        "data": "processed_data_7",
+        "status": "ok"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "deploy_step_8",
+      "content": {
+        "data": "processed_data_8",
+        "status": "ok"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 6,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Data flows from step 4 to step 5"
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Data flows from step 5 to step 6"
+    }
+  ],
+  "created_at": "2026-01-07T00:15:45.919364"
+}

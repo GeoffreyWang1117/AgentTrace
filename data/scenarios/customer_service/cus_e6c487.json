@@ -1,0 +1,195 @@
+{
+  "scenario_id": "cus_e6c487",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "bug_type": "wrong_routing",
+  "task_description": "Agents need to collaboratively handle customer service inquiries by responding to simple questions, escalating complex issues to specialized agents, and ensuring tickets are tracked and resolved efficiently.",
+  "expected_outcome": "All customer inquiries are addressed, complex issues are escalated appropriately, tickets are kept in sync, and no duplicate or conflicting responses occur.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "answer_basic_inquiries",
+        "open_ticket"
+      ],
+      "description": "Handles initial customer inquiries and opens tickets for complex issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "handle_technical_issues",
+        "provide_detailed_solutions"
+      ],
+      "description": "Handles technical inquiries and provides detailed solutions."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Service Manager",
+      "capabilities": [
+        "escalate_issues",
+        "resolve_escalations"
+      ],
+      "description": "Manages escalated issues and oversees ticket resolution."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Synchronization Agent",
+      "capabilities": [
+        "synchronize_tickets",
+        "update_ticket_status"
+      ],
+      "description": "Ensures all ticket information is up-to-date and synchronized across systems."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "open_ticket",
+      "content": {
+        "ticket_id": "T123",
+        "issue_type": "technical"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "T123",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T123"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "T123",
+        "resolution": "provided_fix"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "T123"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "open_ticket",
+      "content": {
+        "ticket_id": "T123",
+        "issue_type": "technical"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "T123",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T123"
+      },
+      "is_bug_point": true,
+      "bug_description": "Issue is incorrectly routed back to agent_1 instead of being escalated to agent_3."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T123"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "resolve_issue",
+      "content": {
+        "ticket_id": "T123",
+        "resolution": "provided_fix"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "T123"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The issue is incorrectly routed back, causing redundancy in escalation."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The error causes a delay in the resolution as the issue has to be correctly escalated again."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:44.299145"
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_id": "res_462ed9",
+  "trace_id": "res_462ed9",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 due to a race condition in concurrent data deliveries."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "integration",
+      "confidence": 1.0,
+      "explanation": "Incorrectly synthesized data from step 4 is integrated into the final report in step 5, leading to incorrect source attributions."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "A race condition occurs here, where two concurrent data deliveries cause data corruption.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

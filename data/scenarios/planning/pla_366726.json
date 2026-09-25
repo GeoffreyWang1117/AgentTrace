@@ -1,0 +1,270 @@
+{
+  "scenario_id": "pla_366726",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "logic_error",
+  "task_description": "Agents are tasked with organizing a charity event that involves setting up a venue, coordinating with vendors for food and decorations, managing guest lists, and ensuring smooth event execution. The goal is to break down these tasks into subtasks, allocate resources effectively, and ensure all dependencies are managed correctly.",
+  "expected_outcome": "Agents successfully coordinate the event by communicating and sharing resources, ensuring all subtasks are completed on schedule without any resource conflicts or dependency issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "break_down_tasks",
+        "assign_subtasks"
+      ],
+      "description": "Responsible for breaking down the main goal into subtasks and assigning these to other agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "allocate_resources",
+        "resolve_conflicts"
+      ],
+      "description": "In charge of allocating and managing resources necessary for task execution."
+    },
+    {
+      "id": "agent_3",
+      "role": "Coordinator",
+      "capabilities": [
+        "coordinate_tasks",
+        "manage_dependencies"
+      ],
+      "description": "Handles the coordination of task execution and ensures all dependencies are addressed."
+    },
+    {
+      "id": "agent_4",
+      "role": "Communicator",
+      "capabilities": [
+        "update_plans",
+        "communicate_changes"
+      ],
+      "description": "Ensures all agents are updated on any changes in the plan and manages communication."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "subtasks": [
+          "venue_setup",
+          "catering",
+          "guest_list"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "venue": "hall_a",
+          "budget": 5000
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "coordinate_schedule",
+      "content": {
+        "schedule": {
+          "setup": "9am-11am"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_plan",
+      "content": {
+        "status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_task_breakdown",
+      "content": {
+        "subtasks": [
+          "decorations"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_conflict",
+      "content": {
+        "conflict": "venue_availability"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_dependencies",
+      "content": {
+        "dependencies": [
+          "vendor_arrival"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "close_communication_loop",
+      "content": {
+        "status": "all_set"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "subtasks": [
+          "venue_setup",
+          "catering",
+          "guest_list"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "venue": "hall_a",
+          "budget": 5000
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "coordinate_schedule",
+      "content": {
+        "schedule": {
+          "setup": "9am-11am"
+        }
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly calculates the time needed for setup, causing overlaps with other tasks."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_plan",
+      "content": {
+        "status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_task_breakdown",
+      "content": {
+        "subtasks": [
+          "decorations"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_conflict",
+      "content": {
+        "conflict": "venue_availability"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "finalize_dependencies",
+      "content": {
+        "dependencies": [
+          "vendor_arrival"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "close_communication_loop",
+      "content": {
+        "status": "all_set"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Incorrect schedule data from step 3 is approved in step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency_issue",
+      "description": "Approved schedule causes overlap with decorations setup in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:09:22.031935"
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_id": "res_63b220",
+  "trace_id": "res_63b220",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 due to incorrect routing of clarified statistics to agent_3 instead of agent_2."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "feedback",
+      "confidence": 1.0,
+      "explanation": "The incomplete report compiled with missing data manifests as an error during feedback in step 5."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Data intended for agent_2 is incorrectly sent to agent_3, causing an information gap.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

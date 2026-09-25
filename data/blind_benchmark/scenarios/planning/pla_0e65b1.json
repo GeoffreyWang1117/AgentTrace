@@ -1,0 +1,138 @@
+{
+  "scenario_id": "pla_0e65b1",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to coordinate the setup of an automated farming system, breaking down the goal into subtasks like soil preparation, irrigation system assembly, planting, and system monitoring. They must allocate necessary resources and ensure tasks are executed in the correct sequence to handle dependencies.",
+  "expected_outcome": "The automated farming system is set up without any resource conflicts, and all tasks are completed in the proper order, leading to a fully functional system capable of autonomous farming operations.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_scheduling",
+        "resource_allocation"
+      ],
+      "description": "Responsible for breaking down the project into subtasks and allocating resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Executor",
+      "capabilities": [
+        "task_execution",
+        "task_adjustment"
+      ],
+      "description": "Executes the tasks as per the schedule and makes on-the-fly adjustments."
+    },
+    {
+      "id": "agent_3",
+      "role": "Communicator",
+      "capabilities": [
+        "dependency_management",
+        "information_propagation"
+      ],
+      "description": "Ensures that dependencies and task progress are communicated to all agents."
+    },
+    {
+      "id": "agent_4",
+      "role": "Monitor",
+      "capabilities": [
+        "system_analysis",
+        "error_detection"
+      ],
+      "description": "Monitors the system for errors and ensures tasks are completed as expected."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "assign_task",
+      "content": {
+        "task": "soil_preparation",
+        "resources": [
+          "tractor",
+          "plow"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "report_progress",
+      "content": {
+        "task": "soil_preparation",
+        "status": "completed"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_dependency",
+      "content": {
+        "task": "irrigation_system_assembly",
+        "prerequisite": "soil_preparation"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "assign_task",
+      "content": {
+        "task": "irrigation_system_assembly",
+        "resources": [
+          "pipes",
+          "pump"
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "report_progress",
+      "content": {
+        "task": "irrigation_system_assembly",
+        "status": "completed",
+        "note": "dependency not checked"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "notify_monitoring",
+      "content": {
+        "task": "irrigation_system_assembly",
+        "status": "completed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "assign_task",
+      "content": {
+        "task": "planting",
+        "resources": [
+          "seeds",
+          "planter"
+        ]
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "report_progress",
+      "content": {
+        "task": "planting",
+        "status": "completed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:32.038569"
+}

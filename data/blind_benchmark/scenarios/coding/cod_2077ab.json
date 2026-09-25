@@ -1,0 +1,165 @@
+{
+  "scenario_id": "cod_2077ab",
+  "domain": "coding",
+  "complexity": "complex",
+  "task_description": "In this scenario, a team of agents needs to collaboratively develop a software module based on a given set of requirements. The agents will be responsible for writing code, reviewing it, testing, fixing bugs, and integrating changes. The team needs to ensure seamless data transfer and integration across all stages to prevent and resolve issues effectively.",
+  "expected_outcome": "If everything works correctly, the agents successfully deliver a functional software module that meets all requirements, passes all tests, and integrates without any conflicts or data corruption.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_changes"
+      ],
+      "description": "Agent 1 is responsible for writing the initial code based on the given requirements and committing changes to the repository."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Agent 2 reviews the code written by Agent 1, providing feedback and identifying any issues or improvements needed."
+    },
+    {
+      "id": "agent_3",
+      "role": "Test Engineer",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "Agent 3 runs tests on the code to ensure it meets the requirements and identifies any bugs or issues."
+    },
+    {
+      "id": "agent_4",
+      "role": "Bug Fixer",
+      "capabilities": [
+        "debug_code",
+        "apply_fixes"
+      ],
+      "description": "Agent 4 is responsible for debugging and fixing any issues found by Agent 3, ensuring that the code is functioning as intended."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integrator",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "Agent 5 manages the integration of the code into the main branch, resolving any conflicts and ensuring that all changes work together harmoniously."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code_for_review",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "issues_found": false
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_code_for_testing",
+      "content": {
+        "code_version": "v1.0 with corruption"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "tests_passed": true
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "send_code_for_bug_fixing",
+      "content": {
+        "code_version": "v1.0 with corruption"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_code_for_integration",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "integration_success",
+      "content": {
+        "integrated_version": "v1.0"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code_for_review",
+      "content": {
+        "code_version": "v1.1"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "issues_found": false
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_code_for_testing",
+      "content": {
+        "code_version": "v1.1"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "tests_passed": true
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "finalize_integration",
+      "content": {
+        "code_version": "v1.1"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:44:15.613739"
+}

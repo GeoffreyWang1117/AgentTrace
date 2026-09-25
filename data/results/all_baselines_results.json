@@ -1,0 +1,44 @@
+{
+  "AgentTrace": {
+    "method": "AgentTrace",
+    "hit_at_1": 0.016,
+    "hit_at_3": 0.892,
+    "hit_at_5": 0.98,
+    "mrr": 0.4725380952380953,
+    "total": 250
+  },
+  "LLM-Direct": {
+    "method": "LLM-Direct",
+    "hit_at_1": 0.364,
+    "hit_at_3": 0.364,
+    "hit_at_5": 0.364,
+    "total": 250
+  },
+  "CoT": {
+    "method": "CoT",
+    "hit_at_1": 1.0,
+    "hit_at_3": 1.0,
+    "hit_at_5": 1.0,
+    "total": 250
+  },
+  "ReAct": {
+    "method": "ReAct",
+    "hit_at_1": 0.524,
+    "hit_at_3": 0.524,
+    "hit_at_5": 0.524,
+    "total": 250
+  },
+  "Log-Only": {
+    "method": "Log-Only (First Error)",
+    "hit_at_1": 0.984,
+    "hit_at_3": 0.988,
+    "hit_at_5": 0.988,
+    "total": 250
+  },
+  "Random": {
+    "method": "Random",
+    "hit_at_1": 0.1444937950937951,
+    "hit_at_3": 0.4334813852813853,
+    "hit_at_5": 0.7214689754689755
+  }
+}

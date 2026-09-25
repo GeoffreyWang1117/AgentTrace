@@ -1,0 +1,121 @@
+{
+  "scenario_id": "pla_0d9288",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents are tasked with organizing a community event that includes setting up the venue, arranging catering, managing guest lists, and coordinating speakers.",
+  "expected_outcome": "All tasks are completed on time with resources optimally allocated, and the event is successfully hosted with no scheduling conflicts or missing arrangements.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Venue Manager",
+      "capabilities": [
+        "reserve venue",
+        "arrange logistics"
+      ],
+      "description": "Responsible for securing the venue and managing logistical arrangements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Catering Coordinator",
+      "capabilities": [
+        "select menu",
+        "coordinate caterers"
+      ],
+      "description": "Handles the selection of the menu and the coordination with catering services."
+    },
+    {
+      "id": "agent_3",
+      "role": "Guest Manager",
+      "capabilities": [
+        "manage guest list",
+        "send invitations"
+      ],
+      "description": "Manages the guest list and ensures all invitations are sent and tracked."
+    },
+    {
+      "id": "agent_4",
+      "role": "Speaker Coordinator",
+      "capabilities": [
+        "schedule speakers",
+        "arrange speaker needs"
+      ],
+      "description": "Coordinates the scheduling of speakers and ensures their requirements are met."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "logistics_update",
+      "content": {
+        "venue_ready": true
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "catering_details",
+      "content": {
+        "menu_approved": true,
+        "catering_time": "12:00 PM"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "guest_update",
+      "content": {
+        "guest_count": 100
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "speaker_schedule",
+      "content": {
+        "speakers_confirmed": true
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "final_logistics_check",
+      "content": {
+        "logistics_confirmed": true
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "final_catering_check",
+      "content": {
+        "catering_confirmed": true
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "final_guest_check",
+      "content": {
+        "invitations_sent": true
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "final_speaker_check",
+      "content": {
+        "speaker_arrangements_complete": true
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:53.031714"
+}

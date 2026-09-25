@@ -1,0 +1,129 @@
+{
+  "scenario_id": "cus_411406",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "Agents collaborate to manage customer service inquiries, ensuring smooth handoff between agents, proper escalation of complex issues, and consistent tracking and resolution of tickets.",
+  "expected_outcome": "Customer inquiries are handled efficiently with seamless agent collaboration. Complex issues are escalated correctly, and tickets are resolved without any data inconsistencies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "handle_inquiries",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_ticket"
+      ],
+      "description": "Handles technical issues and updates the status of tickets."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Agent",
+      "capabilities": [
+        "handle_escalations",
+        "coordinate_resolution"
+      ],
+      "description": "Manages escalated tickets and coordinates resolution with other agents."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Management Agent",
+      "capabilities": [
+        "sync_ticket_status",
+        "monitor_tickets"
+      ],
+      "description": "Ensures ticket statuses are synchronized across the system and monitors ticket progress."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "status": "created",
+        "customer_details": "John Doe"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "assign_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "assigned_to": "agent_2"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "1234",
+        "reason": "complex_issue"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_additional_info",
+      "content": {
+        "ticket_id": "1234",
+        "additional_details": "needed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_response",
+      "content": {
+        "ticket_id": "1234",
+        "resolution": "technical steps"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "system",
+      "action": "sync_status",
+      "content": {
+        "ticket_id": "1234",
+        "status": "resolved"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "system",
+      "to_agent": "agent_1",
+      "action": "notify_closure",
+      "content": {
+        "ticket_id": "1234",
+        "status": "resolved"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:10:53.271985"
+}

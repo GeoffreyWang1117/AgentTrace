@@ -1,0 +1,45 @@
+{
+  "scenario_id": "cod_1b01fd",
+  "trace_id": "cod_1b01fd",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Delayed feedback causes delay in code delivery for testing"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "temporal_dependency",
+      "confidence": 1.0,
+      "explanation": "Testing process is delayed due to late code delivery"
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Incomplete test results flow to integration"
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_7",
+      "relationship_type": "temporal_dependency",
+      "confidence": 1.0,
+      "explanation": "Integration fails because test results are incomplete"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Due to a timeout, feedback was not received in time, delaying subsequent steps",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_6",
+    "step_7"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

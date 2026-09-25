@@ -1,0 +1,26 @@
+{
+  "AgentTrace-Original": {
+    "total": 550,
+    "hit_at_1": 4,
+    "hit_at_1_rate": 0.007272727272727273,
+    "hit_at_3": 441,
+    "hit_at_3_rate": 0.8018181818181818,
+    "hit_at_5": 545,
+    "hit_at_5_rate": 0.990909090909091,
+    "found": 550,
+    "recall": 1.0,
+    "mrr": 0.41327489177489174
+  },
+  "AgentTrace-Ranked": {
+    "total": 550,
+    "hit_at_1": 522,
+    "hit_at_1_rate": 0.9490909090909091,
+    "hit_at_3": 541,
+    "hit_at_3_rate": 0.9836363636363636,
+    "hit_at_5": 549,
+    "hit_at_5_rate": 0.9981818181818182,
+    "found": 550,
+    "recall": 1.0,
+    "mrr": 0.9677878787878788
+  }
+}

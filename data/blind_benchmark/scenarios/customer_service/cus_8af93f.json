@@ -1,0 +1,128 @@
+{
+  "scenario_id": "cus_8af93f",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "The agents need to handle a customer inquiry, escalate a complex problem to the correct department, and track the resolution through to completion, ensuring that ticket statuses are synchronized and that customer context is maintained throughout the process.",
+  "expected_outcome": "Customer inquiry is handled efficiently, complex issues are escalated and resolved, ticket status is updated correctly, and customer context is preserved during handoffs.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "initial inquiry handling",
+        "basic troubleshooting"
+      ],
+      "description": "Handles initial customer inquiries and attempts basic issue resolution."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "advanced troubleshooting",
+        "issue escalation"
+      ],
+      "description": "Handles more complex technical issues and escalates as needed."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Support Manager",
+      "capabilities": [
+        "issue escalation approval",
+        "ticket status synchronization"
+      ],
+      "description": "Approves escalations and ensures ticket status is kept up to date."
+    },
+    {
+      "id": "agent_4",
+      "role": "Billing Specialist",
+      "capabilities": [
+        "billing inquiries",
+        "financial adjustments"
+      ],
+      "description": "Handles all customer billing-related inquiries and adjustments."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "12345",
+        "issue_detail": "Cannot connect to internet"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_escalation_approval",
+      "content": {
+        "ticket_id": "12345",
+        "complexity": "high"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_escalation",
+      "content": {
+        "ticket_id": "12345",
+        "approval": "granted"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "hand_off",
+      "content": {
+        "ticket_id": "12345",
+        "context": "billing inquiry related to service disruption"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "12345",
+        "status": "in progress"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_completion",
+      "content": {
+        "ticket_id": "12345",
+        "resolution": "Customer billing adjusted"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "confirm_resolution",
+      "content": {
+        "ticket_id": "12345",
+        "confirmation": "acknowledged"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "customer",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "12345",
+        "final_status": "resolved"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:34.009700"
+}

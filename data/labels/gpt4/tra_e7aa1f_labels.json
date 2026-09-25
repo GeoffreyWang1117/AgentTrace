@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_e7aa1f",
+  "trace_id": "tra_e7aa1f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Trade execution message is wrongly routed to Position Tracker, causing incorrect verification."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "error_propagation",
+      "confidence": 1.0,
+      "explanation": "Incorrect execution status is reported, leading to an error report to the Market Data Collector."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Trade execution message is routed to Position Tracker instead of Transaction Verifier.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

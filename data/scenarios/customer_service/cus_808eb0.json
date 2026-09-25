@@ -1,0 +1,182 @@
+{
+  "scenario_id": "cus_808eb0",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "The agents need to collaboratively manage customer service inquiries by answering questions, escalating complex issues when needed, and ensuring tickets are tracked and resolved efficiently. They must maintain context during handoffs and synchronize ticket statuses.",
+  "expected_outcome": "Customer inquiries are handled promptly, complex issues are escalated correctly with complete context, and tickets are resolved with their status synchronized across all agents.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "answer inquiries",
+        "create tickets",
+        "escalate issues"
+      ],
+      "description": "Handles initial customer inquiries, provides answers, creates tickets for unresolved issues, and escalates complex issues to the specialist."
+    },
+    {
+      "id": "agent_2",
+      "role": "Support Specialist Agent",
+      "capabilities": [
+        "resolve complex issues",
+        "update tickets",
+        "communicate with frontline"
+      ],
+      "description": "Receives escalated tickets from the frontline, resolves complex issues, and updates ticket status."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Management Agent",
+      "capabilities": [
+        "synchronize ticket status",
+        "generate reports"
+      ],
+      "description": "Ensures all ticket statuses are synchronized across the system and generates reports on ticket resolution performance."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "12345",
+        "customer_issue": "Login failure",
+        "customer_id": "cust_001"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "12345",
+        "status": "in-progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "ticket_id": "12345",
+        "needed_info": "Customer login details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_info",
+      "content": {
+        "ticket_id": "12345",
+        "customer_login_details": "example_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_ticket",
+      "content": {
+        "ticket_id": "12345",
+        "resolution": "Password reset"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "12345",
+        "customer_issue": "Login failure",
+        "customer_id": "cust_001"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "12345",
+        "status": "in-progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "ticket_id": "12345",
+        "needed_info": "Customer login details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_info",
+      "content": {
+        "ticket_id": "12345"
+      },
+      "is_bug_point": true,
+      "bug_description": "The customer login details required to resolve the issue were not included in the message."
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_ticket",
+      "content": {
+        "ticket_id": "12345",
+        "resolution": "Incomplete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to missing context information."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Incomplete information at step 4 leads to an unresolved ticket status in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:14.487930"
+}

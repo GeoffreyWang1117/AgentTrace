@@ -1,0 +1,234 @@
+{
+  "scenario_id": "cod_537ed1",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "race_condition",
+  "task_description": "Agents must collaboratively develop a feature for a software application by writing code based on requirements, conducting code reviews, testing the code, and integrating it into the main codebase. They must ensure that no bugs are present in the final integrated module.",
+  "expected_outcome": "The feature is successfully integrated into the main codebase without any bugs, specifically avoiding race conditions, with proper review and testing ensuring code reliability and function.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "fix_bugs"
+      ],
+      "description": "This agent writes code based on the received requirements and fixes any bugs found in their own code."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "This agent reviews the code for any logical errors, style issues, or potential bugs and provides feedback for improvements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "This agent tests the code implementation against the requirements and reports any discrepancies or bugs."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "This agent is responsible for merging the approved code into the main codebase and resolving any integration conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "issues": [
+          "styling",
+          "optimization"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "resubmit_code",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_forward",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "test_code",
+      "content": {
+        "test_result": "pass"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "integrate_code",
+      "content": {
+        "integration_result": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_completion",
+      "content": {
+        "status": "feature integrated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "issues": [
+          "styling",
+          "optimization"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "resubmit_code",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": true,
+      "bug_description": "Introduced race condition by using shared resources in concurrent operations without proper synchronization."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_forward",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "test_code",
+      "content": {
+        "test_result": "pass"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "integrate_code",
+      "content": {
+        "integration_result": "conflict"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_error",
+      "content": {
+        "error": "inconsistent state after concurrent access"
+      },
+      "is_bug_point": true,
+      "bug_description": "The race condition leads to inconsistent state, causing integration failure."
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 7,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 as the code with race condition is approved and forwarded."
+    },
+    {
+      "source_step": 4,
+      "target_step": 6,
+      "relationship_type": "process_execution",
+      "description": "The approved code is tested and moved towards integration, where the race condition affects consistency."
+    },
+    {
+      "source_step": 6,
+      "target_step": 7,
+      "relationship_type": "error_propagation",
+      "description": "The integration process fails due to the race condition, manifesting the error in the integrated system."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:28.610404"
+}

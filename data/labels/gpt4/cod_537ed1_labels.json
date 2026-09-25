@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cod_537ed1",
+  "trace_id": "cod_537ed1",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 as the code with race condition is approved and forwarded."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_6",
+      "relationship_type": "process_execution",
+      "confidence": 1.0,
+      "explanation": "The approved code is tested and moved towards integration, where the race condition affects consistency."
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_7",
+      "relationship_type": "error_propagation",
+      "confidence": 1.0,
+      "explanation": "The integration process fails due to the race condition, manifesting the error in the integrated system."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Introduced race condition by using shared resources in concurrent operations without proper synchronization.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_6",
+    "step_7"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

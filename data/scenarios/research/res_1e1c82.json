@@ -1,0 +1,178 @@
+{
+  "scenario_id": "res_1e1c82",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "race_condition",
+  "task_description": "The agents need to collaborate to gather information about a new scientific discovery from various online databases, synthesize the data collectively, and produce a comprehensive research report. The process involves searching diverse sources, integrating findings, resolving any conflicting information, and ensuring accurate source attribution.",
+  "expected_outcome": "If everything works correctly, agents will successfully compile a well-researched report, ensuring that all relevant data is collected, correctly interpreted, and all sources are accurately attributed with no conflicts or data loss.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Information Gatherer",
+      "capabilities": [
+        "search_databases",
+        "retrieve_data"
+      ],
+      "description": "Agent 1 searches for and retrieves raw data from various online databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "synthesize_information"
+      ],
+      "description": "Agent 2 analyzes raw data and synthesizes relevant information from what Agent 1 has retrieved."
+    },
+    {
+      "id": "agent_3",
+      "role": "Conflict Resolver",
+      "capabilities": [
+        "detect_conflicts",
+        "resolve_discrepancies"
+      ],
+      "description": "Agent 3 identifies and resolves any conflicting information between synthesized data sets."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Compiler",
+      "capabilities": [
+        "compile_report",
+        "ensure_source_attribution"
+      ],
+      "description": "Agent 4 compiles the final research report, ensuring that all information is accurately attributed to its sources."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "retrieve_data",
+      "content": {
+        "data": "raw_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "retrieve_data",
+      "content": {
+        "data": "raw_data_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "synthesize_information",
+      "content": {
+        "synthesized_data": "synth_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resolve_conflicts",
+      "content": {
+        "resolved_data": "resolved_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "compile_report",
+      "content": {
+        "report": "final_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "retrieve_data",
+      "content": {
+        "data": "raw_data_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "retrieve_data",
+      "content": {
+        "data": "raw_data_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "synthesize_information",
+      "content": {
+        "synthesized_data": "synth_data_1"
+      },
+      "is_bug_point": true,
+      "bug_description": "Race condition occurs when agent_2 processes raw_data_1 and raw_data_2 concurrently, leading to inconsistent synthesized data."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "resolve_conflicts",
+      "content": {
+        "resolved_data": "resolved_data_2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_4",
+      "action": "compile_report",
+      "content": {
+        "report": "incomplete_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to race condition, leading to unresolved discrepancies."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Resolved data from step 4 carries the inconsistency to the compiled report in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:06:13.225951"
+}

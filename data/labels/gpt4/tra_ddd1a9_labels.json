@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_ddd1a9",
+  "trace_id": "tra_ddd1a9",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data with a 'pending' order status flows from step 3 to step 4, leading to inaccurate confirmation."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The 'pending' confirmation status affects transaction verification in step 5."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 mistakenly sets the order status to 'pending' instead of 'executed' due to logic error.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

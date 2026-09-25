@@ -1,0 +1,80 @@
+
+\begin{table}[t]
+\centering
+\caption{AgentTrace Performance by Domain}
+\label{tab:domain_ablation}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Domain} & \textbf{Recall} & \textbf{Hit@3} & \textbf{Count} \\
+\midrule
+Research & 100.0% & 90.2% & 51 \\
+Coding & 100.0% & 84.6% & 52 \\
+Planning & 100.0% & 84.8% & 46 \\
+Customer Service & 100.0% & 92.2% & 51 \\
+Trading & 100.0% & 94.0% & 50 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[t]
+\centering
+\caption{AgentTrace Performance by Bug Type}
+\label{tab:bugtype_ablation}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Bug Type} & \textbf{Recall} & \textbf{Hit@3} & \textbf{Count} \\
+\midrule
+Data Corruption & 100.0% & 92.1% & 38 \\
+Invalid Output & 100.0% & 92.6% & 27 \\
+Logic Error & 100.0% & 92.3% & 26 \\
+Missing Context & 100.0% & 86.5% & 37 \\
+Race Condition & 100.0% & 84.0% & 25 \\
+State Inconsistency & 100.0% & 91.7% & 36 \\
+Timeout Cascade & 100.0% & 89.3% & 28 \\
+Wrong Routing & 100.0% & 84.8% & 33 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[t]
+\centering
+\caption{AgentTrace Performance by Trace Length}
+\label{tab:length_ablation}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Trace Length} & \textbf{Recall} & \textbf{Hit@3} & \textbf{Count} \\
+\midrule
+short (1-5) nodes & 100.0% & 95.2% & 83 \\
+medium (6-10) nodes & 100.0% & 87.4% & 119 \\
+long (11+) nodes & 100.0% & 83.3% & 48 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[t]
+\centering
+\caption{Performance vs. Causal Distance}
+\label{tab:distance_ablation}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Distance (steps)} & \textbf{Hit@3 Rate} & \textbf{Count} \\
+\midrule
+1 & 100.0% & 14 \\
+2 & 95.3% & 172 \\
+3 & 73.6% & 53 \\
+4 & 57.1% & 7 \\
+5 & 100.0% & 1 \\
+6 & 33.3% & 3 \\
+
+\bottomrule
+\end{tabular}
+\end{table}

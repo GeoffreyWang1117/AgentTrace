@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cod_0615d7",
+  "trace_id": "cod_0615d7",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted review feedback causes the developer to make incorrect assumptions about the required changes."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "control_flow",
+      "confidence": 1.0,
+      "explanation": "The incorrect code is approved without detecting the state mismatch."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Test Engineer runs tests on an incorrect version of code due to state inconsistency."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The review feedback was not properly synchronized with the shared state, causing misalignment in understanding the required changes.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

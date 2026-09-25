@@ -1,0 +1,172 @@
+{
+  "scenario_id": "pla_932902",
+  "domain": "planning",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "Three agents need to collaborate to set up a community workshop event. The tasks involve finding a venue, arranging for speakers, and coordinating a marketing campaign. Each agent has specific responsibilities, and they need to ensure all tasks are completed on time without any resource conflicts.",
+  "expected_outcome": "The agents should successfully allocate tasks, manage resources without conflicts, and ensure all dependencies are communicated effectively to execute the plan seamlessly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Event Coordinator",
+      "capabilities": [
+        "planning",
+        "resource allocation"
+      ],
+      "description": "Agent 1 is responsible for overall coordination and ensures that tasks are broken down and resources are allocated efficiently."
+    },
+    {
+      "id": "agent_2",
+      "role": "Venue Manager",
+      "capabilities": [
+        "venue scouting",
+        "booking"
+      ],
+      "description": "Agent 2 handles finding and securing a venue for the event, ensuring it meets all requirements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Marketing Specialist",
+      "capabilities": [
+        "campaign planning",
+        "execution"
+      ],
+      "description": "Agent 3 is responsible for the marketing campaign, ensuring that the event reaches the target audience."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_venue_requirements",
+      "content": {
+        "requirements": "capacity=100, amenities=projector"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_venue_availability",
+      "content": {
+        "venue": "Community Hall",
+        "status": "available"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_event_details",
+      "content": {
+        "date": "2023-12-15",
+        "venue": "Community Hall"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_campaign_launch_date",
+      "content": {
+        "launch_date": "2023-11-15"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "all",
+      "action": "finalize_plan",
+      "content": {
+        "status": "all tasks ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_venue_requirements",
+      "content": {
+        "requirements": "capacity=100, amenities=projector"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_venue_availability",
+      "content": {
+        "venue": "Community Hall",
+        "status": "available"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_event_details",
+      "content": {
+        "date": "2023-12-15"
+      },
+      "is_bug_point": true,
+      "bug_description": "The venue information is missing, which is critical for the marketing campaign."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_campaign_launch_date",
+      "content": {
+        "launch_date": "2023-11-15"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "all",
+      "action": "finalize_plan",
+      "content": {
+        "status": "all tasks ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The missing venue information in step 3 causes agent 3 to have incomplete data, affecting their task execution."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "task_dependency",
+      "description": "Agent 3's incomplete marketing plan affects the finalization of the overall event plan in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:31.773250"
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_79d76c",
+  "trace_id": "tra_79d76c",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The incorrect routing of the trade decision leads to a lack of execution confirmation."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The absence of execution confirmation results in an erroneous execution report."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The trade decision message is mistakenly sent back to the Market Data Analyzer instead of the Transaction Executor.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

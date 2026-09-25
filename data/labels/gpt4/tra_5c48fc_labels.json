@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_5c48fc",
+  "trace_id": "tra_5c48fc",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The order execution message was misrouted to the Position Tracker instead of the Compliance Officer, causing a cascade of incorrect transactions and verification processes."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "verification",
+      "confidence": 1.0,
+      "explanation": "The incorrect message was forwarded, resulting in failed verification by the Compliance Officer."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The order execution message was incorrectly routed to the Position Tracker instead of the Compliance Officer.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

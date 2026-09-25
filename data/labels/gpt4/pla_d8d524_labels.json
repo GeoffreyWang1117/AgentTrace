@@ -1,0 +1,29 @@
+{
+  "scenario_id": "pla_d8d524",
+  "trace_id": "pla_d8d524",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 because agent_1 did not update its state to acknowledge the design plan, leading to desynchronization."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "process_dependency",
+      "confidence": 1.0,
+      "explanation": "Agent_4 reports progress based on outdated or missing design acknowledgment, causing execution based on incorrect assumptions."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "State inconsistency occurs when agent_3 incorrectly assumes the design has been acknowledged by agent_1, but agent_1's state does not reflect this acknowledgment.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

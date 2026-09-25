@@ -1,0 +1,274 @@
+{
+  "scenario_id": "pla_231f50",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "logic_error",
+  "task_description": "The agents are tasked with organizing an educational conference. This involves breaking down the main goal into subtasks like selecting a venue, inviting speakers, managing registrations, and organizing logistics. The agents must allocate resources such as budget and personnel, coordinate execution, and handle dependencies.",
+  "expected_outcome": "If everything works correctly, the conference is planned smoothly, with all tasks completed on time, within budget, and with no resource conflicts. All stakeholders are informed of updates, and dependencies are managed efficiently.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "resource_allocation"
+      ],
+      "description": "Responsible for breaking down the main goal into manageable subtasks and allocating resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Coordinator",
+      "capabilities": [
+        "task_coordination",
+        "dependency_management"
+      ],
+      "description": "Ensures that all tasks are coordinated and dependencies between tasks are handled."
+    },
+    {
+      "id": "agent_3",
+      "role": "Resource Manager",
+      "capabilities": [
+        "budget_management",
+        "personnel_allocation"
+      ],
+      "description": "Manages financial and human resources for the conference."
+    },
+    {
+      "id": "agent_4",
+      "role": "Communicator",
+      "capabilities": [
+        "information_dissemination",
+        "stakeholder_management"
+      ],
+      "description": "Responsible for communicating updates and managing stakeholder expectations."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "decompose_task",
+      "content": {
+        "task": "organize_conference",
+        "subtasks": [
+          "venue_selection",
+          "speaker_invitation",
+          "registration",
+          "logistics"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "subtask": "venue_selection",
+        "resources": [
+          "$5000",
+          "2 personnel"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "inform_stakeholders",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "resources_allocated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "update_status",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "report_completion",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "start_next_subtask",
+      "content": {
+        "subtask": "speaker_invitation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "inform_stakeholders",
+      "content": {
+        "subtask": "speaker_invitation",
+        "status": "resources_allocated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "update_status",
+      "content": {
+        "subtask": "speaker_invitation",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "decompose_task",
+      "content": {
+        "task": "organize_conference",
+        "subtasks": [
+          "venue_selection",
+          "speaker_invitation",
+          "registration",
+          "logistics"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "subtask": "venue_selection",
+        "resources": [
+          "$5000",
+          "2 personnel"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "inform_stakeholders",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "resources_not_allocated"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly informs Agent 4 that resources have not been allocated, due to a logic error in status evaluation."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "update_status",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "on_hold"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "report_completion",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "start_next_subtask",
+      "content": {
+        "subtask": "speaker_invitation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "inform_stakeholders",
+      "content": {
+        "subtask": "speaker_invitation",
+        "status": "resources_allocated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "update_status",
+      "content": {
+        "subtask": "speaker_invitation",
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing the status to be incorrectly set to 'on_hold'."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "status_update",
+      "description": "The incorrect status 'on_hold' leads Agent 2 to report the subtask as 'pending' instead of 'completed'."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:50.034343"
+}

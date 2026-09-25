@@ -1,0 +1,137 @@
+{
+  "scenario_id": "pla_a59fbd",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to collaborate to plan a community event, involving organizing venues, catering, transportation, and entertainment. They must coordinate to ensure all resources are allocated, dependencies managed, and tasks are executed on schedule.",
+  "expected_outcome": "All agents effectively communicate and coordinate, resulting in a well-planned community event with all tasks completed without any resource conflicts or unaddressed dependencies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Event Planner",
+      "capabilities": [
+        "task_decomposition",
+        "dependency_management"
+      ],
+      "description": "Responsible for breaking down the main goal into manageable subtasks and ensuring dependencies are identified and managed."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "resource_allocation",
+        "conflict_resolution"
+      ],
+      "description": "Handles allocation of resources like venues, catering, and transportation to ensure no conflicts arise."
+    },
+    {
+      "id": "agent_3",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "schedule_management",
+        "execution_monitoring"
+      ],
+      "description": "Coordinates the execution of tasks, ensures scheduling is managed, and monitors task progress."
+    },
+    {
+      "id": "agent_4",
+      "role": "Communication Officer",
+      "capabilities": [
+        "information_propagation",
+        "feedback_handling"
+      ],
+      "description": "Ensures all agents are updated with the latest information and handles feedback and updates."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "decompose_goal",
+      "content": {
+        "subtasks": [
+          "book_venue",
+          "arrange_catering",
+          "plan_transport",
+          "hire_entertainment"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "venue": "Community Hall",
+          "catering": "Gourmet Catering"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "schedule_tasks",
+      "content": {
+        "schedule": {
+          "venue_booking": "October 15, 2023",
+          "catering_setup": "October 16, 2023"
+        }
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_details",
+      "content": {
+        "confirmation": "All details verified and confirmed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "finalize_plan",
+      "content": {
+        "status": "Plan finalized and ready for execution"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "execute_tasks",
+      "content": {
+        "execution_order": [
+          "book_venue",
+          "arrange_catering"
+        ]
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "monitor_execution",
+      "content": {
+        "checkpoints": [
+          "venue_booked",
+          "catering_arranged"
+        ]
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_completion",
+      "content": {
+        "report": "Issue detected: Catering setup is delayed, not aligned with the event schedule"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:09:58.476290"
+}

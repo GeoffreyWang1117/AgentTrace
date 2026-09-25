@@ -1,0 +1,86 @@
+{
+  "scenario_id": "cod_19d065",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to develop a simple software feature. Agent 1 writes the code based on requirements, Agent 2 reviews and tests the code, and Agent 3 fixes any bugs and integrates changes. The agents must ensure smooth communication and context sharing to avoid critical issues during code review and integration.",
+  "expected_outcome": "If everything works correctly, the feature is developed, reviewed, tested, and integrated without any issues, delivering a bug-free software update.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "interpret_requirements"
+      ],
+      "description": "Agent 1 writes the initial code based on provided requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "test_code"
+      ],
+      "description": "Agent 2 reviews the code for issues and performs testing to ensure quality."
+    },
+    {
+      "id": "agent_3",
+      "role": "Integrator",
+      "capabilities": [
+        "fix_bugs",
+        "integrate_code"
+      ],
+      "description": "Agent 3 fixes identified bugs and integrates code changes into the main branch."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation v1.0",
+        "context": "requirement details"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_clarification",
+      "content": {
+        "query": "clarification on logic for edge case"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_clarification",
+      "content": {
+        "clarification": ""
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_forward",
+      "content": {
+        "approved_code": "feature implementation v1.0",
+        "additional_context": "missing critical logic details"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "null",
+      "action": "integrate_code",
+      "content": {
+        "integrated_code": "feature implementation v1.0 with unresolved logic gaps"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:07:33.367433"
+}

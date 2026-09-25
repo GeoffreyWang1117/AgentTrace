@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_411406",
+  "trace_id": "cus_411406",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4, causing the system to lose the 'escalated' status."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "As a result, agent_2 provides a response under the assumption that the ticket was not escalated."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Ticket status is not updated to 'escalated' in shared state.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

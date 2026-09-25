@@ -1,0 +1,84 @@
+{
+  "scenario_id": "res_73a826",
+  "domain": "research",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to gather information from various online databases, synthesize this data into a coherent understanding, and produce a comprehensive research report on a given scientific topic. The agents must ensure data integrity and resolve any conflicting information that arises.",
+  "expected_outcome": "Each agent successfully collects and shares accurate information without data loss or corruption. Conflicting information is reconciled, and the final research report is well-attributed with clear, consistent findings.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "access_online_sources",
+        "extract_information"
+      ],
+      "description": "Responsible for querying online databases and extracting relevant information related to the research topic."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "identify_conflicts"
+      ],
+      "description": "Analyzes the data collected, identifies any conflicting information, and attempts to resolve these discrepancies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Writer",
+      "capabilities": [
+        "synthesize_data",
+        "generate_report"
+      ],
+      "description": "Synthesizes the analyzed data into a structured research report, ensuring correct source attribution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_data",
+      "content": {
+        "research_data": "data_set_1"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "more_details_on_topic_X"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_data",
+      "content": {
+        "additional_data": "corrupted_details_on_topic_X"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "transfer_analyzed_data",
+      "content": {
+        "analyzed_data": "resolved_data_set_with_inconsistencies"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_clarification",
+      "content": {
+        "clarification": "verify_conflict_resolution_failed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:14:10.910453"
+}

@@ -1,0 +1,179 @@
+{
+  "scenario_id": "tra_79d76c",
+  "domain": "trading",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "Agents in a multi-agent trading system need to collaborate to analyze live market data, make informed trading decisions, and execute trades while ensuring data consistency and transaction integrity.",
+  "expected_outcome": "Agents should correctly analyze market data, make timely trading decisions, execute orders accurately, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_market_trends"
+      ],
+      "description": "This agent fetches the latest market data and analyzes trends to provide insights for trading decisions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "evaluate_trading_opportunities",
+        "decide_on_trades"
+      ],
+      "description": "This agent evaluates trading opportunities based on analyzed data and decides which trades to execute."
+    },
+    {
+      "id": "agent_3",
+      "role": "Transaction Executor",
+      "capabilities": [
+        "execute_trades",
+        "track_positions"
+      ],
+      "description": "This agent is responsible for executing trades and ensuring accurate position tracking post-trade execution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "market_trend": "upward",
+        "confidence": 0.9
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "status": "executed",
+        "trade_id": 12345
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_execution_report",
+      "content": {
+        "trade_id": 12345,
+        "execution_time": "2023-10-13T10:00:00Z"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_position",
+      "content": {
+        "trade_id": 12345,
+        "new_position": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "market_trend": "upward",
+        "confidence": 0.9
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "send_trade_decision",
+      "content": {
+        "trade_action": "buy",
+        "quantity": 100
+      },
+      "is_bug_point": true,
+      "bug_description": "The trade decision message is mistakenly sent back to the Market Data Analyzer instead of the Transaction Executor."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "status": "not_executed",
+        "trade_id": null
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_execution_report",
+      "content": {
+        "trade_id": null,
+        "execution_time": "N/A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The incorrect routing of the trade decision leads to a lack of execution confirmation."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The absence of execution confirmation results in an erroneous execution report."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:38.551393"
+}

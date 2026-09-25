@@ -1,0 +1,171 @@
+{
+  "scenario_id": "tra_e30293",
+  "domain": "trading",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "Three agents collaborate to analyze market data, make trading decisions, and execute transactions. They must ensure data integrity and timely execution to maintain trading accuracy and profitability.",
+  "expected_outcome": "Agent 1 fetches and shares the latest market data with Agent 2, which analyses it and makes trading recommendations to Agent 3 that executes and verifies the transactions successfully.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_market_data",
+        "broadcast_data"
+      ],
+      "description": "Agent 1 collects the latest market data from various exchanges and shares it with other agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Analyst",
+      "capabilities": [
+        "analyze_data",
+        "recommend_trades"
+      ],
+      "description": "Agent 2 analyzes market data to generate trading recommendations based on predefined strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trader",
+      "capabilities": [
+        "execute_trades",
+        "verify_transactions"
+      ],
+      "description": "Agent 3 executes trades based on recommendations and ensures transactions are verified and positions are updated."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "broadcast_market_data",
+      "content": {
+        "market_data": "latest_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_recommendation",
+      "content": {
+        "recommendation": "buy_ABC"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "trade": "buy_ABC",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "position": "ABC_updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "data_request": "market_trends"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "broadcast_market_data",
+      "content": {
+        "market_data": "stale_data"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 1 mistakenly sends stale market data directly to Agent 3 instead of Agent 2, causing incorrect trading decisions."
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_recommendation",
+      "content": {
+        "recommendation": "buy_ABC"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "trade": "buy_ABC",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update_position",
+      "content": {
+        "position": "ABC_incorrect"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "data_request": "market_trends"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 1,
+  "root_cause_step": 1,
+  "error_manifestation_step": 4,
+  "causal_chain": [
+    {
+      "source_step": 1,
+      "target_step": 2,
+      "relationship_type": "data_flow",
+      "description": "Stale data sent to Agent 3 leads to incorrect position update in subsequent steps."
+    },
+    {
+      "source_step": 2,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Incorrect data influenced trade execution, resulting in position inconsistency."
+    }
+  ],
+  "created_at": "2026-01-04T09:13:18.883408"
+}

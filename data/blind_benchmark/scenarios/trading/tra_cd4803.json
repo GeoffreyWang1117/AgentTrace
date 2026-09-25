@@ -1,0 +1,85 @@
+{
+  "scenario_id": "tra_cd4803",
+  "domain": "trading",
+  "complexity": "simple",
+  "task_description": "Three agents work collaboratively to analyze market data, make trading decisions, execute transactions, and verify the results. They must ensure that all actions use the most recent data and that all state information is consistently shared among them.",
+  "expected_outcome": "The agents should successfully execute trades based on the latest market data, maintain consistent state information, and verify each transaction accurately.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Analyst",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "Fetches real-time market data and analyzes trends to inform trading decisions."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Strategist",
+      "capabilities": [
+        "make_trade_decision",
+        "formulate_strategy"
+      ],
+      "description": "Formulates trading strategies based on analyzed data and decides when to execute trades."
+    },
+    {
+      "id": "agent_3",
+      "role": "Execution Manager",
+      "capabilities": [
+        "execute_trade",
+        "verify_transaction"
+      ],
+      "description": "Executes trading orders and verifies the successful transaction of orders."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_analyzed_data",
+      "content": {
+        "market_data": "latest_analyzed_data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trade_order",
+      "content": {
+        "trade_decision": "buy_100_shares"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "execution_status": "success",
+        "executed_shares": 100
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_state",
+      "content": {
+        "current_position": 0
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "verify_consistency",
+      "content": {
+        "position": 0
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:46:22.914403"
+}

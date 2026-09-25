@@ -1,0 +1,250 @@
+{
+  "scenario_id": "res_6eef0e",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "timeout_cascade",
+  "task_description": "In this scenario, four agents collaborate to gather, synthesize, and report information on climate change impact from various online repositories, scientific databases, and news sources. The agents must ensure information accuracy, consistency, and proper source attribution.",
+  "expected_outcome": "All agents successfully gather and synthesize accurate and consistent information into a comprehensive research report on climate change impacts, with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_data",
+        "parse_data"
+      ],
+      "description": "This agent is responsible for collecting raw data from assigned online repositories and databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "validate_data",
+        "check_consistency"
+      ],
+      "description": "This agent validates the data collected by Agent 1 for accuracy and consistency."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_data",
+        "reconcile_information"
+      ],
+      "description": "This agent synthesizes and reconciles the validated data from Agent 2, handling any conflicting data."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the synthesized data into a final research report and ensures proper source attribution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "raw_data": "Climate data from Source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "Checked climate data from Source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "raw_data": "Climate data from Source B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "Checked climate data from Source B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "Reconciled climate data from Sources A and B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "generate_report",
+      "content": {
+        "report_content": "Final research report with sources attributed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "save_report",
+      "content": {
+        "file_path": "/reports/climate_impact_report.pdf"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": null,
+      "to_agent": null,
+      "action": "notify_completion",
+      "content": {
+        "status": "Report completed successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "raw_data": "Climate data from Source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "Checked climate data from Source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "raw_data": "Climate data from Source B"
+      },
+      "is_bug_point": true,
+      "bug_description": "A timeout occurs due to delayed response from Source B, causing Agent 1 to fail in sending data on time."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "Incomplete data due to timeout"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "Reconciliation error due to incomplete data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "generate_report",
+      "content": {
+        "report_content": "Partial report with missing sections"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "save_report",
+      "content": {
+        "file_path": "/reports/climate_impact_report_incomplete.pdf"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": null,
+      "to_agent": null,
+      "action": "notify_completion",
+      "content": {
+        "status": "Report completed with errors"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Due to the timeout in step 3, incomplete data is sent in step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_dependency",
+      "description": "Agent 3 receives incomplete data, causing a reconciliation error in step 5."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "processing_error",
+      "description": "The reconciliation error leads to a partial report generation in step 6."
+    }
+  ],
+  "created_at": "2026-01-04T09:06:26.505674"
+}

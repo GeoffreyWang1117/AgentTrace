@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cod_f07c91",
+  "trace_id": "cod_f07c91",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The feedback given at step 3 results in a corrupted code version being prepared for testing at step 4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "testing",
+      "confidence": 1.0,
+      "explanation": "The erroneous version is tested, leading to unnoticed corruption."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "integration_request",
+      "confidence": 1.0,
+      "explanation": "Corrupted data is used to request integration, causing a conflict."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Bug injected at step 3",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,315 @@
+{
+  "scenario_id": "cus_2f3646",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "data_corruption",
+  "task_description": "Agents need to efficiently handle customer inquiries, escalate complex issues when necessary, and ensure that tickets are tracked and resolved without loss of information or synchronization errors.",
+  "expected_outcome": "The customer inquiry is addressed efficiently with all agents maintaining accurate customer context and synchronized ticket status throughout the process.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support",
+      "capabilities": [
+        "Receive inquiries",
+        "Provide initial responses"
+      ],
+      "description": "Handles initial customer interactions and provides basic solutions or information."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support",
+      "capabilities": [
+        "Diagnose technical issues",
+        "Provide technical solutions"
+      ],
+      "description": "Specializes in resolving technical issues that require more in-depth knowledge."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Specialist",
+      "capabilities": [
+        "Manage escalations",
+        "Coordinate between departments"
+      ],
+      "description": "Handles complex issues that need escalation and ensures smooth coordination between agents."
+    },
+    {
+      "id": "agent_4",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "Review ticket resolutions",
+        "Ensure customer satisfaction"
+      ],
+      "description": "Checks resolved tickets for quality and ensures customer satisfaction with the provided solutions."
+    },
+    {
+      "id": "agent_5",
+      "role": "Ticketing System",
+      "capabilities": [
+        "Track ticket status",
+        "Update ticket information"
+      ],
+      "description": "Automated system that manages ticket statuses and updates information based on agent actions."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "12345",
+        "issue": "Internet not working"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "TICK123",
+        "details": "Check connection"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "TICK123",
+        "status": "In Progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "TICK123",
+        "issue": "Requires further escalation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "TICK123",
+        "status": "Escalated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_quality_check",
+      "content": {
+        "ticket_id": "TICK123"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_ticket_resolution",
+      "content": {
+        "ticket_id": "TICK123",
+        "status": "Pending QA"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "feedback_to_support",
+      "content": {
+        "ticket_id": "TICK123",
+        "resolution_quality": "Approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "TICK123",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "create_ticket",
+      "content": {
+        "customer_id": "12345",
+        "issue": "Internet not working"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "TICK123",
+        "details": "Check connection"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "TICK123",
+        "status": "In Progress"
+      },
+      "is_bug_point": true,
+      "bug_description": "Ticket ID gets corrupted from 'TICK123' to 'TIK123'"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "TIK123",
+        "issue": "Requires further escalation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "TIK123",
+        "status": "Escalated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_quality_check",
+      "content": {
+        "ticket_id": "TIK123"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_ticket_resolution",
+      "content": {
+        "ticket_id": "TIK123",
+        "status": "Pending QA"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "feedback_to_support",
+      "content": {
+        "ticket_id": "TIK123",
+        "resolution_quality": "Approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "TIK123",
+        "status": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 9,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Corrupted ticket ID 'TIK123' used in step 5"
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Corrupted ticket ID 'TIK123' used in step 6"
+    },
+    {
+      "source_step": 6,
+      "target_step": 7,
+      "relationship_type": "data_flow",
+      "description": "Corrupted ticket ID 'TIK123' used in step 7"
+    },
+    {
+      "source_step": 7,
+      "target_step": 8,
+      "relationship_type": "data_flow",
+      "description": "Corrupted ticket ID 'TIK123' used in step 8"
+    },
+    {
+      "source_step": 8,
+      "target_step": 9,
+      "relationship_type": "data_flow",
+      "description": "Corrupted ticket ID 'TIK123' used in step 9, causing closure of the wrong ticket"
+    }
+  ],
+  "created_at": "2026-01-04T09:16:06.296239"
+}

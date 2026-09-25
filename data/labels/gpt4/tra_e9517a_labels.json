@@ -1,0 +1,37 @@
+{
+  "scenario_id": "tra_e9517a",
+  "trace_id": "tra_e9517a",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Delayed confirmation of order execution causes agent 3 to report the delay to agent 2, affecting subsequent actions."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "dependency",
+      "confidence": 1.0,
+      "explanation": "Agent 2 sends a new trade signal without resolving the delay of previous order execution."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_8",
+      "relationship_type": "timing",
+      "confidence": 1.0,
+      "explanation": "The delay in execution confirmation leads to a failure in processing the next order correctly."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 experiences a timeout waiting for market confirmation, causing a delay.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

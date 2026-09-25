@@ -1,0 +1,199 @@
+{
+  "scenario_id": "pla_d4489d",
+  "domain": "planning",
+  "complexity": "simple",
+  "bug_type": "state_inconsistency",
+  "task_description": "Three agents need to collaboratively plan and execute a project to set up a temporary event space, involving logistics, resource allocation, and on-site coordination.",
+  "expected_outcome": "The agents successfully break down the project into subtasks, allocate resources without conflicts, ensure all dependencies are handled, and complete the setup within the given deadline.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_breakdown",
+        "dependency_management"
+      ],
+      "description": "Responsible for breaking down the main goal into subtasks and managing dependencies between tasks."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "resource_allocation",
+        "conflict_resolution"
+      ],
+      "description": "Handles allocation of resources and resolves any conflicts that arise between resource demands."
+    },
+    {
+      "id": "agent_3",
+      "role": "Coordinator",
+      "capabilities": [
+        "task_execution",
+        "progress_tracking"
+      ],
+      "description": "Coordinates the execution of tasks and tracks the progress of the project."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "tasks": [
+          "task_1",
+          "task_2"
+        ],
+        "dependencies": {
+          "task_2": "task_1"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "task_1": [
+            "resource_a"
+          ],
+          "task_2": [
+            "resource_b"
+          ]
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_task_execution",
+      "content": {
+        "task_status": "ready_to_execute",
+        "dependencies_met": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "execute_task",
+      "content": {
+        "task": "task_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_progress",
+      "content": {
+        "completed_tasks": [
+          "task_1"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_task_breakdown",
+      "content": {
+        "tasks": [
+          "task_1",
+          "task_2"
+        ],
+        "dependencies": {
+          "task_2": "task_1"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "resources": {
+          "task_1": [
+            "resource_a"
+          ],
+          "task_2": [
+            "resource_b"
+          ]
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_task_execution",
+      "content": {
+        "task_status": "ready_to_execute",
+        "dependencies_met": false
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 incorrectly believes dependencies are not met due to outdated dependency information."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "execute_task",
+      "content": {
+        "task": "task_1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_progress",
+      "content": {
+        "completed_tasks": []
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted dependency data at step 3 prevents task 1 from being executed at step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "control_flow",
+      "description": "Failure to execute task 1 results in no progress being reported at step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:10:06.735930"
+}

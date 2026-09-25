@@ -1,0 +1,171 @@
+{
+  "scenario_id": "pla_43cb30",
+  "domain": "planning",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "Three agents need to collaborate to assemble a drone for a delivery task. The complex goal is to assemble the drone and load it with packages. This involves breaking down tasks such as assembling mechanical parts, configuring software, and loading the packages. Agents must allocate resources efficiently, coordinate their actions, and handle dependencies between assembly, software configuration, and package loading.",
+  "expected_outcome": "The drone is assembled successfully with all components working in harmony. All packages are loaded correctly, and the drone is ready for delivery without any resource conflicts or dependency issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Mechanical Engineer",
+      "capabilities": [
+        "assemble_parts",
+        "calibrate_sensors"
+      ],
+      "description": "Responsible for assembling the mechanical parts of the drone and ensuring all sensors are properly calibrated."
+    },
+    {
+      "id": "agent_2",
+      "role": "Software Engineer",
+      "capabilities": [
+        "load_software",
+        "configure_network"
+      ],
+      "description": "Handles loading the flight control software and configuring network settings for remote operation."
+    },
+    {
+      "id": "agent_3",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "allocate_packages",
+        "optimize_delivery"
+      ],
+      "description": "Manages the allocation and loading of packages onto the drone and ensures they are optimized for the delivery task."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "notify_assembly_complete",
+      "content": {
+        "status": "complete",
+        "next_task": "software_load"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_package_list",
+      "content": {
+        "software_status": "loaded"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_package_list",
+      "content": {
+        "package_count": 5
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "calibrate_sensors",
+      "content": {
+        "calibration_status": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "notify_ready_for_loading",
+      "content": {
+        "drone_status": "ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "notify_assembly_complete",
+      "content": {
+        "status": "complete",
+        "next_task": "software_load"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_package_list",
+      "content": {
+        "software_status": "loaded"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_package_list",
+      "content": {
+        "package_count": "5"
+      },
+      "is_bug_point": true,
+      "bug_description": "The package list confirmation was mistakenly sent back to the Software Engineer instead of the Mechanical Engineer, causing confusion in task allocation."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "calibrate_sensors",
+      "content": {
+        "calibration_status": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "notify_ready_for_loading",
+      "content": {
+        "drone_status": "ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to miscommunication between agents, leading to delayed package loading readiness."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "The incorrect routing of the package list confirmation eventually affected the notification of readiness for loading, causing a misalignment in the workflow."
+    }
+  ],
+  "created_at": "2026-01-04T09:09:46.389874"
+}

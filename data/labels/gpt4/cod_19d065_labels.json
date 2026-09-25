@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_19d065",
+  "trace_id": "cod_19d065",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted (missing) clarification data flows from step 3 to step 4, leading to approval without necessary context."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Lack of context at step 4 results in unresolved logic gaps upon integration in step 5."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 1 failed to provide critical logic clarification, causing missing context for the reviewer.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

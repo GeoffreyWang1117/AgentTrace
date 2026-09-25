@@ -1,0 +1,29 @@
+{
+  "scenario_id": "pla_77aa96",
+  "trace_id": "pla_77aa96",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted dependency format flows from step 3 to step 4, leading to miscommunication."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_12",
+      "relationship_type": "execution_dependency",
+      "confidence": 1.0,
+      "explanation": "Incorrect dependency handling results in execution errors at step 12, causing delivery failures."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Dependency information is unexpectedly formatted, missing underscore in 'fuel_before_delivery'.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_12"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,53 @@
+{
+  "scenario_id": "res_09837c",
+  "trace_id": "res_09837c",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 due to the race condition."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_validation",
+      "confidence": 1.0,
+      "explanation": "Incomplete validation in step 4 leads to unresolved conflicts in step 5."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "validation_response",
+      "confidence": 1.0,
+      "explanation": "Incomplete data from step 5 results in invalid confirmation in step 6."
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_7",
+      "relationship_type": "report_generation",
+      "confidence": 1.0,
+      "explanation": "Invalid report structure confirmation from step 6 leads to incomplete report generation in step 7."
+    },
+    {
+      "source_node_id": "step_7",
+      "target_node_id": "step_8",
+      "relationship_type": "report_distribution",
+      "confidence": 1.0,
+      "explanation": "Incomplete report from step 7 gets distributed in step 8 with inaccuracies."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "A race condition occurs where agent_3 and agent_2 update the report at the same time, causing inconsistencies in the draft report structure.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_6",
+    "step_7",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_cd4803",
+  "trace_id": "tra_cd4803",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from agent_3 to agent_1, leading to state inconsistency."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "state_dependency",
+      "confidence": 1.0,
+      "explanation": "Agent 2 relies on incorrect state information from agent_1, resulting in a failed consistency check."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 updates its local state but fails to properly notify Agent 1 about the executed shares.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

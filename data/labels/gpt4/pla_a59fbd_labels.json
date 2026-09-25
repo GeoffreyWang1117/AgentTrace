@@ -1,0 +1,37 @@
+{
+  "scenario_id": "pla_a59fbd",
+  "trace_id": "pla_a59fbd",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted scheduling data is communicated to agent_4, but not flagged due to confirmation oversight"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Confirmation of incorrect schedule propagated to agent_1, leading to finalization based on faulty data"
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_8",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Execution and monitoring continue based on the incorrect schedule, leading to error detection in final report"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Incorrect date assigned to catering setup, creating a schedule conflict",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_8"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,192 @@
+{
+  "scenario_id": "pla_a9eac0",
+  "domain": "planning",
+  "complexity": "complex",
+  "task_description": "Coordinate the construction of a new logistics facility with the following subtasks: site preparation, foundation laying, material procurement, workforce allocation, and construction monitoring.",
+  "expected_outcome": "The logistics facility is successfully constructed on time with all resources optimally allocated and tasks completed in the correct order.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Site Manager",
+      "capabilities": [
+        "task_planning",
+        "resource_allocation"
+      ],
+      "description": "Oversees the entire project and coordinates with other agents to ensure timely task completion."
+    },
+    {
+      "id": "agent_2",
+      "role": "Procurement Specialist",
+      "capabilities": [
+        "material_sourcing",
+        "supplier_communication"
+      ],
+      "description": "Responsible for sourcing and procuring materials required for construction."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Supervisor",
+      "capabilities": [
+        "construction_execution",
+        "quality_control"
+      ],
+      "description": "Leads the construction team and ensures that work is executed according to plans and quality standards."
+    },
+    {
+      "id": "agent_4",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "resource_distribution",
+        "schedule_optimization"
+      ],
+      "description": "Manages the distribution of materials and workforce scheduling."
+    },
+    {
+      "id": "agent_5",
+      "role": "Site Inspector",
+      "capabilities": [
+        "inspection",
+        "compliance_check"
+      ],
+      "description": "Inspects the site to ensure compliance with regulations and safety standards."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_materials",
+      "content": {
+        "materials": [
+          "cement",
+          "steel",
+          "bricks"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "confirm_materials_availability",
+      "content": {
+        "available_materials": [
+          "cement",
+          "steel",
+          "bricks"
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "plan_construction",
+      "content": {
+        "schedule": "start next Monday",
+        "tasks": [
+          "site preparation",
+          "foundation laying"
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "workers": 50,
+        "machines": 10
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "request_inspection",
+      "content": {
+        "completed_tasks": [
+          "site preparation"
+        ]
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "report_inspection",
+      "content": {
+        "status": "approved",
+        "issues": []
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "deliver_materials",
+      "content": {
+        "materials_delivered": [
+          "cement",
+          "steel"
+        ]
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_progress",
+      "content": {
+        "current_task": "foundation laying",
+        "completion_time": "delayed due to schedule error"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "adjust_schedule",
+      "content": {
+        "new_schedule": "accelerate by 1 day"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "reorder_materials",
+      "content": {
+        "additional_materials": [
+          "bricks"
+        ]
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "request_final_inspection",
+      "content": {
+        "completed_tasks": [
+          "foundation laying"
+        ]
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "final_inspection_report",
+      "content": {
+        "status": "approved with delay noted",
+        "issues": [
+          "schedule delay"
+        ]
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:09:30.552879"
+}

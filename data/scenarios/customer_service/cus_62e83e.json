@@ -1,0 +1,266 @@
+{
+  "scenario_id": "cus_62e83e",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "bug_type": "data_corruption",
+  "task_description": "In this scenario, four agents collaborate to handle customer service inquiries. They need to manage customer contexts, escalate complex issues, and ensure all ticket status updates are synchronized across the system. The primary goal is to efficiently resolve all customer tickets while maintaining data integrity during the process.",
+  "expected_outcome": "Each customer inquiry is handled swiftly; complex issues are escalated accurately, and ticket statuses are updated in real-time across all systems. No information is lost or corrupted during agent handoffs.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "accept_inquiries",
+        "provide_initial_responses"
+      ],
+      "description": "Handles initial customer inquiries and provides solutions for common issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_ticket_status"
+      ],
+      "description": "Takes over inquiries requiring technical expertise and updates ticket statuses accordingly."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Specialist",
+      "capabilities": [
+        "escalate_issues",
+        "maintain_customer_context"
+      ],
+      "description": "Handles the escalation of complex issues while ensuring customer context is preserved."
+    },
+    {
+      "id": "agent_4",
+      "role": "Customer Satisfaction Manager",
+      "capabilities": [
+        "conduct_follow_ups",
+        "ensure_resolution_completeness"
+      ],
+      "description": "Performs follow-up with customers to ensure issues are resolved to their satisfaction."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": 101,
+        "customer_issue": "Login problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": 101,
+        "technical_details": "Authentication error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "provide_solution",
+      "content": {
+        "ticket_id": 101,
+        "proposed_solution": "Reset password link sent"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_solution_delivery",
+      "content": {
+        "ticket_id": 101,
+        "status": "Solution sent to customer"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "notify_for_follow_up",
+      "content": {
+        "ticket_id": 101,
+        "customer_feedback_request": "Awaiting response"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_customer_feedback",
+      "content": {
+        "ticket_id": 101,
+        "feedback": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": 101,
+        "final_status": "Closed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "log_resolution_details",
+      "content": {
+        "ticket_id": 101,
+        "resolution_note": "Issue resolved successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": 101,
+        "customer_issue": "Login problem"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": 101,
+        "technical_details": "Authentication error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "provide_solution",
+      "content": {
+        "ticket_id": 101,
+        "proposed_solution": "Reset password link sent"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption: The proposed solution data was altered and now references the wrong issue."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_solution_delivery",
+      "content": {
+        "ticket_id": 101,
+        "status": "Solution sent to customer"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "notify_for_follow_up",
+      "content": {
+        "ticket_id": 101,
+        "customer_feedback_request": "Awaiting response"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_customer_feedback",
+      "content": {
+        "ticket_id": 101,
+        "feedback": "Issue still persists"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "reopen_ticket",
+      "content": {
+        "ticket_id": 101,
+        "status": "Reopened due to unresolved issue"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "review_previous_resolution",
+      "content": {
+        "ticket_id": 101,
+        "resolution_note": "Re-evaluate solution provided"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "information_propagation",
+      "description": "Incorrect solution confirmation leads to an incorrect follow-up request"
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "feedback_loop",
+      "description": "Customer feedback indicates the issue is not resolved, triggering a ticket reopening"
+    }
+  ],
+  "created_at": "2026-01-03T22:45:21.019382"
+}

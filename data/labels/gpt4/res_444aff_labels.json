@@ -1,0 +1,37 @@
+{
+  "scenario_id": "res_444aff",
+  "trace_id": "res_444aff",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Agent 3 sends incomplete data to Agent 4 due to a timeout with Agent 2."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_6",
+      "relationship_type": "validation_dependency",
+      "confidence": 1.0,
+      "explanation": "Incomplete data leads to missing source attribution during validation."
+    },
+    {
+      "source_node_id": "step_6",
+      "target_node_id": "step_7",
+      "relationship_type": "report_generation",
+      "confidence": 1.0,
+      "explanation": "The final report is generated with errors due to missing information."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 times out waiting for a response from Agent 2, causing a delay in reconciliation.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_6",
+    "step_7"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

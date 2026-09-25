@@ -1,0 +1,169 @@
+{
+  "scenario_id": "res_63b220",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "Agents collaborate to gather information from various online sources, synthesize it to form a coherent research report on the impact of renewable energy adoption in urban areas.",
+  "expected_outcome": "The agents should collect accurate data from designated sources, reconcile conflicting information, ensure correct source attribution, and compile a comprehensive research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_web_data",
+        "filter_relevant_content"
+      ],
+      "description": "Responsible for gathering information from designated online databases and news sites about renewable energy."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_data",
+        "reconcile_conflicts"
+      ],
+      "description": "Combines data collected by other agents, resolves conflicts, and ensures accuracy."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Compiler",
+      "capabilities": [
+        "compile_report",
+        "ensure_source_attribution"
+      ],
+      "description": "Takes synthesized information and constructs a coherent research report, ensuring all sources are correctly attributed."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "renewable energy statistics from source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "query": "need clarification on statistics from source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "clarified statistics from source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "finalized statistics from sources A and B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "compile_report",
+      "content": {
+        "report": "report draft with correct source attribution"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "renewable energy statistics from source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "query": "need clarification on statistics from source A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_data",
+      "content": {
+        "data": "clarified statistics from source A"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data intended for agent_2 is incorrectly sent to agent_3, causing an information gap."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_3",
+      "action": "compile_report",
+      "content": {
+        "report": "incomplete report missing data from source A clarification"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_feedback",
+      "content": {
+        "feedback": "report incomplete, missing crucial data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 due to incorrect routing of clarified statistics to agent_3 instead of agent_2."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "feedback",
+      "description": "The incomplete report compiled with missing data manifests as an error during feedback in step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:27.591157"
+}

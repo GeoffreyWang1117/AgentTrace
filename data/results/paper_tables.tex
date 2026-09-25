@@ -1,0 +1,55 @@
+
+\begin{table}[t]
+\centering
+\caption{Root Cause Localization Performance on AgentTrace Benchmark (250 scenarios)}
+\label{tab:main_results}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & \textbf{Recall} & \textbf{Hit@1} & \textbf{Hit@3} & \textbf{MRR} \\
+\midrule
+AgentTrace & 100.0% & 1.6% & 89.2% & 0.473 \\
+LLM-Direct (GPT-4o) & - & 49.2% & - & - \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[t]
+\centering
+\caption{LLM-as-Judge Comparison (GPT-4o as Judge)}
+\label{tab:judge_results}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Metric} & \textbf{AgentTrace} & \textbf{LLM-Direct} & \textbf{Tie} \\
+\midrule
+Win Rate & 34.0% & 66.0% & 0.0% \\
+Correctness & 5.00 & 4.20 & - \\
+Completeness & 3.66 & 3.78 & - \\
+Clarity & 3.92 & 4.60 & - \\
+Efficiency & 4.44 & 3.90 & - \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[t]
+\centering
+\caption{Performance by Domain}
+\label{tab:domain_results}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Domain} & \textbf{AgentTrace Hit@3} & \textbf{LLM-Direct Accuracy} \\
+\midrule
+Research & 89.2% & 51.0% \\
+Coding & 89.2% & 53.8% \\
+Planning & 89.2% & 45.7% \\
+Customer Service & 89.2% & 45.1% \\
+Trading & 89.2% & 50.0% \\
+
+\bottomrule
+\end{tabular}
+\end{table}

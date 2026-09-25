@@ -1,0 +1,29 @@
+{
+  "scenario_id": "pla_d4489d",
+  "trace_id": "pla_d4489d",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted dependency data at step 3 prevents task 1 from being executed at step 4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "control_flow",
+      "confidence": 1.0,
+      "explanation": "Failure to execute task 1 results in no progress being reported at step 5."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 incorrectly believes dependencies are not met due to outdated dependency information.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

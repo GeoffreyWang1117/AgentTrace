@@ -1,0 +1,135 @@
+{
+  "scenario_id": "pla_231f50",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents are tasked with organizing an educational conference. This involves breaking down the main goal into subtasks like selecting a venue, inviting speakers, managing registrations, and organizing logistics. The agents must allocate resources such as budget and personnel, coordinate execution, and handle dependencies.",
+  "expected_outcome": "If everything works correctly, the conference is planned smoothly, with all tasks completed on time, within budget, and with no resource conflicts. All stakeholders are informed of updates, and dependencies are managed efficiently.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "resource_allocation"
+      ],
+      "description": "Responsible for breaking down the main goal into manageable subtasks and allocating resources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Coordinator",
+      "capabilities": [
+        "task_coordination",
+        "dependency_management"
+      ],
+      "description": "Ensures that all tasks are coordinated and dependencies between tasks are handled."
+    },
+    {
+      "id": "agent_3",
+      "role": "Resource Manager",
+      "capabilities": [
+        "budget_management",
+        "personnel_allocation"
+      ],
+      "description": "Manages financial and human resources for the conference."
+    },
+    {
+      "id": "agent_4",
+      "role": "Communicator",
+      "capabilities": [
+        "information_dissemination",
+        "stakeholder_management"
+      ],
+      "description": "Responsible for communicating updates and managing stakeholder expectations."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "decompose_task",
+      "content": {
+        "task": "organize_conference",
+        "subtasks": [
+          "venue_selection",
+          "speaker_invitation",
+          "registration",
+          "logistics"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "subtask": "venue_selection",
+        "resources": [
+          "$5000",
+          "2 personnel"
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "inform_stakeholders",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "resources_not_allocated"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "update_status",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "on_hold"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "report_completion",
+      "content": {
+        "subtask": "venue_selection",
+        "status": "pending"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "start_next_subtask",
+      "content": {
+        "subtask": "speaker_invitation"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "inform_stakeholders",
+      "content": {
+        "subtask": "speaker_invitation",
+        "status": "resources_allocated"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "update_status",
+      "content": {
+        "subtask": "speaker_invitation",
+        "status": "in_progress"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:50.034343"
+}

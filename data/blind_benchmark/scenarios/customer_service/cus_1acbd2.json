@@ -1,0 +1,127 @@
+{
+  "scenario_id": "cus_1acbd2",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "In a customer service environment, agents work together to manage customer inquiries by answering questions, escalating complex issues, and ensuring ticket resolution. The system should maintain the context of customer interactions during agent handoffs and synchronize ticket statuses to avoid duplicate responses.",
+  "expected_outcome": "The agents successfully handle customer inquiries, escalate issues as needed, and resolve tickets without losing context or creating duplicate/conflicting responses. Ticket statuses remain synchronized across all agents.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "answer_inquiries",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and creates tickets for tracking."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "escalate_issue"
+      ],
+      "description": "Handles technical issues and escalates complex problems to specialized agents."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Agent",
+      "capabilities": [
+        "handle_escalations",
+        "coordinate_resolution"
+      ],
+      "description": "Manages escalated issues and coordinates with other agents for resolution."
+    },
+    {
+      "id": "agent_4",
+      "role": "Ticket Manager",
+      "capabilities": [
+        "update_ticket_status",
+        "ensure_synchronization"
+      ],
+      "description": "Oversees ticket status updates and ensures all agents have the latest information."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "create_ticket",
+      "content": {
+        "ticket_id": "123",
+        "customer_issue": "Internet not working"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "transfer_ticket",
+      "content": {
+        "ticket_id": "123"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_details": "Router configuration required"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "Escalated"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "confirm_status",
+      "content": {
+        "ticket_id": "123",
+        "status": "Pending"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_solution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "Router reset instructions"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "close_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "Resolved"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "123",
+        "status": "Resolved"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:18.440985"
+}

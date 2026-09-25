@@ -1,0 +1,44 @@
+{
+  "PageRank": {
+    "correct": 12,
+    "total": 550,
+    "hit_at_3": 547,
+    "hit_at_1_rate": 0.02181818181818182,
+    "hit_at_3_rate": 0.9945454545454545
+  },
+  "FirstDivergence": {
+    "correct": 10,
+    "total": 550,
+    "hit_at_3": 10,
+    "hit_at_1_rate": 0.01818181818181818,
+    "hit_at_3_rate": 0.01818181818181818
+  },
+  "AnomalyScore": {
+    "correct": 29,
+    "total": 550,
+    "hit_at_3": 445,
+    "hit_at_1_rate": 0.05272727272727273,
+    "hit_at_3_rate": 0.8090909090909091
+  },
+  "Betweenness": {
+    "correct": 149,
+    "total": 550,
+    "hit_at_3": 511,
+    "hit_at_1_rate": 0.27090909090909093,
+    "hit_at_3_rate": 0.9290909090909091
+  },
+  "RandomWalk": {
+    "correct": 4,
+    "total": 550,
+    "hit_at_3": 459,
+    "hit_at_1_rate": 0.007272727272727273,
+    "hit_at_3_rate": 0.8345454545454546
+  },
+  "EarliestNode": {
+    "correct": 12,
+    "total": 550,
+    "hit_at_3": 12,
+    "hit_at_1_rate": 0.02181818181818182,
+    "hit_at_3_rate": 0.02181818181818182
+  }
+}

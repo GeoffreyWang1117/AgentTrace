@@ -1,0 +1,21 @@
+{
+  "scenario_id": "cus_243385",
+  "trace_id": "cus_243385",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted data flows from step 3 to step 4 due to race condition, causing inconsistent status update that later impacts resolution confirmation."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Race condition occurs when two threads attempt to update the ticket status simultaneously, leading to inconsistent status.",
+  "error_propagation_path": [
+    "step_3",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

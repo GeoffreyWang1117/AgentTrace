@@ -1,0 +1,383 @@
+{
+  "scenario_id": "pla_b99fb9",
+  "domain": "planning",
+  "complexity": "complex",
+  "bug_type": "missing_context",
+  "task_description": "Agents need to collaboratively plan and execute a complex logistical operation. The operation involves transporting a set of goods from multiple warehouses to a final delivery point. The agents must break down the overall task into subtasks such as route planning, vehicle allocation, load balancing, and schedule optimization. They need to coordinate their efforts, ensuring resource scheduling and conflict resolution, while maintaining communication about task dependencies and updates.",
+  "expected_outcome": "The logistical operation is completed efficiently with all goods delivered to the destination on time, resources are optimally used, and all agents are synchronized with the task progress and context.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Route Planner",
+      "capabilities": [
+        "analyze_routes",
+        "optimize_paths"
+      ],
+      "description": "Responsible for planning and optimizing routes for transportation."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Allocator",
+      "capabilities": [
+        "allocate_vehicles",
+        "reserve_resources"
+      ],
+      "description": "Allocates vehicles and necessary resources for the task execution."
+    },
+    {
+      "id": "agent_3",
+      "role": "Load Balancer",
+      "capabilities": [
+        "balance_loads",
+        "maximize_efficiency"
+      ],
+      "description": "Distributes loads evenly across available transportation resources."
+    },
+    {
+      "id": "agent_4",
+      "role": "Schedule Optimizer",
+      "capabilities": [
+        "optimize_schedules",
+        "adjust_delays"
+      ],
+      "description": "Creates and updates schedules to optimize delivery times."
+    },
+    {
+      "id": "agent_5",
+      "role": "Dependency Manager",
+      "capabilities": [
+        "manage_dependencies",
+        "resolve_conflicts"
+      ],
+      "description": "Handles task dependencies and resolves conflicts among agents."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_route_plan",
+      "content": {
+        "routes": [
+          "Route_A",
+          "Route_B"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_vehicles",
+      "content": {
+        "vehicles": [
+          "Truck_1",
+          "Truck_2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "balance_loads",
+      "content": {
+        "load_distribution": {
+          "Truck_1": "50%",
+          "Truck_2": "50%"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_schedule_update",
+      "content": {
+        "schedule": "Optimized_Schedule"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_updated_route",
+      "content": {
+        "updated_routes": [
+          "New_Route_A"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "reallocate_vehicles",
+      "content": {
+        "vehicles": [
+          "Truck_3"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "rebalance_loads",
+      "content": {
+        "load_distribution": {
+          "Truck_3": "100%"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_updated_schedule",
+      "content": {
+        "schedule": "Reoptimized_Schedule"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "verify_dependencies",
+      "content": {
+        "dependencies": "Reconfirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "finalize_routes",
+      "content": {
+        "final_routes": [
+          "Final_Route_A",
+          "Final_Route_B"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "finalize_vehicle_allocation",
+      "content": {
+        "vehicles": [
+          "Truck_1",
+          "Truck_4"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_route_plan",
+      "content": {
+        "routes": [
+          "Route_A",
+          "Route_B"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_vehicles",
+      "content": {
+        "vehicles": [
+          "Truck_1",
+          "Truck_2"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "balance_loads",
+      "content": {
+        "load_distribution": {
+          "Truck_1": "50%",
+          "Truck_2": "50%"
+        }
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 does not include context about delivery time constraints that agent 4 needs."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_schedule_update",
+      "content": {
+        "schedule": "Optimized_Schedule"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": "Resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_updated_route",
+      "content": {
+        "updated_routes": [
+          "New_Route_A"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "reallocate_vehicles",
+      "content": {
+        "vehicles": [
+          "Truck_3"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "rebalance_loads",
+      "content": {
+        "load_distribution": {
+          "Truck_3": "100%"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_updated_schedule",
+      "content": {
+        "schedule": "Reoptimized_Schedule"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "verify_dependencies",
+      "content": {
+        "dependencies": "Reconfirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "finalize_routes",
+      "content": {
+        "final_routes": [
+          "Final_Route_A",
+          "Final_Route_B"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "finalize_vehicle_allocation",
+      "content": {
+        "vehicles": [
+          "Truck_1",
+          "Truck_4"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Missing context about delivery time constraints affects schedule optimization."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Schedule update lacks critical timing information leading to incorrect dependency confirmation."
+    }
+  ],
+  "created_at": "2026-01-04T09:09:14.157547"
+}

@@ -1,0 +1,169 @@
+{
+  "scenario_id": "res_1b1235",
+  "domain": "research",
+  "complexity": "complex",
+  "task_description": "The agents need to collaboratively search for information across multiple online databases, synthesize findings to reconcile any conflicting data, and produce a comprehensive research report on the impact of climate change on marine biodiversity.",
+  "expected_outcome": "The agents should successfully gather data, synthesize it into a cohesive report, and ensure all information is accurate and properly attributed with no corruption or loss of data.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "DataCollector",
+      "capabilities": [
+        "search_database",
+        "filter_relevant_information"
+      ],
+      "description": "This agent is responsible for searching databases and gathering relevant information on climate change impacts on marine biodiversity."
+    },
+    {
+      "id": "agent_2",
+      "role": "DataVerifier",
+      "capabilities": [
+        "cross_check_information",
+        "validate_data_source"
+      ],
+      "description": "This agent cross-checks information from various sources to verify accuracy and reliability."
+    },
+    {
+      "id": "agent_3",
+      "role": "DataSynthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "resolve_conflicts"
+      ],
+      "description": "This agent synthesizes gathered data, resolves any conflicts, and ensures a cohesive dataset."
+    },
+    {
+      "id": "agent_4",
+      "role": "ReportWriter",
+      "capabilities": [
+        "draft_report",
+        "integrate_synthesized_data"
+      ],
+      "description": "This agent is tasked with drafting the research report based on the synthesized data."
+    },
+    {
+      "id": "agent_5",
+      "role": "QualityChecker",
+      "capabilities": [
+        "review_report",
+        "ensure_data_integrity"
+      ],
+      "description": "This agent reviews the final report to ensure quality and data integrity before submission."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "topic": "impact of climate change",
+        "source": "database_1"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "verify_data",
+      "content": {
+        "verification_status": "verified",
+        "source": "database_1"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_verified_data",
+      "content": {
+        "data": "corrupted climate impact data from db1"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "incomplete data set"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "draft_report",
+      "content": {
+        "draft": "report draft missing key data"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "review_draft",
+      "content": {
+        "review_status": "issues found"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "collect_data",
+      "content": {
+        "topic": "impact of climate change",
+        "source": "database_2"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "verify_data",
+      "content": {
+        "verification_status": "verified",
+        "source": "database_2"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_verified_data",
+      "content": {
+        "data": "climate impact data from db2"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "partially updated data set"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "finalize_report",
+      "content": {
+        "report": "incomplete final report"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_4",
+      "action": "approve_report",
+      "content": {
+        "approval_status": "rejected due to data inconsistency"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:43:42.242634"
+}

@@ -1,0 +1,120 @@
+{
+  "scenario_id": "pla_9a692e",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively plan and execute a supply chain management task for a manufacturing process. The goal is to efficiently produce and deliver a batch of custom-made widgets, breaking the task into subtasks such as procuring materials, scheduling production, performing quality checks, and coordinating delivery.",
+  "expected_outcome": "The agents should successfully complete the supply chain process with each subtask completed on time, all dependencies managed correctly, no resource conflicts, and timely updates communicated to all agents.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Procurement Manager",
+      "capabilities": [
+        "source_materials",
+        "negotiate_contracts"
+      ],
+      "description": "Responsible for sourcing materials and ensuring that they are delivered on time to the manufacturing facility."
+    },
+    {
+      "id": "agent_2",
+      "role": "Production Scheduler",
+      "capabilities": [
+        "create_schedule",
+        "allocate_resources"
+      ],
+      "description": "Tasked with creating a production schedule that optimizes resource usage and meets delivery deadlines."
+    },
+    {
+      "id": "agent_3",
+      "role": "Quality Assurance",
+      "capabilities": [
+        "conduct_tests",
+        "report_issues"
+      ],
+      "description": "Ensures that the products meet quality standards by conducting tests and reporting issues."
+    },
+    {
+      "id": "agent_4",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "plan_delivery_routes",
+        "manage_shipment"
+      ],
+      "description": "Manages the logistics of delivering the final products to customers."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "materials_sourced",
+      "content": {
+        "materials": "list_of_materials"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "schedule_created",
+      "content": {
+        "schedule": "production_schedule"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "quality_check_passed",
+      "content": {
+        "status": "pending"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "delivery_scheduled",
+      "content": {
+        "route": "invalid_route_due_to_timeout"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "materials_delivered",
+      "content": {
+        "confirmation": "materials_received"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "production_started",
+      "content": {
+        "status": "in_progress"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "products_approved",
+      "content": {
+        "approval": "pending_due_to_delay"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "delivery_completed",
+      "content": {
+        "status": "failed_due_to_previous_timeout"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:46.223967"
+}

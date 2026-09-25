@@ -1,0 +1,24 @@
+
+\begin{table*}[t]
+\centering
+\caption{Comprehensive Comparison on Blind Benchmark (Bug Markers Removed)}
+\label{tab:blind_comparison}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Category} & \textbf{Method} & \textbf{Hit@1} & \textbf{Hit@3} & \textbf{Hit@5} & \textbf{MRR} \\
+\midrule
+\multirow{1}{*}{Our Method} & \textbf{AgentTrace-Ranked} & 94.9% & 98.4% & 99.8% & 0.968 \\
+\midrule
+\multirow{1}{*}{Ablation} & AgentTrace-Original & 0.7% & 80.2% & 99.1% & 0.413 \\
+\midrule
+\multirow{3}{*}{Graph-based} & Betweenness & 27.1% & 92.9% & 92.9% & 0.000 \\
+ & PageRank & 2.2% & 99.5% & 99.5% & 0.000 \\
+ & RandomWalk & 0.7% & 83.5% & 83.5% & 0.000 \\
+\midrule
+\multirow{3}{*}{Heuristic} & AnomalyScore & 5.3% & 80.9% & 80.9% & 0.000 \\
+ & FirstDivergence & 1.8% & 1.8% & 1.8% & 0.000 \\
+ & EarliestNode & 2.2% & 2.2% & 2.2% & 0.000 \\
+
+\bottomrule
+\end{tabular}
+\end{table*}

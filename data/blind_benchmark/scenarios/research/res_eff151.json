@@ -1,0 +1,93 @@
+{
+  "scenario_id": "res_eff151",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to gather information from various sources, synthesize the data, and compile a comprehensive research report on 'The Impact of Climate Change on Marine Biodiversity'. Each agent is responsible for specific tasks, and they must coordinate to ensure data integrity and consistency.",
+  "expected_outcome": "Agents successfully compile a coherent and accurate research report after gathering and synthesizing information from different sources, with correct source attribution and reconciled conflicting data.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_information",
+        "filter_data"
+      ],
+      "description": "Responsible for gathering raw data from online scientific databases and journals."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "combine_data",
+        "resolve_conflicts"
+      ],
+      "description": "Merges data from different sources and reconciles any conflicting information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Validator",
+      "capabilities": [
+        "verify_data",
+        "attribute_sources"
+      ],
+      "description": "Ensures data integrity, validates findings, and checks source attributions."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "compile_report",
+        "format_document"
+      ],
+      "description": "Compiles the validated and synthesized data into a final research report."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "marine_biodiversity_impact_data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_combined_data",
+      "content": {
+        "combined_data": "synthesized_data"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_validated_data",
+      "content": {
+        "validated_data": "corrupted_synthesized_data"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_final_data",
+      "content": {
+        "final_data": "corrupted_validated_data"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "None",
+      "action": "generate_report",
+      "content": {
+        "report": "inaccurate_research_report"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:14:20.412666"
+}

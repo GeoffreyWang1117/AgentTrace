@@ -1,0 +1,215 @@
+{
+  "scenario_id": "res_bc35ab",
+  "domain": "research",
+  "complexity": "complex",
+  "bug_type": "timeout_cascade",
+  "task_description": "The agents are tasked with gathering, synthesizing, and reporting on recent advancements in renewable energy technologies by retrieving information from multiple academic databases, industry reports, and news articles. They must reconcile conflicting data and ensure proper source attribution to produce a comprehensive research report.",
+  "expected_outcome": "The agents successfully compile a detailed research report that accurately summarizes recent advancements in renewable energy technologies with all sources correctly attributed and conflicting information resolved.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "retrieve_data_academic",
+        "retrieve_data_industry"
+      ],
+      "description": "This agent is responsible for accessing academic databases and industry reports to collect relevant information."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Collector",
+      "capabilities": [
+        "retrieve_data_news",
+        "aggregate_data"
+      ],
+      "description": "This agent focuses on gathering information from news sources and aggregating the data into a structured format."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_information",
+        "resolve_conflicts"
+      ],
+      "description": "This agent synthesizes information from different sources and resolves any conflicting data."
+    },
+    {
+      "id": "agent_4",
+      "role": "Source Attributor",
+      "capabilities": [
+        "verify_sources",
+        "attribute_sources"
+      ],
+      "description": "This agent ensures all information is properly attributed to its original sources."
+    },
+    {
+      "id": "agent_5",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "format_report"
+      ],
+      "description": "This agent compiles the synthesized information into a well-structured research report."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_data",
+      "content": {
+        "academic": "Data from academic sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_data",
+      "content": {
+        "news": "Data from news sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized": "Synthesized data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized": "Refined synthesized data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_and_attribute_sources",
+      "content": {
+        "verified_data": "Source-verified data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "Draft research report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_data",
+      "content": {
+        "academic": "Data from academic sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_data",
+      "content": {
+        "news": "Data from news sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized": "Synthesized data"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 encounters a delay that leads to a timeout, preventing it from completing the synthesis process promptly."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized": "Incomplete synthesized data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "verify_and_attribute_sources",
+      "content": {
+        "verified_data": "Partial source-verified data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "generate_report",
+      "content": {
+        "report": "Incomplete research report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 6,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Incomplete data synthesis due to timeout affects data sent to agent 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Agent 4 receives incomplete data, leading to partial source verification."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Incomplete verification results in agent 5 generating an incomplete report."
+    }
+  ],
+  "created_at": "2026-01-04T09:07:10.224206"
+}

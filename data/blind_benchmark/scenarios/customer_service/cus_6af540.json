@@ -1,0 +1,93 @@
+{
+  "scenario_id": "cus_6af540",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "task_description": "In this scenario, agents work collaboratively to handle customer support tickets. The primary tasks include receiving customer inquiries, escalating complex issues to a higher level when necessary, and ensuring that the status of each ticket is tracked and updated accurately across the system.",
+  "expected_outcome": "The customer inquiry is handled efficiently with correct ticket status updates, and any complex issues are escalated properly without losing customer context. All agents should be synchronized with the correct ticket status and avoid duplicate or conflicting responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Service Agent",
+      "capabilities": [
+        "receive_inquiry",
+        "create_ticket",
+        "provide_basic_support"
+      ],
+      "description": "Agent 1 receives customer inquiries and handles basic support questions. It creates a ticket for each customer interaction."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "analyze_issue",
+        "provide_technical_support",
+        "escalate_issue"
+      ],
+      "description": "Agent 2 handles technical issues that require deeper insight. It can escalate complex problems to a supervisor if needed."
+    },
+    {
+      "id": "agent_3",
+      "role": "Supervisor Agent",
+      "capabilities": [
+        "approve_resolution",
+        "update_ticket_status",
+        "resolve_escalation"
+      ],
+      "description": "Agent 3 supervises the resolution of complex issues and ensures that ticket statuses are updated correctly."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": "123",
+        "customer_issue": "technical problem",
+        "customer_context": "basic support attempted"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "123",
+        "issue_details": "requires advanced support"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "approve_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution": "advanced steps approved"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "123",
+        "status": "pending"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "customer",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "123",
+        "resolution_message": "Issue unresolved due to delay."
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:02.689471"
+}

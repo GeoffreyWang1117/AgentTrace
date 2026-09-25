@@ -1,0 +1,181 @@
+{
+  "scenario_id": "pla_278d16",
+  "domain": "planning",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "Three agents collaborate to organize a community event, involving venue booking, catering services, and invitations. They need to break down the main goal, allocate tasks, and coordinate execution while handling dependencies between these activities.",
+  "expected_outcome": "Agents successfully organize the event with a booked venue, arranged catering, and sent invitations with no resource conflicts or miscommunications.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Venue Manager",
+      "capabilities": [
+        "book_venue",
+        "check_availability"
+      ],
+      "description": "Responsible for finding and reserving an appropriate venue for the event."
+    },
+    {
+      "id": "agent_2",
+      "role": "Catering Coordinator",
+      "capabilities": [
+        "arrange_catering",
+        "negotiate_contracts"
+      ],
+      "description": "Handles all tasks related to food and drink arrangements for the event."
+    },
+    {
+      "id": "agent_3",
+      "role": "Invitation Specialist",
+      "capabilities": [
+        "design_invitation",
+        "send_invitations"
+      ],
+      "description": "Focuses on creating and distributing invitations to the event attendees."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_availability_info",
+      "content": {
+        "venue": "available",
+        "date": "2023-12-15"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_catering",
+      "content": {
+        "catering": "confirmed",
+        "date": "2023-12-15"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_invitations",
+      "content": {
+        "invitations": "prepared",
+        "date": "2023-12-15"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "finalize_venue",
+      "content": {
+        "status": "finalized"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_final_catering_details",
+      "content": {
+        "menu": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_availability_info",
+      "content": {
+        "venue": "available",
+        "date": "2023-12-15"
+      },
+      "is_bug_point": true,
+      "bug_description": "Availability information meant for the Catering Coordinator (agent_2) was incorrectly sent to the Invitation Specialist (agent_3)."
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_catering",
+      "content": {
+        "catering": "confirmed",
+        "date": "2023-12-15"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_invitations",
+      "content": {
+        "invitations": "prepared",
+        "date": "2023-12-15"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "finalize_venue",
+      "content": {
+        "status": "finalized"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_final_catering_details",
+      "content": {
+        "menu": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 1,
+  "root_cause_step": 1,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 1,
+      "target_step": 2,
+      "relationship_type": "data_flow",
+      "description": "Incorrect availability data sent to the Invitation Specialist instead of the Catering Coordinator."
+    },
+    {
+      "source_step": 2,
+      "target_step": 3,
+      "relationship_type": "data_flow",
+      "description": "Invitation Specialist proceeds without necessary resource allocation confirmation."
+    },
+    {
+      "source_step": 3,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "The lack of proper resource confirmation affects catering finalization."
+    }
+  ],
+  "created_at": "2026-01-04T09:10:06.207354"
+}

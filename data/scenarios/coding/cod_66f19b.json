@@ -1,0 +1,347 @@
+{
+  "scenario_id": "cod_66f19b",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "wrong_routing",
+  "task_description": "Agents collaborate to develop a software module. The process involves gathering requirements, writing code, reviewing and testing code, and integrating changes. The goal is to ensure high-quality software delivery with minimal defects.",
+  "expected_outcome": "If everything works correctly, the agents will deliver a functional and bug-free software module that meets the requirements. All code will be reviewed, tested, and integrated smoothly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "create_specifications"
+      ],
+      "description": "This agent gathers and analyzes requirements, creating detailed specifications for the development team."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "submit_code"
+      ],
+      "description": "This agent writes code based on the specifications provided by the Requirements Analyst and submits it for review."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "This agent reviews the submitted code, checking for any issues or improvements and providing feedback."
+    },
+    {
+      "id": "agent_4",
+      "role": "Test Engineer",
+      "capabilities": [
+        "run_tests",
+        "report_defects"
+      ],
+      "description": "This agent tests the code to ensure it meets the requirements and is bug-free, reporting any defects found."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "This agent integrates the final code into the main codebase, resolving any conflicts that arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_specifications",
+      "content": {
+        "specifications": "detailed_specifications"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "minor_issues"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_revised_code",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_code",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_code_for_testing",
+      "content": {
+        "request": "code_v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_code_for_testing",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "report_test_results",
+      "content": {
+        "results": "pass"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "request_final_code",
+      "content": {
+        "request": "final_code"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "send_final_code",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "integrate_code",
+      "content": {
+        "merge_status": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_integration",
+      "content": {
+        "status": "complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_specifications",
+      "content": {
+        "specifications": "detailed_specifications"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "minor_issues"
+      },
+      "is_bug_point": true,
+      "bug_description": "Feedback intended for Developer agent was mistakenly routed to Test Engineer, who was not supposed to receive it."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "request_code_for_testing",
+      "content": {
+        "request": "code_v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_code_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "test_results_misrouted",
+      "content": {
+        "results": "fail"
+      },
+      "is_bug_point": true,
+      "bug_description": "Test results were routed back to Code Reviewer instead of Integration Manager."
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "request_final_code",
+      "content": {
+        "request": "final_code"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "send_final_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_5",
+      "action": "integrate_code",
+      "content": {
+        "merge_status": "conflict"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "integration_failed",
+      "content": {
+        "status": "error"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "investigate_issue",
+      "content": {
+        "investigation": "root_cause_analysis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "send_corrected_code",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Feedback intended for Developer was wrongly routed to Test Engineer, causing confusion."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Confusion led to testing of wrong code version."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "communication_error",
+      "description": "Test results misrouted, preventing proper notification of code issues."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:19.472694"
+}

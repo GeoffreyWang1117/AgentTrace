@@ -1,0 +1,128 @@
+{
+  "scenario_id": "cod_3ba03e",
+  "domain": "coding",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively develop a feature for a software application. This involves writing code based on given requirements, reviewing the code for any issues, testing the code with existing tests, fixing bugs found during testing, and integrating the final code into the main codebase.",
+  "expected_outcome": "The feature is successfully developed, reviewed, tested, and integrated without any critical issues, ensuring that the software application functions correctly and meets the given requirements.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirement Analyzer",
+      "capabilities": [
+        "analyze_requirements",
+        "generate_initial_code"
+      ],
+      "description": "This agent is responsible for analyzing the project requirements and generating the initial code draft for the feature."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_code_issues"
+      ],
+      "description": "This agent reviews the code for adherence to coding standards and identifies potential issues before the code progresses to the testing phase."
+    },
+    {
+      "id": "agent_3",
+      "role": "Test Agent",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "This agent runs a suite of tests on the code to ensure functionality and reports any bugs or failures encountered during testing."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integration Specialist",
+      "capabilities": [
+        "fix_bugs",
+        "integrate_code"
+      ],
+      "description": "This agent fixes any reported bugs and integrates the tested code into the main codebase, ensuring compatibility and functionality."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "code_content": "feature initial draft"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_code",
+      "content": {
+        "code_version": "v1.0",
+        "review_notes": "approved with minor comments"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "test_code",
+      "content": {
+        "code_version": "v1.0",
+        "test_results": "pass with minor issue"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "fix_minor_issues",
+      "content": {
+        "code_version": "v1.1",
+        "fixed_content": "minor issues resolved"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "integrate_code",
+      "content": {
+        "code_version": "v1.1",
+        "integration_status": "successful"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_integration",
+      "content": {
+        "final_version": "v1.1",
+        "confirmation_status": "failed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "final_approval",
+      "content": {
+        "final_version": "v1.1",
+        "approval_status": "rejected"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "deploy_code",
+      "content": {
+        "final_version": "v1.1",
+        "deployment_status": "halted"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:07:52.285451"
+}

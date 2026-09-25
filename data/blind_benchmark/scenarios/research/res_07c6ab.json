@@ -1,0 +1,120 @@
+{
+  "scenario_id": "res_07c6ab",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to gather information from various online databases, synthesize their findings, and compile a comprehensive research report on climate change impacts.",
+  "expected_outcome": "The agents should successfully gather accurate information, resolve any conflicting data, and produce a detailed research report with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Retriever",
+      "capabilities": [
+        "access_database",
+        "fetch_data"
+      ],
+      "description": "Responsible for retrieving raw data from online climate databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "identify_trends"
+      ],
+      "description": "Analyzes raw data and identifies significant trends and patterns."
+    },
+    {
+      "id": "agent_3",
+      "role": "Synthesizer",
+      "capabilities": [
+        "reconcile_conflicts",
+        "synthesize_information"
+      ],
+      "description": "Synthesizes data from different sources and resolves any conflicts in information."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "compile_report",
+        "ensure_source_attribution"
+      ],
+      "description": "Compiles the final research report, ensuring proper source attribution and coherence."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "fetch_and_send_data",
+      "content": {
+        "data": "raw_climate_data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "analyze_and_forward",
+      "content": {
+        "analysis": "trend_analysis_data"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "synthesize_and_send",
+      "content": {
+        "synthesized_data": "reconciled_information"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "request": "additional_data_needed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "fetch_and_send_additional_data",
+      "content": {
+        "additional_data": "supplementary_climate_data"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_final_confirmation",
+      "content": {
+        "request": "confirmation_on_synthesis"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "confirm_and_send",
+      "content": {
+        "confirmation": "synthesis_confirmed"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "external_system",
+      "action": "submit_report",
+      "content": {
+        "report": "final_research_report"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:43:38.178674"
+}

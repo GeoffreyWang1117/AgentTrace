@@ -1,0 +1,29 @@
+{
+  "scenario_id": "tra_f3de61",
+  "trace_id": "tra_f3de61",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The execution report is sent to the wrong agent, causing a delay in processing by agent_4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_processing",
+      "confidence": 1.0,
+      "explanation": "Agent_1 forwards the report to agent_4, but the delay causes a temporary inconsistency in position tracking."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The execution report is incorrectly routed back to agent_1 instead of agent_4.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

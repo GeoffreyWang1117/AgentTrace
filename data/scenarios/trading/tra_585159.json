@@ -1,0 +1,256 @@
+{
+  "scenario_id": "tra_585159",
+  "domain": "trading",
+  "complexity": "medium",
+  "bug_type": "invalid_output",
+  "task_description": "Four agents collaborate to analyze market data, make trading decisions, and execute transactions. They also verify transaction accuracy and position consistency.",
+  "expected_outcome": "Agents effectively analyze market data, make timely trading decisions, execute orders accurately, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "analyze_market_data",
+        "identify_trends"
+      ],
+      "description": "Analyzes incoming market data to identify trends and generate trade signals."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "receive_signals",
+        "make_decisions"
+      ],
+      "description": "Receives trade signals and makes decisions on whether to buy, sell, or hold."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_orders",
+        "record_transactions"
+      ],
+      "description": "Executes trades based on decisions from the trading decision maker."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_orders",
+        "track_positions"
+      ],
+      "description": "Verifies executed transactions and updates the system about the current position."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_trade_signal",
+      "content": {
+        "signal": "buy",
+        "confidence": 0.85
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_decision",
+      "content": {
+        "decision": "buy",
+        "volume": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": "123",
+        "status": "executed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "verify_order",
+      "content": {
+        "order_id": "123",
+        "verification": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_position",
+      "content": {
+        "position": "long",
+        "volume": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "position_updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_analysis",
+      "content": {
+        "analysis": "positive",
+        "trend_strength": "strong"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_new_decision",
+      "content": {
+        "new_decision": "hold"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_trade_signal",
+      "content": {
+        "signal": "buy",
+        "confidence": 0.85
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_decision",
+      "content": {
+        "decision": "buy",
+        "volume": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": 123,
+        "status": "executed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 outputs 'order_id' as an integer instead of a string"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "verify_order",
+      "content": {
+        "order_id": "123",
+        "verification": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_position",
+      "content": {
+        "position": "long",
+        "volume": 100
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "position_updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_analysis",
+      "content": {
+        "analysis": "positive",
+        "trend_strength": "strong"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_new_decision",
+      "content": {
+        "new_decision": "hold"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "verification_error",
+      "description": "Incorrect order_id format leads to verification issues at step 5"
+    }
+  ],
+  "created_at": "2026-01-04T09:13:26.655431"
+}

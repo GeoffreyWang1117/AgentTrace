@@ -1,0 +1,91 @@
+{
+  "scenario_id": "cus_808eb0",
+  "domain": "customer_service",
+  "complexity": "simple",
+  "task_description": "The agents need to collaboratively manage customer service inquiries by answering questions, escalating complex issues when needed, and ensuring tickets are tracked and resolved efficiently. They must maintain context during handoffs and synchronize ticket statuses.",
+  "expected_outcome": "Customer inquiries are handled promptly, complex issues are escalated correctly with complete context, and tickets are resolved with their status synchronized across all agents.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "answer inquiries",
+        "create tickets",
+        "escalate issues"
+      ],
+      "description": "Handles initial customer inquiries, provides answers, creates tickets for unresolved issues, and escalates complex issues to the specialist."
+    },
+    {
+      "id": "agent_2",
+      "role": "Support Specialist Agent",
+      "capabilities": [
+        "resolve complex issues",
+        "update tickets",
+        "communicate with frontline"
+      ],
+      "description": "Receives escalated tickets from the frontline, resolves complex issues, and updates ticket status."
+    },
+    {
+      "id": "agent_3",
+      "role": "Ticket Management Agent",
+      "capabilities": [
+        "synchronize ticket status",
+        "generate reports"
+      ],
+      "description": "Ensures all ticket statuses are synchronized across the system and generates reports on ticket resolution performance."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "12345",
+        "customer_issue": "Login failure",
+        "customer_id": "cust_001"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "update_ticket",
+      "content": {
+        "ticket_id": "12345",
+        "status": "in-progress"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "ticket_id": "12345",
+        "needed_info": "Customer login details"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "provide_info",
+      "content": {
+        "ticket_id": "12345"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resolve_ticket",
+      "content": {
+        "ticket_id": "12345",
+        "resolution": "Incomplete"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:16:14.487930"
+}

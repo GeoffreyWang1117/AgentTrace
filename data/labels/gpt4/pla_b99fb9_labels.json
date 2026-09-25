@@ -1,0 +1,29 @@
+{
+  "scenario_id": "pla_b99fb9",
+  "trace_id": "pla_b99fb9",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Missing context about delivery time constraints affects schedule optimization."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "dependency",
+      "confidence": 1.0,
+      "explanation": "Schedule update lacks critical timing information leading to incorrect dependency confirmation."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Agent 3 does not include context about delivery time constraints that agent 4 needs.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,116 @@
+{
+  "scenario_id": "tra_743850",
+  "domain": "trading",
+  "complexity": "complex",
+  "task_description": "Agents are tasked with analyzing real-time market data, making informed trading decisions, executing transactions, and verifying the correctness of executed trades. The scenario involves detecting and rectifying an invalid output format bug during agent communication.",
+  "expected_outcome": "Agents collaborate efficiently to process market data, make profitable trading decisions, execute trades accurately, and maintain correct position records without data format issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Collector",
+      "capabilities": [
+        "fetch_real_time_data",
+        "preprocess_data"
+      ],
+      "description": "Fetches and preprocesses real-time market data from external sources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Market Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "generate_signals"
+      ],
+      "description": "Analyzes market data and generates trading signals based on predefined strategies."
+    },
+    {
+      "id": "agent_3",
+      "role": "Decision Maker",
+      "capabilities": [
+        "evaluate_signals",
+        "make_trading_decisions"
+      ],
+      "description": "Evaluates trading signals and decides on the execution of trades."
+    },
+    {
+      "id": "agent_4",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_trades",
+        "handle_exceptions"
+      ],
+      "description": "Executes trades on the market and handles any execution anomalies."
+    },
+    {
+      "id": "agent_5",
+      "role": "Compliance and Verification",
+      "capabilities": [
+        "verify_transactions",
+        "track_positions"
+      ],
+      "description": "Verifies the correctness of transactions and ensures positions are updated accurately."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "data": "cleaned_market_data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_signals",
+      "content": {
+        "signals": [
+          "buy_signal",
+          "sell_signal"
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_trade_decision",
+      "content": {
+        "decision": "execute_trade",
+        "details": {
+          "asset": "stock_A",
+          "quantity": "100 units"
+        }
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "send_execution_confirmation",
+      "content": {
+        "confirmation": "trade_executed",
+        "details": {
+          "asset": "stock_A",
+          "quantity": 100
+        }
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "send_verification_status",
+      "content": {
+        "status": "verified",
+        "position": {
+          "stock_A": 100
+        }
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:12:42.315701"
+}

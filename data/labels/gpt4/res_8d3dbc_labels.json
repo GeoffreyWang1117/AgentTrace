@@ -1,0 +1,37 @@
+{
+  "scenario_id": "res_8d3dbc",
+  "trace_id": "res_8d3dbc",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Validated data with error flows to agent_3 for synthesis."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Synthesis error propagates to source attribution."
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_6",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Attribution errors manifest in the final report."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Data mistakenly marked as validated due to a logic error in validation logic.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

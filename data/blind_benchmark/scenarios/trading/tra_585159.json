@@ -1,0 +1,126 @@
+{
+  "scenario_id": "tra_585159",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to analyze market data, make trading decisions, and execute transactions. They also verify transaction accuracy and position consistency.",
+  "expected_outcome": "Agents effectively analyze market data, make timely trading decisions, execute orders accurately, and maintain consistent position tracking.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "analyze_market_data",
+        "identify_trends"
+      ],
+      "description": "Analyzes incoming market data to identify trends and generate trade signals."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "receive_signals",
+        "make_decisions"
+      ],
+      "description": "Receives trade signals and makes decisions on whether to buy, sell, or hold."
+    },
+    {
+      "id": "agent_3",
+      "role": "Order Executor",
+      "capabilities": [
+        "execute_orders",
+        "record_transactions"
+      ],
+      "description": "Executes trades based on decisions from the trading decision maker."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_orders",
+        "track_positions"
+      ],
+      "description": "Verifies executed transactions and updates the system about the current position."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_trade_signal",
+      "content": {
+        "signal": "buy",
+        "confidence": 0.85
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_decision",
+      "content": {
+        "decision": "buy",
+        "volume": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_order",
+      "content": {
+        "order_id": 123,
+        "status": "executed"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "verify_order",
+      "content": {
+        "order_id": "123",
+        "verification": "success"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "update_position",
+      "content": {
+        "position": "long",
+        "volume": 100
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "provide_feedback",
+      "content": {
+        "feedback": "position_updated"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_analysis",
+      "content": {
+        "analysis": "positive",
+        "trend_strength": "strong"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_new_decision",
+      "content": {
+        "new_decision": "hold"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:13:26.655431"
+}

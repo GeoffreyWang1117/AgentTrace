@@ -1,0 +1,120 @@
+{
+  "scenario_id": "cod_cbd644",
+  "domain": "coding",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to develop a software module. The agents write code, review and test it, and fix bugs to ensure successful integration.",
+  "expected_outcome": "The agents should successfully develop a bug-free software module, pass all tests, and integrate the code without conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirement Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "document_specifications"
+      ],
+      "description": "Agent responsible for gathering and documenting software requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "implement_features"
+      ],
+      "description": "Agent responsible for writing and implementing code based on requirements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Agent responsible for reviewing the code and identifying any critical issues."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "Agent responsible for running tests and reporting any bugs or discrepancies."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_requirements",
+      "content": {
+        "requirements_document": "spec_v1.doc"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "request_changes",
+      "content": {
+        "code_review_feedback": "minor_issues"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "resubmit_code",
+      "content": {
+        "code_version": "v1.1"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "approve_code",
+      "content": {
+        "approved_version": "v1.1"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "run_tests",
+      "content": {
+        "code_version": "v1.0"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_results",
+      "content": {
+        "test_results": "tests_failed"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "final_integration",
+      "content": {
+        "integration_status": "failed"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:07:56.616012"
+}

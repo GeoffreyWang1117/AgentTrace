@@ -1,0 +1,136 @@
+{
+  "scenario_id": "cus_3e45b4",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "The agents need to collaboratively handle customer inquiries, escalate complex issues, track and resolve support tickets, ensuring that the customer's context is maintained across interactions and the ticket status is synchronized properly.",
+  "expected_outcome": "Customers receive accurate and consistent support, with seamless context handoff between agents and synchronized ticket statuses, leading to successful resolution of inquiries and issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Representative",
+      "capabilities": [
+        "receive_inquiry",
+        "provide_basic_support",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and provides basic support. Creates tickets for issues that require further attention."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Specialist",
+      "capabilities": [
+        "analyze_issue",
+        "provide_technical_solution",
+        "escalate_issue"
+      ],
+      "description": "Analyzes technical issues and provides solutions. Escalates issues to senior support when necessary."
+    },
+    {
+      "id": "agent_3",
+      "role": "Customer Success Manager",
+      "capabilities": [
+        "review_ticket_status",
+        "communicate_with_customer",
+        "ensure_resolution"
+      ],
+      "description": "Reviews ticket statuses and ensures that customer issues are resolved. Communicates resolutions to customers."
+    },
+    {
+      "id": "agent_4",
+      "role": "Senior Support Engineer",
+      "capabilities": [
+        "resolve_complex_issues",
+        "update_ticket",
+        "coordinate_with_teams"
+      ],
+      "description": "Resolves complex issues and coordinates with various teams to update ticket statuses and ensure customer satisfaction."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "create_ticket_and_transfer",
+      "content": {
+        "ticket_id": "1234",
+        "customer_issue": "Issue description",
+        "customer_context": "Full context"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_solution_and_transfer",
+      "content": {
+        "ticket_id": "1234",
+        "solution": "Preliminary solution",
+        "customer_context": "Full context"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "1234",
+        "issue_details": "Detailed issue",
+        "customer_context": "Truncated context"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "update_ticket_status",
+      "content": {
+        "ticket_id": "1234",
+        "status": "Resolved"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "notify_resolution",
+      "content": {
+        "ticket_id": "1234",
+        "resolution_details": "Final resolution",
+        "customer_context": "Truncated context"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "1234",
+        "confirmation_status": "Closed"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "archive_ticket",
+      "content": {
+        "ticket_id": "1234",
+        "archived": true
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "feedback_loop",
+      "content": {
+        "ticket_id": "1234",
+        "feedback": "Neutral"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:11:58.874257"
+}

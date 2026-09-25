@@ -1,0 +1,238 @@
+{
+  "scenario_id": "cod_c86d76",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "invalid_output",
+  "task_description": "Four agents collaborate to develop a software feature where they need to write code according to given requirements, review each other's code, conduct testing, and resolve any bugs before integrating the changes into a main codebase.",
+  "expected_outcome": "The agents successfully write, review, test, and integrate the code without any critical issues or integration conflicts, resulting in a bug-free software feature.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "code_writing",
+        "requirement_analysis"
+      ],
+      "description": "Writes code based on the given technical requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "code_review",
+        "identify_issues"
+      ],
+      "description": "Reviews code written by developers to identify and suggest corrections for potential issues."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_execution",
+        "bug_identification"
+      ],
+      "description": "Executes tests to ensure the code meets the requirements and identifies any bugs or unexpected behaviors."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates changes into the main codebase, resolving any conflicts that arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "initial feature implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "suggestions for improvement"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_testing",
+      "content": {
+        "code": "revised feature implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "results": "all tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "submit_for_integration",
+      "content": {
+        "code": "tested feature implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_integration",
+      "content": {
+        "status": "integrated successfully"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "provide_final_feedback",
+      "content": {
+        "feedback": "code works as expected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "report_bug_status",
+      "content": {
+        "status": "no bugs found"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "initial feature implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "suggestions for improvement"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_testing",
+      "content": {
+        "code": "revised feature implementation with invalid_output"
+      },
+      "is_bug_point": true,
+      "bug_description": "The code produces output in an unexpected format, which isn't caught initially."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_test_results",
+      "content": {
+        "results": "test shows unexpected output format"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_corrected_code",
+      "content": {
+        "code": "corrected feature implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_again",
+      "content": {
+        "feedback": "correct format"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "retest_corrected_code",
+      "content": {
+        "code": "corrected feature implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "final_test_results",
+      "content": {
+        "results": "all tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 4,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 resulting in the test agent detecting unexpected output format."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:23.705303"
+}

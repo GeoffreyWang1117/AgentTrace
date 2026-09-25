@@ -1,0 +1,120 @@
+{
+  "scenario_id": "res_ab8bb6",
+  "domain": "research",
+  "complexity": "medium",
+  "task_description": "Four agents collaborate to gather information from various sources, synthesize this data, and produce a comprehensive research report. The agents need to ensure the information is accurate, non-conflicting, and properly attributed to the sources.",
+  "expected_outcome": "Agents successfully gather information, resolve any conflicts, and produce a coherent and accurate research report with correct source attributions.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Gatherer",
+      "capabilities": [
+        "fetch_data",
+        "parse_data"
+      ],
+      "description": "Gathers data from online journals and databases."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Verifier",
+      "capabilities": [
+        "validate_data",
+        "detect_conflicts"
+      ],
+      "description": "Verifies the accuracy of data and detects any conflicting information."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "synthesize_data",
+        "produce_draft"
+      ],
+      "description": "Combines verified data and creates a draft of the research report."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Finalizer",
+      "capabilities": [
+        "finalize_report",
+        "check_attribution"
+      ],
+      "description": "Finalizes the draft, checks for proper source attribution, and ensures coherence."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "raw_data_1"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_data",
+      "content": {
+        "needed": "additional_data_for_validation"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_data",
+      "content": {
+        "data": "additional_raw_data_1"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_verified_data",
+      "content": {
+        "data": "corrupted_verified_data"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_draft",
+      "content": {
+        "draft": "incomplete_report_draft"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_revision",
+      "content": {
+        "issue": "coherence_issues"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_revised_draft",
+      "content": {
+        "draft": "still_incomplete_draft"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "all",
+      "action": "finalize_report",
+      "content": {
+        "report": "incomplete_final_report"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:06:34.886832"
+}

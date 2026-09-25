@@ -1,0 +1,244 @@
+{
+  "scenario_id": "res_31188c",
+  "domain": "research",
+  "complexity": "medium",
+  "bug_type": "invalid_output",
+  "task_description": "The agents need to collaboratively gather data from various scientific journals, synthesize the findings on a specific topic, and produce a comprehensive research report. Each agent is responsible for a different aspect of this task, ranging from data gathering to synthesis and report generation.",
+  "expected_outcome": "Agents successfully gather accurate information from assigned sources, resolve conflicts in data, synthesize the compiled data into a coherent report, and ensure correct source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_online_sources",
+        "fetch_data"
+      ],
+      "description": "Responsible for collecting data from online scientific journals."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Validator",
+      "capabilities": [
+        "validate_data_format",
+        "check_completeness"
+      ],
+      "description": "Validates the integrity and format of the data collected by Agent 1."
+    },
+    {
+      "id": "agent_3",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "reconcile_conflicts",
+        "synthesize_information"
+      ],
+      "description": "Synthesizes validated data and resolves any conflicts between sources."
+    },
+    {
+      "id": "agent_4",
+      "role": "Report Generator",
+      "capabilities": [
+        "generate_report",
+        "attribute_sources"
+      ],
+      "description": "Generates the final report and ensures all sources are correctly attributed."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "formatted_data_from_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_and_forward",
+      "content": {
+        "validated_data": "valid_data_structure"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "coherent_synthesis"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_clarification",
+      "content": {
+        "clarification_needed": "specific_details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "provide_clarification",
+      "content": {
+        "clarified_data": "detailed_information"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_sources",
+      "content": {
+        "sources_list": "complete_source_list"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "acknowledge_sources",
+      "content": {
+        "acknowledgement": "sources_confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "generate_final_report",
+      "content": {
+        "final_report": "complete_research_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "formatted_data_from_sources"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "validate_and_forward",
+      "content": {
+        "validated_data": "valid_data_structure"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "synthesize_data",
+      "content": {
+        "synthesized_data": "[unexpected_format: {invalid_structure}]"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 outputs the synthesized data in an invalid format, which is not expected by Agent 4."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "request_clarification",
+      "content": {
+        "clarification_needed": "specific_details"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "provide_clarification",
+      "content": {
+        "clarified_data": "detailed_information"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm_sources",
+      "content": {
+        "sources_list": "complete_source_list"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "acknowledge_sources",
+      "content": {
+        "acknowledgement": "sources_confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": null,
+      "action": "generate_final_report",
+      "content": {
+        "final_report": "incomplete_research_report"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 8,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data format causes misunderstanding in report generation process."
+    },
+    {
+      "source_step": 4,
+      "target_step": 8,
+      "relationship_type": "process_dependency",
+      "description": "Agent 4's report generation relies on correct data format, leading to an incomplete report."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:19.592462"
+}

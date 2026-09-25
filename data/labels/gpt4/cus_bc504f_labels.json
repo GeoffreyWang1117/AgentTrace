@@ -1,0 +1,37 @@
+{
+  "scenario_id": "cus_bc504f",
+  "trace_id": "cus_bc504f",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted approval status leads to incorrect state sharing in the system"
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_integrity",
+      "confidence": 1.0,
+      "explanation": "Resolution details fail to update the ticket status correctly"
+    },
+    {
+      "source_node_id": "step_5",
+      "target_node_id": "step_8",
+      "relationship_type": "state_inconsistency",
+      "confidence": 1.0,
+      "explanation": "Ticket status remains 'pending' instead of 'resolved' in agent_3, leading to confusion"
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The ticket approval status does not update correctly in all agents",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

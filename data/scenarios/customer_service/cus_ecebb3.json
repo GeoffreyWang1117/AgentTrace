@@ -1,0 +1,222 @@
+{
+  "scenario_id": "cus_ecebb3",
+  "domain": "customer_service",
+  "complexity": "complex",
+  "bug_type": "timeout_cascade",
+  "task_description": "Agents collaboratively handle customer inquiries, escalate complex issues, and ensure tickets are tracked and resolved efficiently without losing customer context or causing duplicate responses.",
+  "expected_outcome": "Customer inquiries are handled efficiently with minimal delays, accurate tracking of ticket status, and effective escalation of complex issues without loss of context or duplicate/conflicting responses.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Customer Support Agent",
+      "capabilities": [
+        "receive_inquiries",
+        "provide_initial_responses",
+        "create_ticket"
+      ],
+      "description": "Handles initial customer inquiries and creates support tickets."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "analyze_issues",
+        "resolve_simple_issues"
+      ],
+      "description": "Analyzes customer issues and resolves simple technical problems."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Manager",
+      "capabilities": [
+        "assess_ticket_severity",
+        "escalate_issues"
+      ],
+      "description": "Assesses the severity of issues and escalates complex problems to specialized departments."
+    },
+    {
+      "id": "agent_4",
+      "role": "Resolution Specialist",
+      "capabilities": [
+        "resolve_complex_issues",
+        "update_ticket_status"
+      ],
+      "description": "Handles complex technical issues and updates the ticket status accordingly."
+    },
+    {
+      "id": "agent_5",
+      "role": "Quality Assurance Agent",
+      "capabilities": [
+        "monitor_responses",
+        "ensure_context_integrity"
+      ],
+      "description": "Monitors responses for quality and ensures no loss of customer context during handoffs."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "customer_id": "123",
+        "issue": "internet connectivity"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T-456",
+        "complexity": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "assign_specialist",
+      "content": {
+        "ticket_id": "T-456",
+        "specialist_needed": "network"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "request_quality_check",
+      "content": {
+        "ticket_id": "T-456",
+        "resolution_attempted": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "T-456",
+        "closure_status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "acknowledge_resolution",
+      "content": {
+        "ticket_id": "T-456",
+        "customer_notified": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "customer_id": "123",
+        "issue": "internet connectivity"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": "T-456",
+        "complexity": "high"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "assign_specialist",
+      "content": {
+        "ticket_id": "T-456",
+        "specialist_needed": "network"
+      },
+      "is_bug_point": true,
+      "bug_description": "Timeout occurs causing the request to be delayed, leading agent_4 to not receive the assignment on time."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "request_quality_check",
+      "content": {
+        "ticket_id": "T-456",
+        "resolution_attempted": false
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "confirm_closure",
+      "content": {
+        "ticket_id": "T-456",
+        "closure_status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "acknowledge_resolution",
+      "content": {
+        "ticket_id": "T-456",
+        "customer_notified": false
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "A timeout in agent_3 causes agent_4 to proceed with incorrect assumptions."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Agent_4's incorrect action leads to agent_5 not confirming the resolution."
+    }
+  ],
+  "created_at": "2026-01-04T09:11:32.861898"
+}

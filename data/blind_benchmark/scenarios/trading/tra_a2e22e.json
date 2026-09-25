@@ -1,0 +1,129 @@
+{
+  "scenario_id": "tra_a2e22e",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "The agents need to collectively analyze real-time market data, make informed trading decisions, execute trades, and verify transactions while ensuring all communications are properly routed to the intended recipient in the correct order.",
+  "expected_outcome": "Agents successfully analyze market data, make timely decisions, execute trades without delay, and track positions accurately.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "fetch_market_data",
+        "preprocess_data"
+      ],
+      "description": "This agent gathers and preprocesses market data from various exchanges."
+    },
+    {
+      "id": "agent_2",
+      "role": "Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "generate_signals"
+      ],
+      "description": "This agent analyzes the preprocessed data to generate trading signals."
+    },
+    {
+      "id": "agent_3",
+      "role": "Executor",
+      "capabilities": [
+        "execute_trades",
+        "track_orders"
+      ],
+      "description": "This agent executes trades based on received signals and tracks order fulfillment."
+    },
+    {
+      "id": "agent_4",
+      "role": "Verifier",
+      "capabilities": [
+        "verify_transactions",
+        "report_status"
+      ],
+      "description": "This agent verifies the executed trades and reports the status back to the system."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_data",
+      "content": {
+        "data": "up-to-date market data"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_signal",
+      "content": {
+        "signal": "buy",
+        "symbol": "AAPL",
+        "quantity": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "execute_trade",
+      "content": {
+        "order_id": 12345,
+        "status": "pending"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_id": 12345,
+        "status": "executed"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "confirm_execution",
+      "content": {
+        "order_id": 12345,
+        "verification": "confirmed"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_position",
+      "content": {
+        "symbol": "AAPL",
+        "quantity": 100,
+        "position": "open"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_updated_positions",
+      "content": {
+        "positions": {
+          "AAPL": 100
+        }
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "acknowledge_update",
+      "content": {
+        "status": "position noted"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:56.370601"
+}

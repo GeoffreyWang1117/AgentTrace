@@ -1,0 +1,185 @@
+{
+  "scenario_id": "tra_d9500b",
+  "domain": "trading",
+  "complexity": "simple",
+  "bug_type": "missing_context",
+  "task_description": "Agents collaboratively analyze real-time market data to identify potential trading opportunities, make informed trading decisions, execute trades, and verify transactions.",
+  "expected_outcome": "Agents successfully analyze market data, make accurate trading decisions, execute trades at the optimal time, and ensure all transactions are verified and recorded without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends",
+        "identify_opportunities"
+      ],
+      "description": "This agent fetches real-time market data and analyzes it to identify potential trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Trading Decision Maker",
+      "capabilities": [
+        "evaluate_opportunities",
+        "make_decisions",
+        "risk_assessment"
+      ],
+      "description": "This agent evaluates identified opportunities, performs risk assessments, and makes trading decisions based on the analyzed data."
+    },
+    {
+      "id": "agent_3",
+      "role": "Transaction Executor",
+      "capabilities": [
+        "execute_trades",
+        "verify_transactions",
+        "update_positions"
+      ],
+      "description": "This agent executes trades based on decisions received, verifies transactions, and updates the trading position records."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "analysis": "up-to-date market trends"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "decision": "buy stock X",
+        "context": "based on trend Y"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "status": "trade executed",
+        "position_updated": "true"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "report_trade_outcome",
+      "content": {
+        "outcome": "success",
+        "details": "trade verified"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "feedback_verification",
+      "content": {
+        "feedback": "positions correct",
+        "verification": "complete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "analysis": "up-to-date market trends"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_trading_decision",
+      "content": {
+        "decision": "buy stock X"
+      },
+      "is_bug_point": true,
+      "bug_description": "Missing context - 'based on trend Y' was not included, causing agent_3 to lack important context."
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_execution",
+      "content": {
+        "status": "trade executed",
+        "position_updated": "true"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "report_trade_outcome",
+      "content": {
+        "outcome": "execution issues",
+        "details": "context mismatch"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "feedback_verification",
+      "content": {
+        "feedback": "discrepancy detected",
+        "verification": "incomplete"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 2,
+  "root_cause_step": 2,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 2,
+      "target_step": 3,
+      "relationship_type": "data_flow",
+      "description": "Agent_3 executes trade without essential context, impacting subsequent verification."
+    },
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "feedback",
+      "description": "Agent_1 reports execution issues due to missing context."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "verification_feedback",
+      "description": "Incomplete verification results from context discrepancy."
+    }
+  ],
+  "created_at": "2026-01-04T09:16:50.020025"
+}

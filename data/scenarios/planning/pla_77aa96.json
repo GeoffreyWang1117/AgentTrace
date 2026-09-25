@@ -1,0 +1,363 @@
+{
+  "scenario_id": "pla_77aa96",
+  "domain": "planning",
+  "complexity": "complex",
+  "bug_type": "invalid_output",
+  "task_description": "The agents need to collaboratively plan and execute a logistics operation to deliver medical supplies to remote areas affected by a natural disaster. The operation involves breaking the main goal into subtasks, allocating resources like vehicles and personnel, and ensuring coordination given the dependencies between delivering supplies, refueling, and returning to base.",
+  "expected_outcome": "All agents coordinate successfully to deliver supplies on time, manage resources efficiently, and handle dependencies without any conflicts or delays.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "goal_decomposition",
+        "task_allocation"
+      ],
+      "description": "This agent is responsible for breaking down the main goal into subtasks and allocating tasks to other agents."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "resource_allocation",
+        "conflict_resolution"
+      ],
+      "description": "This agent manages the distribution of resources like vehicles and fuel and resolves any conflicts."
+    },
+    {
+      "id": "agent_3",
+      "role": "Execution Coordinator",
+      "capabilities": [
+        "task_execution",
+        "dependency_management"
+      ],
+      "description": "This agent ensures that tasks are executed according to plan and manages dependencies between tasks."
+    },
+    {
+      "id": "agent_4",
+      "role": "Communication Manager",
+      "capabilities": [
+        "information_propagation",
+        "communication_synchronization"
+      ],
+      "description": "This agent ensures all information and plan updates are communicated to all agents."
+    },
+    {
+      "id": "agent_5",
+      "role": "Logistics Supervisor",
+      "capabilities": [
+        "deployment_supervision",
+        "route_optimization"
+      ],
+      "description": "This agent oversees the deployment of vehicles and optimizes delivery routes."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "allocate_tasks",
+      "content": {
+        "tasks": [
+          "deliver_supplies",
+          "return_to_base"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_resources",
+      "content": {
+        "vehicles": 3,
+        "fuel": "sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": [
+          "fuel_before_delivery"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "update_plan",
+      "content": {
+        "plan_id": 123,
+        "update": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "notify_changes",
+      "content": {
+        "plan_id": 123,
+        "status": "all_confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "optimize_routes",
+      "content": {
+        "routes": "optimized"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "distribute_resources",
+      "content": {
+        "resources": {
+          "vehicles": 3,
+          "fuel": "optimized"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "execute_task",
+      "content": {
+        "task": "begin_delivery"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_delivery",
+      "content": {
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "report_status",
+      "content": {
+        "status": "resources_sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "finalize_execution",
+      "content": {
+        "completion_status": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_completion",
+      "content": {
+        "outcome": "all_deliveries_completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "allocate_tasks",
+      "content": {
+        "tasks": [
+          "deliver_supplies",
+          "return_to_base"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "provide_resources",
+      "content": {
+        "vehicles": 3,
+        "fuel": "sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "confirm_dependencies",
+      "content": {
+        "dependencies": [
+          "fuel before delivery"
+        ]
+      },
+      "is_bug_point": true,
+      "bug_description": "Dependency information is unexpectedly formatted, missing underscore in 'fuel_before_delivery'."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "update_plan",
+      "content": {
+        "plan_id": 123,
+        "update": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "notify_changes",
+      "content": {
+        "plan_id": 123,
+        "status": "all_confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "optimize_routes",
+      "content": {
+        "routes": "optimized"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "distribute_resources",
+      "content": {
+        "resources": {
+          "vehicles": 3,
+          "fuel": "optimized"
+        }
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_5",
+      "action": "execute_task",
+      "content": {
+        "task": "begin_delivery"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_delivery",
+      "content": {
+        "status": "in_progress"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "report_status",
+      "content": {
+        "status": "resources_sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "finalize_execution",
+      "content": {
+        "completion_status": "successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_completion",
+      "content": {
+        "outcome": "some_deliveries_failed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 12,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted dependency format flows from step 3 to step 4, leading to miscommunication."
+    },
+    {
+      "source_step": 4,
+      "target_step": 12,
+      "relationship_type": "execution_dependency",
+      "description": "Incorrect dependency handling results in execution errors at step 12, causing delivery failures."
+    }
+  ],
+  "created_at": "2026-01-04T09:09:41.575077"
+}

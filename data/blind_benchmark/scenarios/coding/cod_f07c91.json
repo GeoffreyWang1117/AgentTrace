@@ -1,0 +1,165 @@
+{
+  "scenario_id": "cod_f07c91",
+  "domain": "coding",
+  "complexity": "complex",
+  "task_description": "The agents need to collaboratively develop, review, test, and integrate a new software feature based on specific requirements. They must ensure code quality, perform thorough testing, fix any bugs, and manage version control during integration.",
+  "expected_outcome": "The new software feature should be correctly developed, reviewed, tested, and integrated with existing systems without any bugs or conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "clarify_requirements"
+      ],
+      "description": "Gathers and clarifies the software feature requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "commit_code"
+      ],
+      "description": "Writes the code based on the requirements and commits it to the repository."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews the committed code for quality and adherence to standards."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "Tests the code against the requirements and reports any bugs found."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integration Manager",
+      "capabilities": [
+        "manage_integration",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates the new code with the existing codebase and resolves any conflicts."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_requirements",
+      "content": {
+        "feature": "new_feature_specifications"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "initial_commit"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "feedback",
+      "content": {
+        "issues": "minor_styling_issues"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "submit_code_for_testing",
+      "content": {
+        "code_version": "1.0"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "all_tests_passed"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_integration",
+      "content": {
+        "code_version": "1.0"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_integration_status",
+      "content": {
+        "status": "conflict_detected"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "request_retesting",
+      "content": {
+        "code_version": "1.0_corrupted"
+      }
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_test_failure",
+      "content": {
+        "status": "issues_found_due_to_corruption"
+      }
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "escalate_issue",
+      "content": {
+        "feedback": "check_data_integrity"
+      }
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request_review_again",
+      "content": {
+        "status": "review_corrupted_version"
+      }
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "feedback_on_issue",
+      "content": {
+        "message": "corruption_detected_needs_fix"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:08:12.519019"
+}

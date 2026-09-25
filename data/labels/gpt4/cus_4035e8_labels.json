@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_4035e8",
+  "trace_id": "cus_4035e8",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Resolution data is incorrectly sent back to the escalation phase, causing unnecessary re-processing in steps 4 and 5."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "processing_loop",
+      "confidence": 1.0,
+      "explanation": "The issue is re-escalated to technical specialists, leading to redundant processing."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The message is mistakenly sent back to agent_2 instead of proceeding to agent_4, causing a loop.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

@@ -1,0 +1,244 @@
+{
+  "scenario_id": "cod_984aa9",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "invalid_output",
+  "task_description": "Four agents are tasked with developing a software feature collaboratively: writing code based on given requirements, reviewing and testing the code, and then fixing any bugs before integrating changes into the main branch.",
+  "expected_outcome": "The agents should successfully deliver a bug-free, integrated software feature that meets all specified requirements.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "code_writing",
+        "requirement_analysis"
+      ],
+      "description": "Writes code based on software requirements and prepares it for review."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "code_review",
+        "issue_identification"
+      ],
+      "description": "Reviews the written code for potential issues and ensures it meets quality standards."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_case_execution",
+        "bug_reporting"
+      ],
+      "description": "Tests the code to identify any functional bugs and reports these for fixing."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integrator",
+      "capabilities": [
+        "code_integration",
+        "conflict_resolution"
+      ],
+      "description": "Integrates code changes into the main branch and resolves any merge conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "minor changes needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_code",
+      "content": {
+        "code_version": "feature implementation v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "test_results",
+      "content": {
+        "status": "all tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_integration",
+      "content": {
+        "integration_request": "ready_to_merge"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "confirm_merge",
+      "content": {
+        "confirmation": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "merge_complete",
+      "content": {
+        "status": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation v1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "minor changes needed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "feature implementation v1.1 with invalid output format"
+      },
+      "is_bug_point": true,
+      "bug_description": "The code submitted has an invalid output format that was not expected or documented."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_code",
+      "content": {
+        "code_version": "feature implementation v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "test_results",
+      "content": {
+        "status": "failed tests due to unexpected output"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_bug_fix",
+      "content": {
+        "issue": "unexpected output format in tests"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_4",
+      "action": "submit_fix",
+      "content": {
+        "code": "feature implementation v1.2"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "merge_complete",
+      "content": {
+        "status": "failed due to integration conflict"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The invalid output format from step 3 was not caught by the reviewer, leading to approval in step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "The invalid output format led to failed tests at step 5."
+    }
+  ],
+  "created_at": "2026-01-04T09:14:55.310133"
+}

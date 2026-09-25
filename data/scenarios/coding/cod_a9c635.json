@@ -1,0 +1,169 @@
+{
+  "scenario_id": "cod_a9c635",
+  "domain": "coding",
+  "complexity": "simple",
+  "bug_type": "wrong_routing",
+  "task_description": "In this scenario, three agents collaborate to develop a software module. Agent 1 writes code based on given requirements, Agent 2 reviews and tests the code, and Agent 3 is responsible for fixing bugs and integrating changes into the main codebase. The goal is to ensure a seamless workflow from writing code to integration, with effective communication and collaboration among agents.",
+  "expected_outcome": "Agent 1 successfully writes the code, which is then reviewed and tested by Agent 2. After successful testing, Agent 3 integrates the changes into the main branch, resolving any issues that arise. The final outcome should be a stable and error-free codebase.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "interpret_requirements"
+      ],
+      "description": "Writes code based on the requirements provided and sends it to the reviewer for testing."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer/Tester",
+      "capabilities": [
+        "review_code",
+        "run_tests"
+      ],
+      "description": "Reviews the code for logical errors or deviations from the requirements and runs tests to ensure functionality."
+    },
+    {
+      "id": "agent_3",
+      "role": "Integrator",
+      "capabilities": [
+        "fix_bugs",
+        "integrate_code"
+      ],
+      "description": "Fixes any identified bugs and integrates the changes into the main codebase, ensuring no conflicts arise."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "review_complete",
+      "content": {
+        "review_notes": "All tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "integration_request",
+      "content": {
+        "integration_status": "ready"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "approve_integration",
+      "content": {
+        "approval_status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "system",
+      "action": "integrate_code",
+      "content": {
+        "integration_result": "success"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "review_complete",
+      "content": {
+        "review_notes": "Minor issues found"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "integration_request",
+      "content": {
+        "integration_status": "ready"
+      },
+      "is_bug_point": true,
+      "bug_description": "The integration request message intended for agent 1 was mistakenly sent back to agent 2."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "unexpected_message_received",
+      "content": {
+        "alert": "Integration request message received incorrectly"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "system",
+      "action": "integrate_code",
+      "content": {
+        "integration_result": "failure"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "The integration request was sent to the wrong agent, causing confusion and delaying the integration process."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "process_flow",
+      "description": "Due to the incorrect routing, the integration could not proceed as expected, resulting in a failure."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:30.918317"
+}

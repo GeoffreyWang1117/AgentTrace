@@ -1,0 +1,84 @@
+{
+  "scenario_id": "res_462ed9",
+  "domain": "research",
+  "complexity": "simple",
+  "task_description": "The agents are tasked with compiling a comprehensive research report on the topic of renewable energy technologies. They will gather data from a variety of online sources, synthesize the information into a coherent narrative, and accurately attribute each piece of information to its source. The agents must communicate effectively to reconcile conflicting data and ensure no information is lost or corrupted.",
+  "expected_outcome": "The agents successfully produce a well-structured research report that integrates findings from multiple sources without any data loss, corruption, or incorrect source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_online_sources",
+        "extract_information"
+      ],
+      "description": "This agent is responsible for searching online databases and extracting relevant information about renewable energy technologies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "reconcile_conflicts"
+      ],
+      "description": "This agent synthesizes the collected data, reconciles any conflicting pieces of information, and prepares the content for the final report."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Compiler",
+      "capabilities": [
+        "compile_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the synthesized information into a coherent report and ensures all sources are correctly attributed."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_data",
+      "content": {
+        "data": "extracted information on solar energy"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_additional_info",
+      "content": {
+        "request": "need more data on wind energy"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_data",
+      "content": {
+        "data": "extracted information on wind energy"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_synthesized_data",
+      "content": {
+        "synthesized_data": "incorrectly combined insights due to race condition"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_data_integration",
+      "content": {
+        "confirmation": "data integrated with incorrect attributions"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:14:36.245677"
+}

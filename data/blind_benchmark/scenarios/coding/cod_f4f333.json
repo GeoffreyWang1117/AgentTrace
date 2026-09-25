@@ -1,0 +1,84 @@
+{
+  "scenario_id": "cod_f4f333",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "The agents need to collaboratively develop a software feature based on given requirements. This involves writing the initial code, reviewing it for defects, testing it against requirements, and integrating it with existing codebase.",
+  "expected_outcome": "The software feature is developed correctly, reviewed for defects, tested successfully, and integrated seamlessly with the existing code without conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "understand_requirements"
+      ],
+      "description": "This agent is responsible for writing code based on the given software requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_defects"
+      ],
+      "description": "This agent reviews the code written by the developer to identify potential defects and logical errors."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "validate_requirements"
+      ],
+      "description": "This agent tests the code to ensure it meets the requirements and is free from defects."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "initial implementation"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "feedback",
+      "content": {
+        "comments": "minor improvements suggested"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "resubmit_code",
+      "content": {
+        "code": "refined implementation with logic error"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_forward",
+      "content": {
+        "code": "approved code with logic error"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "all",
+      "action": "test_results",
+      "content": {
+        "result": "test failed due to logic error"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:07:29.858331"
+}

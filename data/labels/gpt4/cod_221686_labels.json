@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_221686",
+  "trace_id": "cod_221686",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "The missing performance constraints context in step 3 was not tested in step 4."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "miscommunication",
+      "confidence": 1.0,
+      "explanation": "The lack of context led to an incomplete testing phase before code integration in step 5."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "The performance constraints were not communicated to the Tester.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

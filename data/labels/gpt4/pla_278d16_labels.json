@@ -1,0 +1,37 @@
+{
+  "scenario_id": "pla_278d16",
+  "trace_id": "pla_278d16",
+  "causal_edges": [
+    {
+      "source_node_id": "step_1",
+      "target_node_id": "step_2",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Incorrect availability data sent to the Invitation Specialist instead of the Catering Coordinator."
+    },
+    {
+      "source_node_id": "step_2",
+      "target_node_id": "step_3",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Invitation Specialist proceeds without necessary resource allocation confirmation."
+    },
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_5",
+      "relationship_type": "dependency",
+      "confidence": 1.0,
+      "explanation": "The lack of proper resource confirmation affects catering finalization."
+    }
+  ],
+  "root_cause_node_id": "step_1",
+  "root_cause_explanation": "Availability information meant for the Catering Coordinator (agent_2) was incorrectly sent to the Invitation Specialist (agent_3).",
+  "error_propagation_path": [
+    "step_1",
+    "step_2",
+    "step_3",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

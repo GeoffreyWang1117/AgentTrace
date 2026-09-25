@@ -1,0 +1,120 @@
+{
+  "scenario_id": "cod_4f4ce3",
+  "domain": "coding",
+  "complexity": "complex",
+  "task_description": "Agents collaborate to develop a feature based on requirements, including code writing, reviewing, testing, and integration. Each agent must effectively communicate and pass necessary context information to downstream agents to ensure seamless development and integration.",
+  "expected_outcome": "The feature is developed as per specifications, code is reviewed without missing critical issues, tested with the correct code version, and successfully integrated without conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirement Analyst",
+      "capabilities": [
+        "documentRequirements",
+        "clarifyQueries"
+      ],
+      "description": "This agent gathers and documents the feature requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "writeCode",
+        "documentChanges"
+      ],
+      "description": "This agent writes code according to the documented requirements and documents any changes made."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "reviewCode",
+        "identifyIssues"
+      ],
+      "description": "This agent reviews the code for adherence to requirements and identifies issues or potential improvements."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "executeTests",
+        "reportBugs"
+      ],
+      "description": "This agent executes the test cases on the provided code version and reports any bugs or issues."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integrator",
+      "capabilities": [
+        "resolveConflicts",
+        "integrateCode"
+      ],
+      "description": "This agent integrates the final code into the main branch, resolving any conflicts that arise."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "passRequirements",
+      "content": {
+        "requirements": "partial set of requirements"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submitCode",
+      "content": {
+        "code": "code version missing authentication"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "reviewFeedback",
+      "content": {
+        "feedback": "looks good"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "submitCodeForTesting",
+      "content": {
+        "code": "test version"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "reportTestResults",
+      "content": {
+        "results": "authentication issue not detected due to missing context"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "submitCodeForIntegration",
+      "content": {
+        "code": "final code version"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "integrationFeedback",
+      "content": {
+        "status": "integration conflict"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:08:46.548349"
+}

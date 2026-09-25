@@ -1,0 +1,128 @@
+{
+  "scenario_id": "tra_ddd1a9",
+  "domain": "trading",
+  "complexity": "medium",
+  "task_description": "Four agents are tasked with analyzing real-time market data, making informed trading decisions, executing trades, and verifying the accuracy of these transactions in a simulated trading environment.",
+  "expected_outcome": "Agents should successfully analyze market data, make informed trading decisions, execute orders at the optimal time, and ensure all transactions are correctly verified and recorded without discrepancies.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Market Data Analyzer",
+      "capabilities": [
+        "fetch_market_data",
+        "analyze_trends"
+      ],
+      "description": "This agent is responsible for gathering and analyzing real-time market data to identify potential trading opportunities."
+    },
+    {
+      "id": "agent_2",
+      "role": "Decision Maker",
+      "capabilities": [
+        "evaluate_trades",
+        "risk_assessment"
+      ],
+      "description": "This agent evaluates potential trades based on market data and assesses associated risks to make informed trading decisions."
+    },
+    {
+      "id": "agent_3",
+      "role": "Trade Executor",
+      "capabilities": [
+        "execute_orders",
+        "monitor_execution"
+      ],
+      "description": "This agent is tasked with executing approved trades and ensuring they are carried out at the optimal time and price."
+    },
+    {
+      "id": "agent_4",
+      "role": "Transaction Verifier",
+      "capabilities": [
+        "verify_transactions",
+        "update_ledger"
+      ],
+      "description": "This agent verifies the accuracy of executed trades and updates the financial ledger accordingly."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_market_analysis",
+      "content": {
+        "market_trend": "upward",
+        "confidence": 0.9
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_trade",
+      "content": {
+        "trade_decision": "buy",
+        "volume": 100
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_status": "pending",
+        "execution_price": 50
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "confirm_execution",
+      "content": {
+        "confirmation_status": "pending",
+        "order_id": 1234
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "send_verification",
+      "content": {
+        "verification_status": "pending",
+        "ledger_update": false
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_market_conditions",
+      "content": {
+        "market_trend": "stable",
+        "confidence": 0.8
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "new_trade_decision",
+      "content": {
+        "trade_decision": "sell",
+        "volume": 50
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "execute_trade",
+      "content": {
+        "order_status": "executed",
+        "execution_price": 48
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:17:00.563727"
+}

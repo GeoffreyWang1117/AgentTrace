@@ -1,0 +1,84 @@
+{
+  "scenario_id": "cod_b7fc72",
+  "domain": "coding",
+  "complexity": "simple",
+  "task_description": "Three agents collaborate to develop a simple calculator application. Agent 1 writes the code according to given specifications, Agent 2 reviews and tests the code, and Agent 3 handles integration and ensures that all components work harmoniously together.",
+  "expected_outcome": "Agent 1 writes correct code that passes Agent 2's review and tests. Agent 3 integrates the code seamlessly without conflicts or errors.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Code Writer",
+      "capabilities": [
+        "write_code",
+        "adhere_to_specifications"
+      ],
+      "description": "Writes code for the calculator application based on the requirements."
+    },
+    {
+      "id": "agent_2",
+      "role": "Code Reviewer and Tester",
+      "capabilities": [
+        "review_code",
+        "test_code"
+      ],
+      "description": "Reviews the code for issues and runs tests to ensure functionality."
+    },
+    {
+      "id": "agent_3",
+      "role": "Integrator",
+      "capabilities": [
+        "resolve_conflicts",
+        "integrate_code"
+      ],
+      "description": "Integrates different parts of the codebase and resolves any conflicts."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "partial_output"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_revision",
+      "content": {
+        "issues": "format_error"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code": "revised_partial_output"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "approve_and_pass_code",
+      "content": {
+        "code": "reviewed_partial_output"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "system",
+      "action": "integrate_code",
+      "content": {
+        "status": "failed_integration"
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:08:35.102374"
+}

@@ -1,0 +1,355 @@
+{
+  "scenario_id": "pla_1ffd31",
+  "domain": "planning",
+  "complexity": "complex",
+  "bug_type": "data_corruption",
+  "task_description": "The agents need to assemble a complex gadget that requires breaking down the task into subtasks. The subtasks include sourcing components, assembling parts, and final integration. Agents must allocate resources and responsibilities, coordinate execution, handle dependencies, and ensure synchronization across the process.",
+  "expected_outcome": "The gadget is assembled successfully with all components fitting and functioning correctly, with no resource conflicts or dependency issues.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Component Sourcing Specialist",
+      "capabilities": [
+        "Identify suppliers",
+        "Negotiate contracts"
+      ],
+      "description": "Responsible for sourcing all components needed for the assembly."
+    },
+    {
+      "id": "agent_2",
+      "role": "Assembly Coordinator",
+      "capabilities": [
+        "Schedule tasks",
+        "Allocate labor"
+      ],
+      "description": "Coordinates all assembly activities and manages labor resources."
+    },
+    {
+      "id": "agent_3",
+      "role": "Quality Control Inspector",
+      "capabilities": [
+        "Conduct inspections",
+        "Ensure standards"
+      ],
+      "description": "Inspects components and final products to ensure quality standards are met."
+    },
+    {
+      "id": "agent_4",
+      "role": "Integration Engineer",
+      "capabilities": [
+        "Design integration plans",
+        "Execute integration"
+      ],
+      "description": "Responsible for integrating all assembled parts into a final product."
+    },
+    {
+      "id": "agent_5",
+      "role": "Resource Manager",
+      "capabilities": [
+        "Manage inventory",
+        "Resolve conflicts"
+      ],
+      "description": "Manages inventory levels and resolves any resource conflicts during the process."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_sourcing_report",
+      "content": {
+        "components": [
+          "screw",
+          "bolt",
+          "nut"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_resource_allocation",
+      "content": {
+        "labor_hours": 10
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_allocation",
+      "content": {
+        "labor_hours_approved": 10
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_assembly_schedule",
+      "content": {
+        "schedule": "Week 1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "initiate_quality_inspection",
+      "content": {
+        "components": [
+          "screw",
+          "bolt",
+          "nut"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_inspection_report",
+      "content": {
+        "status": "passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_parts",
+      "content": {
+        "components": [
+          "washer"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "update_component_inventory",
+      "content": {
+        "inventory": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_inventory_status",
+      "content": {
+        "status": "sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "authorize_final_assembly",
+      "content": {
+        "authorization": "granted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "final_inspection",
+      "content": {
+        "final_check": "required"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "final_report",
+      "content": {
+        "status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_sourcing_report",
+      "content": {
+        "components": [
+          "screw",
+          "bolt",
+          "nut"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "request_resource_allocation",
+      "content": {
+        "labor_hours": 10
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_allocation",
+      "content": {
+        "labor_hours_approved": 5
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurred; approved labor hours were reduced from 10 to 5."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "send_assembly_schedule",
+      "content": {
+        "schedule": "Week 1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "initiate_quality_inspection",
+      "content": {
+        "components": [
+          "screw",
+          "bolt",
+          "nut"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "send_inspection_report",
+      "content": {
+        "status": "passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "request_additional_parts",
+      "content": {
+        "components": [
+          "washer"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_5",
+      "action": "update_component_inventory",
+      "content": {
+        "inventory": "updated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_inventory_status",
+      "content": {
+        "status": "sufficient"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "authorize_final_assembly",
+      "content": {
+        "authorization": "granted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "final_inspection",
+      "content": {
+        "final_check": "required"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "final_report",
+      "content": {
+        "status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, leading to resource misallocation."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:44.386914"
+}

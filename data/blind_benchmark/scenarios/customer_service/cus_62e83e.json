@@ -1,0 +1,128 @@
+{
+  "scenario_id": "cus_62e83e",
+  "domain": "customer_service",
+  "complexity": "medium",
+  "task_description": "In this scenario, four agents collaborate to handle customer service inquiries. They need to manage customer contexts, escalate complex issues, and ensure all ticket status updates are synchronized across the system. The primary goal is to efficiently resolve all customer tickets while maintaining data integrity during the process.",
+  "expected_outcome": "Each customer inquiry is handled swiftly; complex issues are escalated accurately, and ticket statuses are updated in real-time across all systems. No information is lost or corrupted during agent handoffs.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Frontline Support Agent",
+      "capabilities": [
+        "accept_inquiries",
+        "provide_initial_responses"
+      ],
+      "description": "Handles initial customer inquiries and provides solutions for common issues."
+    },
+    {
+      "id": "agent_2",
+      "role": "Technical Support Agent",
+      "capabilities": [
+        "resolve_technical_issues",
+        "update_ticket_status"
+      ],
+      "description": "Takes over inquiries requiring technical expertise and updates ticket statuses accordingly."
+    },
+    {
+      "id": "agent_3",
+      "role": "Escalation Specialist",
+      "capabilities": [
+        "escalate_issues",
+        "maintain_customer_context"
+      ],
+      "description": "Handles the escalation of complex issues while ensuring customer context is preserved."
+    },
+    {
+      "id": "agent_4",
+      "role": "Customer Satisfaction Manager",
+      "capabilities": [
+        "conduct_follow_ups",
+        "ensure_resolution_completeness"
+      ],
+      "description": "Performs follow-up with customers to ensure issues are resolved to their satisfaction."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "forward_inquiry",
+      "content": {
+        "ticket_id": 101,
+        "customer_issue": "Login problem"
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "escalate_issue",
+      "content": {
+        "ticket_id": 101,
+        "technical_details": "Authentication error"
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "provide_solution",
+      "content": {
+        "ticket_id": 101,
+        "proposed_solution": "Reset password link sent"
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "confirm_solution_delivery",
+      "content": {
+        "ticket_id": 101,
+        "status": "Solution sent to customer"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "notify_for_follow_up",
+      "content": {
+        "ticket_id": 101,
+        "customer_feedback_request": "Awaiting response"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "report_customer_feedback",
+      "content": {
+        "ticket_id": 101,
+        "feedback": "Issue still persists"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "reopen_ticket",
+      "content": {
+        "ticket_id": 101,
+        "status": "Reopened due to unresolved issue"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "review_previous_resolution",
+      "content": {
+        "ticket_id": 101,
+        "resolution_note": "Re-evaluate solution provided"
+      }
+    }
+  ],
+  "created_at": "2026-01-03T22:45:21.019382"
+}

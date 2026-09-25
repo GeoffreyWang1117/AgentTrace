@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cus_623dee",
+  "trace_id": "cus_623dee",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Corrupted context data led to incomplete ticket information."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_5",
+      "relationship_type": "data_flow",
+      "confidence": 1.0,
+      "explanation": "Incomplete context results in ineffective notification to QA."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Missing previous interactions and other context details.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_5"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}

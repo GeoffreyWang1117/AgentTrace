@@ -1,0 +1,197 @@
+{
+  "scenario_id": "cod_2d1b39",
+  "domain": "coding",
+  "complexity": "simple",
+  "bug_type": "state_inconsistency",
+  "task_description": "The agents need to collaboratively develop a feature for a software application based on given requirements. The process includes writing the code, conducting code reviews, performing tests, and integrating changes. The agents must ensure that shared state data is consistent at all stages.",
+  "expected_outcome": "The agents successfully implement the feature without any bugs, and the final integrated software works as expected with all tests passing.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "fix_bugs"
+      ],
+      "description": "Agent 1 is responsible for writing the initial code based on requirements and fixing any identified bugs."
+    },
+    {
+      "id": "agent_2",
+      "role": "Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Agent 2 reviews the code written by Agent 1, identifying issues and recommending improvements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Tester",
+      "capabilities": [
+        "test_code",
+        "report_bugs"
+      ],
+      "description": "Agent 3 tests the code to ensure functionality meets requirements and that there are no bugs."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "features": [
+          "Feature A"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_review",
+      "content": {
+        "code_version": "v1.0",
+        "review_notes": [
+          "Improve function X"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "fix_and_resubmit",
+      "content": {
+        "code_version": "v1.1",
+        "features": [
+          "Feature A"
+        ],
+        "fixes": [
+          "Function X improved"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_results",
+      "content": {
+        "code_version": "v1.1",
+        "test_results": "All tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "finalize_integration",
+      "content": {
+        "code_version": "v1.1",
+        "integration_status": "Successful"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "submit_code",
+      "content": {
+        "code_version": "v1.0",
+        "features": [
+          "Feature A"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "provide_review",
+      "content": {
+        "code_version": "v1.0",
+        "review_notes": [
+          "Improve function X"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "fix_and_resubmit",
+      "content": {
+        "code_version": "v1.1",
+        "features": [
+          "Feature A"
+        ],
+        "fixes": [
+          "Function Y improved"
+        ]
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 1 resubmits an incorrect code version where shared state fails to reflect improvements in function X as per review notes."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "report_results",
+      "content": {
+        "code_version": "v1.1",
+        "test_results": "Tests failed for function X"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "finalize_integration",
+      "content": {
+        "code_version": "v1.1",
+        "integration_status": "Integration conflicts"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4 because the code version with state inconsistency was tested."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "process_dependency",
+      "description": "The test results from step 4 impact the integration process in step 5, causing conflicts."
+    }
+  ],
+  "created_at": "2026-01-04T09:07:57.288873"
+}

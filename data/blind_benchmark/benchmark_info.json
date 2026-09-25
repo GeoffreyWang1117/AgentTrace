@@ -1,0 +1,21 @@
+{
+  "total_traces": 250,
+  "total_scenarios": 250,
+  "domains": [
+    "coding",
+    "research",
+    "trading",
+    "customer_service",
+    "planning"
+  ],
+  "description": "Blind benchmark with bug markers removed",
+  "fields_removed": [
+    "is_bug_point",
+    "bug_description",
+    "bug_type",
+    "root_cause_step",
+    "error_manifestation_step",
+    "causal_path",
+    "node type \"error\" -> \"decision\""
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "scenario_id": "cod_69de8f",
+  "domain": "coding",
+  "complexity": "medium",
+  "bug_type": "missing_context",
+  "task_description": "Four software development agents collaborate to develop a feature for an application. The agents are responsible for writing code, reviewing the code, testing it, and integrating the changes. The process needs to be efficient and free of bugs, with each agent ensuring their tasks are completed accurately and any issues are addressed promptly.",
+  "expected_outcome": "The agents will successfully generate a well-functioning code based on the requirements, review it for any potential issues, test the code to ensure it meets all functional requirements, and integrate changes without any conflicts. The final product should be bug-free and perform as expected.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirements Analyst",
+      "capabilities": [
+        "gather_requirements",
+        "create_user_stories"
+      ],
+      "description": "This agent gathers the requirements and creates detailed user stories for the developers to implement."
+    },
+    {
+      "id": "agent_2",
+      "role": "Software Developer",
+      "capabilities": [
+        "write_code",
+        "commit_code"
+      ],
+      "description": "This agent writes the necessary code to implement the requirements and commits changes to the version control system."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "provide_feedback"
+      ],
+      "description": "This agent reviews the code for any potential issues or areas for improvement and provides feedback or approval."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "run_tests",
+        "report_bugs"
+      ],
+      "description": "This agent runs test cases on the code to ensure it meets the requirements and reports any bugs found."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_requirements",
+      "content": {
+        "user_stories": "Complete list of user stories"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_review",
+      "content": {
+        "code_version": "v1.0",
+        "user_stories": "Complete list of user stories"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "Code looks good, minor changes suggested"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "submit_code_for_testing",
+      "content": {
+        "code_version": "v1.1",
+        "user_stories": "Complete list of user stories"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "All tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_integration",
+      "content": {
+        "integration_status": "Successfully integrated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "post_integration_feedback",
+      "content": {
+        "feedback": "Ready for deployment"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "final_approval",
+      "content": {
+        "approval_status": "Approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "deliver_requirements",
+      "content": {
+        "user_stories": "Complete list of user stories"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code_for_review",
+      "content": {
+        "code_version": "v1.0",
+        "user_stories": "Complete list of user stories"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "review_feedback",
+      "content": {
+        "feedback": "Code looks good, minor changes suggested"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 3 missed key context information related to security requirements."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "submit_code_for_testing",
+      "content": {
+        "code_version": "v1.1",
+        "user_stories": "Partial list of user stories"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "test_results": "Some tests failed due to missing features"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_integration",
+      "content": {
+        "integration_status": "Integration failed due to missing context"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "post_integration_feedback",
+      "content": {
+        "feedback": "Review incomplete, security measures not considered"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "final_approval",
+      "content": {
+        "approval_status": "Rejected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Review feedback from Step 3 lacked critical context, leading to incomplete user stories in Step 4."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "test_misconfiguration",
+      "description": "Incomplete user stories caused incomplete test cases in Step 5."
+    }
+  ],
+  "created_at": "2026-01-03T22:44:06.017897"
+}

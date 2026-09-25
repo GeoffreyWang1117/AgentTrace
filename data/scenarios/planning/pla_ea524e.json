@@ -1,0 +1,278 @@
+{
+  "scenario_id": "pla_ea524e",
+  "domain": "planning",
+  "complexity": "medium",
+  "bug_type": "data_corruption",
+  "task_description": "Agents need to collaboratively plan and execute the construction of a small eco-friendly shelter. The project involves breaking down the tasks into subtasks like gathering materials, preparing the site, constructing the foundation, building the structure, and finishing touches. The agents must coordinate on resource allocation, manage dependencies, and update plans as needed.",
+  "expected_outcome": "Agents successfully construct the eco-friendly shelter by efficiently collaborating, ensuring all resources are optimally used, dependencies are met, and plans are updated and communicated correctly.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Planner",
+      "capabilities": [
+        "task_decomposition",
+        "resource_allocation"
+      ],
+      "description": "Breaks down the main goal into subtasks and allocates resources accordingly."
+    },
+    {
+      "id": "agent_2",
+      "role": "Procurement Specialist",
+      "capabilities": [
+        "resource_acquisition",
+        "vendor_communication"
+      ],
+      "description": "Acquires necessary materials and manages vendor relationships."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Lead",
+      "capabilities": [
+        "task_execution",
+        "team_coordination"
+      ],
+      "description": "Oversees the execution of construction tasks and coordinates with the team."
+    },
+    {
+      "id": "agent_4",
+      "role": "Quality Inspector",
+      "capabilities": [
+        "quality_control",
+        "report_generation"
+      ],
+      "description": "Ensures that all tasks are performed to standard and generates quality reports."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_resources",
+      "content": {
+        "materials_needed": [
+          "wood",
+          "nails",
+          "paint"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_resources",
+      "content": {
+        "materials_confirmed": [
+          "wood",
+          "nails",
+          "paint"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_task_plan",
+      "content": {
+        "tasks": [
+          "prepare site",
+          "build foundation",
+          "erect structure"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_inspection",
+      "content": {
+        "task_completed": "prepare site"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "approve_task",
+      "content": {
+        "approved_task": "prepare site"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_progress",
+      "content": {
+        "completed_tasks": [
+          "prepare site"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_next_task",
+      "content": {
+        "next_task": "build foundation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_inspection",
+      "content": {
+        "task_completed": "build foundation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "request_resources",
+      "content": {
+        "materials_needed": [
+          "wood",
+          "nails",
+          "paint"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "confirm_resources",
+      "content": {
+        "materials_confirmed": [
+          "wood",
+          "nails",
+          "paint"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_task_plan",
+      "content": {
+        "tasks": [
+          "prepare site",
+          "build foundation",
+          "erect structure"
+        ]
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurs, modifying 'build foundation' to 'build foundatio'"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_inspection",
+      "content": {
+        "task_completed": "prepare site"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_3",
+      "action": "approve_task",
+      "content": {
+        "approved_task": "prepare site"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "update_progress",
+      "content": {
+        "completed_tasks": [
+          "prepare site"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "send_next_task",
+      "content": {
+        "next_task": "build foundation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_inspection",
+      "content": {
+        "task_completed": "build foundation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, causing agent 3 to misinterpret the task."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "task_execution",
+      "description": "Agent 4 approves the wrong task due to misunderstanding the corrupted task description."
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "progress_update",
+      "description": "The incorrect task approval is communicated back, perpetuating the error."
+    }
+  ],
+  "created_at": "2026-01-04T09:15:22.783040"
+}

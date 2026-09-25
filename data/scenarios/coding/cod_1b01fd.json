@@ -1,0 +1,353 @@
+{
+  "scenario_id": "cod_1b01fd",
+  "domain": "coding",
+  "complexity": "complex",
+  "bug_type": "timeout_cascade",
+  "task_description": "Agents collaborate to develop a feature for a software project. They must write code based on specifications, conduct reviews, perform tests, and integrate changes seamlessly into the main codebase. The objective is effective coordination to produce high-quality code, address any bugs, and avoid integration issues.",
+  "expected_outcome": "The agents should produce a fully functioning, bug-free feature that meets the given requirements, with all code reviewed, tested, and integrated successfully without conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Requirement Analyst",
+      "capabilities": [
+        "extract_requirements",
+        "document_requirements"
+      ],
+      "description": "Gathers and documents software requirements from stakeholders."
+    },
+    {
+      "id": "agent_2",
+      "role": "Developer",
+      "capabilities": [
+        "write_code",
+        "implement_logic"
+      ],
+      "description": "Writes and implements code according to the documented requirements."
+    },
+    {
+      "id": "agent_3",
+      "role": "Code Reviewer",
+      "capabilities": [
+        "review_code",
+        "identify_issues"
+      ],
+      "description": "Reviews the written code to ensure it meets quality standards and catches potential issues."
+    },
+    {
+      "id": "agent_4",
+      "role": "Tester",
+      "capabilities": [
+        "execute_tests",
+        "report_results"
+      ],
+      "description": "Tests the software to ensure functionality and reports any issues."
+    },
+    {
+      "id": "agent_5",
+      "role": "Integrator",
+      "capabilities": [
+        "merge_code",
+        "resolve_conflicts"
+      ],
+      "description": "Integrates the tested code into the main codebase and resolves any conflicts."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_requirements",
+      "content": {
+        "requirements": "Feature X requirements"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "Feature X implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_review_feedback",
+      "content": {
+        "feedback": "Code looks good"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "deliver_code_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "results": "All tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "send_code_for_integration",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_integration",
+      "content": {
+        "status": "Successfully integrated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_requirements",
+      "content": {
+        "additional_requirements": "Feature Y"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_additional_code",
+      "content": {
+        "code": "Feature Y implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_additional_feedback",
+      "content": {
+        "feedback": "Minor issues, please fix"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "deliver_additional_code_for_testing",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_additional_test_results",
+      "content": {
+        "results": "All additional tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_requirements",
+      "content": {
+        "requirements": "Feature X requirements"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_code",
+      "content": {
+        "code": "Feature X implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_review_feedback",
+      "content": {
+        "feedback": "Code looks good"
+      },
+      "is_bug_point": true,
+      "bug_description": "Due to a timeout, feedback was not received in time, delaying subsequent steps"
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "deliver_code_for_testing",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_test_results",
+      "content": {
+        "results": "Timeout error in testing"
+      },
+      "is_bug_point": true,
+      "bug_description": "Testing agent received the code late due to prior timeout, causing a timeout in test execution"
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_2",
+      "to_agent": "agent_5",
+      "action": "send_code_for_integration",
+      "content": {
+        "code_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_5",
+      "to_agent": "agent_2",
+      "action": "confirm_integration",
+      "content": {
+        "status": "Integration failed"
+      },
+      "is_bug_point": true,
+      "bug_description": "Integration failed due to incomplete test results caused by earlier timeout errors"
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "update_requirements",
+      "content": {
+        "additional_requirements": "Feature Y"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "submit_additional_code",
+      "content": {
+        "code": "Feature Y implementation"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "send_additional_feedback",
+      "content": {
+        "feedback": "Minor issues, please fix"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "deliver_additional_code_for_testing",
+      "content": {
+        "code_version": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_4",
+      "to_agent": "agent_2",
+      "action": "report_additional_test_results",
+      "content": {
+        "results": "All additional tests passed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 7,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Delayed feedback causes delay in code delivery for testing"
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "temporal_dependency",
+      "description": "Testing process is delayed due to late code delivery"
+    },
+    {
+      "source_step": 5,
+      "target_step": 6,
+      "relationship_type": "data_flow",
+      "description": "Incomplete test results flow to integration"
+    },
+    {
+      "source_step": 6,
+      "target_step": 7,
+      "relationship_type": "temporal_dependency",
+      "description": "Integration fails because test results are incomplete"
+    }
+  ],
+  "created_at": "2026-01-04T09:08:43.160669"
+}

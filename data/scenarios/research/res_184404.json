@@ -1,0 +1,177 @@
+{
+  "scenario_id": "res_184404",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "data_corruption",
+  "task_description": "Three agents collaborate to collect and synthesize information from multiple online sources to produce a comprehensive research report on the impact of climate change on marine biodiversity. The agents must search, retrieve, reconcile conflicting data, and compile the findings into a well-attributed, accurate report.",
+  "expected_outcome": "The agents successfully gather accurate information, resolve any discrepancies, and produce a cohesive research report with proper source attribution.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Data Collector",
+      "capabilities": [
+        "search_online_sources",
+        "retrieve_data"
+      ],
+      "description": "This agent searches for and retrieves relevant information from multiple online sources."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Analyzer",
+      "capabilities": [
+        "analyze_data",
+        "reconcile_conflicts"
+      ],
+      "description": "This agent analyzes the collected data, resolves conflicts, and prepares datasets for the report."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Compiler",
+      "capabilities": [
+        "synthesize_information",
+        "generate_report"
+      ],
+      "description": "This agent synthesizes the analyzed data and generates the final research report with proper source attribution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "climate_change_data",
+        "source": "source_A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_more_data",
+      "content": {
+        "needed": "marine_species_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_data",
+      "content": {
+        "data": "marine_species_data",
+        "source": "source_B"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analyzed_data",
+      "content": {
+        "data": "analyzed_data",
+        "notes": "conflicts_resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "output",
+      "action": "generate_report",
+      "content": {
+        "report": "final_report",
+        "status": "completed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "climate_change_data",
+        "source": "source_A"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_1",
+      "action": "request_more_data",
+      "content": {
+        "needed": "marine_species_data"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_additional_data",
+      "content": {
+        "data": "marine_species_data_corrupted",
+        "source": "source_B"
+      },
+      "is_bug_point": true,
+      "bug_description": "Data corruption occurred, altering 'marine_species_data' unexpectedly."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "send_analyzed_data",
+      "content": {
+        "data": "analyzed_data_corrupted",
+        "notes": "conflicts_resolved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_3",
+      "to_agent": "output",
+      "action": "generate_report",
+      "content": {
+        "report": "incomplete_report",
+        "status": "error_detected"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, affecting analysis."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "data_flow",
+      "description": "Corrupted analyzed data leads to an incomplete report generation."
+    }
+  ],
+  "created_at": "2026-01-03T22:41:09.483424"
+}

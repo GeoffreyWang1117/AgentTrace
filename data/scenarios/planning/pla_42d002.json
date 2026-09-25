@@ -1,0 +1,353 @@
+{
+  "scenario_id": "pla_42d002",
+  "domain": "planning",
+  "complexity": "complex",
+  "bug_type": "timeout_cascade",
+  "task_description": "The agents need to collaboratively plan the construction of a smart building. This includes designing the architecture, allocating construction resources, assembling materials, and managing time schedules, while ensuring that dependencies between tasks are properly coordinated and communicated.",
+  "expected_outcome": "All agents successfully coordinate to complete the smart building project on time with optimal resource utilization, without any conflicts or delays.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Architect",
+      "capabilities": [
+        "design_blueprints",
+        "allocate_space"
+      ],
+      "description": "Responsible for designing the building architecture and creating initial blueprints."
+    },
+    {
+      "id": "agent_2",
+      "role": "Resource Manager",
+      "capabilities": [
+        "allocate_resources",
+        "manage_inventory"
+      ],
+      "description": "Handles the allocation of construction materials and ensures availability of resources."
+    },
+    {
+      "id": "agent_3",
+      "role": "Construction Foreman",
+      "capabilities": [
+        "assign_tasks",
+        "schedule_workers"
+      ],
+      "description": "Oversees the construction process, schedules tasks, and assigns workers to specific jobs."
+    },
+    {
+      "id": "agent_4",
+      "role": "Logistics Coordinator",
+      "capabilities": [
+        "coordinate_shipments",
+        "track_deliveries"
+      ],
+      "description": "Coordinates the transportation of materials to the construction site and ensures timely delivery."
+    },
+    {
+      "id": "agent_5",
+      "role": "Compliance Officer",
+      "capabilities": [
+        "ensure_regulatory_compliance",
+        "audit_processes"
+      ],
+      "description": "Ensures that construction processes comply with regulatory requirements and audits the project."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design",
+      "content": {
+        "blueprint_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "materials": [
+          "steel",
+          "concrete"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_logistics",
+      "content": {
+        "shipment_date": "2023-10-10"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_delivery_schedule",
+      "content": {
+        "status": "confirmed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "audit_confirmation",
+      "content": {
+        "compliance_status": "approved"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "finalize_design",
+      "content": {
+        "final_blueprint": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_progress",
+      "content": {
+        "progress": "50%"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_inventory",
+      "content": {
+        "steel": "depleted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "logistics_feedback",
+      "content": {
+        "next_delivery": "2023-10-15"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "compliance_review",
+      "content": {
+        "issues": "none"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "validate_design_changes",
+      "content": {
+        "changes_approved": true
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_resource_allocation",
+      "content": {
+        "status": "allocated"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_design",
+      "content": {
+        "blueprint_version": "v1.0"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "allocate_resources",
+      "content": {
+        "materials": [
+          "steel",
+          "concrete"
+        ]
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_4",
+      "action": "request_logistics",
+      "content": {
+        "shipment_date": "2023-10-10"
+      },
+      "is_bug_point": true,
+      "bug_description": "Timeout occurred due to network delay, causing shipment request to fail."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "confirm_delivery_schedule",
+      "content": {
+        "status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "audit_confirmation",
+      "content": {
+        "compliance_status": "delayed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "finalize_design",
+      "content": {
+        "final_blueprint": "v1.1"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "report_progress",
+      "content": {
+        "progress": "halted"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "update_inventory",
+      "content": {
+        "steel": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 9,
+      "from_agent": "agent_4",
+      "to_agent": "agent_5",
+      "action": "logistics_feedback",
+      "content": {
+        "next_delivery": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 10,
+      "from_agent": "agent_5",
+      "to_agent": "agent_1",
+      "action": "compliance_review",
+      "content": {
+        "issues": "pending review"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 11,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "validate_design_changes",
+      "content": {
+        "changes_approved": false
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 12,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "confirm_resource_allocation",
+      "content": {
+        "status": "pending"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Timeout in shipment request causes logistics scheduling to be marked as pending."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "dependency",
+      "description": "Pending logistics confirmation delays audit confirmation."
+    },
+    {
+      "source_step": 5,
+      "target_step": 7,
+      "relationship_type": "dependency",
+      "description": "Audit delay causes construction progress to be halted."
+    }
+  ],
+  "created_at": "2026-01-04T09:09:14.591150"
+}

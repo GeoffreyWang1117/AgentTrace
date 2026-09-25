@@ -1,0 +1,128 @@
+{
+  "scenario_id": "pla_929520",
+  "domain": "planning",
+  "complexity": "medium",
+  "task_description": "The agents are tasked with organizing a charity event which involves reserving a venue, coordinating with vendors, managing publicity, and ensuring logistics are in place. The complex goal is broken down into subtasks that require resource allocation, scheduling, and execution of tasks in the correct order.",
+  "expected_outcome": "Each agent should complete their tasks with proper coordination and communication, leading to a successful charity event without any delays or resource conflicts.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Venue Manager",
+      "capabilities": [
+        "reserve_venue",
+        "negotiate_contract"
+      ],
+      "description": "Responsible for finding and securing the event venue."
+    },
+    {
+      "id": "agent_2",
+      "role": "Vendor Coordinator",
+      "capabilities": [
+        "coordinate_vendors",
+        "manage_contracts"
+      ],
+      "description": "Handles communication and contracts with catering, decoration, and equipment vendors."
+    },
+    {
+      "id": "agent_3",
+      "role": "Public Relations Specialist",
+      "capabilities": [
+        "develop_marketing_materials",
+        "handle_media"
+      ],
+      "description": "Responsible for event publicity and media engagement."
+    },
+    {
+      "id": "agent_4",
+      "role": "Logistics Manager",
+      "capabilities": [
+        "manage_transportation",
+        "coordinate_schedules"
+      ],
+      "description": "Oversees transportation and schedule coordination for smooth event execution."
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "inform",
+      "content": {
+        "venue_name": "Grand Hall",
+        "contract_signed": true
+      }
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "request",
+      "content": {
+        "vendor_list": [
+          "Catering Co.",
+          "Decorators Inc."
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "inform",
+      "content": {
+        "media_outlets": [
+          "Local News",
+          "City Radio"
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "confirm",
+      "content": {
+        "transport_logistics": "all_set"
+      }
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "inform",
+      "content": {
+        "venue_details": "Grand Hall",
+        "availability": "confirmed"
+      }
+    },
+    {
+      "step": 6,
+      "from_agent": "agent_3",
+      "to_agent": "agent_2",
+      "action": "update",
+      "content": {
+        "publicity_materials": "ready"
+      }
+    },
+    {
+      "step": 7,
+      "from_agent": "agent_2",
+      "to_agent": "agent_4",
+      "action": "confirm",
+      "content": {
+        "vendor_contracts": "all_signed"
+      }
+    },
+    {
+      "step": 8,
+      "from_agent": "agent_4",
+      "to_agent": "agent_1",
+      "action": "notify",
+      "content": {
+        "schedule_finalized": true
+      }
+    }
+  ],
+  "created_at": "2026-01-04T09:15:38.448432"
+}

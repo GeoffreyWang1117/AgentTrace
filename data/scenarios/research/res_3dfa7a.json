@@ -1,0 +1,169 @@
+{
+  "scenario_id": "res_3dfa7a",
+  "domain": "research",
+  "complexity": "simple",
+  "bug_type": "logic_error",
+  "task_description": "The agents need to collaboratively search for information from multiple sources, synthesize their findings, and produce a cohesive research report on renewable energy technologies.",
+  "expected_outcome": "If everything works correctly, agents collect accurate information, resolve any conflicts, and produce a well-attributed, comprehensive research report.",
+  "agents": [
+    {
+      "id": "agent_1",
+      "role": "Information Gatherer",
+      "capabilities": [
+        "search_sources",
+        "collect_data"
+      ],
+      "description": "This agent searches various online databases and repositories for relevant information on renewable energy technologies."
+    },
+    {
+      "id": "agent_2",
+      "role": "Data Synthesizer",
+      "capabilities": [
+        "analyze_data",
+        "reconcile_information"
+      ],
+      "description": "This agent processes the collected data to identify key points and reconcile conflicting information from different sources."
+    },
+    {
+      "id": "agent_3",
+      "role": "Report Generator",
+      "capabilities": [
+        "create_report",
+        "attribute_sources"
+      ],
+      "description": "This agent compiles the synthesized data into a final research report, ensuring proper source attribution."
+    }
+  ],
+  "correct_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "information about solar energy technologies"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "information about wind energy technologies"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "synthesize_and_send",
+      "content": {
+        "synthesized_data": "combined data on solar and wind energy"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_source_verification",
+      "content": {
+        "request": "verify sources for all data points"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "verify_sources",
+      "content": {
+        "verification_status": "all sources are correctly attributed"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "buggy_flow": [
+    {
+      "step": 1,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "information about solar energy technologies"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 2,
+      "from_agent": "agent_1",
+      "to_agent": "agent_2",
+      "action": "send_data",
+      "content": {
+        "data": "information about wind energy technologies"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 3,
+      "from_agent": "agent_2",
+      "to_agent": "agent_3",
+      "action": "synthesize_and_send",
+      "content": {
+        "synthesized_data": "combined data on solar energy only"
+      },
+      "is_bug_point": true,
+      "bug_description": "Agent 2 incorrectly synthesizes data, omitting wind energy information due to a logic error."
+    },
+    {
+      "step": 4,
+      "from_agent": "agent_3",
+      "to_agent": "agent_1",
+      "action": "request_source_verification",
+      "content": {
+        "request": "verify sources for all data points"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    },
+    {
+      "step": 5,
+      "from_agent": "agent_1",
+      "to_agent": "agent_3",
+      "action": "verify_sources",
+      "content": {
+        "verification_status": "sources for solar energy are correctly attributed; wind energy missing"
+      },
+      "is_bug_point": false,
+      "bug_description": null
+    }
+  ],
+  "bug_injection_point": 3,
+  "root_cause_step": 3,
+  "error_manifestation_step": 5,
+  "causal_chain": [
+    {
+      "source_step": 3,
+      "target_step": 4,
+      "relationship_type": "data_flow",
+      "description": "Corrupted data flows from step 3 to step 4, where only solar energy information is synthesized and sent."
+    },
+    {
+      "source_step": 4,
+      "target_step": 5,
+      "relationship_type": "logic_error",
+      "description": "Agent 3 requests verification on incomplete data, resulting in missing wind energy sources."
+    }
+  ],
+  "created_at": "2026-01-04T09:05:54.309047"
+}

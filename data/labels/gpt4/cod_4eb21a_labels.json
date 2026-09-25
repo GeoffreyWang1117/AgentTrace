@@ -1,0 +1,29 @@
+{
+  "scenario_id": "cod_4eb21a",
+  "trace_id": "cod_4eb21a",
+  "causal_edges": [
+    {
+      "source_node_id": "step_3",
+      "target_node_id": "step_4",
+      "relationship_type": "communication_failure",
+      "confidence": 1.0,
+      "explanation": "Timeout results in failure to communicate version details to the Tester."
+    },
+    {
+      "source_node_id": "step_4",
+      "target_node_id": "step_8",
+      "relationship_type": "data_mismatch",
+      "confidence": 1.0,
+      "explanation": "Delayed submission leads to use of outdated version in integration, causing conflicts."
+    }
+  ],
+  "root_cause_node_id": "step_3",
+  "root_cause_explanation": "Timeout occurs due to a network issue, causing the Tester to not receive the code in time.",
+  "error_propagation_path": [
+    "step_3",
+    "step_4",
+    "step_8"
+  ],
+  "labeler_model": "scenario_definition",
+  "labeling_timestamp": "2026-01-03T22:00:00"
+}
