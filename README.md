@@ -63,12 +63,37 @@ was published. Please read them before you rely on the tool.
   identical for all candidates and cannot discriminate between them. The ranking then falls back to
   structural features. Ties are broken deterministically by node id, so a tie is still a tie:
   treat the top-1 answer on a fully tied chain as no better than picking a node uniformly at random.
-- **Accuracy vs. a frontier LLM.** On public benchmarks, agent-level Hit@1 is about 39% on
-  Who&When and 54% on AgentRx. A frontier LLM (DeepSeek-V4-Pro, all-at-once prompting)
-  reaches about 64% on Who&When, at roughly $0.01 and 20 s per trace. AgentTrace trades that
-  accuracy gap for zero cost and millisecond latency.
-- **Semantic edges are benchmark-dependent.** The optional semantic edges help on some benchmarks
-  and hurt substantially on others. Validate them on your own traces before enabling them by default.
+- **Accuracy on public benchmarks** (agent-level Hit@1, expected over ties, adapters as of 2026-10;
+  see *Corrections* below). Who&When, all 184 traces: the counterfactual scorer (`CausalAttributor`)
+  reaches 38.3%, exactly what picking a step uniformly at random gives, because these traces are
+  chains. The default structural ranker (`ImprovedAgentTrace`) reaches 34.2%: it ranks the human task
+  message first on every Hand-Crafted trace, so it scores 0.0% on that subset and 50.0% on
+  Algorithm-Generated. AgentRx Magentic-One (43 traces with a resolvable root cause): 49.4% for the
+  counterfactual scorer, 49.4% uniform, 9.3% for the ranker. Earlier versions of this README quoted
+  39% / 54% and a comparison with an LLM judge; those numbers came from the defective adapters and
+  are withdrawn. We have not re-measured the LLM comparison.
+- **Semantic edges.** The optional semantic edges change rankings substantially and in either
+  direction. The earlier evidence that they hurt on AgentRx came from the defective AgentRx adapter
+  and is withdrawn. Validate them on your own traces before enabling them by default.
+
+## Corrections (2026-10)
+
+Two benchmark adapters in `experiments/adapters/` were wrong; both are fixed in this version.
+
+- **Who&When** (`who_and_when_adapter.py`): `mistake_step` is a 0-based index into `history` (the
+  speaker of `history[k]` matches `mistake_agent` in 179/184 traces, against 42/184 for
+  `history[k-1]`). The adapter read it as 1-based, so every root cause was one step early, and the 20
+  traces labelled step 0 were mapped to the last node. The adapter now uses the 0-based index and
+  appends an explicit outcome node as the error node, so all 184 traces load.
+- **AgentRx** (`agentrx_adapter.py`): the old adapter paired the category-named example
+  trajectories with ground truth through a fallback that always returned the first entry, built
+  placeholder traces for the τ-bench ground truth (whose trajectories are not in the release) with
+  the root-cause text on the root-cause node only, and used the earliest failure instead of the
+  annotated root cause. It now loads only the Magentic-One trajectories that have ground truth,
+  uses the root-cause failure, and converts its 1-based `step_number`.
+
+Numbers computed with the old adapters, including the ones previously quoted in this README, are not
+valid. The workshop paper (tag below) used its own synthetic benchmark, not these adapters.
 
 ## Reproducing the workshop paper
 

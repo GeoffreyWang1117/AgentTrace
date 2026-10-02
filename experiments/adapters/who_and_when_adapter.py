@@ -19,7 +19,14 @@ Conversion:
 - Each history entry → Node in CausalGraph
 - Sequential edges between consecutive entries
 - Agent communication edges between different agents
-- Ground truth: mistake_step → root cause node, last step → error node
+- Ground truth: history[mistake_step] → root cause node (mistake_step is 0-based)
+- An explicit outcome node (agent "__outcome__") is appended after the last step and used as the
+  error node, so a mistake on the last step is still a scorable candidate.
+
+Correction (2026-10): earlier versions read mistake_step as 1-based, which put every root cause one
+step too early and mapped the 20 step-0 labels to the last node (those traces were then dropped by
+callers that skip root_cause == error). The data is 0-based: the speaker of history[k] matches
+mistake_agent in 179/184 traces, against 42/184 for history[k-1].
 """
 
 import json
@@ -75,7 +82,7 @@ def convert_scenario(scenario: dict, scenario_id: str) -> Optional[dict]:
 
     # Build graph
     graph = CausalGraph(run_id=f"whowhen_{scenario_id}")
-    base_time = datetime.now()
+    base_time = datetime(2026, 1, 1)
     nodes = []
 
     for i, entry in enumerate(history):
@@ -126,19 +133,23 @@ def convert_scenario(scenario: dict, scenario_id: str) -> Optional[dict]:
             except ValueError:
                 pass
 
-    # Identify root cause and error nodes
-    # mistake_step is 1-indexed
-    rc_idx = min(mistake_step - 1, len(nodes) - 1)
-    error_idx = len(nodes) - 1  # last step is where error manifests
+    # Root cause: mistake_step is a 0-based index into history. Out-of-range labels are unresolved.
+    if not 0 <= mistake_step < len(nodes):
+        return None
+    rc_idx = mistake_step
 
-    # Don't let root cause == error node
-    if rc_idx == error_idx and rc_idx > 0:
-        error_idx = len(nodes) - 1
+    # Explicit outcome node: the failure manifests after the last step.
+    outcome = Node(type=NodeType.AGENT_OUTPUT, agent_id='__outcome__',
+                   data={'step': len(nodes) + 1, 'role': 'outcome', 'content': '', 'action': 'outcome'},
+                   metadata={'source': 'who_and_when', 'scenario_id': scenario_id})
+    outcome.timestamp = base_time + timedelta(milliseconds=len(nodes) * 100)
+    outcome.parent_ids = [nodes[-1].id]
+    graph.add_node(outcome)
 
     return {
         'graph': graph,
         'root_cause_node_id': nodes[rc_idx].id,
-        'error_node_id': nodes[error_idx].id,
+        'error_node_id': outcome.id,
         'mistake_agent': mistake_agent,
         'mistake_step': mistake_step,
         'mistake_reason': scenario.get('mistake_reason', ''),
@@ -171,7 +182,7 @@ def load_all_scenarios(data_dir: str = "data/external/who_and_when/repo/Who&When
                 # Only use scenarios with ground truth annotation
                 if scenario.get('is_correct', False) is True:
                     continue  # skip correct scenarios
-                if not scenario.get('mistake_step'):
+                if scenario.get('mistake_step') in (None, ''):
                     continue
 
                 sid = f"{subset[:3].lower()}_{f.stem}"
