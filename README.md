@@ -68,8 +68,8 @@ was published. Please read them before you rely on the tool.
   reaches 38.3%, exactly what picking a step uniformly at random gives, because these traces are
   chains. The default structural ranker (`ImprovedAgentTrace`) reaches 34.2%: it ranks the human task
   message first on every Hand-Crafted trace, so it scores 0.0% on that subset and 50.0% on
-  Algorithm-Generated. AgentRx Magentic-One (43 traces with a resolvable root cause): 49.4% for the
-  counterfactual scorer, 49.4% uniform, 9.3% for the ranker. Earlier versions of this README quoted
+  Algorithm-Generated. AgentRx Magentic-One (44 traces): 48.8% for the counterfactual scorer, 48.8%
+  uniform, 9.1% for the ranker. Earlier versions of this README quoted
   39% / 54% and a comparison with an LLM judge; those numbers came from the defective adapters and
   are withdrawn. We have not re-measured the LLM comparison.
 - **Semantic edges.** The optional semantic edges change rankings substantially and in either
@@ -90,7 +90,8 @@ Two benchmark adapters in `experiments/adapters/` were wrong; both are fixed in 
   placeholder traces for the τ-bench ground truth (whose trajectories are not in the release) with
   the root-cause text on the root-cause node only, and used the earliest failure instead of the
   annotated root cause. It now loads only the Magentic-One trajectories that have ground truth,
-  uses the root-cause failure, and converts its 1-based `step_number`.
+  uses the root-cause failure (matching its id as a string: one release entry stores it as `"1"`
+  while failure ids are integers), and converts its 1-based `step_number`.
 
 Numbers computed with the old adapters, including the ones previously quoted in this README, are not
 valid. The workshop paper (tag below) used its own synthetic benchmark, not these adapters.

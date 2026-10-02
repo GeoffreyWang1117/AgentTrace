@@ -4,8 +4,7 @@ Adapter: AgentRx benchmark (Magentic-One split) → AgentTrace CausalGraph forma
 AgentRx (Microsoft Research, 2026) annotates every failure in each failed trajectory and marks one
 of them as the root cause. This adapter loads the Magentic-One trajectories that have ground truth:
 `data/ground_truth/magentic_one_ground_truth.json` entries matched by `trajectory_id` to
-`data/magentic_dataset/<trajectory_id>.json`. In the release we checked, 44 traces have ground truth
-and 43 of them have a resolvable root cause.
+`data/magentic_dataset/<trajectory_id>.json` (44 traces in the release we checked).
 
 Key format details:
   - Trajectories are lists of {"content": ..., "role": ...}; role carries the agent name
@@ -46,7 +45,7 @@ def normalize_agent_name(role: str) -> str:
 def root_cause_failure(gt_entry: dict):
     """The failure record named by root_cause.failure_id, or None."""
     rid = (gt_entry.get("root_cause") or {}).get("failure_id")
-    hits = [f for f in gt_entry.get("failures", []) if f.get("failure_id") == rid]
+    hits = [f for f in gt_entry.get("failures", []) if str(f.get("failure_id")) == str(rid)]  # one release entry stores the id as a string
     return hits[0] if hits else None
 
 
